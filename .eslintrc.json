@@ -14,8 +14,8 @@
     "browser": true,
     "es2021": true
   },
-  "plugins": ["@typescript-eslint"],
-  "extends": ["next/core-web-vitals","airbnb", "airbnb-typescript"],
+  "plugins": ["@typescript-eslint", "prettier"],
+  "extends": ["next/core-web-vitals","airbnb", "airbnb-typescript", "plugin:prettier/recommended"],
   "settings": {
     "react": {
       "version": "detect"
