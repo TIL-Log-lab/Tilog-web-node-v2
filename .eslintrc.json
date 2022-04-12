@@ -1,25 +1,35 @@
 {
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "project": "./tsconfig.json",
-    "ecmaVersion": 2022,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true,
-      "tsx": true
-    }
-  },
-  "env": {
-    "node": true,
-    "browser": true,
-    "es2021": true
-  },
-  "plugins": ["@typescript-eslint", "prettier"],
-  "extends": ["next/core-web-vitals","airbnb", "airbnb-typescript", "plugin:prettier/recommended"],
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
-  "ignorePatterns": ["node_modules/", ".next/*"]
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"project": "./tsconfig.json",
+		"ecmaVersion": 2015,
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true,
+			"tsx": true
+		}
+	},
+	"env": {
+		"node": true,
+		"browser": true,
+		"es6": true
+	},
+	"plugins": ["@typescript-eslint", "react", "prettier"],
+	"extends": [
+		"next/core-web-vitals",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:react/recommended",
+		"plugin:prettier/recommended"
+	],
+	"rules": {
+		"react/react-in-jsx-scope": "off",
+		"react/jsx-props-no-spreading": "off"
+	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
+	"ignorePatterns": ["node_modules/", "build/", "dist/", "next.config.js"]
 }
