@@ -15,11 +15,16 @@
     "es2021": true
   },
   "plugins": ["@typescript-eslint", "prettier"],
-  "extends": ["next/core-web-vitals","airbnb", "airbnb-typescript", "plugin:prettier/recommended"],
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb",
+    "airbnb-typescript",
+    "plugin:prettier/recommended"
+  ],
   "settings": {
     "react": {
       "version": "detect"
     }
   },
-  "ignorePatterns": ["node_modules/", ".next/*"]
+  "ignorePatterns": ["node_modules/", ".next/*", "*.config.js"]
 }
