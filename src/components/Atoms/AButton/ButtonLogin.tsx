@@ -6,7 +6,10 @@ interface ButtonLoginProps {
 
 export const ButtonLogin = ({ styles, text, onClick }: ButtonLoginProps) => {
   return (
-    <button onClick={onClick} className={`${styles}`}>
+    <button
+      onClick={onClick}
+      className={`rounded bg-black text-white ${styles}`}
+    >
       {text}
     </button>
   );

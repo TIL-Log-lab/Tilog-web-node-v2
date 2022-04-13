@@ -10,7 +10,10 @@ export const ButtonConfirm = ({
   onClick,
 }: ButtonConfirmProps) => {
   return (
-    <button onClick={onClick} className={`${styles}`}>
+    <button
+      onClick={onClick}
+      className={`rounded duration-100 bg-signature-color text-white ${styles}`}
+    >
       {text}
     </button>
   );
