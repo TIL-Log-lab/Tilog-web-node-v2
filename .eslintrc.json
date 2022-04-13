@@ -38,5 +38,6 @@
       "version": "detect"
     }
   },
-  "ignorePatterns": ["node_modules/", "build/", "dist/", "next.config.js"]
+  "ignorePatterns": ["node_modules/", ".next/*", "*.config.js"]
+
 }
