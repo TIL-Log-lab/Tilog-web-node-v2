@@ -1,10 +1,10 @@
 import {
-  ButtonCancel,
-  ButtonConfirm,
-  ButtonLogin,
-  ButtonTag,
-  ButtonToolbar,
-} from "@Atoms/AButton";
+  AButtonCancel,
+  AButtonConfirm,
+  AButtonLogin,
+  AButtonTag,
+  AButtonToolbar,
+} from "@Atoms/Button";
 import type { NextPage } from "next";
 const Home: NextPage = () => {
   const handleLogin = () => {
@@ -24,11 +24,19 @@ const Home: NextPage = () => {
   };
   return (
     <div className="p-10 flex justify-between">
-      <ButtonLogin onClick={handleLogin} styles="w-52 h-12" text="로그인" />
-      <ButtonCancel onClick={handleCancel} styles="w-52 h-12" text="취소" />
-      <ButtonConfirm onClick={handleConfirm} styles="w-52 h-12" text="확인" />
-      <ButtonToolbar onClick={handleToolbar} styles="w-10 h-10" text="H1" />
-      <ButtonTag onClick={handleTag} styles="w-52 h-12" text="# NextJS" />
+      <AButtonLogin
+        onClick={handleLogin}
+        styles="w-52 h-12"
+        text="Login with Github"
+      />
+      <AButtonConfirm
+        onClick={handleConfirm}
+        styles="w-52 h-12"
+        text="confirm"
+      />
+      <AButtonCancel onClick={handleCancel} styles="w-52 h-12" text="Cancel" />
+      <AButtonToolbar onClick={handleToolbar} styles="w-10 h-10" text="H1" />
+      <AButtonTag onClick={handleTag} styles="w-52 h-12" text="# NextJS" />
     </div>
   );
 };
