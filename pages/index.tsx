@@ -8,6 +8,7 @@ import {
   AButtonToolbar,
 } from "@Atoms/Button";
 import ATextInput from "@Atoms/TextInput";
+import ATextEditor from "@Atoms/TextEditor";
 
 const Home: NextPage = () => {
   const handleLogin = () => {
@@ -48,6 +49,8 @@ const Home: NextPage = () => {
       </p>
       <p>
         <ATextInput placeholder="TextInput" styles="text-xl" />
+        <div className="m-1" />
+        <ATextEditor />
       </p>
     </div>
   );
