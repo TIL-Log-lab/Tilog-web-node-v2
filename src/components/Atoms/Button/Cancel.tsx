@@ -1,10 +1,14 @@
-interface ButtonCancelProps {
+interface AButtonCancelProps {
   text: string;
   styles: string;
   onClick: () => void;
 }
 
-export const ButtonCancel = ({ styles, text, onClick }: ButtonCancelProps) => {
+export const AButtonCancel = ({
+  styles,
+  text,
+  onClick,
+}: AButtonCancelProps) => {
   return (
     <button
       onClick={onClick}

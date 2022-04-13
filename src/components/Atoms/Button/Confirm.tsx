@@ -1,14 +1,14 @@
-interface ButtonConfirmProps {
+interface AButtonConfirmProps {
   text: string;
   styles: string;
   onClick: () => void;
 }
 
-export const ButtonConfirm = ({
+export const AButtonConfirm = ({
   styles,
   text,
   onClick,
-}: ButtonConfirmProps) => {
+}: AButtonConfirmProps) => {
   return (
     <button
       onClick={onClick}

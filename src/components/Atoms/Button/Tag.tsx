@@ -1,10 +1,10 @@
-interface ButtonTagProps {
+interface AButtonTagProps {
   text: string;
   styles: string;
   onClick: () => void;
 }
 
-export const ButtonTag = ({ styles, text, onClick }: ButtonTagProps) => {
+export const AButtonTag = ({ styles, text, onClick }: AButtonTagProps) => {
   return (
     <button
       onClick={onClick}

@@ -1,14 +1,14 @@
-interface ButtonToolbarProps {
+interface AButtonToolbarProps {
   text: string;
   styles: string;
   onClick: () => void;
 }
 
-export const ButtonToolbar = ({
+export const AButtonToolbar = ({
   styles,
   text,
   onClick,
-}: ButtonToolbarProps) => {
+}: AButtonToolbarProps) => {
   return (
     <button
       onClick={onClick}
