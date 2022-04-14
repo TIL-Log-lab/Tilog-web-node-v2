@@ -1,4 +1,6 @@
 const ADivider = () => {
-  return <div className="w-1/2 border-t border-gray-300"></div>;
+  return (
+    <div className="w-full border-t border-neutral-700 dark:border-neutral-300"></div>
+  );
 };
 export default ADivider;
