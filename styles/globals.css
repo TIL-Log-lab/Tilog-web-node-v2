@@ -1,20 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
+@layer base {
+  h1 {
+    @apply text-5xl text-neutral-800 dark:text-neutral-200 font-eng-sub-font-2;
+  }
+  h2 {
+    @apply text-4xl text-neutral-800 dark:text-neutral-200 font-eng-sub-font-2;
+  }
+  h3 {
+    @apply text-3xl text-neutral-800 dark:text-neutral-200 font-eng-sub-font-2;
+  }
+  a {
+    @apply text-neutral-800 dark:text-neutral-200 hover:underline;
+  }
+  p {
+    @apply text-xl text-neutral-400 font-eng-sub-font-2;
+  }
 }
