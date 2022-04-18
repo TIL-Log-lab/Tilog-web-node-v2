@@ -16,7 +16,11 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@Atoms/*": ["src/components/Atoms/*"]
+      "@Atoms/*": ["src/components/Atoms/*"],
+      "@Organisms/*": ["src/components/Organisms/*"],
+      "@Interface/*": ["interface*"],
+      "@Styles/*": ["styles*"],
+      "@Api/*": ["api*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
