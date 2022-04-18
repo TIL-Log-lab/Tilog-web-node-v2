@@ -179,10 +179,10 @@
     lodash.isplainobject "^4.0.6"
     lodash.merge "^4.6.2"
 
-"@til-log.lab/tilog-api@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@til-log.lab/tilog-api/-/tilog-api-0.0.3.tgz#ef655696874710c892c1ca95270f968e5184eea2"
-  integrity sha512-4wVYijfLiTaC9hgeQvL+PBNkV/F2XfvruDjSnjvbC7C/HVulZh+CbKSCKeeqtNXCFHh0g7GNb8VdHiLPA2fzAQ==
+"@til-log.lab/tilog-api@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@til-log.lab/tilog-api/-/tilog-api-0.0.9.tgz#a076696677460e2c51bf2607775f69b60980530f"
+  integrity sha512-3znicrOKGipO3tEGH4dKbJFPOqGny5aAtax1ztS0G80TxWxzPm5sfpha8aQV9hJfRQ90LUHeZveb3pbFnXsi2A==
 
 "@tiptap/core@^2.0.0-beta.174":
   version "2.0.0-beta.174"
