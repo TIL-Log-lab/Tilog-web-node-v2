@@ -1,8 +1,22 @@
+import type { AppContext, AppProps } from "next/app";
+import { config } from "api/core";
 import "../styles/globals.css";
-import type { AppProps } from "next/app";
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+const TILogApp = ({ Component, pageProps }: AppProps) => {
   return <Component {...pageProps} />;
 };
 
-export default MyApp;
+TILogApp.getInitialProps = async (context: AppContext) => {
+  const { ctx, Component } = context;
+  let pageProps = {};
+
+  const headers = ctx.req?.headers;
+  config.baseOptions = { headers: headers };
+  console.log(Component);
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx);
+  }
+
+  return { pageProps };
+};
+export default TILogApp;
