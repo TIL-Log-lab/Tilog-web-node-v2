@@ -15,7 +15,7 @@ const MPostEditor = () => {
 
   return (
     <EditorContent
-      className={`h-full bg-white dark:bg-neutral-900`}
+      className={`z-0 h-4/6 bg-white dark:bg-neutral-900`}
       editor={editor}
     />
   );
