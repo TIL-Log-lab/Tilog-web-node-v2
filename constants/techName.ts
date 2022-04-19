@@ -1,0 +1,16 @@
+export const TYPE_SCRIPT = "TypeScript";
+export const JAVA_SCRIPT = "JavaScript";
+export const HTML = "HTML";
+export const REACT = "React";
+export const SWIFT = "Swift";
+export const DATABASE = "Database";
+export const GIT = "Git";
+export const NESTJS = "Nestjs";
+export const MYSQL = "MySQL";
+export const AWS = "AWS";
+export const DOCKER = "Docker";
+export const DOCKER_COMPOSE = "Docker-compose";
+export const REDIS = "Redis";
+export const CSS = "CSS";
+export const NODEJS = "Nodejs";
+export const INFRA = "Infra";
