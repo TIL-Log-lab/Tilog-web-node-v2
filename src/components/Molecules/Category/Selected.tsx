@@ -1,3 +1,5 @@
+import MTechRender from "@Molecules/Icon/TechRender";
+
 interface MCategorySelectedProps {
   selectedCategory: string;
   onClick: () => void;
@@ -8,11 +10,15 @@ const MCategorySelected = ({
 }: MCategorySelectedProps) => {
   return (
     <div className="w-full pt-5 ">
-      <p>
-        <button className={`text-xl font-bold`} onClick={onClick}>
+      <button
+        className={`py-2 px-4 text-neutral-600 rounded text-lg font-bold bg-neutral-300`}
+        onClick={onClick}
+      >
+        <div className="flex items-center">
+          <MTechRender categoryName={selectedCategory} />
           {selectedCategory}
-        </button>
-      </p>
+        </div>
+      </button>
     </div>
   );
 };
