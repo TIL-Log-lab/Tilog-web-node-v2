@@ -17,4 +17,7 @@
   p {
     @apply text-xl text-neutral-400 font-eng-sub-font-2;
   }
+  input {
+    @apply text-gray-700 dark:text-white dark:bg-neutral-900 focus:outline-none;
+  }
 }

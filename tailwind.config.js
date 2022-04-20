@@ -19,6 +19,7 @@ module.exports = {
       },
       colors: {
         "signature-color": "#606DEE",
+        "signature-color-blur": "#9498EC",
         javascript: "#f1DD35",
         typescript: "#3178c6",
         html: "#e44b23",
