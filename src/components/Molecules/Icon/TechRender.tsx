@@ -1,16 +1,16 @@
-import techIcons from "@Utility//techIcon";
+import TechIcons from "@Utility/TechIcons";
 
 interface Props {
   categoryName: string;
 }
 const MTechRender = ({ categoryName }: Props) => {
-  if (!techIcons[categoryName]) return null;
-  const { Render } = techIcons[categoryName];
-  return (
-    <div className="mr-4">
-      <Render />
-    </div>
-  );
+  const { Render } = TechIcons[categoryName];
+
+  if (!TechIcons[categoryName]) {
+    const { Render } = TechIcons["Unknown"];
+    return <Render />;
+  }
+  return <Render />;
 };
 
 export default MTechRender;

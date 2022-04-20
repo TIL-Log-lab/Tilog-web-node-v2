@@ -14,3 +14,4 @@ export const REDIS = "Redis";
 export const CSS = "CSS";
 export const NODEJS = "Nodejs";
 export const INFRA = "Infra";
+export const UNKNOWN = "Unknown";
