@@ -20,7 +20,7 @@ const PostDetail = () => {
       <div className="2xl:flex 2xl:flex-row 2xl:mx-14">
         <div className="p-5 mt-2 w-full h-[1000px] bg-slate-500"></div>
         <div className="grid mt-2 space-y-2 h-fit w-96 2xl:ml-2 grid-row-3">
-          <div className="flex flex-row items-center p-5 mt-2 space-y-10 rounded md:flex-col md:flex h-fit bg-slate-200">
+          <div className="flex flex-row items-center p-5 space-y-10 rounded md:flex-col md:flex h-fit bg-slate-200">
             사진 - 유저 소개
             <button className="w-full h-10 text-white rounded bg-signature-color">
               게시글 보기
