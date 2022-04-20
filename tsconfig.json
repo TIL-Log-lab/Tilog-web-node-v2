@@ -18,11 +18,11 @@
     "paths": {
       "@Molecules/*": ["src/components/Molecules/*"],
       "@Organisms/*": ["src/components/Organisms/*"],
-      "@Interface/*": ["interface*"],
-      "@Styles/*": ["styles*"],
-      "@Api/*": ["api*"],
-      "@Constants/*": ["constants*"],
-      "@Utility/*": ["utility*"]
+      "@Interface/*": ["interface/*"],
+      "@Styles/*": ["styles/*"],
+      "@Api/*": ["api/*"],
+      "@Constants/*": ["constants/*"],
+      "@Utility/*": ["utility/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
