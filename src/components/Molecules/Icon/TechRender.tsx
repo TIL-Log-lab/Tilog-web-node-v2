@@ -1,4 +1,4 @@
-import techIcons from "@Utility//techIcon";
+import techIcons from "@Utility/TechIcons";
 
 interface Props {
   categoryName: string;
