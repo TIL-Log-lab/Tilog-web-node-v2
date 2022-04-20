@@ -1,16 +1,11 @@
-import { ReactElement } from "react";
 import * as SI from "react-icons/si";
 import * as FA from "react-icons/fa";
 import * as GR from "react-icons/gr";
 import * as BS from "react-icons/bs";
 import * as CONST from "@Constants//techName";
+import { ITechIcons } from "@Interface//techIcons";
 
-interface TechIcons {
-  [techName: string]: {
-    Render: () => ReactElement;
-  };
-}
-const techIcons: TechIcons = {
+const TechIcons: ITechIcons = {
   [CONST.JAVA_SCRIPT]: {
     Render: () => <SI.SiJavascript className="text-javascript" />,
   },
@@ -61,4 +56,4 @@ const techIcons: TechIcons = {
   },
 };
 
-export default techIcons;
+export default TechIcons;
