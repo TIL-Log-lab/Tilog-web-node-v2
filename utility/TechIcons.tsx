@@ -54,6 +54,9 @@ const TechIcons: ITechIcons = {
   [CONST.INFRA]: {
     Render: () => <BS.BsFillHddNetworkFill />,
   },
+  [CONST.UNKNOWN]: {
+    Render: () => <BS.BsFillPatchQuestionFill />,
+  },
 };
 
 export default TechIcons;
