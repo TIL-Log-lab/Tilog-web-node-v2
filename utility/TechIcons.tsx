@@ -15,8 +15,8 @@ const TechIcons: ITechIcons = {
   [CONST.HTML]: {
     Render: () => <SI.SiHtml5 className="text-html" />,
   },
-  [CONST.GIT]: {
-    Render: () => <SI.SiGit className="text-git" />,
+  [CONST.GITHUB]: {
+    Render: () => <SI.SiGithub className="text-git" />,
   },
   [CONST.NESTJS]: {
     Render: () => <SI.SiNestjs className="text-nestjs" />,

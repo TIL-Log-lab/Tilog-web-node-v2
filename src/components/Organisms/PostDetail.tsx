@@ -4,7 +4,7 @@ import { BsDot, BsFillShareFill } from "react-icons/bs";
 
 const PostDetail = () => {
   return (
-    <div className="w-3/4">
+    <div className="w-full">
       <h1>Post Title</h1>
       <h3>Sub Title</h3>
       <p>10일 전</p>
