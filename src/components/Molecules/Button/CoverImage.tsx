@@ -4,7 +4,8 @@ const MCoverImage = () => {
   const [imageUrl, setImageUrl] = useState("");
   const hiddenFileInput = useRef<HTMLInputElement>(null);
   const handleClick = () => {
-    hiddenFileInput.current ? hiddenFileInput.current.click() : null;
+    if (!hiddenFileInput.current) return;
+    hiddenFileInput.current.click();
   };
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const fileUploaded = event.target.files;
