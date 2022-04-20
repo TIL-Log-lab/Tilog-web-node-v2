@@ -1,3 +1,4 @@
+import OComment from "@Organisms/Comment";
 import OHeader from "@Organisms/Header";
 import PostDetail from "@Organisms/PostDetail";
 import { NextPage } from "next";
@@ -12,6 +13,7 @@ const PostDetailPage: NextPage = () => {
       <div className="flex flex-col items-center pt-20 text-center">
         <PostDetail />
       </div>
+      <OComment />
     </div>
   );
 };
