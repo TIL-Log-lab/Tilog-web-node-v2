@@ -1,4 +1,4 @@
-import { getUserInfo } from "api/getUserInfo";
+import { getUserInfo } from "src/api/getUserInfo";
 import type { NextPage } from "next";
 import OLogin from "src/components/Organisms/Login";
 
