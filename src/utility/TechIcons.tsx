@@ -2,7 +2,7 @@ import * as SI from "react-icons/si";
 import * as FA from "react-icons/fa";
 import * as GR from "react-icons/gr";
 import * as BS from "react-icons/bs";
-import * as CONST from "@Constants/techName";
+import * as CONST from "src/constants/techName";
 import { ITechIcons } from "@Interface/techIcons";
 
 const TechIcons: ITechIcons = {
