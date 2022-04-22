@@ -36,15 +36,7 @@ const OHeader = ({ nav, userInfo }: OHeaderProps) => {
           <p className="text-sm text-neutral-800 font-eng-sub-font-2">{nav}</p>
         </div>
         <div className="flex items-center justify-end">
-          {!userInfo ? (
-            isMobile ? (
-              <MButtonMobileLogin />
-            ) : (
-              <MButtonLogin />
-            )
-          ) : (
-            "로그인된 유저"
-          )}
+          {!userInfo ? <MButtonMobileLogin /> : "로그인된 유저"}
         </div>
       </div>
     </div>
