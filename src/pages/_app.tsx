@@ -10,25 +10,38 @@ const TILogApp = ({ Component, pageProps }: AppProps) => {
 
 TILogApp.getInitialProps = async (context: AppContext) => {
   const { ctx, Component } = context;
-  let pageProps = {};
+
+  const props = Component.getInitialProps
+    ? await Component.getInitialProps(ctx)
+    : {};
 
   const headers = ctx.req?.headers;
   config.baseOptions = { headers: headers };
 
-  if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps(ctx);
+  if (!headers) {
+    const pageProps = props;
+    return pageProps;
   }
-
-  if (!headers) return { pageProps };
   const cookie = headers.cookie;
-  if (!cookie || !cookie.includes("refreshToken")) return { pageProps };
+
+  if (!cookie) {
+    const pageProps = props;
+    return pageProps;
+  }
+  if (!cookie.includes("refreshToken")) {
+    const pageProps = props;
+    return pageProps;
+  }
 
   const accessToken = await getAccessToken();
   const userInfo = await getUserInfo(accessToken);
-  pageProps = {
-    accessToken: accessToken,
-    userInfo: userInfo,
+
+  const pageProps = {
+    ...props,
+    accessToken,
+    userInfo,
   };
+
   return { pageProps };
 };
 export default TILogApp;
