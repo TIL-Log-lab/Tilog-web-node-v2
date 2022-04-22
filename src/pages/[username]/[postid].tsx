@@ -9,7 +9,7 @@ const PostDetailPage: NextPage = () => {
   const { username } = router.query;
   return (
     <div className="md:mx-20 2xl:mx-60">
-      <OHeader navTitle={username + ".log"} />
+      <OHeader nav={username + ".log"} userInfo={null} />
       <div className="flex flex-col items-center pt-20 text-center">
         <PostDetail />
       </div>

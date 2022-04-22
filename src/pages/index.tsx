@@ -4,7 +4,7 @@ import type { NextPage } from "next";
 const Home: NextPage = () => {
   return (
     <div className="md:mx-20 2xl:mx-60">
-      <OHeader navTitle="Today" />
+      <OHeader nav="Today" userInfo={null} />
       <h1>Index Page...</h1>
     </div>
   );
