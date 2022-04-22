@@ -3,7 +3,12 @@ import MButtonMobileLogin from "@Molecules/Button/MobileLogin";
 import { BsDot } from "react-icons/bs";
 import { useMediaQuery } from "react-responsive";
 
-const OHeader = ({ navTitle }: { navTitle: string | string[] | undefined }) => {
+interface OHeaderProps {
+  nav: string | string[] | undefined;
+  userInfo: string | null;
+}
+
+const OHeader = ({ nav, userInfo }: OHeaderProps) => {
   const isMobile = useMediaQuery({
     query: "(max-width:1000px)",
   });
@@ -17,7 +22,7 @@ const OHeader = ({ navTitle }: { navTitle: string | string[] | undefined }) => {
             <>
               <a href="#">Today</a>
               <BsDot />
-              <a href={`/blog/${navTitle}`}>MyBlog</a>
+              <a href={`/blog/${userInfo}`}>MyBlog</a>
               <BsDot />
               <a href="#">Search</a>
               <BsDot />
@@ -27,12 +32,18 @@ const OHeader = ({ navTitle }: { navTitle: string | string[] | undefined }) => {
         </div>
         <div className="flex flex-col items-center">
           <div className="w-16 h-8 rounded-tl-full rounded-tr-full bg-neutral-800 " />
-          <p className="text-sm text-neutral-800 font-eng-sub-font-2">
-            {navTitle}.log
-          </p>
+          <p className="text-sm text-neutral-800 font-eng-sub-font-2">{nav}</p>
         </div>
         <div className="flex items-center justify-end">
-          {isMobile ? <MButtonMobileLogin /> : <MButtonLogin />}
+          {!userInfo ? (
+            isMobile ? (
+              <MButtonMobileLogin />
+            ) : (
+              <MButtonLogin />
+            )
+          ) : (
+            "로그인된 유저"
+          )}
         </div>
       </div>
     </div>
