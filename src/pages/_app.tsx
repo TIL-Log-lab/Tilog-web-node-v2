@@ -1,5 +1,5 @@
 import type { AppContext, AppProps } from "next/app";
-import { config } from "src/api/core";
+import { config } from "@Api/core";
 import "../styles/globals.css";
 
 const TILogApp = ({ Component, pageProps }: AppProps) => {
