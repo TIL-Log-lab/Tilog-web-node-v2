@@ -1,6 +1,6 @@
-import { getUserInfo } from "api/getUserInfo";
 import type { NextPage } from "next";
-import OLogin from "src/components/Organisms/Login";
+import OLogin from "@Organisms/Login";
+import { getUserInfo } from "@Api/getUserInfo";
 
 const LoginPage: NextPage = () => {
   return (
