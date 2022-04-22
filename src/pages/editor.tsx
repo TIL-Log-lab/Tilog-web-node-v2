@@ -8,8 +8,5 @@ const EditorPage: NextPage = () => {
     </div>
   );
 };
-EditorPage.getInitialProps = async (context) => {
-  console.log(context);
-  return {};
-};
+
 export default EditorPage;

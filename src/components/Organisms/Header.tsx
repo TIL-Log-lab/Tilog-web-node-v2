@@ -1,11 +1,12 @@
 import MButtonLogin from "@Molecules/Button/Login";
 import MButtonMobileLogin from "@Molecules/Button/MobileLogin";
+import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 import { BsDot } from "react-icons/bs";
 import { useMediaQuery } from "react-responsive";
 
 interface OHeaderProps {
   nav: string | string[] | undefined;
-  userInfo: string | null;
+  userInfo: GetMeResponseDto | null;
 }
 
 const OHeader = ({ nav, userInfo }: OHeaderProps) => {
