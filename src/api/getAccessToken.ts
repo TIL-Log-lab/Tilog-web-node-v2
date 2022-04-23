@@ -1,19 +1,13 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { tilogApi } from "@Api/core";
 import { isExceptionMessageInterface } from "@Interface/messageError";
+import { GetAccessTokenUsingRefreshTokenResponse } from "@til-log.lab/tilog-api";
 
-export const getAccessToken = async (): Promise<string> => {
-  try {
-    const {
-      data: { accessToken },
-    } = await tilogApi.usersAuthControllerGetAccessTokenUsingRefreshToken(
-      "tilog"
-    );
-    return accessToken;
-  } catch (error) {
-    if (!axios.isAxiosError(error)) return "";
-    const errorData = error.response?.data ?? [];
-    if (!isExceptionMessageInterface(errorData)) return "";
-    return errorData.message[0].message;
-  }
-};
+export const getAccessToken =
+  async (): Promise<GetAccessTokenUsingRefreshTokenResponse> => {
+    const { data } =
+      await tilogApi.usersAuthControllerGetAccessTokenUsingRefreshToken(
+        "tilog"
+      );
+    return data;
+  };
