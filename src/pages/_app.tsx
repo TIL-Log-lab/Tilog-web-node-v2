@@ -33,7 +33,7 @@ TILogApp.getInitialProps = async (context: AppContext) => {
     return pageProps;
   }
 
-  const accessToken = await getAccessToken();
+  const { accessToken } = await getAccessToken();
   const userInfo = await getUserInfo(accessToken);
 
   const pageProps = {
