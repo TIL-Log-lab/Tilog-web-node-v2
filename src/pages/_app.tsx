@@ -53,10 +53,10 @@ TILogApp.getInitialProps = async (context: AppContext) => {
     const axiosError = error as AxiosError;
     if (axiosError.response) {
       const errorData = axiosError.response.data ?? [];
-      const error = isExceptionMessageInterface(errorData)
+      const errorResult = isExceptionMessageInterface(errorData)
         ? errorData
         : NoMessage;
-      const pageProps = { ...props, error: error };
+      const pageProps = { ...props, error: errorResult };
       return { pageProps };
     } else {
       const pageProps = { ...props, error: NotResponse };
