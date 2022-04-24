@@ -14,12 +14,14 @@
     "@tiptap/starter-kit": "^2.0.0-beta.183",
     "@types/react-responsive": "^8.0.5",
     "axios": "^0.26.1",
+    "iron-session": "^6.1.3",
     "next": "12.1.4",
     "next-transpile-modules": "^9.0.0",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-hook-form": "^7.29.0",
     "react-icons": "^4.3.1",
+    "react-query": "^3.38.0",
     "react-responsive": "^9.0.0-beta.6"
   },
   "devDependencies": {
