@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
+
 import OLogin from "@Organisms/Login";
-import { getUserInfo } from "@Api/getUserInfo";
+import { GetAccessTokenUsingRefreshTokenResponse } from "@til-log.lab/tilog-api";
 
 const LoginPage: NextPage = () => {
   return (
@@ -9,20 +10,20 @@ const LoginPage: NextPage = () => {
     </div>
   );
 };
-export async function getServerSideProps() {
-  try {
-    await getUserInfo();
+export async function getServerSideProps(context: {
+  req: { cookies: { refreshToken: GetAccessTokenUsingRefreshTokenResponse } };
+}) {
+  if (context.req.cookies.refreshToken) {
     return {
       redirect: {
         destination: "/",
         permanent: false,
       },
     };
-  } catch (error) {
-    console.log(error);
-    return {
-      props: {},
-    };
   }
+  return {
+    props: {},
+  };
 }
+
 export default LoginPage;
