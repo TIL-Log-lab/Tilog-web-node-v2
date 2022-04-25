@@ -1,6 +1,7 @@
-import MTechRender from "@Molecules/Icon/TechRender";
 import { AiFillHeart } from "react-icons/ai";
 import { BsDot, BsFillShareFill } from "react-icons/bs";
+
+import MTechRender from "@Molecules/Icon/TechRender";
 
 const PostDetail = () => {
   return (

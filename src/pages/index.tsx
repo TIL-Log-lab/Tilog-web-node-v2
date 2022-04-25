@@ -5,9 +5,9 @@ import { useContext, useEffect } from "react";
 
 import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 
-import OHeader from "@Organisms/Header";
-import { AccessTokenContext } from "src/context/AccessToken";
 import { tilogApi } from "@Api/core";
+import OHeader from "@Organisms/Header";
+import { AccessTokenContext } from "@Context/AccessToken";
 
 interface HomeProps {
   user: GetMeResponseDto;
