@@ -1,3 +1,4 @@
+import { AxiosError } from "axios";
 import type { NextPage } from "next";
 import { useQuery } from "react-query";
 import { useContext, useEffect } from "react";
@@ -11,6 +12,7 @@ import { tilogApi } from "@Api/core";
 interface HomeProps {
   user: GetMeResponseDto;
 }
+
 const Home: NextPage<HomeProps> = ({ user }: HomeProps) => {
   const { accessToken, getAccessToken } = useContext(AccessTokenContext);
   const result = useQuery(
@@ -21,6 +23,11 @@ const Home: NextPage<HomeProps> = ({ user }: HomeProps) => {
       }),
     {
       enabled: !!accessToken,
+      onError: (e: AxiosError) => {
+        if (e.response?.status) {
+          getAccessToken();
+        }
+      },
     }
   );
   useEffect(() => {
