@@ -1,3 +1,4 @@
+import MButtonLogin from "@Molecules/Button/Login";
 import MButtonMobileLogin from "@Molecules/Button/MobileLogin";
 import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 import { BsDot } from "react-icons/bs";
@@ -25,7 +26,7 @@ const OHeader = ({ nav, userInfo }: OHeaderProps) => {
           <p className="text-sm text-neutral-800 font-eng-sub-font-2">{nav}</p>
         </div>
         <div className="flex items-center justify-end">
-          {!userInfo ? <MButtonMobileLogin /> : "로그인된 유저"}
+          {!userInfo ? <MButtonLogin /> : "로그인된 유저"}
         </div>
       </div>
     </div>
