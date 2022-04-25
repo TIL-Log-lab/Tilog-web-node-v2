@@ -22,7 +22,8 @@
       "@Styles/*": ["styles/*"],
       "@Api/*": ["src/api/*"],
       "@Constants/*": ["src/constants/*"],
-      "@Utility/*": ["src/utility/*"]
+      "@Utility/*": ["src/utility/*"],
+      "@Context/*": ["src/context/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
