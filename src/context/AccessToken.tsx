@@ -1,9 +1,14 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { createContext, ReactNode, useState } from "react";
 
 import { tilogApi } from "@Api/core";
 
-export const AccessTokenContext = createContext({});
+export const AccessTokenContext = createContext({
+  accessToken: "",
+  getAccessToken: () => {
+    return;
+  },
+});
 
 export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
   const [accessToken, setAccessToken] = useState("");
@@ -20,14 +25,11 @@ export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
     } catch (error) {
       if (!axios.isAxiosError(error)) {
         setAccessToken("");
-        return;
-      }
-      if (error.response) {
-        if (error.response.status === 401) {
+      } else {
+        if (error.response?.status === 401) {
           axios.get("http://localhost:8080/api/logout");
         }
         setAccessToken("");
-        return;
       }
     }
   };
