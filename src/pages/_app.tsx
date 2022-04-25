@@ -22,7 +22,6 @@ TILogApp.getInitialProps = async (context: AppContext) => {
 
   if (ctx.req && ctx.res) {
     const session = await getIronSession(ctx.req, ctx.res, cookieConfig);
-    console.log(session);
 
     const pageProps = session;
     return { pageProps };
