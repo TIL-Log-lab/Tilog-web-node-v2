@@ -9,9 +9,10 @@ import {
 import OComment from "@Organisms/Comment";
 import OHeader from "@Organisms/Header";
 import PostDetail from "@Organisms/PostDetail";
+
 interface PostDetailPageProps {
   accessToken: GetAccessTokenUsingRefreshTokenResponse;
-  userInfo: GetMeResponseDto | null;
+  userInfo: GetMeResponseDto;
 }
 const PostDetailPage: NextPage<PostDetailPageProps> = ({
   accessToken,

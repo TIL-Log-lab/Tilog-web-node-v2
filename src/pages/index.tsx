@@ -1,29 +1,38 @@
 import type { NextPage } from "next";
+import { useQuery } from "react-query";
+import { useContext, useEffect } from "react";
 
-import {
-  GetAccessTokenUsingRefreshTokenResponse,
-  GetMeResponseDto,
-} from "@til-log.lab/tilog-api";
+import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 
 import OHeader from "@Organisms/Header";
-import { ExceptionMessageInterface } from "@Api/Errors/interface/messageError";
-interface HomeProps {
-  accessToken: GetAccessTokenUsingRefreshTokenResponse;
-  userInfo: GetMeResponseDto;
-  error: ExceptionMessageInterface;
-}
+import { AccessTokenContext } from "src/context/AccessToken";
+import { tilogApi } from "@Api/core";
 
-const Home: NextPage<HomeProps> = ({
-  accessToken,
-  userInfo,
-  error,
-}: HomeProps) => {
+interface HomeProps {
+  user: GetMeResponseDto;
+}
+const Home: NextPage<HomeProps> = ({ user }: HomeProps) => {
+  const { accessToken, getAccessToken } = useContext(AccessTokenContext);
+  const result = useQuery(
+    ["userinfo", accessToken],
+    () =>
+      tilogApi.usersControllerGetMe({
+        headers: { Authorization: `Bearer ${accessToken}` },
+      }),
+    {
+      enabled: !!accessToken,
+    }
+  );
+  useEffect(() => {
+    getAccessToken();
+  }, [getAccessToken]);
+  console.log(result);
+
   return (
     <div className="md:mx-20 2xl:mx-60">
-      <OHeader nav="Today" userInfo={userInfo} />
+      <OHeader nav="Today" userInfo={user} />
       <h1>Index Page...</h1>
-      {error && <p>{error.message[0].message}</p>}
-      {accessToken && <p>{accessToken}</p>}
+      <p>{accessToken}</p>
     </div>
   );
 };
