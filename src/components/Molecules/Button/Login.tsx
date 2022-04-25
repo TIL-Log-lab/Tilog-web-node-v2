@@ -1,8 +1,26 @@
+import { tilogApi } from "@Api/core";
 import MTechRender from "@Molecules/Icon/TechRender";
+import axios from "axios";
 
 const MButtonLogin = () => {
   const handleLogin = async () => {
-    window.open("http://localhost/auth/github/login");
+    const childWindow = window.open("http://localhost/auth/github/login");
+    setInterval(async () => {
+      try {
+        const userinfo =
+          await tilogApi.usersAuthControllerGetAccessTokenUsingRefreshToken(
+            "a",
+            {
+              withCredentials: true,
+            }
+          );
+        if (!!userinfo) {
+          await axios.get("http://localhost:8080/api/userinfo");
+          childWindow?.close();
+          window.location.reload();
+        }
+      } catch {}
+    }, 1000);
   };
   return (
     <button
