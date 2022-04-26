@@ -1,15 +1,14 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 
+import OComment from "src/components/organisms/Comment";
+import OHeader from "src/components/organisms/Header";
+import PostDetail from "src/components/organisms/PostDetail";
+
 import {
   GetAccessTokenUsingRefreshTokenResponse,
   GetMeResponseDto,
 } from "@til-log.lab/tilog-api";
-
-import OComment from "@Organisms/Comment";
-import OHeader from "@Organisms/Header";
-import PostDetail from "@Organisms/PostDetail";
-
 interface PostDetailPageProps {
   accessToken: GetAccessTokenUsingRefreshTokenResponse;
   userInfo: GetMeResponseDto;

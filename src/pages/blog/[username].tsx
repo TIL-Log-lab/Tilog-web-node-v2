@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 
 import OHeader from "@Organisms/Header";
 import OMyBlog from "@Organisms/MyBlog";
-import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 
+import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 interface BlogPageProps {
   user: GetMeResponseDto;
 }

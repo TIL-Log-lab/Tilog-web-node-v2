@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { withIronSessionApiRoute } from "iron-session/next";
-
-import { cookieConfig } from "@Constants/cookieConfig";
+import { cookieConfig } from "@Iron/cookieConfig";
 
 export default withIronSessionApiRoute(async function handler(
   req: NextApiRequest,

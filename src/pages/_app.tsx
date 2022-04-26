@@ -1,10 +1,10 @@
-import "../styles/globals.css";
+import "../../styles/globals.css";
 import { getIronSession } from "iron-session";
 import type { AppContext, AppProps } from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-import { cookieConfig } from "@Constants/cookieConfig";
-import { AccessTokenProvider } from "@Context/AccessToken";
+import { cookieConfig } from "@Iron/cookieConfig";
+import { AccessTokenProvider } from "@Hooks/context/AccessToken";
 
 const queryClient = new QueryClient({});
 

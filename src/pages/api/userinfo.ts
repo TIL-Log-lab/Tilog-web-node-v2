@@ -1,12 +1,11 @@
 import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { withIronSessionApiRoute } from "iron-session/next";
-
 import { tilogApi } from "@Api/core";
-import { cookieConfig } from "@Constants/cookieConfig";
-import { NotResponse } from "@Api/Errors/notResponse";
-import { NoMessage } from "@Api/Errors/noMessage";
-import { isExceptionMessageInterface } from "@Api/Errors/interface/messageError";
+import { isExceptionMessageInterface } from "@Api/errors/interface/messageError";
+import { NoMessage } from "@Api/errors/noMessage";
+import { NotResponse } from "@Api/errors/notResponse";
+import { cookieConfig } from "@Iron/cookieConfig";
 
 export default withIronSessionApiRoute(async function handler(
   req: NextApiRequest,

@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 
-import { GetMeResponseDto } from "@til-log.lab/tilog-api";
+import OHeader from "src/components/organisms/Header";
+import OSetting from "src/components/organisms/Setting";
 
-import OHeader from "@Organisms/Header";
-import OSetting from "@Organisms/Setting";
+import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 interface SettingPageProps {
   user: GetMeResponseDto;
 }
