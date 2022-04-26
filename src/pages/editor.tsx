@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 
-import OEditor from "@Organisms/Editor";
+import OEditor from "src/components/organisms/Editor";
 
 const EditorPage: NextPage = () => {
   return (

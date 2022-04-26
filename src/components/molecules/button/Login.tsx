@@ -1,6 +1,7 @@
-import { tilogApi } from "@Api/core";
-import MTechRender from "@Molecules/Icon/TechRender";
 import axios from "axios";
+
+import { tilogApi } from "@Api/core";
+import OTechIcons from "src/components/organisms/techIcons";
 
 const MButtonLogin = () => {
   const handleLogin = async () => {
@@ -30,7 +31,7 @@ const MButtonLogin = () => {
       <div className="flex flex-row items-center justify-center p-3 ">
         Login With Github
         <div className="ml-3 text-2xl">
-          <MTechRender categoryName="Github" />
+          <OTechIcons categoryName="Github" />
         </div>
       </div>
     </button>

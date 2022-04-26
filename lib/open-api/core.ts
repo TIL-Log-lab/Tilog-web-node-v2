@@ -1,7 +1,6 @@
 import * as TILog from "@til-log.lab/tilog-api";
-import { TILOG_API } from "src/api/config";
 
 export const config = new TILog.Configuration({
-  basePath: TILOG_API,
+  basePath: process.env.TILOG_API,
 });
 export const tilogApi = new TILog.DefaultApi(config);

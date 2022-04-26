@@ -1,9 +1,9 @@
-import TechIcons from "@Utility/TechIcons";
+import TechIcons from "src/components/organisms/techIcons/icon";
 
 interface Props {
   categoryName: string;
 }
-const MTechRender = ({ categoryName }: Props) => {
+const OTechIcons = ({ categoryName }: Props) => {
   const { Render } = TechIcons[categoryName];
 
   if (!TechIcons[categoryName]) {
@@ -13,4 +13,4 @@ const MTechRender = ({ categoryName }: Props) => {
   return <Render />;
 };
 
-export default MTechRender;
+export default OTechIcons;

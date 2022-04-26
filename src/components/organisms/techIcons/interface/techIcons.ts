@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 
-export interface ITechIcons {
+export interface TechIconInterface {
   [techName: string]: {
     Render: () => ReactElement;
   };

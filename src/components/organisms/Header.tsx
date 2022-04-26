@@ -1,5 +1,5 @@
-import MButtonLogin from "@Molecules/Button/Login";
-import MButtonMobileLogin from "@Molecules/Button/MobileLogin";
+import MButtonLogin from "src/components/molecules/button/Login";
+import MButtonMobileLogin from "src/components/molecules/button/MobileLogin";
 import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 import { BsDot } from "react-icons/bs";
 

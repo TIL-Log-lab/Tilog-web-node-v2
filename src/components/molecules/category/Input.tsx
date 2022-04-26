@@ -1,4 +1,4 @@
-import MCategoryRecommend from "@Molecules/Category/Recommend";
+import MCategoryRecommend from "src/components/molecules/category/Recommend";
 import { ChangeEvent, Dispatch, SetStateAction } from "react";
 
 interface MCategoryInputProps {

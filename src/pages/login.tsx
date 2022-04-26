@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 
-import OLogin from "@Organisms/Login";
+import OLogin from "src/components/organisms/Login";
+
 import { GetAccessTokenUsingRefreshTokenResponse } from "@til-log.lab/tilog-api";
 
 const LoginPage: NextPage = () => {

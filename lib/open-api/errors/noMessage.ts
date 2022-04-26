@@ -1,4 +1,4 @@
-import { ExceptionMessageInterface } from "@Api/Errors/interface/messageError";
+import { ExceptionMessageInterface } from "@Api/errors/interface/messageError";
 
 export const NoMessage: ExceptionMessageInterface = {
   message: [

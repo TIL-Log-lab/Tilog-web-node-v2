@@ -2,59 +2,76 @@ import * as SI from "react-icons/si";
 import * as FA from "react-icons/fa";
 import * as GR from "react-icons/gr";
 import * as BS from "react-icons/bs";
-import * as CONST from "@Constants/techName";
-import { ITechIcons } from "@Interface/techIcons";
+import { TechIconInterface } from "src/components/organisms/techIcons/interface/techIcons";
 
-const TechIcons: ITechIcons = {
-  [CONST.JAVA_SCRIPT]: {
+const TYPE_SCRIPT = "TypeScript";
+const JAVA_SCRIPT = "JavaScript";
+const HTML = "HTML";
+const REACT = "React";
+const SWIFT = "Swift";
+const DATABASE = "Database";
+const GITHUB = "Github";
+const NESTJS = "Nestjs";
+const MYSQL = "MySQL";
+const AWS = "AWS";
+const DOCKER = "Docker";
+const DOCKER_COMPOSE = "Docker-compose";
+const REDIS = "Redis";
+const CSS = "CSS";
+const NODEJS = "Nodejs";
+const INFRA = "Infra";
+const UNKNOWN = "Unknown";
+
+const TechIcons: TechIconInterface = {
+  [JAVA_SCRIPT]: {
     Render: () => <SI.SiJavascript className="text-javascript" />,
   },
-  [CONST.TYPE_SCRIPT]: {
+  [TYPE_SCRIPT]: {
     Render: () => <SI.SiTypescript className="text-typescript" />,
   },
-  [CONST.HTML]: {
+  [HTML]: {
     Render: () => <SI.SiHtml5 className="text-html" />,
   },
-  [CONST.GITHUB]: {
+  [GITHUB]: {
     Render: () => <SI.SiGithub className="text-git" />,
   },
-  [CONST.NESTJS]: {
+  [NESTJS]: {
     Render: () => <SI.SiNestjs className="text-nestjs" />,
   },
-  [CONST.REACT]: {
+  [REACT]: {
     Render: () => <SI.SiReact className="text-react" />,
   },
-  [CONST.SWIFT]: {
+  [SWIFT]: {
     Render: () => <SI.SiSwift className="text-swift" />,
   },
-  [CONST.DATABASE]: {
+  [DATABASE]: {
     Render: () => <FA.FaDatabase className="text-database" />,
   },
-  [CONST.MYSQL]: {
+  [MYSQL]: {
     Render: () => <GR.GrMysql className="text-mysql" />,
   },
-  [CONST.AWS]: {
+  [AWS]: {
     Render: () => <SI.SiAmazonaws className="text-aws" />,
   },
-  [CONST.DOCKER]: {
+  [DOCKER]: {
     Render: () => <SI.SiDocker className="text-docker" />,
   },
-  [CONST.DOCKER_COMPOSE]: {
+  [DOCKER_COMPOSE]: {
     Render: () => <SI.SiDocker className="text-docker" />,
   },
-  [CONST.REDIS]: {
+  [REDIS]: {
     Render: () => <SI.SiRedis className="text-redis " />,
   },
-  [CONST.NODEJS]: {
+  [NODEJS]: {
     Render: () => <FA.FaNodeJs className="text-nodejs" />,
   },
-  [CONST.CSS]: {
+  [CSS]: {
     Render: () => <SI.SiCss3 className="text-css" />,
   },
-  [CONST.INFRA]: {
+  [INFRA]: {
     Render: () => <BS.BsFillHddNetworkFill />,
   },
-  [CONST.UNKNOWN]: {
+  [UNKNOWN]: {
     Render: () => <BS.BsFillPatchQuestionFill />,
   },
 };

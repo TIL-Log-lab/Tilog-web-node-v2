@@ -1,7 +1,7 @@
 import { AiFillHeart } from "react-icons/ai";
 import { BsDot, BsFillShareFill } from "react-icons/bs";
 
-import MTechRender from "@Molecules/Icon/TechRender";
+import OTechIcons from "@Organisms/techIcons";
 
 const PostDetail = () => {
   return (
@@ -12,7 +12,7 @@ const PostDetail = () => {
       <div className="relative flex items-center py-5">
         <div className="flex-grow border-t border-gray-400"></div>
         <div className="mx-4">
-          <MTechRender categoryName="Nestjs" />
+          <OTechIcons categoryName="Nestjs" />
         </div>
         <div className="flex-grow border-t border-gray-400"></div>
       </div>
@@ -29,7 +29,7 @@ const PostDetail = () => {
           </div>
           <div className="flex flex-row items-center justify-center p-2 rounded bg-slate-300 ">
             <div className="mr-3 text-3xl">
-              <MTechRender categoryName="Nestjs" />
+              <OTechIcons categoryName="Nestjs" />
             </div>
             <h3>NestJS</h3>
           </div>

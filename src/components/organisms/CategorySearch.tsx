@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ChangeEvent, useState } from "react";
-import MCategorySelected from "@Molecules/Category/Selected";
-import MCategoryInput from "@Molecules/Category/Input";
+import MCategorySelected from "src/components/molecules/category/Selected";
+import MCategoryInput from "src/components/molecules/category/Input";
 
 const OCategorySearch = () => {
   const [categoryLists, setCategoryLists] = useState(null);

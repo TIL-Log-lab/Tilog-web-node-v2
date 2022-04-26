@@ -1,6 +1,6 @@
-import OCategorySearch from "@Organisms/CategorySearch";
-import MCoverImage from "src/components/Molecules/Button/CoverImage";
-import MPostEditor from "src/components/Molecules/PostEditor";
+import OCategorySearch from "src/components/organisms/CategorySearch";
+import MCoverImage from "src/components/molecules/button/CoverImage";
+import MPostEditor from "src/components/molecules/PostEditor";
 
 const OEditor = () => {
   return (
