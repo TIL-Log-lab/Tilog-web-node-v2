@@ -16,15 +16,15 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@Molecules/*": ["src/components/Molecules/*"],
-      "@Organisms/*": ["src/components/Organisms/*"],
+      "@Molecules/*": ["src/components/molecules/*"],
+      "@Organisms/*": ["src/components/organisms/*"],
       "@Interface/*": ["src/interface/*"],
       "@Styles/*": ["styles/*"],
       "@Api/*": ["lib/open-api/*"],
       "@Iron/*": ["lib/iron-session/*"],
       "@Constants/*": ["src/constants/*"],
       "@Utility/*": ["src/utility/*"],
-      "@Context/*": ["src/context/*"]
+      "@Hooks/*": ["src/hooks/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
