@@ -1,5 +1,3 @@
-import MTechRender from "@Molecules/Icon/TechRender";
-
 const OMyBlog = () => {
   return (
     <div className="flex flex-col items-center justify-center xl:flex-row xl:justify-between">
