@@ -3,6 +3,6 @@ import { AxiosError } from "axios";
 
 export interface AccessTokenInterface {
   accessToken: GetAccessTokenUsingRefreshTokenResponse["accessToken"] | null;
-  accessTokenContextSetStateGetAccessToken: () => void;
+  setStateGetAccessToken: () => void;
   accessTokenFetchError: AxiosError | null;
 }
