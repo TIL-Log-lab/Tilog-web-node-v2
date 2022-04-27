@@ -1,11 +1,17 @@
-import { tilogApi } from "@Api/core";
 import { AxiosError } from "axios";
 import { useContext } from "react";
 import { useQuery } from "react-query";
+
+import { tilogApi } from "@Api/core";
+
 import { AccessTokenContext } from "@Hooks/context/AccessToken";
 
-const useHomeQuery = () => {
-  const { accessToken, getAccessToken } = useContext(AccessTokenContext);
+import { GetAccessTokenUsingRefreshTokenResponse } from "@til-log.lab/tilog-api";
+
+const useHomeQuery = (
+  accessToken: GetAccessTokenUsingRefreshTokenResponse["accessToken"] | null
+) => {
+  const { getAccessToken } = useContext(AccessTokenContext);
   return useQuery(
     ["userinfo", accessToken],
     () =>
