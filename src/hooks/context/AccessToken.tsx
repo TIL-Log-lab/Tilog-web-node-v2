@@ -43,12 +43,12 @@ export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
           }
         );
       setAccessToken(data.accessToken);
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        if (error.response?.status === 401) {
+    } catch (e) {
+      if (axios.isAxiosError(e)) {
+        if (e.response?.status === 401) {
           axios.get("http://localhost:8080/api/logout");
         }
-        setError(error);
+        setError(e);
       }
     }
   };
