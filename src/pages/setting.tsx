@@ -5,14 +5,14 @@ import OSetting from "src/components/organisms/Setting";
 
 import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 interface SettingPageProps {
-  user: GetMeResponseDto;
+  userInfo: GetMeResponseDto;
 }
 const SettingPage: NextPage<SettingPageProps> = ({
-  user,
+  userInfo,
 }: SettingPageProps) => {
   return (
     <div className="md:mx-20 2xl:mx-60">
-      <OHeader nav="Setting" userInfo={user} />
+      <OHeader nav="Setting" userInfo={userInfo} />
 
       <div className="mt-20"></div>
       <OSetting />

@@ -28,7 +28,7 @@ export default withIronSessionApiRoute(async function handler(
     const { data } = await tilogApi.usersControllerGetMe({
       headers: { Authorization: `Bearer ${accessToken}` },
     });
-    req.session.user = data;
+    req.session.userInfo = data;
     await req.session.save();
     res.status(200).json({ ok: true });
   } catch (error) {
