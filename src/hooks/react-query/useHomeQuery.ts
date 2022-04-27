@@ -11,9 +11,9 @@ import { GetAccessTokenUsingRefreshTokenResponse } from "@til-log.lab/tilog-api"
 const useHomeQuery = (
   accessToken: GetAccessTokenUsingRefreshTokenResponse["accessToken"] | null
 ) => {
-  const { getAccessToken } = useContext(AccessTokenContext);
+  const { setStateGetAccessToken } = useContext(AccessTokenContext);
   return useQuery(
-    ["userinfo", accessToken],
+    ["userInfo", accessToken],
     () =>
       tilogApi.usersControllerGetMe({
         headers: { Authorization: `Bearer ${accessToken}` },
@@ -22,7 +22,7 @@ const useHomeQuery = (
       enabled: !!accessToken,
       onError: (e: AxiosError) => {
         if (e.response?.status) {
-          getAccessToken();
+          setStateGetAccessToken();
         }
       },
     }
