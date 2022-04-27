@@ -1,23 +1,31 @@
+import { useContext } from "react";
 import type { NextPage } from "next";
 
-import useHomeQuery from "@Hooks/react-query/useHomeQuery";
 import OHeader from "@Organisms/Header";
 
-import { GetMeResponseDto } from "@til-log.lab/tilog-api";
-import { useContext, useEffect } from "react";
 import { AccessTokenContext } from "@Hooks/context/AccessToken";
+import useHomeQuery from "@Hooks/react-query/useHomeQuery";
+
+import { GetMeResponseDto } from "@til-log.lab/tilog-api";
+import { AccessTokenInterface } from "@Hooks/context/interface/accessTokenInterface";
 interface HomeProps {
-  user: GetMeResponseDto;
+  user: GetMeResponseDto | null;
 }
 
 const Home: NextPage<HomeProps> = ({ user }: HomeProps) => {
-  const { getAccessToken } = useContext(AccessTokenContext);
-  const result = useHomeQuery();
+  const { accessToken, error } =
+    useContext<AccessTokenInterface>(AccessTokenContext);
 
-  useEffect(() => {
-    getAccessToken();
-  }, [getAccessToken]);
-
+  const result = useHomeQuery(accessToken);
+  if (error) {
+    user = null;
+    if (!error.response) {
+      alert("서버와 연결이 끊겼습니다.");
+    }
+    if (!(error.response?.status === 401)) {
+      alert(error.response?.data.message[0].message);
+    }
+  }
   console.log(result);
   return (
     <div className="md:mx-20 2xl:mx-60">
