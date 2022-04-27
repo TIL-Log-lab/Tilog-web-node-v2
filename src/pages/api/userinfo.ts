@@ -1,11 +1,13 @@
 import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { withIronSessionApiRoute } from "iron-session/next";
+
 import { tilogApi } from "@Api/core";
-import { isExceptionMessageInterface } from "@Api/errors/interface/messageError";
-import { NoMessage } from "@Api/errors/noMessage";
-import { NotResponse } from "@Api/errors/notResponse";
 import { cookieConfig } from "@Iron/cookieConfig";
+import { NotResponse } from "@Api/errors/notResponse.error";
+import { notFoundMessage } from "@Api/errors/notFoundMessage.error";
+
+import { isExceptionMessageInterface } from "@Api/errors/interface/messageError.interface";
 
 export default withIronSessionApiRoute(async function handler(
   req: NextApiRequest,
@@ -33,16 +35,19 @@ export default withIronSessionApiRoute(async function handler(
     res.status(200).json({ ok: true });
   } catch (error) {
     if (!axios.isAxiosError(error)) {
-      return res.status(401).json({ ok: false, error: error });
+      return res.status(500).json({ ok: false, error: error });
     }
     if (error.response) {
       const errorData = error.response.data;
-      const errorResult = isExceptionMessageInterface(errorData)
-        ? errorData
-        : NoMessage;
-      return res.status(401).json({ ok: false, error: errorResult });
+      isExceptionMessageInterface(errorData)
+        ? res
+            .status(error.response.status)
+            .json({ ok: false, error: errorData })
+        : res
+            .status(error.response.status)
+            .json({ ok: false, error: notFoundMessage });
     } else {
-      return res.status(401).json({ ok: false, error: NotResponse });
+      return res.status(500).json({ ok: false, error: NotResponse });
     }
   }
 },
