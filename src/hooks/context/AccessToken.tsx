@@ -9,12 +9,12 @@ import {
 
 import { tilogApi } from "@Api/core";
 
-import { AccessTokenInterface } from "@Hooks/context/interface/accessTokenInterface";
+import { AccessTokenInterface } from "@Hooks/context/interface/accessToken.interface";
 
 const store = {
   accessToken: null,
-  getAccessToken: () => void 0,
-  error: null,
+  setStateGetAccessToken: () => void 0,
+  accessTokenFetchError: null,
 };
 
 export const AccessTokenContext = createContext<AccessTokenInterface>(store);
@@ -23,13 +23,14 @@ export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
   const [accessToken, setAccessToken] = useState<
     AccessTokenInterface["accessToken"] | null
   >(null);
-  const [error, setError] = useState<AxiosError | null>(null);
+  const [accessTokenFetchError, setAccessTokenFetchError] =
+    useState<AxiosError | null>(null);
 
   useEffect(() => {
     fetchAccessToken();
   }, []);
 
-  const getAccessToken = useCallback(async () => {
+  const setStateGetAccessToken = useCallback(async () => {
     fetchAccessToken();
   }, []);
 
@@ -48,12 +49,18 @@ export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
         if (e.response?.status === 401) {
           axios.get("http://localhost:8080/api/logout");
         }
-        setError(e);
+        setAccessTokenFetchError(e);
       }
     }
   };
   return (
-    <AccessTokenContext.Provider value={{ accessToken, getAccessToken, error }}>
+    <AccessTokenContext.Provider
+      value={{
+        accessToken,
+        setStateGetAccessToken,
+        accessTokenFetchError,
+      }}
+    >
       {children}
     </AccessTokenContext.Provider>
   );
