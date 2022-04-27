@@ -1,11 +1,12 @@
-import MButtonLogin from "src/components/molecules/button/Login";
-import MButtonMobileLogin from "src/components/molecules/button/MobileLogin";
-import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 import { BsDot } from "react-icons/bs";
+
+import MButtonLogin from "@Molecules/button/Login";
+
+import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 
 interface OHeaderProps {
   nav: string | string[] | undefined;
-  userInfo: GetMeResponseDto;
+  userInfo: GetMeResponseDto | null;
 }
 
 const OHeader = ({ nav, userInfo }: OHeaderProps) => {
@@ -13,7 +14,7 @@ const OHeader = ({ nav, userInfo }: OHeaderProps) => {
     <div>
       <div className="grid grid-cols-3 p-5 font-eng-sub-font-2">
         <div className="flex flex-row items-center justify-start text-sm">
-          <a href="#">Today</a>
+          <a href={"/"}>Today</a>
           <BsDot />
           {userInfo && <a href={`/blog/${userInfo.name}`}>MyBlog</a>}
           <BsDot />

@@ -3,8 +3,9 @@ import { getIronSession } from "iron-session";
 import type { AppContext, AppProps } from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-import { cookieConfig } from "@Iron/cookieConfig";
 import { AccessTokenProvider } from "@Hooks/context/AccessToken";
+
+import { cookieConfig } from "@Iron/cookieConfig";
 
 const queryClient = new QueryClient({});
 

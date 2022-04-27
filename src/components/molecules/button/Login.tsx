@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import { tilogApi } from "@Api/core";
+
 import OTechIcons from "src/components/organisms/techIcons";
 
 const MButtonLogin = () => {
@@ -10,7 +11,7 @@ const MButtonLogin = () => {
       try {
         const userinfo =
           await tilogApi.usersAuthControllerGetAccessTokenUsingRefreshToken(
-            "a",
+            "tilog",
             {
               withCredentials: true,
             }
