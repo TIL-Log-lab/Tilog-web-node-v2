@@ -1,18 +1,39 @@
-import axios from "axios";
-import { createContext, ReactNode, useState } from "react";
+import axios, { AxiosError } from "axios";
+import {
+  createContext,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 
 import { tilogApi } from "@Api/core";
 
-export const AccessTokenContext = createContext({
-  accessToken: "",
-  getAccessToken: () => {
-    return;
-  },
-});
+import { AccessTokenInterface } from "@Hooks/context/interface/accessTokenInterface";
+
+const store = {
+  accessToken: null,
+  getAccessToken: () => void 0,
+  error: null,
+};
+
+export const AccessTokenContext = createContext<AccessTokenInterface>(store);
 
 export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
-  const [accessToken, setAccessToken] = useState("");
-  const getAccessToken = async () => {
+  const [accessToken, setAccessToken] = useState<
+    AccessTokenInterface["accessToken"] | null
+  >(null);
+  const [error, setError] = useState<AxiosError | null>(null);
+
+  useEffect(() => {
+    fetchAccessToken();
+  }, []);
+
+  const getAccessToken = useCallback(async () => {
+    fetchAccessToken();
+  }, []);
+
+  const fetchAccessToken = async () => {
     try {
       const { data } =
         await tilogApi.usersAuthControllerGetAccessTokenUsingRefreshToken(
@@ -23,19 +44,16 @@ export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
         );
       setAccessToken(data.accessToken);
     } catch (error) {
-      if (!axios.isAxiosError(error)) {
-        setAccessToken("");
-      } else {
+      if (axios.isAxiosError(error)) {
         if (error.response?.status === 401) {
           axios.get("http://localhost:8080/api/logout");
         }
-        setAccessToken("");
+        setError(error);
       }
     }
   };
-
   return (
-    <AccessTokenContext.Provider value={{ accessToken, getAccessToken }}>
+    <AccessTokenContext.Provider value={{ accessToken, getAccessToken, error }}>
       {children}
     </AccessTokenContext.Provider>
   );
