@@ -7,23 +7,24 @@ import { AccessTokenContext } from "@Hooks/context/AccessToken";
 import useHomeQuery from "@Hooks/react-query/useHomeQuery";
 
 import { GetMeResponseDto } from "@til-log.lab/tilog-api";
-import { AccessTokenInterface } from "@Hooks/context/interface/accessTokenInterface";
+import { AccessTokenInterface } from "@Hooks/context/interface/accessToken.interface";
+import { NotResponse } from "@Api/errors/notResponse.error";
 interface HomeProps {
   userInfo: GetMeResponseDto | null;
 }
 
 const Home: NextPage<HomeProps> = ({ userInfo }: HomeProps) => {
-  const { accessToken, error } =
+  const { accessToken, accessTokenFetchError } =
     useContext<AccessTokenInterface>(AccessTokenContext);
 
   const result = useHomeQuery(accessToken);
-  if (error) {
+  if (accessTokenFetchError) {
     userInfo = null;
-    if (!error.response) {
-      alert("서버와 연결이 끊겼습니다.");
+    if (!accessTokenFetchError.response) {
+      alert(NotResponse.message[0]);
     }
-    if (error.response?.status !== 401) {
-      alert(error.response?.data.message[0].message);
+    if (accessTokenFetchError.response?.status !== 401) {
+      alert(accessTokenFetchError.response?.data.message[0].message);
     }
   }
   console.log(result);
