@@ -1,4 +1,4 @@
-import MTechRender from "@Molecules/Icon/TechRender";
+import OTechIcons from "@Organisms/techIcons";
 
 const MButtonMobileLogin = () => {
   const handleLogin = async () => {
@@ -11,7 +11,7 @@ const MButtonMobileLogin = () => {
     >
       <div className="flex flex-row items-center justify-center p-3 ">
         <div className="text-2xl">
-          <MTechRender categoryName="Github" />
+          <OTechIcons categoryName="Github" />
         </div>
       </div>
     </button>

@@ -1,4 +1,4 @@
-import MTechRender from "@Molecules/Icon/TechRender";
+import OTechIcons from "@Organisms/techIcons";
 
 interface MCategorySelectedProps {
   selectedCategory: string;
@@ -15,7 +15,7 @@ const MCategorySelected = ({
         onClick={onClick}
       >
         <div className="flex items-center">
-          <MTechRender categoryName={selectedCategory} />
+          <OTechIcons categoryName={selectedCategory} />
           {selectedCategory}
         </div>
       </button>
