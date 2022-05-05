@@ -3,9 +3,9 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { withIronSessionApiRoute } from "iron-session/next";
 import { tilogApi } from "@Api/core";
 import { isExceptionMessageInterface } from "@Api/errors/interface/messageError";
-import { NoMessage } from "@Api/errors/noMessage";
-import { NotResponse } from "@Api/errors/notResponse";
 import { cookieConfig } from "@Iron/cookieConfig";
+import { disconnectedServer } from "@Api/errors/disconnectedServer";
+import { notFoundMessage } from "@Api/errors/notFoundMessage";
 
 export default withIronSessionApiRoute(async function handler(
   req: NextApiRequest,
@@ -17,7 +17,7 @@ export default withIronSessionApiRoute(async function handler(
     const {
       data: { accessToken },
     } = await tilogApi.usersAuthControllerGetAccessTokenUsingRefreshToken(
-      "tilog",
+      undefined,
       {
         headers: {
           "User-Agent": userAgent,
@@ -25,6 +25,7 @@ export default withIronSessionApiRoute(async function handler(
         },
       }
     );
+
     const { data } = await tilogApi.usersControllerGetMe({
       headers: { Authorization: `Bearer ${accessToken}` },
     });
@@ -36,11 +37,15 @@ export default withIronSessionApiRoute(async function handler(
       return res.status(500).json({ ok: false, error: error });
     }
     if (!error.response)
-      return res.status(500).json({ ok: false, error: NotResponse });
+      return res.status(500).json({ ok: false, error: disconnectedServer });
     const resData = error.response.data;
-    isExceptionMessageInterface(resData)
-      ? res.status(error.response.status).json({ ok: false, error: resData })
-      : res.status(error.response.status).json({ ok: false, error: NoMessage });
+    isExceptionMessageInterface(resData.message)
+      ? res
+          .status(error.response.status)
+          .json({ ok: false, error: resData.message.ko })
+      : res
+          .status(error.response.status)
+          .json({ ok: false, error: notFoundMessage });
   }
 },
 cookieConfig);
