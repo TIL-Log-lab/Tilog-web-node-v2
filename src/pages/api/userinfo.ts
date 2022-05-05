@@ -33,16 +33,19 @@ export default withIronSessionApiRoute(async function handler(
     res.status(200).json({ ok: true });
   } catch (error) {
     if (!axios.isAxiosError(error)) {
-      return res.status(401).json({ ok: false, error: error });
+      return res.status(500).json({ ok: false, error: error });
     }
     if (error.response) {
       const errorData = error.response.data;
-      const errorResult = isExceptionMessageInterface(errorData)
-        ? errorData
-        : NoMessage;
-      return res.status(401).json({ ok: false, error: errorResult });
+      isExceptionMessageInterface(errorData)
+        ? res
+            .status(error.response.status)
+            .json({ ok: false, error: errorData })
+        : res
+            .status(error.response.status)
+            .json({ ok: false, error: NoMessage });
     } else {
-      return res.status(401).json({ ok: false, error: NotResponse });
+      return res.status(500).json({ ok: false, error: NotResponse });
     }
   }
 },
