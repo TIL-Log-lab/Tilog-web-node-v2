@@ -17,7 +17,7 @@ const MButtonLogin = () => {
         loginWindow.close();
         window.location.reload();
       } catch (error) {
-        console.log(error);
+        if (axios.isAxiosError(error)) alert(error.message);
       }
     }, 1000);
   };
