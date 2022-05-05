@@ -35,18 +35,12 @@ export default withIronSessionApiRoute(async function handler(
     if (!axios.isAxiosError(error)) {
       return res.status(500).json({ ok: false, error: error });
     }
-    if (error.response) {
-      const errorData = error.response.data;
-      isExceptionMessageInterface(errorData)
-        ? res
-            .status(error.response.status)
-            .json({ ok: false, error: errorData })
-        : res
-            .status(error.response.status)
-            .json({ ok: false, error: NoMessage });
-    } else {
+    if (!error.response)
       return res.status(500).json({ ok: false, error: NotResponse });
-    }
+    const resData = error.response.data;
+    isExceptionMessageInterface(resData)
+      ? res.status(error.response.status).json({ ok: false, error: resData })
+      : res.status(error.response.status).json({ ok: false, error: NoMessage });
   }
 },
 cookieConfig);
