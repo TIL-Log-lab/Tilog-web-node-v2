@@ -3,16 +3,23 @@ import { createContext, ReactNode, useState } from "react";
 
 import { tilogApi } from "@Api/core";
 
-export const AccessTokenContext = createContext({
-  accessToken: "",
-  getAccessToken: () => {
-    return;
-  },
-});
+import { AccessTokenInterface } from "@Hooks/context/interface/accessToken.interface";
+import { isExceptionMessageInterface } from "@Api/errors/interface/messageError";
+import { NoMessage } from "@Api/errors/noMessage";
+
+const store = {
+  accessToken: null,
+  setStateGetAccessToken: () => void 0,
+};
+
+export const AccessTokenContext = createContext<AccessTokenInterface>(store);
 
 export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
-  const [accessToken, setAccessToken] = useState("");
-  const getAccessToken = async () => {
+  const [accessToken, setAccessToken] = useState<
+    AccessTokenInterface["accessToken"] | null
+  >(null);
+
+  const setStateGetAccessToken = async () => {
     try {
       const { data } =
         await tilogApi.usersAuthControllerGetAccessTokenUsingRefreshToken(
@@ -21,21 +28,25 @@ export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
             withCredentials: true,
           }
         );
-      setAccessToken(data.accessToken);
+      return setAccessToken(data.accessToken);
     } catch (error) {
-      if (!axios.isAxiosError(error)) {
-        setAccessToken("");
-      } else {
-        if (error.response?.status === 401) {
-          axios.get("http://localhost:8080/api/logout");
+      if (axios.isAxiosError(error)) {
+        if (!error.response) return alert(error.message);
+        const resData = error.response.data;
+        if (resData.status === 401) {
+          axios.get("http://localhost:3000/api/logout");
         }
-        setAccessToken("");
+        isExceptionMessageInterface(resData)
+          ? alert(resData.message[0].message)
+          : alert(NoMessage);
       }
     }
   };
 
   return (
-    <AccessTokenContext.Provider value={{ accessToken, getAccessToken }}>
+    <AccessTokenContext.Provider
+      value={{ accessToken, setStateGetAccessToken }}
+    >
       {children}
     </AccessTokenContext.Provider>
   );
