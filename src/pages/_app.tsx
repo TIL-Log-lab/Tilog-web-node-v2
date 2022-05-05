@@ -18,18 +18,4 @@ const TILogApp = ({ Component, pageProps }: AppProps) => {
   );
 };
 
-// TILogApp.getInitialProps = async (context: AppContext) => {
-//   const { ctx } = context;
-
-//   if (ctx.req && ctx.res) {
-//     const session = await getIronSession(ctx.req, ctx.res, cookieConfig);
-
-//     const pageProps = session;
-//     return { pageProps };
-//   }
-
-//   const pageProps = {};
-//   return { pageProps };
-// };
-
 export default TILogApp;
