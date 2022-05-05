@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@til-log.lab/tilog-api": "^0.0.13",
+    "@til-log.lab/tilog-api": "^0.1.0",
     "@tiptap/react": "^2.0.0-beta.108",
     "@tiptap/starter-kit": "^2.0.0-beta.183",
     "@types/react-responsive": "^8.0.5",
