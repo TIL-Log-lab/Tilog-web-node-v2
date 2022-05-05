@@ -6,7 +6,7 @@ import MButtonLogout from "@Molecules/button/Logout";
 
 interface OHeaderProps {
   nav: string | string[] | undefined;
-  userInfo: GetMeResponseDto;
+  userInfo: GetMeResponseDto | null;
 }
 
 const OHeader = ({ nav, userInfo }: OHeaderProps) => {
