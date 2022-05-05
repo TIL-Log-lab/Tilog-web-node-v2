@@ -1,7 +1,8 @@
 import MButtonLogin from "src/components/molecules/button/Login";
-import MButtonMobileLogin from "src/components/molecules/button/MobileLogin";
 import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 import { BsDot } from "react-icons/bs";
+import Link from "next/link";
+import MButtonLogout from "@Molecules/button/Logout";
 
 interface OHeaderProps {
   nav: string | string[] | undefined;
@@ -13,9 +14,9 @@ const OHeader = ({ nav, userInfo }: OHeaderProps) => {
     <div>
       <div className="grid grid-cols-3 p-5 font-eng-sub-font-2">
         <div className="flex flex-row items-center justify-start text-sm">
-          <a href="#">Today</a>
+          <Link href="/">Today</Link>
           <BsDot />
-          {userInfo && <a href={`/blog/${userInfo.name}`}>MyBlog</a>}
+          {userInfo && <Link href={`/blog/${userInfo.name}`}>MyBlog</Link>}
           <BsDot />
           <a href="#">Search</a>
           <BsDot />
@@ -26,7 +27,7 @@ const OHeader = ({ nav, userInfo }: OHeaderProps) => {
           <p className="text-sm text-neutral-800 font-eng-sub-font-2">{nav}</p>
         </div>
         <div className="flex items-center justify-end">
-          {!userInfo ? <MButtonLogin /> : "로그인된 유저"}
+          {!userInfo ? <MButtonLogin /> : <MButtonLogout />}
         </div>
       </div>
     </div>
