@@ -8,15 +8,15 @@ import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 import { getIronSession } from "iron-session";
 import { cookieConfig } from "@Iron/cookieConfig";
 interface BlogPageProps {
-  user: GetMeResponseDto;
+  userInfo: GetMeResponseDto;
 }
 
-const BlogPage: NextPage<BlogPageProps> = ({ user }: BlogPageProps) => {
+const BlogPage: NextPage<BlogPageProps> = ({ userInfo }: BlogPageProps) => {
   const router = useRouter();
   const { username } = router.query;
   return (
     <div className="md:mx-20 2xl:mx-60">
-      <OHeader nav={username} userInfo={user} />
+      <OHeader nav={username} userInfo={userInfo} />
       <div className="mt-20">
         <OMyBlog />
       </div>
@@ -26,7 +26,7 @@ const BlogPage: NextPage<BlogPageProps> = ({ user }: BlogPageProps) => {
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const session = await getIronSession(ctx.req, ctx.res, cookieConfig);
   return {
-    props: { user: session },
+    props: { userInfo: session },
   };
 };
 export default BlogPage;
