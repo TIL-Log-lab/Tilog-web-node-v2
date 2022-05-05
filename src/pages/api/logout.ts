@@ -19,9 +19,8 @@ export default withIronSessionApiRoute(async function handler(
     req.session.destroy();
     return res.status(200).json({ ok: true });
   } catch (error) {
-    if (!axios.isAxiosError(error)) {
+    if (axios.isAxiosError(error))
       return res.status(500).json({ ok: false, error: error });
-    }
   }
 },
 cookieConfig);
