@@ -21,9 +21,9 @@ const Home: NextPage<HomeProps> = ({ userInfo }: HomeProps) => {
   );
 };
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const session = await getIronSession(ctx.req, ctx.res, cookieConfig);
+  const { userInfo } = await getIronSession(ctx.req, ctx.res, cookieConfig);
   return {
-    props: { userInfo: session },
+    props: { userInfo: userInfo },
   };
 };
 export default Home;
