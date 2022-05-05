@@ -7,7 +7,7 @@ import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 import { getIronSession } from "iron-session";
 import { cookieConfig } from "@Iron/cookieConfig";
 interface HomeProps {
-  userInfo: GetMeResponseDto;
+  userInfo: GetMeResponseDto | null;
 }
 
 const Home: NextPage<HomeProps> = ({ userInfo }: HomeProps) => {
@@ -23,7 +23,7 @@ const Home: NextPage<HomeProps> = ({ userInfo }: HomeProps) => {
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { userInfo } = await getIronSession(ctx.req, ctx.res, cookieConfig);
   return {
-    props: { userInfo: userInfo },
+    props: { userInfo: !userInfo ? null : userInfo },
   };
 };
 export default Home;
