@@ -1,10 +1,12 @@
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import { useRouter } from "next/router";
 
 import OHeader from "@Organisms/Header";
 import OMyBlog from "@Organisms/MyBlog";
 
 import { GetMeResponseDto } from "@til-log.lab/tilog-api";
+import { getIronSession } from "iron-session";
+import { cookieConfig } from "@Iron/cookieConfig";
 interface BlogPageProps {
   user: GetMeResponseDto;
 }
@@ -13,12 +15,18 @@ const BlogPage: NextPage<BlogPageProps> = ({ user }: BlogPageProps) => {
   const router = useRouter();
   const { username } = router.query;
   return (
-    <div className="mx-10 sm:mx-30 xl:mx-60">
+    <div className="md:mx-20 2xl:mx-60">
       <OHeader nav={username} userInfo={user} />
       <div className="mt-20">
         <OMyBlog />
       </div>
     </div>
   );
+};
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getIronSession(ctx.req, ctx.res, cookieConfig);
+  return {
+    props: { user: session },
+  };
 };
 export default BlogPage;
