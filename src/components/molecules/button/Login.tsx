@@ -3,7 +3,7 @@ import axios from "axios";
 import OTechIcons from "src/components/organisms/techIcons";
 
 const MButtonLogin = () => {
-  const handleLogin = async () => {
+  const handleLogin = () => {
     const loginWindow = window.open("http://localhost/auth/github/login");
     if (!loginWindow) {
       return alert("window open error");
@@ -14,10 +14,11 @@ const MButtonLogin = () => {
       }
       try {
         await axios.get("http://localhost:3000/api/userinfo");
-        loginWindow.close();
         window.location.reload();
+        loginWindow.close();
       } catch (error) {
-        if (axios.isAxiosError(error)) alert(error.message);
+        if (axios.isAxiosError(error))
+          if (!error.response) alert(error.message);
       }
     }, 1000);
   };

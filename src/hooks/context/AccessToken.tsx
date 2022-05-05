@@ -2,10 +2,9 @@ import axios from "axios";
 import { createContext, ReactNode, useState } from "react";
 
 import { tilogApi } from "@Api/core";
+import { disconnectedServer } from "@Api/errors/disconnectedServer";
 
 import { AccessTokenInterface } from "@Hooks/context/interface/accessToken.interface";
-import { isExceptionMessageInterface } from "@Api/errors/interface/messageError";
-import { NoMessage } from "@Api/errors/noMessage";
 
 const store = {
   accessToken: null,
@@ -22,23 +21,15 @@ export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
   const setStateGetAccessToken = async () => {
     try {
       const { data } =
-        await tilogApi.usersAuthControllerGetAccessTokenUsingRefreshToken(
-          "context",
-          {
-            withCredentials: true,
-          }
-        );
+        await tilogApi.usersAuthControllerGetAccessTokenUsingRefreshToken();
       return setAccessToken(data.accessToken);
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        if (!error.response) return alert(error.message);
+        if (!error.response) return alert(disconnectedServer);
         const resData = error.response.data;
-        if (resData.status === 401) {
-          axios.get("http://localhost:3000/api/logout");
+        if (resData.statusCode === 401) {
+          return axios.get("http://localhost:3000/api/logout");
         }
-        isExceptionMessageInterface(resData)
-          ? alert(resData.message[0].message)
-          : alert(NoMessage);
       }
     }
   };
