@@ -1,26 +1,24 @@
 import axios from "axios";
 
-import { tilogApi } from "@Api/core";
 import OTechIcons from "src/components/organisms/techIcons";
 
 const MButtonLogin = () => {
   const handleLogin = async () => {
-    const childWindow = window.open("http://localhost/auth/github/login");
-    setInterval(async () => {
+    const loginWindow = window.open("http://localhost/auth/github/login");
+    if (!loginWindow) {
+      return alert("window open error");
+    }
+    const loginCheck = setInterval(async () => {
+      if (loginWindow.closed) {
+        clearInterval(loginCheck);
+      }
       try {
-        const userinfo =
-          await tilogApi.usersAuthControllerGetAccessTokenUsingRefreshToken(
-            "a",
-            {
-              withCredentials: true,
-            }
-          );
-        if (!!userinfo) {
-          await axios.get("http://localhost:8080/api/userinfo");
-          childWindow?.close();
-          window.location.reload();
-        }
-      } catch {}
+        await axios.get("http://localhost:3000/api/userinfo");
+        loginWindow.close();
+        window.location.reload();
+      } catch (error) {
+        console.log(error);
+      }
     }, 1000);
   };
   return (
