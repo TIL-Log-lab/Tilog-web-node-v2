@@ -1,17 +1,18 @@
-import { ReactNode } from "react";
+import { ReactNode, useContext } from "react";
 import { BsDot } from "react-icons/bs";
 import Link from "next/link";
 
 import MButtonLogout from "@Molecules/button/Logout";
-import useHeader from "@Hooks/custom/useHeader";
 import MButtonLogin from "@Molecules/button/Login";
+import { UserInfoContext } from "@Hooks/context/user-info/UserInfo";
 
 interface OHeaderProps {
   children: ReactNode;
 }
 
 const OHeader = ({ children }: OHeaderProps) => {
-  const { userInfo, handleLogin, handleLogout } = useHeader();
+  const { userInfo, handleLogin, handleLogout } = useContext(UserInfoContext);
+
   return (
     <div>
       <div className="grid grid-cols-3 p-5 font-eng-sub-font-2">
