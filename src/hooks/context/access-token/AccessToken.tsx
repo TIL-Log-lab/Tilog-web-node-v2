@@ -1,10 +1,11 @@
 import axios from "axios";
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 
 import { tilogApi } from "@Api/core";
 import { disconnectedServer } from "@Api/errors/disconnectedServer";
+import { UserInfoContext } from "@Hooks/context/user-info/UserInfo";
 
-import { AccessTokenInterface } from "@Hooks/context/interface/accessToken.interface";
+import { AccessTokenInterface } from "@Hooks/context/access-token/interface/accessToken.interface";
 
 const store = {
   accessToken: null,
@@ -14,6 +15,7 @@ const store = {
 export const AccessTokenContext = createContext<AccessTokenInterface>(store);
 
 export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
+  const { handleLogout } = useContext(UserInfoContext);
   const [accessToken, setAccessToken] = useState<
     AccessTokenInterface["accessToken"] | null
   >(null);
@@ -28,7 +30,11 @@ export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
         if (!error.response) return alert(disconnectedServer);
         const resData = error.response.data;
         if (resData.statusCode === 401) {
-          return axios.get("http://localhost:3000/api/logout");
+          const userInfo = window.localStorage.getItem("userInfo");
+          if (userInfo) {
+            alert(resData.message.ko);
+            handleLogout();
+          }
         }
       }
     }
