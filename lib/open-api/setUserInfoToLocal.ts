@@ -20,8 +20,7 @@ export default async function setUserInfoToLocal() {
     }
     if (!error.response) return disconnectedServer;
     const resData = error.response.data;
-    isExceptionMessageInterface(resData.message)
-      ? resData.message.ko
-      : notFoundMessage;
+    const isExceptionMessage = isExceptionMessageInterface(resData.message);
+    return isExceptionMessage ? resData.message.ko : notFoundMessage;
   }
 }

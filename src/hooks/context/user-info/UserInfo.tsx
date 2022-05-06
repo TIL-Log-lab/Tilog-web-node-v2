@@ -34,9 +34,9 @@ const UserInfoProvider = ({ children }: { children: ReactNode }) => {
       }
       try {
         await setUserInfoToLocal();
-        const userInfo = window.localStorage.getItem("userInfo");
-        if (typeof userInfo === "string") {
-          setUserInfo(JSON.parse(userInfo));
+        const localData = window.localStorage.getItem("userInfo");
+        if (typeof localData === "string") {
+          setUserInfo(JSON.parse(localData));
           loginWindow.close();
         }
       } catch (error) {
@@ -49,9 +49,9 @@ const UserInfoProvider = ({ children }: { children: ReactNode }) => {
   const handleLogout = () => {
     window.localStorage.removeItem("userInfo");
     setUserInfo(null);
-    // axios.delete("http://localhost/auth/logout", {
-    //   withCredentials: true,
-    // });
+    axios.delete("http://localhost/auth/logout", {
+      withCredentials: true,
+    });
   };
 
   return (
