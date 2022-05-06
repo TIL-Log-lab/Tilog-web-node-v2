@@ -1,16 +1,25 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 
-import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 import setUserInfoToLocal from "@Api/setUserInfoToLocal";
+import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 
-const useHeader = () => {
+import { UserInfoInterface } from "@Hooks/context/user-info/interface/userInfo.interface";
+
+const store = {
+  userInfo: null,
+  handleLogin: () => void 0,
+  handleLogout: () => void 0,
+};
+
+export const UserInfoContext = createContext<UserInfoInterface>(store);
+
+const UserInfoProvider = ({ children }: { children: ReactNode }) => {
   const [userInfo, setUserInfo] = useState<GetMeResponseDto | null>(null);
 
   useEffect(() => {
-    const userInfo = window.localStorage.getItem("userInfo");
-    if (typeof userInfo === "string") setUserInfo(JSON.parse(userInfo));
-    else setUserInfo(null);
+    const localData = window.localStorage.getItem("userInfo");
+    if (typeof localData === "string") setUserInfo(JSON.parse(localData));
   }, []);
 
   const handleLogin = () => {
@@ -37,12 +46,19 @@ const useHeader = () => {
     }, 1000);
   };
 
-  const handleLogout = (): void => {
+  const handleLogout = () => {
     window.localStorage.removeItem("userInfo");
     setUserInfo(null);
+    // axios.delete("http://localhost/auth/logout", {
+    //   withCredentials: true,
+    // });
   };
 
-  return { userInfo, handleLogin, handleLogout };
+  return (
+    <UserInfoContext.Provider value={{ userInfo, handleLogin, handleLogout }}>
+      {children}
+    </UserInfoContext.Provider>
+  );
 };
 
-export default useHeader;
+export default UserInfoProvider;
