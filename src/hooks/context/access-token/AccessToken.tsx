@@ -2,7 +2,7 @@ import axios from "axios";
 import { createContext, ReactNode, useContext, useState } from "react";
 
 import { tilogApi } from "@Api/core";
-import { disconnectedServer } from "@Api/errors/disconnectedServer";
+import { disconnectedMessage } from "@Api/errors/message/disconnectedMessage";
 import { UserInfoContext } from "@Context/user-info/UserInfo";
 
 import { AccessTokenInterface } from "@Context/access-token/interface/accessToken.interface";
@@ -27,7 +27,7 @@ export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
       return setAccessToken(data.accessToken);
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        if (!error.response) return alert(disconnectedServer);
+        if (!error.response) return alert(disconnectedMessage);
         const resData = error.response.data;
         if (resData.statusCode === 401) {
           const userInfo = window.localStorage.getItem("userInfo");
