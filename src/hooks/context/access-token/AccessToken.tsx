@@ -2,10 +2,10 @@ import axios from "axios";
 import { createContext, ReactNode, useContext, useState } from "react";
 
 import { tilogApi } from "@Api/core";
-import { disconnectedMessage } from "@Api/errors/message/disconnectedMessage";
 import { UserInfoContext } from "@Context/user-info/UserInfo";
 
 import { AccessTokenInterface } from "@Context/access-token/interface/accessToken.interface";
+import { NETWORK_ERROR_MESSAGE } from "@Api/errors/message/networkErrorMessage";
 
 const store = {
   accessToken: null,
@@ -28,7 +28,7 @@ export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
     } catch (error) {
       // TODO: alert -> toast
       if (axios.isAxiosError(error)) {
-        if (!error.response) return alert(disconnectedMessage);
+        if (!error.response) return alert(NETWORK_ERROR_MESSAGE);
         const resData = error.response.data;
         if (resData.statusCode === 401) {
           const userInfo = window.localStorage.getItem("userInfo");

@@ -1,10 +1,10 @@
 import axios from "axios";
 
 import { tilogApi } from "@Api/core";
-import { disconnectedMessage } from "@Api/errors/message/disconnectedMessage";
-import { notFoundMessage } from "@Api/errors/message/notFoundMessage";
 
 import { isExceptionMessageInterface } from "@Api/errors/interface/messageError";
+import { NETWORK_ERROR_MESSAGE } from "@Api/errors/message/networkErrorMessage";
+import { NOT_FOUND_MESSAGE } from "@Api/errors/message/notFoundMessage";
 import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 
 export default async function setUserInfoToLocal(): Promise<GetMeResponseDto> {
@@ -20,12 +20,12 @@ export default async function setUserInfoToLocal(): Promise<GetMeResponseDto> {
     return data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      if (!error.response) throw disconnectedMessage;
+      if (!error.response) throw NETWORK_ERROR_MESSAGE;
       const resData = error.response.data;
       const isExceptionMessage = isExceptionMessageInterface(resData.message);
-      throw isExceptionMessage ? resData.message.ko : notFoundMessage;
+      throw isExceptionMessage ? resData.message.ko : NOT_FOUND_MESSAGE;
     } else {
-      throw notFoundMessage;
+      throw NETWORK_ERROR_MESSAGE;
     }
   }
 }

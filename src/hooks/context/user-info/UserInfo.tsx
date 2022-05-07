@@ -1,10 +1,10 @@
 import axios from "axios";
 import { createContext, ReactNode, useEffect, useState } from "react";
 
-import { disconnectedMessage } from "@Api/errors/message/disconnectedMessage";
 import setUserInfoToLocal from "@Api/setUserInfoToLocal";
 
 import { UserInfoInterface } from "@Context/user-info/interface/userInfo.interface";
+import { NETWORK_ERROR_MESSAGE } from "@Api/errors/message/networkErrorMessage";
 import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 
 const store = {
@@ -57,7 +57,7 @@ const UserInfoProvider = ({ children }: { children: ReactNode }) => {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         if (!error.response) {
-          alert(disconnectedMessage.ko);
+          alert(NETWORK_ERROR_MESSAGE);
         }
       }
     }
