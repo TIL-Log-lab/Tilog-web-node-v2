@@ -1,4 +1,4 @@
-import MTechRender from "@Molecules/Icon/TechRender";
+import OTechIcons from "@Organisms/techIcons";
 
 interface Props {
   onSelect: (categoryName: string) => void;
@@ -17,7 +17,7 @@ const MCategoryRecommend = ({ categoryLists, onSelect }: Props) => {
           key={category.id}
           className="flex items-center content-center p-2 rounded cursor-pointer hover:bg-gray-100 font-eng-sub-font-2"
         >
-          <MTechRender categoryName={category.categoryName} />
+          <OTechIcons categoryName={category.categoryName} />
           {category.categoryName}
         </li>
       ))}

@@ -7,7 +7,6 @@ const OCategorySearch = () => {
   const [categoryLists, setCategoryLists] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("");
 
-  // TODO: open-api가 나오고 react-query로 변경해야합니다.
   const handleSearchCategory = async (event: ChangeEvent<HTMLInputElement>) => {
     if (event.currentTarget.value !== "") {
       const { data } = await axios.get(

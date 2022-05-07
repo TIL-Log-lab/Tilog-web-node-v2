@@ -23,6 +23,8 @@
     "plugin:prettier/recommended"
   ],
   "rules": {
+    "no-console": "error",
+    "prettier/prettier": "warn",
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off",
     "react/function-component-definition": [
@@ -39,5 +41,4 @@
     }
   },
   "ignorePatterns": ["node_modules/", ".next/*", "*.config.js"]
-
 }

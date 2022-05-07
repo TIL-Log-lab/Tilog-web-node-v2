@@ -18,13 +18,9 @@
     "paths": {
       "@Molecules/*": ["src/components/molecules/*"],
       "@Organisms/*": ["src/components/organisms/*"],
-      "@Interface/*": ["src/interface/*"],
-      "@Styles/*": ["styles/*"],
       "@Api/*": ["lib/open-api/*"],
-      "@Iron/*": ["lib/iron-session/*"],
-      "@Constants/*": ["src/constants/*"],
-      "@Utility/*": ["src/utility/*"],
-      "@Hooks/*": ["src/hooks/*"]
+      "@Context/*": ["src/hooks/context/*"],
+      "@Query/*": ["src/hooks/react-query/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

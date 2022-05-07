@@ -1,21 +1,25 @@
-import MButtonLogin from "src/components/molecules/button/Login";
-import MButtonMobileLogin from "src/components/molecules/button/MobileLogin";
-import { GetMeResponseDto } from "@til-log.lab/tilog-api";
+import { ReactNode, useContext } from "react";
 import { BsDot } from "react-icons/bs";
+import Link from "next/link";
+
+import MButtonLogout from "@Molecules/button/Logout";
+import MButtonLogin from "@Molecules/button/Login";
+import { UserInfoContext } from "@Context/user-info/UserInfo";
 
 interface OHeaderProps {
-  nav: string | string[] | undefined;
-  userInfo: GetMeResponseDto;
+  children: ReactNode;
 }
 
-const OHeader = ({ nav, userInfo }: OHeaderProps) => {
+const OHeader = ({ children }: OHeaderProps) => {
+  const { userInfo, handleLogin, handleLogout } = useContext(UserInfoContext);
+
   return (
     <div>
       <div className="grid grid-cols-3 p-5 font-eng-sub-font-2">
         <div className="flex flex-row items-center justify-start text-sm">
-          <a href="#">Today</a>
+          <Link href="/">Today</Link>
           <BsDot />
-          {userInfo && <a href={`/blog/${userInfo.name}`}>MyBlog</a>}
+          {userInfo && <Link href={`/blog/${userInfo.name}`}>MyBlog</Link>}
           <BsDot />
           <a href="#">Search</a>
           <BsDot />
@@ -23,12 +27,17 @@ const OHeader = ({ nav, userInfo }: OHeaderProps) => {
         </div>
         <div className="flex flex-col items-center">
           <div className="w-16 h-8 rounded-tl-full rounded-tr-full bg-neutral-800 " />
-          <p className="text-sm text-neutral-800 font-eng-sub-font-2">{nav}</p>
+          <p className="text-sm text-neutral-800 font-eng-sub-font-2"></p>
         </div>
         <div className="flex items-center justify-end">
-          {!userInfo ? <MButtonLogin /> : "로그인된 유저"}
+          {!userInfo ? (
+            <MButtonLogin handleLogin={handleLogin} />
+          ) : (
+            <MButtonLogout handleLogout={handleLogout} />
+          )}
         </div>
       </div>
+      {children}
     </div>
   );
 };

@@ -1,35 +1,25 @@
 import "../../styles/globals.css";
-import { getIronSession } from "iron-session";
-import type { AppContext, AppProps } from "next/app";
+import type { AppProps } from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-import { cookieConfig } from "@Iron/cookieConfig";
-import { AccessTokenProvider } from "@Hooks/context/AccessToken";
+import OHeader from "@Organisms/Header";
+import UserInfoProvider from "@Context/user-info/UserInfo";
+import { AccessTokenProvider } from "@Context/access-token/AccessToken";
 
 const queryClient = new QueryClient({});
 
 const TILogApp = ({ Component, pageProps }: AppProps) => {
   return (
     <QueryClientProvider client={queryClient}>
-      <AccessTokenProvider>
-        <Component {...pageProps} />
-      </AccessTokenProvider>
+      <UserInfoProvider>
+        <AccessTokenProvider>
+          <OHeader>
+            <Component {...pageProps} />
+          </OHeader>
+        </AccessTokenProvider>
+      </UserInfoProvider>
     </QueryClientProvider>
   );
-};
-
-TILogApp.getInitialProps = async (context: AppContext) => {
-  const { ctx } = context;
-
-  if (ctx.req && ctx.res) {
-    const session = await getIronSession(ctx.req, ctx.res, cookieConfig);
-
-    const pageProps = session;
-    return { pageProps };
-  }
-
-  const pageProps = {};
-  return { pageProps };
 };
 
 export default TILogApp;
