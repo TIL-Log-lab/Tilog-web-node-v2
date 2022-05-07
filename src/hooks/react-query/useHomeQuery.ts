@@ -9,7 +9,7 @@ const useHomeQuery = () => {
   const { accessToken, setStateGetAccessToken } =
     useContext(AccessTokenContext);
   return useQuery(
-    ["userinfo", accessToken],
+    ["userInfo", accessToken],
     () =>
       tilogApi.usersControllerGetMe({
         headers: { Authorization: `Bearer ${accessToken}` },
