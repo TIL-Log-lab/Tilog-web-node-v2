@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 
-import useHomeQuery from "@Hooks/react-query/useHomeQuery";
+import useHomeQuery from "@Query/useHomeQuery";
 
 const Home: NextPage = () => {
   const { data } = useHomeQuery();

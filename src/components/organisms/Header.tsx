@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import MButtonLogout from "@Molecules/button/Logout";
 import MButtonLogin from "@Molecules/button/Login";
-import { UserInfoContext } from "@Hooks/context/user-info/UserInfo";
+import { UserInfoContext } from "@Context/user-info/UserInfo";
 
 interface OHeaderProps {
   children: ReactNode;

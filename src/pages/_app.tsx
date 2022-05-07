@@ -3,8 +3,8 @@ import type { AppProps } from "next/app";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 import OHeader from "@Organisms/Header";
-import UserInfoProvider from "@Hooks/context/user-info/UserInfo";
-import { AccessTokenProvider } from "@Hooks/context/access-token/AccessToken";
+import UserInfoProvider from "@Context/user-info/UserInfo";
+import { AccessTokenProvider } from "@Context/access-token/AccessToken";
 
 const queryClient = new QueryClient({});
 

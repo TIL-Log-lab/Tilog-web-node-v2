@@ -3,9 +3,9 @@ import { createContext, ReactNode, useContext, useState } from "react";
 
 import { tilogApi } from "@Api/core";
 import { disconnectedServer } from "@Api/errors/disconnectedServer";
-import { UserInfoContext } from "@Hooks/context/user-info/UserInfo";
+import { UserInfoContext } from "@Context/user-info/UserInfo";
 
-import { AccessTokenInterface } from "@Hooks/context/access-token/interface/accessToken.interface";
+import { AccessTokenInterface } from "@Context/access-token/interface/accessToken.interface";
 
 const store = {
   accessToken: null,

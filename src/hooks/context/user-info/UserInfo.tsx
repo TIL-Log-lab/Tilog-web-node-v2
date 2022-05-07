@@ -4,7 +4,7 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 import setUserInfoToLocal from "@Api/setUserInfoToLocal";
 import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 
-import { UserInfoInterface } from "@Hooks/context/user-info/interface/userInfo.interface";
+import { UserInfoInterface } from "@Context/user-info/interface/userInfo.interface";
 
 const store = {
   userInfo: null,

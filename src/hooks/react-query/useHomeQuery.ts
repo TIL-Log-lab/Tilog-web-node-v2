@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { useQuery } from "react-query";
 
 import { tilogApi } from "@Api/core";
-import { AccessTokenContext } from "@Hooks/context/access-token/AccessToken";
+import { AccessTokenContext } from "@Context/access-token/AccessToken";
 
 const useHomeQuery = () => {
   const { accessToken, setStateGetAccessToken } =
