@@ -26,6 +26,7 @@ export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
         await tilogApi.usersAuthControllerGetAccessTokenUsingRefreshToken();
       return setAccessToken(data.accessToken);
     } catch (error) {
+      // TODO: alert -> toast
       if (axios.isAxiosError(error)) {
         if (!error.response) return alert(disconnectedMessage);
         const resData = error.response.data;
