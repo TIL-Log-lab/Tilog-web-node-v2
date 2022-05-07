@@ -1,4 +1,4 @@
-import OTechIcons from "src/components/organisms/techIcons";
+import OTechIcons from "@Organisms/techIcons";
 interface MButtonLoginProps {
   handleLogin: () => void;
 }

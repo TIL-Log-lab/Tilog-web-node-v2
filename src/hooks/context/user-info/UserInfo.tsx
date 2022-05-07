@@ -1,11 +1,11 @@
 import axios from "axios";
 import { createContext, ReactNode, useEffect, useState } from "react";
 
+import { disconnectedMessage } from "@Api/errors/message/disconnectedMessage";
 import setUserInfoToLocal from "@Api/setUserInfoToLocal";
 
 import { UserInfoInterface } from "@Context/user-info/interface/userInfo.interface";
 import { GetMeResponseDto } from "@til-log.lab/tilog-api";
-import { disconnectedMessage } from "@Api/errors/message/disconnectedMessage";
 
 const store = {
   userInfo: null,
