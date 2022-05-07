@@ -2,9 +2,10 @@ import axios from "axios";
 import { createContext, ReactNode, useEffect, useState } from "react";
 
 import setUserInfoToLocal from "@Api/setUserInfoToLocal";
-import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 
 import { UserInfoInterface } from "@Context/user-info/interface/userInfo.interface";
+import { GetMeResponseDto } from "@til-log.lab/tilog-api";
+import { disconnectedMessage } from "@Api/errors/message/disconnectedMessage";
 
 const store = {
   userInfo: null,
@@ -19,7 +20,7 @@ const UserInfoProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const localData = window.localStorage.getItem("userInfo");
-    if (typeof localData === "string") setUserInfo(JSON.parse(localData));
+    if (localData) setUserInfo(JSON.parse(localData));
   }, []);
 
   const handleLogin = () => {
@@ -28,15 +29,15 @@ const UserInfoProvider = ({ children }: { children: ReactNode }) => {
       return alert("window open error");
     }
     // NOTE: 로그인 체크
+    // TODO: alert -> toast
     const loginCheck = setInterval(async () => {
       if (loginWindow.closed) {
         clearInterval(loginCheck);
       }
       try {
-        await setUserInfoToLocal();
-        const localData = window.localStorage.getItem("userInfo");
-        if (typeof localData === "string") {
-          setUserInfo(JSON.parse(localData));
+        const localData = await setUserInfoToLocal();
+        if (localData) {
+          setUserInfo(localData);
           loginWindow.close();
         }
       } catch (error) {
@@ -46,12 +47,20 @@ const UserInfoProvider = ({ children }: { children: ReactNode }) => {
     }, 1000);
   };
 
-  const handleLogout = () => {
-    window.localStorage.removeItem("userInfo");
-    setUserInfo(null);
-    axios.delete("http://localhost/auth/logout", {
-      withCredentials: true,
-    });
+  const handleLogout = async () => {
+    try {
+      await axios.delete("http://localhost/auth/logout", {
+        withCredentials: true,
+      });
+      window.localStorage.removeItem("userInfo");
+      setUserInfo(null);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        if (!error.response) {
+          alert(disconnectedMessage.ko);
+        }
+      }
+    }
   };
 
   return (
