@@ -1,7 +1,7 @@
+import toast from "react-hot-toast";
 import { createContext, ReactNode, useContext, useState } from "react";
 
 import { tilogApi } from "@Api/core";
-import errorToast from "@Api/errors/toast";
 import { UserInfoContext } from "@Context/user-info/UserInfo";
 
 import { AccessTokenInterface } from "@Context/access-token/interface/accessToken.interface";
@@ -30,7 +30,7 @@ export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
       if (error.statusCode === 401) {
         const userInfo = window.localStorage.getItem("userInfo");
         if (userInfo) {
-          errorToast(error);
+          toast.error(error.message);
           handleLogout();
         }
       }

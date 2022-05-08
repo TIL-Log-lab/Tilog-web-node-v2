@@ -1,5 +1,5 @@
 import axios from "axios";
-import errorToast from "@Api/errors/toast";
+import toast from "react-hot-toast";
 import { createContext, ReactNode, useEffect, useState } from "react";
 
 import { tilogApi } from "@Api/core";
@@ -26,7 +26,7 @@ const UserInfoProvider = ({ children }: { children: ReactNode }) => {
   const handleLogin = () => {
     const loginWindow = window.open("http://localhost/auth/github/login");
     if (!loginWindow) {
-      return alert("window open error");
+      return toast.error("window open error");
     }
     // NOTE: 로그인 체크
     // TODO: alert -> toast
@@ -50,7 +50,7 @@ const UserInfoProvider = ({ children }: { children: ReactNode }) => {
         }
       } catch (e) {
         const error = e as ExceptionBodyInterface;
-        errorToast(error);
+        toast.error(error.message);
       }
     }, 1000);
   };
