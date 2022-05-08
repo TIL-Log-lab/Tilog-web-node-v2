@@ -11,8 +11,8 @@ const useHomeQuery = () => {
     useContext(AccessTokenContext);
   return useQuery(
     ["userInfo", accessToken],
-    async () =>
-      await tilogApi.usersControllerGetMe({
+    () =>
+      tilogApi.usersControllerGetMe({
         headers: { Authorization: `Bearer ${accessToken}` },
       }),
     {
