@@ -1,27 +1,28 @@
-import axios from "axios";
 import { useContext } from "react";
 import { useQuery } from "react-query";
 
 import { tilogApi } from "@Api/core";
 import { AccessTokenContext } from "@Context/access-token/AccessToken";
 
+import { ExceptionBodyInterface } from "@Api/errors/interface/exception";
+
 const useHomeQuery = () => {
   const { accessToken, setStateGetAccessToken } =
     useContext(AccessTokenContext);
   return useQuery(
     ["userInfo", accessToken],
-    () =>
-      tilogApi.usersControllerGetMe({
+    async () =>
+      await tilogApi.usersControllerGetMe({
         headers: { Authorization: `Bearer ${accessToken}` },
       }),
     {
       retry: 0,
       refetchInterval: false,
       refetchOnWindowFocus: false,
-      onError: (error) => {
-        if (axios.isAxiosError(error)) {
-          if (error.response) return setStateGetAccessToken();
-        }
+      onError: (e) => {
+        const error = e as ExceptionBodyInterface;
+        if (error.statusCode === 401) setStateGetAccessToken();
+        return e;
       },
     }
   );
