@@ -1,10 +1,10 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 import { createContext, ReactNode, useEffect, useState } from "react";
 
-import setUserInfoToLocal from "@Api/setUserInfoToLocal";
+import { tilogApi } from "@Api/core";
 
 import { UserInfoInterface } from "@Context/user-info/interface/userInfo.interface";
-import { NETWORK_ERROR_MESSAGE } from "@Api/errors/message/networkErrorMessage";
 import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 
 const store = {
@@ -26,7 +26,7 @@ const UserInfoProvider = ({ children }: { children: ReactNode }) => {
   const handleLogin = () => {
     const loginWindow = window.open("http://localhost/auth/github/login");
     if (!loginWindow) {
-      return alert("window open error");
+      return toast.error("window open error");
     }
     // NOTE: 로그인 체크
     // TODO: alert -> toast
@@ -35,32 +35,31 @@ const UserInfoProvider = ({ children }: { children: ReactNode }) => {
         clearInterval(loginCheck);
       }
       try {
-        const localData = await setUserInfoToLocal();
-        if (localData) {
-          setUserInfo(localData);
+        const {
+          data: { accessToken },
+        } = await tilogApi.usersAuthControllerGetAccessTokenUsingRefreshToken();
+
+        const { data } = await tilogApi.usersControllerGetMe({
+          headers: { Authorization: `Bearer ${accessToken}` },
+        });
+        window.localStorage.setItem("userInfo", JSON.stringify(data));
+
+        if (data) {
+          setUserInfo(data);
           loginWindow.close();
         }
-      } catch (error) {
-        if (axios.isAxiosError(error))
-          if (!error.response) alert(error.message);
-      }
+      } catch (e) {}
     }, 1000);
   };
 
   const handleLogout = async () => {
     try {
+      window.localStorage.removeItem("userInfo");
+      setUserInfo(null);
       await axios.delete("http://localhost/auth/logout", {
         withCredentials: true,
       });
-      window.localStorage.removeItem("userInfo");
-      setUserInfo(null);
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        if (!error.response) {
-          alert(NETWORK_ERROR_MESSAGE);
-        }
-      }
-    }
+    } catch (e) {}
   };
 
   return (
