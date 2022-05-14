@@ -1,6 +1,6 @@
 import { COUNTRY } from "@Api/errors/constant/country";
 
-export type CountryLiteralType = keyof typeof COUNTRY;
+export type CountryUnionType = keyof typeof COUNTRY;
 
 export type ExceptionMessageInterface = Record<
   typeof COUNTRY[keyof typeof COUNTRY],
@@ -10,5 +10,5 @@ export type ExceptionMessageInterface = Record<
 export type ExceptionInterface = {
   statusCode: number;
   requestLocation: string;
-  message: ExceptionMessageInterface[CountryLiteralType];
+  message: ExceptionMessageInterface[CountryUnionType];
 };
