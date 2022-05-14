@@ -1,38 +1,27 @@
 import { NOT_EXIST_MESSAGE } from "@Api/errors/constant/message/notExistMessage";
-import {
-  Country,
-  ExceptionExistMessageFilterInterface,
-  ExceptionFilterInterface,
-  ExceptionMessageInterface,
-} from "@Api/errors/interface/exception";
 
-// NOTE: Client에대한 에러 필터
-export function exceptionFilter(
+import {
+  CountryLiteralType,
+  ExceptionInterface,
+  ExceptionMessageInterface,
+} from "@Api/errors/interface/exception.interface";
+
+export const exception = (
   statusCode: number,
   requestLocation: string,
-  message: ExceptionMessageInterface[Country]
-): ExceptionFilterInterface {
-  return {
-    statusCode: statusCode,
-    requestLocation: requestLocation,
-    message: message,
-  };
-}
-
-// NOTE:  메세지가 존재하는지 확인
-export const exceptionExistMessageFilter = (
-  resData: ExceptionExistMessageFilterInterface
-): ExceptionExistMessageFilterInterface => {
-  if (!resData.message) {
+  message: ExceptionMessageInterface,
+  country: CountryLiteralType
+): ExceptionInterface => {
+  if (!message[country]) {
     return {
-      statusCode: resData.statusCode,
-      requestLocation: resData.requestLocation,
-      message: NOT_EXIST_MESSAGE,
+      statusCode: statusCode,
+      requestLocation: requestLocation,
+      message: NOT_EXIST_MESSAGE[country],
     };
   }
   return {
-    statusCode: resData.statusCode,
-    requestLocation: resData.requestLocation,
-    message: resData.message,
+    statusCode: statusCode,
+    requestLocation: requestLocation,
+    message: message[country],
   };
 };
