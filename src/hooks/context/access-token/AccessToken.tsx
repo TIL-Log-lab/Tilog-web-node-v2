@@ -1,11 +1,11 @@
-import axios from "axios";
+import toast from "react-hot-toast";
 import { createContext, ReactNode, useContext, useState } from "react";
 
 import { tilogApi } from "@Api/core";
 import { UserInfoContext } from "@Context/user-info/UserInfo";
 
 import { AccessTokenInterface } from "@Context/access-token/interface/accessToken.interface";
-import { NETWORK_ERROR_MESSAGE } from "@Api/errors/message/networkErrorMessage";
+import { ExceptionFilterInterface } from "@Api/errors/interface/exception";
 
 const store = {
   accessToken: null,
@@ -25,17 +25,13 @@ export const AccessTokenProvider = ({ children }: { children: ReactNode }) => {
       const { data } =
         await tilogApi.usersAuthControllerGetAccessTokenUsingRefreshToken();
       return setAccessToken(data.accessToken);
-    } catch (error) {
-      // TODO: alert -> toast
-      if (axios.isAxiosError(error)) {
-        if (!error.response) return alert(NETWORK_ERROR_MESSAGE);
-        const resData = error.response.data;
-        if (resData.statusCode === 401) {
-          const userInfo = window.localStorage.getItem("userInfo");
-          if (userInfo) {
-            alert(resData.message.ko);
-            handleLogout();
-          }
+    } catch (e) {
+      const error = e as ExceptionFilterInterface;
+      if (error.statusCode === 401) {
+        const userInfo = window.localStorage.getItem("userInfo");
+        if (userInfo) {
+          toast.error(error.message);
+          handleLogout();
         }
       }
     }

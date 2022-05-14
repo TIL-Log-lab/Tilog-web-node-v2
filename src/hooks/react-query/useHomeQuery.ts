@@ -1,9 +1,10 @@
-import axios from "axios";
 import { useContext } from "react";
 import { useQuery } from "react-query";
 
 import { tilogApi } from "@Api/core";
 import { AccessTokenContext } from "@Context/access-token/AccessToken";
+
+import { ExceptionInterface } from "@Api/errors/interface/exception.interface";
 
 const useHomeQuery = () => {
   const { accessToken, setStateGetAccessToken } =
@@ -18,10 +19,8 @@ const useHomeQuery = () => {
       retry: 0,
       refetchInterval: false,
       refetchOnWindowFocus: false,
-      onError: (error) => {
-        if (axios.isAxiosError(error)) {
-          if (error.response) return setStateGetAccessToken();
-        }
+      onError: (e: ExceptionInterface) => {
+        if (e.statusCode === 401) setStateGetAccessToken();
       },
     }
   );
