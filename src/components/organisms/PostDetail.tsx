@@ -11,7 +11,7 @@ import MButtonLike from "@Molecules/button/Like";
 interface PostDetailProps {
   postDetail: GetPostDetailResponseDto;
 }
-const PostDetail = ({ postDetail }: PostDetailProps) => {
+const OPostDetail = ({ postDetail }: PostDetailProps) => {
   const {
     id,
     title,
@@ -74,7 +74,7 @@ const PostDetail = ({ postDetail }: PostDetailProps) => {
   );
 };
 
-export default PostDetail;
+export default OPostDetail;
 
 const PostCategoryDivider = ({ categoryName }: { categoryName: string }) => {
   return (
