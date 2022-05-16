@@ -8,13 +8,24 @@ import OTechIcons from "@Organisms/techIcons";
 import MPostEditor from "@Molecules/PostEditor";
 
 import { GetPostDetailResponseDto } from "@til-log.lab/tilog-api";
+import MButtonLike from "@Molecules/button/Like";
 
 interface PostDetailProps {
   postDetail: GetPostDetailResponseDto;
 }
 const PostDetail = ({ postDetail }: PostDetailProps) => {
-  const { title, subTitle, createdAt, category, thumbnailUrl, content, user } =
-    postDetail;
+  const {
+    id,
+    title,
+    subTitle,
+    createdAt,
+    category,
+    thumbnailUrl,
+    content,
+    user,
+    like,
+  } = postDetail;
+
   return (
     <article className="w-full">
       <header className="text-center">
@@ -55,6 +66,9 @@ const PostDetail = ({ postDetail }: PostDetailProps) => {
               <OTechIcons categoryName={category.name} />
             </div>
             <h3>{category.name}</h3>
+          </div>
+          <div className="flex flex-row justify-center p-2 space-x-2 rounded bg-slate-400">
+            <MButtonLike postId={id} likeCount={like} />
           </div>
         </section>
       </div>
