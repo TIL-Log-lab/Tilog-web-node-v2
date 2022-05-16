@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import { AiFillHeart } from "react-icons/ai";
 import { BsDot, BsFillShareFill } from "react-icons/bs";
@@ -12,7 +13,7 @@ interface PostDetailProps {
   postDetail: GetPostDetailResponseDto;
 }
 const PostDetail = ({ postDetail }: PostDetailProps) => {
-  const { title, subTitle, createdAt, category, thumbnailUrl, content } =
+  const { title, subTitle, createdAt, category, thumbnailUrl, content, user } =
     postDetail;
   return (
     <article className="w-full">
@@ -40,6 +41,16 @@ const PostDetail = ({ postDetail }: PostDetailProps) => {
             preViewContent={JSON.parse(content)}
           />
         </div>
+        <section className="flex flex-col space-y-2">
+          <div className="w-full p-5 rounded h-fit bg-slate-200">
+            {user.username}
+            <Link href={`/blog/${user.username}`}>
+              <a className="flex items-center justify-center w-full h-10 text-white rounded bg-signature-color">
+                게시글 보기
+              </a>
+            </Link>
+          </div>
+        </section>
       </div>
     </article>
   );
