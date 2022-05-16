@@ -2,8 +2,12 @@ import { AiFillHeart } from "react-icons/ai";
 import { BsDot, BsFillShareFill } from "react-icons/bs";
 
 import OTechIcons from "@Organisms/techIcons";
+import { GetPostDetailResponseDto } from "@til-log.lab/tilog-api";
 
-const PostDetail = () => {
+interface PostDetailProps {
+  postDetail: GetPostDetailResponseDto;
+}
+const PostDetail = ({ postDetail }: PostDetailProps) => {
   return (
     <div className="w-full">
       <h1>Post Title</h1>
