@@ -50,6 +50,12 @@ const PostDetail = ({ postDetail }: PostDetailProps) => {
               </a>
             </Link>
           </div>
+          <div className="flex flex-row items-center justify-center p-2 rounded bg-slate-300 ">
+            <div className="mr-3 text-3xl">
+              <OTechIcons categoryName={category.name} />
+            </div>
+            <h3>{category.name}</h3>
+          </div>
         </section>
       </div>
     </article>
