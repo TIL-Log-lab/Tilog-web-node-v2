@@ -4,12 +4,13 @@ interface Props {
   categoryName: string;
 }
 const OTechIcons = ({ categoryName }: Props) => {
-  const { Render } = TechIcons[categoryName];
+  const upper_categoryName = categoryName.toUpperCase();
 
-  if (!TechIcons[categoryName]) {
-    const { Render } = TechIcons["Unknown"];
+  if (!TechIcons[upper_categoryName]) {
+    const { Render } = TechIcons["UNKNOWN"];
     return <Render />;
   }
+  const { Render } = TechIcons[upper_categoryName];
   return <Render />;
 };
 
