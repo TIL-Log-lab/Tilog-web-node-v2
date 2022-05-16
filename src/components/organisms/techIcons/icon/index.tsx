@@ -4,23 +4,23 @@ import * as GR from "react-icons/gr";
 import * as BS from "react-icons/bs";
 import { TechIconInterface } from "src/components/organisms/techIcons/interface/techIcons";
 
-const TYPE_SCRIPT = "TypeScript";
-const JAVA_SCRIPT = "JavaScript";
+const TYPE_SCRIPT = "TYPESCRIPT";
+const JAVA_SCRIPT = "JAVASCRIPT";
 const HTML = "HTML";
-const REACT = "React";
-const SWIFT = "Swift";
-const DATABASE = "Database";
-const GITHUB = "Github";
-const NESTJS = "Nestjs";
+const REACT = "REACT";
+const SWIFT = "SWIFT";
+const DATABASE = "DATABASE";
+const GITHUB = "GITHUB";
+const NESTJS = "NESTJS";
 const MYSQL = "MySQL";
 const AWS = "AWS";
-const DOCKER = "Docker";
-const DOCKER_COMPOSE = "Docker-compose";
-const REDIS = "Redis";
+const DOCKER = "DOCKER";
+const DOCKER_COMPOSE = "DOCKER_COMPOSE";
+const REDIS = "REDIS";
 const CSS = "CSS";
-const NODEJS = "Nodejs";
-const INFRA = "Infra";
-const UNKNOWN = "Unknown";
+const NODEJS = "NODEJS";
+const INFRA = "INFRA";
+const UNKNOWN = "UNKNOWN";
 
 const TechIcons: TechIconInterface = {
   [JAVA_SCRIPT]: {
