@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { tilogApi } from "@Api/core";
 import { GetServerSideProps, NextPage } from "next";
 
@@ -13,6 +14,20 @@ const PostDetailPage: NextPage<PostDetailPageProps> = ({
 }: PostDetailPageProps) => {
   return (
     <div className="md:mx-20 2xl:mx-60">
+      <Head>
+        <title>{postDetail.title}</title>
+        <meta
+          property="og:description"
+          content={postDetail.content}
+          key="ogDesc"
+        />
+        <meta
+          property="og:image"
+          content={!postDetail.thumbnailUrl ? "" : postDetail.thumbnailUrl}
+          key="ogImage"
+        ></meta>
+        <meta property="og:title" content={postDetail.title} key="ogTitle" />
+      </Head>
       <div className="flex flex-col items-center pt-20 text-center">
         <PostDetail />
       </div>
