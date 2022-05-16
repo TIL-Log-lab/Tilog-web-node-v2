@@ -20,11 +20,6 @@ const MPostEditor = ({ editorMode, preViewContent }: MPostEditorProps) => {
   });
   if (!editor) return <></>;
 
-  return (
-    <EditorContent
-      className={`z-0 h-4/6 bg-white dark:bg-neutral-900`}
-      editor={editor}
-    />
-  );
+  return <EditorContent className={`z-0 h-full`} editor={editor} />;
 };
 export default MPostEditor;
