@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { AiFillHeart } from "react-icons/ai";
 import { BsDot, BsFillShareFill } from "react-icons/bs";
 
@@ -9,7 +10,7 @@ interface PostDetailProps {
   postDetail: GetPostDetailResponseDto;
 }
 const PostDetail = ({ postDetail }: PostDetailProps) => {
-  const { title, subTitle, createdAt, category } = postDetail;
+  const { title, subTitle, createdAt, category, thumbnailUrl } = postDetail;
   return (
     <article className="w-full">
       <header className="text-center">
@@ -18,6 +19,17 @@ const PostDetail = ({ postDetail }: PostDetailProps) => {
         <time>{formatDate(createdAt)}</time>
       </header>
       <PostCategoryDivider categoryName={category.name} />
+      <figure>
+        {!thumbnailUrl ? (
+          <div
+            className={`w-full h-96 flex items-center justify-center bg-signature-color`}
+          >
+            {title}
+          </div>
+        ) : (
+          <Image alt="thumbnail" src={thumbnailUrl}></Image>
+        )}
+      </figure>
     </article>
   );
 };
