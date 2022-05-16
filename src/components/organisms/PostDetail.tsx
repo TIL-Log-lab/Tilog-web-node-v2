@@ -1,7 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { AiFillHeart } from "react-icons/ai";
-import { BsDot, BsFillShareFill } from "react-icons/bs";
 
 import formatDate from "@Date/formatDate";
 import OTechIcons from "@Organisms/techIcons";
