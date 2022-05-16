@@ -9,7 +9,7 @@ interface PostDetailProps {
   postDetail: GetPostDetailResponseDto;
 }
 const PostDetail = ({ postDetail }: PostDetailProps) => {
-  const { title, subTitle, createdAt } = postDetail;
+  const { title, subTitle, createdAt, category } = postDetail;
   return (
     <article className="w-full">
       <header className="text-center">
@@ -17,8 +17,21 @@ const PostDetail = ({ postDetail }: PostDetailProps) => {
         <h3>{subTitle}</h3>
         <time>{formatDate(createdAt)}</time>
       </header>
+      <PostCategoryDivider categoryName={category.name} />
     </article>
   );
 };
 
 export default PostDetail;
+
+const PostCategoryDivider = ({ categoryName }: { categoryName: string }) => {
+  return (
+    <div className="relative flex items-center py-5">
+      <div className="flex-grow border-t border-gray-400"></div>
+      <div className="mx-4">
+        <OTechIcons categoryName={categoryName} />
+      </div>
+      <div className="flex-grow border-t border-gray-400"></div>
+    </div>
+  );
+};
