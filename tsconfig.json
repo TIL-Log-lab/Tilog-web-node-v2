@@ -20,6 +20,7 @@
       "@Organisms/*": ["src/components/organisms/*"],
       "@Api/*": ["lib/open-api/*"],
       "@Language": ["lib/language/"],
+      "@Date/*": ["lib/date/*"],
       "@Context/*": ["src/hooks/context/*"],
       "@Query/*": ["src/hooks/react-query/*"]
     }
