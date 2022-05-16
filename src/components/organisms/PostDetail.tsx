@@ -4,13 +4,16 @@ import { BsDot, BsFillShareFill } from "react-icons/bs";
 
 import formatDate from "@Date/formatDate";
 import OTechIcons from "@Organisms/techIcons";
+import MPostEditor from "@Molecules/PostEditor";
+
 import { GetPostDetailResponseDto } from "@til-log.lab/tilog-api";
 
 interface PostDetailProps {
   postDetail: GetPostDetailResponseDto;
 }
 const PostDetail = ({ postDetail }: PostDetailProps) => {
-  const { title, subTitle, createdAt, category, thumbnailUrl } = postDetail;
+  const { title, subTitle, createdAt, category, thumbnailUrl, content } =
+    postDetail;
   return (
     <article className="w-full">
       <header className="text-center">
@@ -30,6 +33,14 @@ const PostDetail = ({ postDetail }: PostDetailProps) => {
           <Image alt="thumbnail" src={thumbnailUrl}></Image>
         )}
       </figure>
+      <div className="mt-2 lg:grid lg:grid-flow-col lg:space-x-2 lg:grid-cols-3">
+        <div className="lg:col-span-2">
+          <MPostEditor
+            editorMode={false}
+            preViewContent={JSON.parse(content)}
+          />
+        </div>
+      </div>
     </article>
   );
 };
