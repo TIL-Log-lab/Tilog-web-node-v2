@@ -2,7 +2,7 @@ import Head from "next/head";
 import { tilogApi } from "@Api/core";
 import { GetServerSideProps, NextPage } from "next";
 
-import PostDetail from "src/components/organisms/PostDetail";
+import OPostDetail from "src/components/organisms/PostDetail";
 
 import { GetPostDetailResponseDto } from "@til-log.lab/tilog-api";
 
@@ -29,7 +29,7 @@ const PostDetailPage: NextPage<PostDetailPageProps> = ({
         <meta property="og:title" content={postDetail.title} key="ogTitle" />
       </Head>
       <div className="flex flex-col items-center pt-20 text-center">
-        <PostDetail />
+        <OPostDetail postDetail={postDetail} />
       </div>
       {/* <OComment /> */}
     </div>
