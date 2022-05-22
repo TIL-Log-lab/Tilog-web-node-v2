@@ -2,9 +2,10 @@ import Head from "next/head";
 import { GetServerSideProps, NextPage } from "next";
 
 import OPostDetail from "@Organisms/PostDetail";
+import { TilogApiForAuth, TilogApiForPost } from "@Api/core";
 
 import { GetPostDetailResponseDto } from "@til-log.lab/tilog-api";
-import { TilogApiForAuth, TilogApiForPost } from "@Api/core";
+
 interface PostDetailPageProps {
   postDetail: GetPostDetailResponseDto;
 }
@@ -45,9 +46,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const { headers } = context.req;
   const userAgent = !headers["user-agent"] ? "" : headers["user-agent"];
-  const cookie = !headers.cookie ? "" : headers.cookie;
+
+  const { refreshToken } = context.req.cookies;
+
   try {
-    if (context.req.cookies.refreshToken) {
+    if (refreshToken) {
       const {
         data: { accessToken },
       } = await TilogApiForAuth.usersAuthControllerGetAccessTokenUsingRefreshToken(
@@ -55,7 +58,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         {
           headers: {
             "User-Agent": userAgent,
-            Cookie: cookie,
+            Cookie: `refreshToken=${refreshToken}`,
           },
         }
       );
