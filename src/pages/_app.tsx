@@ -5,7 +5,6 @@ import { Toaster } from "react-hot-toast";
 
 import OHeader from "@Organisms/Header";
 import UserInfoProvider from "@Context/user-info/UserInfo";
-import { AccessTokenProvider } from "@Context/access-token/AccessToken";
 
 const queryClient = new QueryClient({});
 
@@ -13,12 +12,10 @@ const TILogApp = ({ Component, pageProps }: AppProps) => {
   return (
     <QueryClientProvider client={queryClient}>
       <UserInfoProvider>
-        <AccessTokenProvider>
-          <OHeader>
-            <Toaster />
-            <Component {...pageProps} />
-          </OHeader>
-        </AccessTokenProvider>
+        <OHeader>
+          <Toaster />
+          <Component {...pageProps} />
+        </OHeader>
       </UserInfoProvider>
     </QueryClientProvider>
   );
