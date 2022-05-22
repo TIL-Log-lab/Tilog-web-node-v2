@@ -59,12 +59,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
           },
         }
       );
-      const { data } = await TilogApiForPost.postsControllerGetPostDetail(
+      const postDetail = await TilogApiForPost.postsControllerGetPostDetail(
         postId,
         { headers: { Authorization: `Bearer ${accessToken}` } }
       );
       return {
-        props: { postDetail: data },
+        props: { postDetail: postDetail.data },
       };
     }
 

@@ -2,7 +2,10 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 import { TilogApiForAuth } from "@Api/core";
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+const accessTokenHandler = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+) => {
   const { headers } = req;
   const userAgent = !headers["user-agent"] ? "" : headers["user-agent"];
   const cookie = !headers.cookie ? "" : headers.cookie;
@@ -23,4 +26,4 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     res.send(error);
   }
 };
-export default handler;
+export default accessTokenHandler;
