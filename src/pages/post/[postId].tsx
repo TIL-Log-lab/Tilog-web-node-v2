@@ -1,11 +1,10 @@
 import Head from "next/head";
-import { tilogApi } from "@Api/core";
 import { GetServerSideProps, NextPage } from "next";
 
-import OPostDetail from "src/components/organisms/PostDetail";
+import OPostDetail from "@Organisms/PostDetail";
 
 import { GetPostDetailResponseDto } from "@til-log.lab/tilog-api";
-
+import { TilogApiForAuth, TilogApiForPost } from "@Api/core";
 interface PostDetailPageProps {
   postDetail: GetPostDetailResponseDto;
 }
@@ -37,45 +36,47 @@ const PostDetailPage: NextPage<PostDetailPageProps> = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { params, req } = context;
+  const { params } = context;
   if (!params) return { notFound: true };
 
   const postId = params.postId;
   if (!postId) return { notFound: true };
   if (Array.isArray(postId)) return { notFound: true };
 
-  const responseResult =
-    await tilogApi.usersAuthControllerGetAccessTokenUsingRefreshToken(
-      undefined,
-      {
-        headers: {
-          "User-Agent": !req.headers["user-agent"]
-            ? ""
-            : req.headers["user-agent"],
-          Cookie: !req.headers.cookie ? "" : req.headers.cookie,
-        },
-      }
-    );
+  const { headers } = context.req;
+  const userAgent = !headers["user-agent"] ? "" : headers["user-agent"];
+  const cookie = !headers.cookie ? "" : headers.cookie;
   try {
-    if (!responseResult) {
-      const { data } = await tilogApi.postsControllerGetPostDetail(postId);
+    if (context.req.cookies.refreshToken) {
+      const {
+        data: { accessToken },
+      } = await TilogApiForAuth.usersAuthControllerGetAccessTokenUsingRefreshToken(
+        undefined,
+        {
+          headers: {
+            "User-Agent": userAgent,
+            Cookie: cookie,
+          },
+        }
+      );
+      const { data } = await TilogApiForPost.postsControllerGetPostDetail(
+        postId,
+        { headers: { Authorization: `Bearer ${accessToken}` } }
+      );
       return {
-        props: {
-          postDetail: data,
-        },
+        props: { postDetail: data },
       };
     }
 
-    const { data } = await tilogApi.postsControllerGetPostDetail(postId, {
-      headers: {
-        Authorization: `Bearer ${responseResult.data.accessToken}`,
-      },
-    });
+    const { data } = await TilogApiForPost.postsControllerGetPostDetail(postId);
+
     return {
       props: { postDetail: data },
     };
-  } catch {
-    return { notFound: true };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
   }
 };
 export default PostDetailPage;
