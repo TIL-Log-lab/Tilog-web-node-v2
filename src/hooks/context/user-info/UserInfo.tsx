@@ -2,7 +2,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { createContext, ReactNode, useEffect, useState } from "react";
 
-import { tilogApi } from "@Api/core";
+import { TilogApiForAuth, TilogApiForUser } from "@Api/core";
 
 import { UserInfoInterface } from "@Context/user-info/interface/userInfo.interface";
 import { GetMeResponseDto } from "@til-log.lab/tilog-api";
@@ -37,9 +37,9 @@ const UserInfoProvider = ({ children }: { children: ReactNode }) => {
       try {
         const {
           data: { accessToken },
-        } = await tilogApi.usersAuthControllerGetAccessTokenUsingRefreshToken();
+        } = await TilogApiForAuth.usersAuthControllerGetAccessTokenUsingRefreshToken();
 
-        const { data } = await tilogApi.usersControllerGetMe({
+        const { data } = await TilogApiForUser.usersControllerGetMe({
           headers: { Authorization: `Bearer ${accessToken}` },
         });
         window.localStorage.setItem("userInfo", JSON.stringify(data));
