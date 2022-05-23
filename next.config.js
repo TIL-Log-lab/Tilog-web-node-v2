@@ -1,10 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  TILOG_API: process.env.TILOG_API,
 };
 
-const withTM = require("next-transpile-modules")(["@til-log.lab/tilog-api"]);
-
-module.exports = withTM({
-  nextConfig,
-});
+module.exports = nextConfig;

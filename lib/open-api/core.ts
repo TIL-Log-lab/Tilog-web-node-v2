@@ -14,6 +14,13 @@ const config = new TILog.Configuration({
   },
 });
 
+export const TilogApiForAuth = new TILog.AuthApi(config);
+export const TilogApiForUser = new TILog.UserApi(config);
+export const TilogApiForCategory = new TILog.CategoryApi(config);
+export const TilogApiForComment = new TILog.CommentApi(config);
+export const TilogApiForPost = new TILog.PostApi(config);
+export const TilogApiForPostLike = new TILog.PostLikeApi(config);
+
 axios.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -49,5 +56,3 @@ axios.interceptors.response.use(
     }
   }
 );
-
-export const tilogApi = new TILog.DefaultApi(config);
