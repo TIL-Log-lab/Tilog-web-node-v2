@@ -12,8 +12,6 @@ const MButtonLogin = () => {
     if (!loginWindow) {
       return toast.error("window open error");
     }
-    // NOTE: 로그인 체크
-    // TODO: alert -> toast
     const loginCheck = setInterval(async () => {
       if (loginWindow.closed) {
         clearInterval(loginCheck);

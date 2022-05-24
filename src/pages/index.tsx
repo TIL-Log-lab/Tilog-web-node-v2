@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import { useDispatch } from "react-redux";
 
 import { wrapper } from "@Redux/store";
 import OHeader from "@Organisms/Header";
