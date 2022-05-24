@@ -40,9 +40,8 @@ createAuthRefreshInterceptor(axios, (failedRequest) =>
 axios.interceptors.response.use(
   (response) => response,
   (error) => {
+    const userCountry = getUserLanguage();
     if (axios.isAxiosError(error)) {
-      const userCountry = getUserLanguage();
-
       //NOTE: 서버에서 응답한 상태
       if (error.response) {
         const responseData = error.response.data;
@@ -70,5 +69,6 @@ axios.interceptors.response.use(
         );
       }
     }
+    return Promise.reject(exception(500, UNKNOWN, error.message, userCountry));
   }
 );
