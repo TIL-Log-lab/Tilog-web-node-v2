@@ -1,27 +1,17 @@
 import "../../styles/globals.css";
 import type { AppProps } from "next/app";
-import { QueryClient, QueryClientProvider } from "react-query";
 import { Toaster } from "react-hot-toast";
-
-import OHeader from "@Organisms/Header";
-import UserInfoProvider from "@Context/user-info/UserInfo";
-import { AccessTokenProvider } from "@Context/access-token/AccessToken";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { wrapper } from "@Redux/store";
 
 const queryClient = new QueryClient({});
 
 const TILogApp = ({ Component, pageProps }: AppProps) => {
   return (
     <QueryClientProvider client={queryClient}>
-      <UserInfoProvider>
-        <AccessTokenProvider>
-          <OHeader>
-            <Toaster />
-            <Component {...pageProps} />
-          </OHeader>
-        </AccessTokenProvider>
-      </UserInfoProvider>
+      <Toaster />
+      <Component {...pageProps} />
     </QueryClientProvider>
   );
 };
-
-export default TILogApp;
+export default wrapper.withRedux(TILogApp);

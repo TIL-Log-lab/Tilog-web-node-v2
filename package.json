@@ -9,12 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@til-log.lab/tilog-api": "^0.1.0",
+    "@reduxjs/toolkit": "^1.8.1",
+    "@til-log.lab/tilog-api": "^0.1.8",
     "@tiptap/react": "^2.0.0-beta.108",
     "@tiptap/starter-kit": "^2.0.0-beta.183",
     "@types/react-responsive": "^8.0.5",
     "axios": "^0.26.1",
+    "axios-auth-refresh": "^3.3.1",
     "next": "12.1.4",
+    "next-redux-cookie-wrapper": "^2.1.2",
+    "next-redux-wrapper": "^7.0.5",
     "next-transpile-modules": "^9.0.0",
     "react": "18.0.0",
     "react-dom": "18.0.0",
@@ -22,7 +26,9 @@
     "react-hot-toast": "^2.2.0",
     "react-icons": "^4.3.1",
     "react-query": "^3.38.0",
-    "react-responsive": "^9.0.0-beta.6"
+    "react-redux": "^8.0.2",
+    "react-responsive": "^9.0.0-beta.6",
+    "redux": "^4.2.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.2",

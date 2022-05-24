@@ -1,7 +1,6 @@
 import { NOT_EXIST_MESSAGE } from "@Api/errors/constant/message/notExistMessage";
 
 import {
-  CountryUnionType,
   ExceptionInterface,
   ExceptionMessageInterface,
 } from "@Api/errors/interface/exception.interface";
@@ -9,19 +8,18 @@ import {
 export const exception = (
   statusCode: number,
   requestLocation: string,
-  message: ExceptionMessageInterface,
-  language: CountryUnionType
+  message: ExceptionMessageInterface
 ): ExceptionInterface => {
-  if (!message[language]) {
+  if (!message) {
     return {
       statusCode: statusCode,
       requestLocation: requestLocation,
-      message: NOT_EXIST_MESSAGE[language],
+      message: NOT_EXIST_MESSAGE,
     };
   }
   return {
     statusCode: statusCode,
     requestLocation: requestLocation,
-    message: message[language],
+    message: message,
   };
 };
