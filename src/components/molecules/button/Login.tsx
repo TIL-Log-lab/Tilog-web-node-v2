@@ -3,12 +3,15 @@ import { useDispatch } from "react-redux";
 
 import { userInfoSlice } from "@Redux/userInfo";
 import OTechIcons from "@Organisms/techIcons";
-import { TilogApiForAuth, TilogApiForUser } from "@Api/core";
+import { TilogApiForUser } from "@Api/core";
+import { ExceptionInterface } from "@Api/errors/interface/exception.interface";
 
 const MButtonLogin = () => {
   const dispatch = useDispatch();
   const handleLogin = () => {
-    const loginWindow = window.open("http://localhost/auth/github/login");
+    const loginWindow = window.open(
+      process.env.TILOG_API + "/auth/github/login"
+    );
     if (!loginWindow) {
       return toast.error("window open error");
     }
@@ -17,18 +20,19 @@ const MButtonLogin = () => {
         clearInterval(loginCheck);
       }
       try {
-        const {
-          data: { accessToken },
-        } = await TilogApiForAuth.usersAuthControllerGetAccessTokenUsingRefreshToken();
-
-        const { data } = await TilogApiForUser.usersControllerGetMe({
-          headers: { Authorization: `Bearer ${accessToken}` },
-        });
+        const { data } = await TilogApiForUser.usersControllerGetMe();
         if (data) {
-          dispatch(userInfoSlice.actions.change(data));
+          dispatch(userInfoSlice.actions.changeUserInfo(data));
           loginWindow.close();
         }
-      } catch (e) {}
+      } catch (e) {
+        const error = e as ExceptionInterface;
+        if (error.statusCode !== 401) {
+          loginWindow.close();
+          clearInterval(loginCheck);
+          // TODO: language error handling..
+        }
+      }
     }, 1000);
   };
   return (
