@@ -42,7 +42,6 @@ createAuthRefreshInterceptor(axios, (failedRequest) =>
 axios.interceptors.response.use(
   (response) => response,
   (error) => {
-    const userCountry = getUserLanguage();
     if (axios.isAxiosError(error)) {
       //NOTE: 서버에서 응답한 상태
       if (error.response) {
@@ -54,8 +53,7 @@ axios.interceptors.response.use(
           exception(
             responseData.statusCode,
             responseData.requestLocation,
-            responseData.message,
-            userCountry
+            responseData.message
           )
         );
       }
@@ -63,17 +61,17 @@ axios.interceptors.response.use(
       // NOTE: 서버에서 응답하지 못한 상태
       else if (error.request) {
         return Promise.reject(
-          exception(500, REQUEST_ERROR, NETWORK_ERROR_MESSAGE, userCountry)
+          exception(500, REQUEST_ERROR, NETWORK_ERROR_MESSAGE)
         );
       }
 
       // NOTE: 요청, 응답이 모두 이루지지 않은 상태
       else {
-        return Promise.reject(
-          exception(520, UNKNOWN, NETWORK_ERROR_MESSAGE, userCountry)
-        );
+        return Promise.reject(exception(520, UNKNOWN, NETWORK_ERROR_MESSAGE));
       }
     }
-    return Promise.reject(exception(500, UNKNOWN, error.message, userCountry));
+    return Promise.reject(
+      exception(error.statusCode, error.requestLocation, error.message)
+    );
   }
 );

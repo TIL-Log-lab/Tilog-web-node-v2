@@ -10,5 +10,5 @@ export type ExceptionMessageInterface = Record<
 export type ExceptionInterface = {
   statusCode: number;
   requestLocation: string;
-  message: ExceptionMessageInterface[CountryUnionType];
+  message: ExceptionMessageInterface;
 };
