@@ -19,6 +19,7 @@
       "@Molecules/*": ["src/components/molecules/*"],
       "@Organisms/*": ["src/components/organisms/*"],
       "@Api/*": ["lib/open-api/*"],
+      "@Redux/*": ["src/hooks/redux/*"],
       "@Language": ["lib/language/"],
       "@Context/*": ["src/hooks/context/*"],
       "@Query/*": ["src/hooks/react-query/*"]
