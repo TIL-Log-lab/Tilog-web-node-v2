@@ -21,7 +21,6 @@
       "@Api/*": ["lib/open-api/*"],
       "@Redux/*": ["src/hooks/redux/*"],
       "@Language": ["lib/language/"],
-      "@Context/*": ["src/hooks/context/*"],
       "@Query/*": ["src/hooks/react-query/*"]
     }
   },
