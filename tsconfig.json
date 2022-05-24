@@ -20,7 +20,6 @@
       "@Organisms/*": ["src/components/organisms/*"],
       "@Api/*": ["lib/open-api/*"],
       "@Redux/*": ["src/hooks/redux/*"],
-      "@Language": ["lib/language/"],
       "@Query/*": ["src/hooks/react-query/*"]
     }
   },

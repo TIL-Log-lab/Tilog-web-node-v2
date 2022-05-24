@@ -2,7 +2,6 @@ import axios from "axios";
 import createAuthRefreshInterceptor from "axios-auth-refresh";
 
 import { store } from "@Redux/store";
-import getUserLanguage from "@Language";
 import * as TILog from "@til-log.lab/tilog-api";
 import { userInfoSlice } from "@Redux/userInfo";
 import { exception } from "@Api/errors/exception";
