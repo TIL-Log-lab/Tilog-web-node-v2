@@ -3,14 +3,14 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 
-export interface userInfoStateInterface {
+export interface UserInfoSliceState {
   name: GetMeResponseDto["name"];
   avatar: GetMeResponseDto["avatar"];
   createdAt: GetMeResponseDto["createdAt"];
   settings: GetMeResponseDto["settings"];
 }
 
-const internalInitialState: userInfoStateInterface = {
+const internalInitialState: UserInfoSliceState = {
   name: "",
   avatar: "",
   createdAt: "",
@@ -22,7 +22,7 @@ export const userInfoSlice = createSlice({
   initialState: internalInitialState,
 
   reducers: {
-    change(state, { payload }: PayloadAction<userInfoStateInterface>) {
+    change(state, { payload }: PayloadAction<UserInfoSliceState>) {
       Object.assign(state, payload);
     },
     resetUserInfo(state) {
