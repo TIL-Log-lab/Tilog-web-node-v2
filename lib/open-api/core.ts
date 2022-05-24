@@ -1,4 +1,5 @@
 import axios from "axios";
+import createAuthRefreshInterceptor from "axios-auth-refresh";
 
 import { exception } from "@Api/errors/exception";
 import getUserLanguage from "@Language";
@@ -20,6 +21,21 @@ export const TilogApiForCategory = new TILog.CategoryApi(config);
 export const TilogApiForComment = new TILog.CommentApi(config);
 export const TilogApiForPost = new TILog.PostApi(config);
 export const TilogApiForPostLike = new TILog.PostLikeApi(config);
+
+createAuthRefreshInterceptor(axios, (failedRequest) =>
+  axios
+    .get("api/access-token")
+    .then((response) => {
+      const { accessToken } = response.data;
+      const bearer = `Bearer ${accessToken}`;
+      axios.defaults.headers.common["Authorization"] = bearer;
+      failedRequest.response.config.headers.Authorization = bearer;
+      return Promise.resolve();
+    })
+    .catch(() => {
+      return Promise.reject(failedRequest);
+    })
+);
 
 axios.interceptors.response.use(
   (response) => response,
