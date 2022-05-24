@@ -1,9 +1,11 @@
 import axios from "axios";
 import createAuthRefreshInterceptor from "axios-auth-refresh";
 
-import { exception } from "@Api/errors/exception";
+import { store } from "@Redux/store";
 import getUserLanguage from "@Language";
 import * as TILog from "@til-log.lab/tilog-api";
+import { userInfoSlice } from "@Redux/userInfo";
+import { exception } from "@Api/errors/exception";
 
 import { NETWORK_ERROR_MESSAGE } from "@Api/errors/constant/message/networkErrorMessage";
 import { REQUEST_ERROR, UNKNOWN } from "@Api/errors/constant/requestLocation";
@@ -45,6 +47,9 @@ axios.interceptors.response.use(
       //NOTE: 서버에서 응답한 상태
       if (error.response) {
         const responseData = error.response.data;
+        if (responseData.statusCode === 401) {
+          store.dispatch(userInfoSlice.actions.resetUserInfo());
+        }
         return Promise.reject(
           exception(
             responseData.statusCode,
