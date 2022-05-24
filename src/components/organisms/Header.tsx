@@ -1,25 +1,23 @@
-import { ReactNode, useContext } from "react";
-import { BsDot } from "react-icons/bs";
 import Link from "next/link";
+import { BsDot } from "react-icons/bs";
+import { useSelector } from "react-redux";
+import { userInfoSlice } from "src/hooks/redux/userInfo";
 
+import { UserInfoState } from "@Redux/store";
 import MButtonLogout from "@Molecules/button/Logout";
 import MButtonLogin from "@Molecules/button/Login";
-import { UserInfoContext } from "@Context/user-info/UserInfo";
 
-interface OHeaderProps {
-  children: ReactNode;
-}
-
-const OHeader = ({ children }: OHeaderProps) => {
-  const { userInfo, handleLogin, handleLogout } = useContext(UserInfoContext);
-
+const OHeader = () => {
+  const { name } = useSelector(
+    (state: UserInfoState) => state[userInfoSlice.name]
+  );
   return (
     <div>
       <div className="grid grid-cols-3 p-5 font-eng-sub-font-2">
         <div className="flex flex-row items-center justify-start text-sm">
           <Link href="/">Today</Link>
           <BsDot />
-          {userInfo && <Link href={`/blog/${userInfo.name}`}>MyBlog</Link>}
+          {name && <Link href={`/blog/${name}`}>MyBlog</Link>}
           <BsDot />
           <a href="#">Search</a>
           <BsDot />
@@ -30,14 +28,9 @@ const OHeader = ({ children }: OHeaderProps) => {
           <p className="text-sm text-neutral-800 font-eng-sub-font-2"></p>
         </div>
         <div className="flex items-center justify-end">
-          {!userInfo ? (
-            <MButtonLogin handleLogin={handleLogin} />
-          ) : (
-            <MButtonLogout handleLogout={handleLogout} />
-          )}
+          {name === "" ? <MButtonLogin /> : <MButtonLogout />}
         </div>
       </div>
-      {children}
     </div>
   );
 };
