@@ -6,6 +6,7 @@ import {
 import { createWrapper } from "next-redux-wrapper";
 
 import { userInfoSlice } from "@Redux/userInfo";
+import { TILOG_INFO_COOKIE } from "@Redux/constants/cookiesName";
 
 export const store = configureStore({
   reducer: {
@@ -14,7 +15,7 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().prepend(
       nextReduxCookieMiddleware({
-        subtrees: [`${userInfoSlice.name}`],
+        subtrees: [TILOG_INFO_COOKIE],
       })
     ),
 });

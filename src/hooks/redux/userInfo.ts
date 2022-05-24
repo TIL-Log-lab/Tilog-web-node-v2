@@ -18,11 +18,11 @@ const internalInitialState: UserInfoSliceState = {
 };
 
 export const userInfoSlice = createSlice({
-  name: "userInfo",
+  name: "TILog_Info",
   initialState: internalInitialState,
 
   reducers: {
-    change(state, { payload }: PayloadAction<UserInfoSliceState>) {
+    changeUserInfo(state, { payload }: PayloadAction<UserInfoSliceState>) {
       Object.assign(state, payload);
     },
     resetUserInfo(state) {
@@ -32,7 +32,7 @@ export const userInfoSlice = createSlice({
   extraReducers: {
     [HYDRATE]: (state, { payload }) => ({
       ...state,
-      ...payload.userInfo,
+      ...payload["TILog_Info"],
     }),
   },
 });
