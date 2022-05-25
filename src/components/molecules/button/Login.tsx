@@ -1,9 +1,10 @@
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 
+import getUserLanguage from "@Language";
+import { TilogApiForUser } from "@Api/core";
 import { userInfoSlice } from "@Redux/userInfo";
 import OTechIcons from "@Organisms/techIcons";
-import { TilogApiForUser } from "@Api/core";
 import { ExceptionInterface } from "@Api/errors/interface/exception.interface";
 
 const MButtonLogin = () => {
@@ -22,7 +23,12 @@ const MButtonLogin = () => {
       try {
         const { data } = await TilogApiForUser.usersControllerGetMe();
         if (data) {
-          dispatch(userInfoSlice.actions.changeUserInfo(data));
+          const language = getUserLanguage();
+          const userInfo = {
+            ...data,
+            language,
+          };
+          dispatch(userInfoSlice.actions.changeUserInfo(userInfo));
           loginWindow.close();
         }
       } catch (e) {
