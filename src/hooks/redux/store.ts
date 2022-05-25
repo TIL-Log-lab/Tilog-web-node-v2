@@ -19,10 +19,6 @@ export const store = configureStore({
       })
     ),
 });
-const makeStore = wrapMakeStore(() => store);
-
-export type UserInfoStore = ReturnType<typeof makeStore>;
-export type UserInfoState = ReturnType<UserInfoStore["getState"]>;
-export type UserInfoDispatch = UserInfoStore["dispatch"];
+export const makeStore = wrapMakeStore(() => store);
 
 export const wrapper = createWrapper(makeStore, { debug: true });
