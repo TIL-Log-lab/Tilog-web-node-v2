@@ -1,13 +1,13 @@
 import axios from "axios";
 import createAuthRefreshInterceptor from "axios-auth-refresh";
 
+import { NETWORK_ERROR_MESSAGE } from "@Messages/constants/error";
+import { REQUEST_ERROR, UNKNOWN } from "@Api/errors/constant/requestLocation";
+
 import { store } from "@Redux/store";
 import * as TILog from "@til-log.lab/tilog-api";
+import exception from "@Api/errors/exception";
 import { userInfoSlice } from "@Redux/userInfo";
-import { exception } from "@Api/errors/exception";
-
-import { NETWORK_ERROR_MESSAGE } from "@Api/errors/constant/message/networkErrorMessage";
-import { REQUEST_ERROR, UNKNOWN } from "@Api/errors/constant/requestLocation";
 
 const config = new TILog.Configuration({
   basePath: process.env.TILOG_API,

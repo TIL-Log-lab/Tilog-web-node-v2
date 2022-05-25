@@ -1,14 +1,12 @@
-import { NOT_EXIST_MESSAGE } from "@Api/errors/constant/message/notExistMessage";
+import { NOT_EXIST_MESSAGE } from "@Messages/constants/error";
 
-import {
-  ExceptionInterface,
-  ExceptionMessageInterface,
-} from "@Api/errors/interface/exception.interface";
+import ExceptionInterface from "@Api/errors/interfaces";
+import MessageInterface from "@Messages/interfaces";
 
-export const exception = (
+const exception = (
   statusCode: number,
   requestLocation: string,
-  message: ExceptionMessageInterface
+  message: MessageInterface
 ): ExceptionInterface => {
   if (!message) {
     return {
@@ -23,3 +21,5 @@ export const exception = (
     message: message,
   };
 };
+
+export default exception;
