@@ -40,7 +40,7 @@ export const userInfoSlice = createSlice({
     }),
   },
 });
-export const getUserLanguage = createSelector(
+export const languageSelector = createSelector(
   (state: UserInfoState) => state[userInfoSlice.name].language,
   (language) => language
 );
