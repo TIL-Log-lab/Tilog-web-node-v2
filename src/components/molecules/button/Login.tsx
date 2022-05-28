@@ -1,11 +1,14 @@
+import React from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 
+import { modalSlice } from "@Redux/modal";
 import getUserLanguage from "@Language";
 import { TilogApiForUser } from "@Api/core";
 import { userInfoSlice } from "@Redux/userInfo";
 import OTechIcons from "@Organisms/techIcons";
-import { ExceptionInterface } from "@Api/errors/interface/exception.interface";
+
+import ExceptionInterface from "@Api/errors/interfaces";
 
 const MButtonLogin = () => {
   const dispatch = useDispatch();
@@ -29,6 +32,8 @@ const MButtonLogin = () => {
             language,
           };
           dispatch(userInfoSlice.actions.changeUserInfo(userInfo));
+          dispatch(modalSlice.actions.resetModal());
+
           loginWindow.close();
         }
       } catch (e) {
@@ -55,4 +60,4 @@ const MButtonLogin = () => {
     </button>
   );
 };
-export default MButtonLogin;
+export default React.memo(MButtonLogin);
