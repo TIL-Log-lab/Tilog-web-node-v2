@@ -7,9 +7,11 @@ import { createWrapper } from "next-redux-wrapper";
 
 import { userInfoSlice } from "@Redux/userInfo";
 import { TILOG_INFO_COOKIE } from "@Redux/constants/cookiesName";
+import { modalSlice } from "@Redux/modal";
 
 export const store = configureStore({
   reducer: {
+    [modalSlice.name]: modalSlice.reducer,
     [userInfoSlice.name]: userInfoSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
