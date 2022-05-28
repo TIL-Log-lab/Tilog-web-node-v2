@@ -1,5 +1,4 @@
-import React, { useCallback, useEffect, useRef } from "react";
-import { ReactNode } from "react";
+import React, { useCallback, useEffect, useRef, ReactNode } from "react";
 import { useDispatch } from "react-redux";
 
 import { modalSlice } from "@Redux/modal";
