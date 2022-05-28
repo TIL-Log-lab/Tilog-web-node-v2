@@ -2,7 +2,7 @@ import { HYDRATE } from "next-redux-wrapper";
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { GetMeResponseDto } from "@til-log.lab/tilog-api";
-import { UserInfoState } from "@Redux/interfaces/store.interface";
+import { State } from "@Redux/interfaces/redux.interface";
 import { CountryUnionType } from "@Messages/constants/country/interfaces";
 
 export interface UserInfoSliceState {
@@ -41,6 +41,6 @@ export const userInfoSlice = createSlice({
   },
 });
 export const languageSelector = createSelector(
-  (state: UserInfoState) => state[userInfoSlice.name].language,
+  (state: State) => state[userInfoSlice.name].language,
   (language) => language
 );
