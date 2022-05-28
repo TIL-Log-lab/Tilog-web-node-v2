@@ -35,9 +35,9 @@ const ModalWrapper = ({ children }: { children: ReactNode }) => {
   return (
     <div
       ref={modalRef}
-      className="absolute flex items-center justify-center w-full h-full  animate-enter wall bg-black/50 border-x-neutral-700"
+      className="absolute flex items-center justify-center w-full h-full wall bg-black/50 border-x-neutral-700"
     >
-      <div className="flex flex-row-reverse animate-bounce">
+      <div className="flex flex-row-reverse">
         <button
           className="absolute p-3 text-gray-400 w-fit h-fit hover:text-gray-900 dark:text-gray-500 dark:hover:text-white"
           onClick={() => dispatch(modalSlice.actions.resetModal())}
