@@ -18,7 +18,10 @@
     "paths": {
       "@Molecules/*": ["src/components/molecules/*"],
       "@Organisms/*": ["src/components/organisms/*"],
+      "@Modal/*": ["src/components/modal/*"],
       "@Api/*": ["lib/open-api/*"],
+      "@Language": ["lib/language/"],
+      "@Messages/*": ["lib/messages/*"],
       "@Redux/*": ["src/hooks/redux/*"],
       "@Query/*": ["src/hooks/react-query/*"]
     }

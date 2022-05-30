@@ -1,5 +1,7 @@
-import MButtonLogin from "src/components/molecules/button/Login";
-import MTitleAndDesc from "src/components/molecules/TitleAndDesc";
+import React from "react";
+
+import MButtonLogin from "@Molecules/button/Login";
+import MTitleAndDesc from "@Molecules/TitleAndDesc";
 
 const OLogin = () => {
   return (

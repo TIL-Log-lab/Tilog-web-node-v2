@@ -1,7 +1,8 @@
 import axios from "axios";
 import { ChangeEvent, useState } from "react";
-import MCategorySelected from "src/components/molecules/category/Selected";
-import MCategoryInput from "src/components/molecules/category/Input";
+
+import MCategorySelected from "@Molecules/category/Selected";
+import MCategoryInput from "@Molecules/category/Input";
 
 const OCategorySearch = () => {
   const [categoryLists, setCategoryLists] = useState(null);
@@ -30,13 +31,11 @@ const OCategorySearch = () => {
     );
   }
   return (
-    <>
-      <MCategoryInput
-        onChange={handleSearchCategory}
-        setSelectedCategory={setSelectedCategory}
-        categoryLists={categoryLists}
-      />
-    </>
+    <MCategoryInput
+      onChange={handleSearchCategory}
+      setSelectedCategory={setSelectedCategory}
+      categoryLists={categoryLists}
+    />
   );
 };
 export default OCategorySearch;
