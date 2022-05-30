@@ -4,10 +4,10 @@ import ModalNameUnion from "@Redux/interfaces/modal.interface";
 import { State } from "@Redux/interfaces/redux.interface";
 
 interface ModalSliceState {
-  modalName: ModalNameUnion;
+  modalName: ModalNameUnion | null;
 }
 const internalInitialState: ModalSliceState = {
-  modalName: "EMPTY",
+  modalName: null,
 };
 
 export const modalSlice = createSlice({

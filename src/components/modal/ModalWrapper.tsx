@@ -49,4 +49,4 @@ const ModalWrapper = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export default React.memo(ModalWrapper);
+export default ModalWrapper;

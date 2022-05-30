@@ -2,14 +2,12 @@ import { useSelector } from "react-redux";
 
 import { modalSelector } from "@Redux/modal";
 import MODAL_NAME from "@Redux/constants/modalName";
-import ModalNameUnion from "@Redux/interfaces/modal.interface";
+import ModalWrapper from "@Modal/ModalWrapper";
 
 const ModalContainer = () => {
   const modalName = useSelector(modalSelector);
-  if (modalName in MODAL_NAME) {
-    const newModalName = modalName as ModalNameUnion;
-    return MODAL_NAME[newModalName];
-  }
-  return <></>;
+  if (!modalName) return <></>;
+
+  return <ModalWrapper>{MODAL_NAME[modalName]}</ModalWrapper>;
 };
 export default ModalContainer;

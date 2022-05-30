@@ -3,7 +3,6 @@ import { ChangeEvent, useState } from "react";
 
 import MCategorySelected from "@Molecules/category/Selected";
 import MCategoryInput from "@Molecules/category/Input";
-import ModalWrapper from "@Modal/ModalWrapper";
 
 const OCategorySearch = () => {
   const [categoryLists, setCategoryLists] = useState(null);
@@ -32,13 +31,11 @@ const OCategorySearch = () => {
     );
   }
   return (
-    <ModalWrapper>
-      <MCategoryInput
-        onChange={handleSearchCategory}
-        setSelectedCategory={setSelectedCategory}
-        categoryLists={categoryLists}
-      />
-    </ModalWrapper>
+    <MCategoryInput
+      onChange={handleSearchCategory}
+      setSelectedCategory={setSelectedCategory}
+      categoryLists={categoryLists}
+    />
   );
 };
 export default OCategorySearch;
