@@ -11,6 +11,7 @@ export interface UserInfoSliceState {
   createdAt: GetMeResponseDto["createdAt"];
   language: CountryUnionType;
   settings: GetMeResponseDto["settings"];
+  isLogin: boolean;
 }
 
 const internalInitialState: UserInfoSliceState = {
@@ -19,6 +20,7 @@ const internalInitialState: UserInfoSliceState = {
   createdAt: "",
   language: "ko",
   settings: [],
+  isLogin: false,
 };
 
 export const userInfoSlice = createSlice({

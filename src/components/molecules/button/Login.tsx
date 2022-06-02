@@ -30,6 +30,7 @@ const MButtonLogin = () => {
           const userInfo = {
             ...data,
             language,
+            isLogin: true,
           };
           dispatch(userInfoSlice.actions.changeUserInfo(userInfo));
           dispatch(modalSlice.actions.resetModal());
