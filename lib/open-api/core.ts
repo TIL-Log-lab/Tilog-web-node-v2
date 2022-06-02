@@ -5,40 +5,67 @@ import { NETWORK_ERROR_MESSAGE } from "@Messages/constants/error";
 import { REQUEST_ERROR, UNKNOWN } from "@Api/errors/constant/requestLocation";
 
 import { store } from "@Redux/store";
+import { userInfoSlice } from "@Redux/userInfo";
+import { accessTokenSlice } from "@Redux/accessToken";
+
 import * as TILog from "@til-log.lab/tilog-api";
 import exception from "@Api/errors/exception";
-import { userInfoSlice } from "@Redux/userInfo";
 
-const config = new TILog.Configuration({
-  basePath: process.env.TILOG_API,
-  baseOptions: {
-    withCredentials: true,
-  },
+export const instance = axios.create({
+  withCredentials: true,
+  baseURL: process.env.TILOG_API,
 });
-
-export const TilogApiForAuth = new TILog.AuthApi(config);
-export const TilogApiForUser = new TILog.UserApi(config);
-export const TilogApiForCategory = new TILog.CategoryApi(config);
-export const TilogApiForComment = new TILog.CommentApi(config);
-export const TilogApiForPost = new TILog.PostApi(config);
-export const TilogApiForPostLike = new TILog.PostLikeApi(config);
-
-createAuthRefreshInterceptor(axios, (failedRequest) =>
-  axios
-    .get("api/access-token")
-    .then((response) => {
-      const { accessToken } = response.data;
-      const bearer = `Bearer ${accessToken}`;
-      axios.defaults.headers.common["Authorization"] = bearer;
-      failedRequest.response.config.headers.Authorization = bearer;
-      return Promise.resolve();
-    })
-    .catch(() => {
-      return Promise.reject(failedRequest);
-    })
+export const TilogApiForAuth = new TILog.AuthApi(
+  undefined,
+  undefined,
+  instance
 );
-
-axios.interceptors.response.use(
+export const TilogApiForUser = new TILog.UserApi(
+  undefined,
+  undefined,
+  instance
+);
+export const TilogApiForCategory = new TILog.CategoryApi(
+  undefined,
+  undefined,
+  instance
+);
+export const TilogApiForComment = new TILog.CommentApi(
+  undefined,
+  undefined,
+  instance
+);
+export const TilogApiForPost = new TILog.PostApi(
+  undefined,
+  undefined,
+  instance
+);
+export const TilogApiForPostLike = new TILog.PostLikeApi(
+  undefined,
+  undefined,
+  instance
+);
+createAuthRefreshInterceptor(
+  instance,
+  (failedRequest) =>
+    instance
+      .post("/auth/access-token")
+      .then((response) => {
+        const { accessToken } = response.data;
+        const bearer = `Bearer ${accessToken}`;
+        store.dispatch(
+          accessTokenSlice.actions.changeToken({ accessToken: accessToken })
+        );
+        instance.defaults.headers.common["Authorization"] = bearer;
+        failedRequest.response.config.headers.Authorization = bearer;
+        return Promise.resolve();
+      })
+      .catch(() => {
+        return Promise.reject(failedRequest);
+      }),
+  { pauseInstanceWhileRefreshing: true }
+);
+instance.interceptors.response.use(
   (response) => response,
   (error) => {
     if (axios.isAxiosError(error)) {
@@ -47,6 +74,7 @@ axios.interceptors.response.use(
         const responseData = error.response.data;
         if (responseData.statusCode === 401) {
           store.dispatch(userInfoSlice.actions.resetUserInfo());
+          instance.defaults.headers.common["Authorization"] = "";
         }
         return Promise.reject(
           exception(
