@@ -20,8 +20,10 @@
       "@Organisms/*": ["src/components/organisms/*"],
       "@Modal/*": ["src/components/modal/*"],
       "@Api/*": ["lib/open-api/*"],
+      "@ServerSide/*": ["lib/server-side/*"],
       "@Language": ["lib/language/"],
       "@Messages/*": ["lib/messages/*"],
+      "@JwtDecode": ["lib/jwt-decode"],
       "@Redux/*": ["src/hooks/redux/*"],
       "@Query/*": ["src/hooks/react-query/*"]
     }
