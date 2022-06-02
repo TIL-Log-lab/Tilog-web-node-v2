@@ -8,9 +8,11 @@ import { createWrapper } from "next-redux-wrapper";
 import { userInfoSlice } from "@Redux/userInfo";
 import { TILOG_INFO_COOKIE } from "@Redux/constants/cookiesName";
 import { modalSlice } from "@Redux/modal";
+import { accessTokenSlice } from "@Redux/accessToken";
 
 export const store = configureStore({
   reducer: {
+    [accessTokenSlice.name]: accessTokenSlice.reducer,
     [modalSlice.name]: modalSlice.reducer,
     [userInfoSlice.name]: userInfoSlice.reducer,
   },
@@ -23,4 +25,4 @@ export const store = configureStore({
 });
 export const makeStore = wrapMakeStore(() => store);
 
-export const wrapper = createWrapper(makeStore, { debug: true });
+export const wrapper = createWrapper(makeStore);
