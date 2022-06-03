@@ -46,22 +46,21 @@ export const TilogApiForPostLike = new TILog.PostLikeApi(
 );
 createAuthRefreshInterceptor(
   axiosInstance,
-  (failedRequest) =>
-    axiosInstance
-      .post("/auth/access-token")
-      .then((response) => {
-        const { accessToken } = response.data;
-        const bearer = `Bearer ${accessToken}`;
-        store.dispatch(
-          accessTokenSlice.actions.changeToken({ accessToken: accessToken })
-        );
-        axiosInstance.defaults.headers.common["Authorization"] = bearer;
-        failedRequest.response.config.headers.Authorization = bearer;
-        return Promise.resolve();
-      })
-      .catch(() => {
-        return Promise.reject(failedRequest);
-      }),
+  async (failedRequest) => {
+    try {
+      const { data } = await axiosInstance.post("/auth/access-token");
+      const { accessToken } = data;
+      const bearer = `Bearer ${accessToken}`;
+      store.dispatch(
+        accessTokenSlice.actions.changeToken({ accessToken: accessToken })
+      );
+      axiosInstance.defaults.headers.common["Authorization"] = bearer;
+      failedRequest.response.config.headers.Authorization = bearer;
+      return Promise.resolve();
+    } catch (error) {
+      return Promise.reject(failedRequest);
+    }
+  },
   { pauseInstanceWhileRefreshing: true }
 );
 axiosInstance.interceptors.response.use(
