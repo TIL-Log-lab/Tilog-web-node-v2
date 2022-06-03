@@ -6,10 +6,11 @@ import {
 import { createWrapper } from "next-redux-wrapper";
 
 import { TILOG_INFO_COOKIE } from "@Redux/constants/cookiesName";
-import { modalSlice, userInfoSlice } from "@Redux/slices/";
+import { modalSlice, userInfoSlice, accessTokenSlice } from "@Redux/slices/";
 
 export const store = configureStore({
   reducer: {
+    [accessTokenSlice.name]: accessTokenSlice.reducer,
     [modalSlice.name]: modalSlice.reducer,
     [userInfoSlice.name]: userInfoSlice.reducer,
   },
