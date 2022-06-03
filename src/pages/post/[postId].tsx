@@ -1,9 +1,12 @@
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import { useRouter } from "next/router";
 
 import OComment from "src/components/organisms/Comment";
 import OHeader from "src/components/organisms/Header";
 import PostDetail from "src/components/organisms/PostDetail";
+
+import serverSideAuthentication from "@ServerSide/authentication";
+import getPostDetail from "@ServerSide/api/getPostDetail";
 
 import {
   GetAccessTokenUsingRefreshTokenResponse,
@@ -31,3 +34,27 @@ const PostDetailPage: NextPage<PostDetailPageProps> = ({
   );
 };
 export default PostDetailPage;
+
+export const getServerSideProps: GetServerSideProps = serverSideAuthentication({
+  callback: async (_, context, accessToken) => {
+    const { params } = context;
+    if (!params) return { notFound: true };
+
+    const postId = params.postId;
+    if (!postId) return { notFound: true };
+    if (Array.isArray(postId)) return { notFound: true };
+
+    try {
+      const { data } = await getPostDetail(postId, accessToken);
+      return {
+        props: {
+          post: data,
+        },
+      };
+    } catch (error) {
+      return {
+        notFound: true,
+      };
+    }
+  },
+});
