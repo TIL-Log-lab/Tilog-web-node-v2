@@ -21,9 +21,10 @@
       "@Modal/*": ["src/components/modal/*"],
       "@Api/*": ["lib/open-api/*"],
       "@ServerSide/*": ["lib/server-side/*"],
-      "@Language": ["lib/language/"],
+      "@Language/*": ["lib/language/*"],
       "@Messages/*": ["lib/messages/*"],
       "@JwtDecode": ["lib/jwt-decode"],
+      "@DateFns/*": ["lib/date-fns/*"],
       "@Redux/*": ["src/hooks/redux/*"],
       "@Query/*": ["src/hooks/react-query/*"]
     }
