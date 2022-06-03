@@ -1,4 +1,4 @@
-import { COUNTRY } from "@Messages/constants/country";
+import { LANGUAGE } from "@Language/language";
 
-type MessageInterface = Record<typeof COUNTRY[keyof typeof COUNTRY], string>;
+type MessageInterface = Record<typeof LANGUAGE[keyof typeof LANGUAGE], string>;
 export default MessageInterface;
