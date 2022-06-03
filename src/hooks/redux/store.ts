@@ -5,9 +5,8 @@ import {
 } from "next-redux-cookie-wrapper";
 import { createWrapper } from "next-redux-wrapper";
 
-import { userInfoSlice } from "@Redux/userInfo";
 import { TILOG_INFO_COOKIE } from "@Redux/constants/cookiesName";
-import { modalSlice } from "@Redux/modal";
+import { modalSlice, userInfoSlice } from "@Redux/slices/";
 
 export const store = configureStore({
   reducer: {
