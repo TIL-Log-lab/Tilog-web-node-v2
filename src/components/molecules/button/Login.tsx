@@ -2,11 +2,11 @@ import React from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 
-import { modalSlice } from "@Redux/modal";
-import getUserLanguage from "@Language";
-import { TilogApiForUser } from "@Api/core";
-import { userInfoSlice } from "@Redux/userInfo";
 import OTechIcons from "@Organisms/techIcons";
+
+import { TilogApiForUser } from "@Api/core";
+import getUserLanguage from "@Language";
+import { modalSlice, userInfoSlice } from "@Redux/slices";
 
 import ExceptionInterface from "@Api/errors/interfaces";
 
@@ -29,6 +29,7 @@ const MButtonLogin = () => {
           const language = getUserLanguage();
           const userInfo = {
             ...data,
+            isLogin: true,
             language,
           };
           dispatch(userInfoSlice.actions.changeUserInfo(userInfo));
