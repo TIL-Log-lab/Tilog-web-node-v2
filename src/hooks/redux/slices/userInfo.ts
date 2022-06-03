@@ -46,3 +46,8 @@ export const languageSelector = createSelector(
   (state: State) => state[userInfoSlice.name].language,
   (language) => language
 );
+
+export const usernameSelector = createSelector(
+  (state: State) => state[userInfoSlice.name].name,
+  (name) => name
+);

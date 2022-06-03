@@ -1,16 +1,14 @@
 import Link from "next/link";
 import { BsDot } from "react-icons/bs";
 import { useSelector } from "react-redux";
-import { userInfoSlice } from "src/hooks/redux/userInfo";
 
-import { UserInfoState } from "@Redux/store";
 import MButtonLogout from "@Molecules/button/Logout";
 import MButtonLogin from "@Molecules/button/Login";
 
+import { usernameSelector } from "@Redux/slices/userInfo";
+
 const OHeader = () => {
-  const { name } = useSelector(
-    (state: UserInfoState) => state[userInfoSlice.name]
-  );
+  const name = useSelector(usernameSelector);
   return (
     <div>
       <div className="grid grid-cols-3 p-5 font-eng-sub-font-2">
