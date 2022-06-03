@@ -1,21 +1,25 @@
 import React from "react";
 import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { modalSlice } from "@Redux/modal";
-import getUserLanguage from "@Language";
-import { TilogApiForUser } from "@Api/core";
-import { userInfoSlice } from "@Redux/userInfo";
 import OTechIcons from "@Organisms/techIcons";
+
+import { TilogApiForUser } from "@Api/core";
+import { modalSlice } from "@Redux/modal";
+import { languageSelector, userInfoSlice } from "@Redux/userInfo";
+import getUserLanguage from "@Language/getUserLanguage";
 
 import ExceptionInterface from "@Api/errors/interfaces";
 
 const MButtonLogin = () => {
   const dispatch = useDispatch();
+  const language = useSelector(languageSelector);
+
   const handleLogin = () => {
     const loginWindow = window.open(
       process.env.TILOG_API + "/auth/github/login"
     );
+    // NOTE: 로그인창이 알수없는 문제로 뜨지않았을때
     if (!loginWindow) {
       return toast.error("window open error");
     }
@@ -34,7 +38,6 @@ const MButtonLogin = () => {
           };
           dispatch(userInfoSlice.actions.changeUserInfo(userInfo));
           dispatch(modalSlice.actions.resetModal());
-
           loginWindow.close();
         }
       } catch (e) {
@@ -42,7 +45,7 @@ const MButtonLogin = () => {
         if (error.statusCode !== 401) {
           loginWindow.close();
           clearInterval(loginCheck);
-          // TODO: language error handling..
+          toast.error(error.message[language]);
         }
       }
     }, 1000);
@@ -61,4 +64,4 @@ const MButtonLogin = () => {
     </button>
   );
 };
-export default React.memo(MButtonLogin);
+export default MButtonLogin;
