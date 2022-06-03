@@ -3,13 +3,13 @@ import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 import { State } from "@Redux/interfaces/redux.interface";
-import { CountryUnionType } from "@Messages/constants/country/interfaces";
+import { LanguageUnionType } from "@Language/index";
 
 export interface UserInfoSliceState {
   name: GetMeResponseDto["name"];
   avatar: GetMeResponseDto["avatar"];
   createdAt: GetMeResponseDto["createdAt"];
-  language: CountryUnionType;
+  language: LanguageUnionType;
   settings: GetMeResponseDto["settings"];
   isLogin: boolean;
 }
