@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 
 import { modalSlice } from "@Redux/modal";
-import getUserLanguage from "@Language";
+import getUserLanguage from "@Language/getUserLanguage";
 import { TilogApiForUser } from "@Api/core";
 import { userInfoSlice } from "@Redux/userInfo";
 import OTechIcons from "@Organisms/techIcons";
