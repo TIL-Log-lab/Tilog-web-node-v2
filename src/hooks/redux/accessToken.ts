@@ -1,12 +1,12 @@
-import { createAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { GetAccessTokenUsingRefreshTokenResponse } from "@til-log.lab/tilog-api";
 
-export interface accessTokenSliceState {
+export interface AccessTokenSliceState {
   accessToken: GetAccessTokenUsingRefreshTokenResponse["accessToken"];
 }
 
-const internalInitialState: accessTokenSliceState = {
+const internalInitialState: AccessTokenSliceState = {
   accessToken: "",
 };
 
@@ -15,7 +15,7 @@ export const accessTokenSlice = createSlice({
   initialState: internalInitialState,
 
   reducers: {
-    changeToken(state, { payload }: PayloadAction<accessTokenSliceState>) {
+    changeToken(state, { payload }: PayloadAction<AccessTokenSliceState>) {
       Object.assign(state, payload);
     },
     resetToken(state) {

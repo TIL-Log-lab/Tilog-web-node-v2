@@ -30,10 +30,10 @@ const MButtonLogin = () => {
       try {
         const { data } = await TilogApiForUser.usersControllerGetMe();
         if (data) {
-          const language = getUserLanguage();
+          const userLanguage = getUserLanguage();
           const userInfo = {
             ...data,
-            language,
+            language: userLanguage,
             isLogin: true,
           };
           dispatch(userInfoSlice.actions.changeUserInfo(userInfo));

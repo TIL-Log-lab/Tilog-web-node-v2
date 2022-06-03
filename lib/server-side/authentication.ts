@@ -16,13 +16,13 @@ export type Callback = (
   accessToken: GetAccessTokenUsingRefreshTokenResponse["accessToken"]
 ) => Promise<GetServerSidePropsResult<{ [key: string]: any }>>;
 
-interface serverSideAuthenticationProps {
+interface ServerSideAuthenticationProps {
   callback: Callback;
 }
 
 const serverSideAuthentication = ({
   callback,
-}: serverSideAuthenticationProps) =>
+}: ServerSideAuthenticationProps) =>
   wrapper.getServerSideProps((store) => async (context) => {
     const { headers } = context.req;
 
