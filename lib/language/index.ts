@@ -1,12 +1,15 @@
-import { COUNTRY } from "@Messages/constants/country";
-import { CountryUnionType } from "@Messages/constants/country/interfaces";
+import { ko, enUS } from "date-fns/locale";
 
-export default function getUserLanguage(): CountryUnionType {
-  const language = navigator.language.substring(0, 2).toLowerCase();
+export const LANGUAGE = {
+  ko: "ko",
+  en: "en",
+} as const;
 
-  if (language in COUNTRY) {
-    const userLanguage = language as CountryUnionType;
-    return COUNTRY[userLanguage];
-  }
-  return COUNTRY.ko;
-}
+export const DATE_FNS_LANGUAGE = {
+  ko: ko,
+  en: enUS,
+} as const;
+
+export type LanguageUnionType =
+  | keyof typeof DATE_FNS_LANGUAGE
+  | keyof typeof LANGUAGE;
