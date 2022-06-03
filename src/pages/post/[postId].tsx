@@ -1,35 +1,27 @@
 import { GetServerSideProps, NextPage } from "next";
-import { useRouter } from "next/router";
 
-import OComment from "src/components/organisms/Comment";
-import OHeader from "src/components/organisms/Header";
-import PostDetail from "src/components/organisms/PostDetail";
+import OHeader from "@Organisms/Header";
+import OPostDetail from "@Organisms/PostDetail";
 
 import serverSideAuthentication from "@ServerSide/authentication";
 import getPostDetail from "@ServerSide/api/getPostDetail";
 
-import {
-  GetAccessTokenUsingRefreshTokenResponse,
-  GetMeResponseDto,
-} from "@til-log.lab/tilog-api";
-interface PostDetailPageProps {
-  accessToken: GetAccessTokenUsingRefreshTokenResponse;
-  userInfo: GetMeResponseDto;
-}
-const PostDetailPage: NextPage<PostDetailPageProps> = ({
-  accessToken,
-  userInfo,
-}: PostDetailPageProps) => {
-  const router = useRouter();
-  const { username } = router.query;
+import { GetPostDetailResponseDto } from "@til-log.lab/tilog-api";
 
+interface PostDetailPageProps {
+  post: GetPostDetailResponseDto;
+}
+
+const PostDetailPage: NextPage<PostDetailPageProps> = ({
+  post,
+}: PostDetailPageProps) => {
   return (
     <div className="md:mx-20 2xl:mx-60">
-      <OHeader nav={username + ".log"} userInfo={userInfo} />
+      <OHeader />
       <div className="flex flex-col items-center pt-20 text-center">
-        <PostDetail />
+        <OPostDetail post={post} />
       </div>
-      <OComment />
+      {/* <OComment /> */}
     </div>
   );
 };
