@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import { wrapper } from "@Redux/store";
 import OHeader from "@Organisms/Header";
 import useHomeQuery from "@Query/useHomeQuery";
-import { modalSlice } from "@Redux/modal";
+import { modalSlice } from "@Redux/slices";
 import { useDispatch } from "react-redux";
 
 const Home: NextPage = () => {

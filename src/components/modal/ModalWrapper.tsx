@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, ReactNode } from "react";
 import { useDispatch } from "react-redux";
 
-import { modalSlice } from "@Redux/modal";
+import { modalSlice } from "@Redux/slices";
 import MButtonCancel from "@Molecules/button/Cancel";
 
 const ModalWrapper = ({ children }: { children: ReactNode }) => {
