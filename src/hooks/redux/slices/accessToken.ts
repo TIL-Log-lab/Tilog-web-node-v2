@@ -3,11 +3,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { GetAccessTokenUsingRefreshTokenResponse } from "@til-log.lab/tilog-api";
 
 export interface AccessTokenSliceState {
-  accessToken: GetAccessTokenUsingRefreshTokenResponse["accessToken"];
+  accessToken: GetAccessTokenUsingRefreshTokenResponse["accessToken"] | null;
 }
 
 const internalInitialState: AccessTokenSliceState = {
-  accessToken: "",
+  accessToken: null,
 };
 
 export const accessTokenSlice = createSlice({

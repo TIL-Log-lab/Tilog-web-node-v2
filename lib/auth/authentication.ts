@@ -13,10 +13,8 @@ import { GetAccessTokenUsingRefreshTokenResponse } from "@til-log.lab/tilog-api"
 
 export type Callback = (
   store: Store,
-
   context: GetServerSidePropsContext,
-
-  accessToken: GetAccessTokenUsingRefreshTokenResponse["accessToken"]
+  accessToken: GetAccessTokenUsingRefreshTokenResponse["accessToken"] | null
 ) => Promise<GetServerSidePropsResult<{ [key: string]: any }>>;
 
 interface ServerSideAuthenticationProps {
@@ -39,7 +37,7 @@ const serverSideAuthentication = ({
       Cookie: !headers.cookie ? "" : headers.cookie,
     };
 
-    if (!isLogin) return callback(store, context, "");
+    if (!isLogin) return callback(store, context, null);
 
     try {
       if (!accessToken || isTokenExpired(accessToken)) {
@@ -56,7 +54,7 @@ const serverSideAuthentication = ({
 
       return callback(store, context, accessToken);
     } catch (error) {
-      return callback(store, context, "");
+      return callback(store, context, null);
     }
   });
 
