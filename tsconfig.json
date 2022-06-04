@@ -22,6 +22,7 @@
       "@Api/*": ["lib/open-api/*"],
       "@Language/*": ["lib/language/*"],
       "@Messages/*": ["lib/messages/*"],
+      "@DateFns/*": ["lib/date-fns/*"],
       "@Redux/*": ["src/hooks/redux/*"],
       "@Query/*": ["src/hooks/react-query/*"]
     }
