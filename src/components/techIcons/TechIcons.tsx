@@ -1,6 +1,6 @@
 import * as BS from "react-icons/bs";
 
-import techIconsProvider from "src/components/organisms/techIcons/icon";
+import techIconsProvider from "./TechIconsProvider";
 
 interface Props {
   categoryName: string;
