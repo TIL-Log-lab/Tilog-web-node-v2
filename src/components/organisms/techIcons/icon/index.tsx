@@ -1,8 +1,9 @@
+import { ReactElement } from "react";
+
 import * as SI from "react-icons/si";
 import * as FA from "react-icons/fa";
 import * as GR from "react-icons/gr";
 import * as BS from "react-icons/bs";
-import { TechIconInterface } from "src/components/organisms/techIcons/interface/techIcons";
 
 const TYPE_SCRIPT = "TypeScript";
 const JAVA_SCRIPT = "JavaScript";
@@ -22,6 +23,11 @@ const NODEJS = "Nodejs";
 const INFRA = "Infra";
 const UNKNOWN = "Unknown";
 
+export interface TechIconInterface {
+  [techName: string]: {
+    Render: () => ReactElement;
+  };
+}
 const TechIcons: TechIconInterface = {
   [JAVA_SCRIPT]: {
     Render: () => <SI.SiJavascript className="text-javascript" />,
