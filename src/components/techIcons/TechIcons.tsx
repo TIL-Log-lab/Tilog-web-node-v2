@@ -1,5 +1,3 @@
-import * as BS from "react-icons/bs";
-
 import techIconsProvider from "./TechIconsProvider";
 
 interface Props {
@@ -11,6 +9,6 @@ const TechIcons = ({ categoryName }: Props) => {
   if (upper_categoryName in techIconsProvider) {
     return techIconsProvider[upper_categoryName];
   }
-  return <BS.BsFillPatchQuestionFill />;
+  return techIconsProvider["UNKNOWN"];
 };
 export default TechIcons;

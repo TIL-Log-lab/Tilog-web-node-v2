@@ -26,5 +26,6 @@ const TechIconsProvider: TechIconsProviderInterface = {
   NODEJS: <FA.FaNodeJs className="text-nodejs" />,
   CSS: <SI.SiCss3 className="text-css" />,
   INFRA: <BS.BsFillHddNetworkFill />,
+  UNKNOWN: <BS.BsFillPatchQuestionFill />,
 };
 export default TechIconsProvider;
