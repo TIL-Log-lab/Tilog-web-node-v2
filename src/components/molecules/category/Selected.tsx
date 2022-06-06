@@ -1,4 +1,4 @@
-import OTechIcons from "@Organisms/techIcons";
+import TechIcons from "@TechIcons/TechIcons";
 
 interface MCategorySelectedProps {
   selectedCategory: string;
@@ -14,7 +14,7 @@ const MCategorySelected = ({
       onClick={onClick}
     >
       <div className="flex items-center">
-        <OTechIcons categoryName={selectedCategory} />
+        <TechIcons categoryName={selectedCategory} />
         {selectedCategory}
       </div>
     </button>

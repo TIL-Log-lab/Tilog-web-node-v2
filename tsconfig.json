@@ -18,6 +18,7 @@
     "paths": {
       "@Molecules/*": ["src/components/molecules/*"],
       "@Organisms/*": ["src/components/organisms/*"],
+      "@TechIcons/*": ["src/components/techIcons/*"],
       "@Modal/*": ["src/components/modal/*"],
       "@Api/*": ["lib/open-api/*"],
       "@Language/*": ["lib/language/*"],

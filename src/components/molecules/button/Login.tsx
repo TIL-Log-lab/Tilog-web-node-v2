@@ -6,9 +6,9 @@ import { modalSlice } from "@Redux/modal";
 import getUserLanguage from "@Language/getUserLanguage";
 import { TilogApiForUser } from "@Api/core";
 import { userInfoSlice } from "@Redux/userInfo";
-import OTechIcons from "@Organisms/techIcons";
 
 import ExceptionInterface from "@Api/errors/interfaces";
+import TechIcons from "@TechIcons/TechIcons";
 
 const MButtonLogin = () => {
   const dispatch = useDispatch();
@@ -54,7 +54,7 @@ const MButtonLogin = () => {
       <div className="flex flex-row items-center justify-center p-3 ">
         Login With Github
         <div className="ml-3 text-2xl">
-          <OTechIcons categoryName="Github" />
+          <TechIcons categoryName="Github" />
         </div>
       </div>
     </button>
