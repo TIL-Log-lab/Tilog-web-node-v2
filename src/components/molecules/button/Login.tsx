@@ -2,13 +2,12 @@ import React from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 
-import OTechIcons from "@Organisms/techIcons";
-
 import { TilogApiForUser } from "@Api/core";
-import getUserLanguage from "@Language";
 import { modalSlice, userInfoSlice } from "@Redux/slices";
+import getUserLanguage from "@Language/getUserLanguage";
 
 import ExceptionInterface from "@Api/errors/interfaces";
+import TechIcons from "@TechIcons/TechIcons";
 
 const MButtonLogin = () => {
   const dispatch = useDispatch();
@@ -55,7 +54,7 @@ const MButtonLogin = () => {
       <div className="flex flex-row items-center justify-center p-3 ">
         Login With Github
         <div className="ml-3 text-2xl">
-          <OTechIcons categoryName="Github" />
+          <TechIcons categoryName="Github" />
         </div>
       </div>
     </button>
