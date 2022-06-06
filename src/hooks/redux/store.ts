@@ -6,11 +6,10 @@ import {
 import { createWrapper } from "next-redux-wrapper";
 
 import { TILOG_INFO_COOKIE } from "@Redux/constants/cookiesName";
-import { modalSlice, userInfoSlice, accessTokenSlice } from "@Redux/slices/";
+import { modalSlice, userInfoSlice } from "@Redux/slices/";
 
 export const store = configureStore({
   reducer: {
-    [accessTokenSlice.name]: accessTokenSlice.reducer,
     [modalSlice.name]: modalSlice.reducer,
     [userInfoSlice.name]: userInfoSlice.reducer,
   },
@@ -23,4 +22,4 @@ export const store = configureStore({
 });
 export const makeStore = wrapMakeStore(() => store);
 
-export const wrapper = createWrapper(makeStore, { debug: true });
+export const wrapper = createWrapper(makeStore);

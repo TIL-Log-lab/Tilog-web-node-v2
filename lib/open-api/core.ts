@@ -8,7 +8,7 @@ import * as TILog from "@til-log.lab/tilog-api";
 import exception from "@Api/errors/exception";
 
 import { store } from "@Redux/store";
-import { userInfoSlice, accessTokenSlice } from "@Redux/slices";
+import { userInfoSlice } from "@Redux/slices";
 
 export const axiosInstance = axios.create({
   withCredentials: true,
@@ -51,9 +51,6 @@ createAuthRefreshInterceptor(
       const { data } = await axiosInstance.post("/auth/access-token");
       const { accessToken } = data;
       const bearer = `Bearer ${accessToken}`;
-      store.dispatch(
-        accessTokenSlice.actions.changeToken({ accessToken: accessToken })
-      );
       axiosInstance.defaults.headers.common["Authorization"] = bearer;
       failedRequest.response.config.headers.Authorization = bearer;
       return Promise.resolve();
