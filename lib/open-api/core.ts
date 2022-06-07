@@ -1,5 +1,4 @@
 import axios from "axios";
-import createAuthRefreshInterceptor from "axios-auth-refresh";
 
 import { NETWORK_ERROR_MESSAGE } from "@Messages/constants/error";
 import { REQUEST_ERROR, UNKNOWN } from "@Api/errors/constant/requestLocation";
@@ -43,20 +42,6 @@ export const TilogApiForPostLike = new TILog.PostLikeApi(
   undefined,
   undefined,
   axiosInstance
-);
-createAuthRefreshInterceptor(axios, (failedRequest) =>
-  axios
-    .get("api/access-token")
-    .then((response) => {
-      const { accessToken } = response.data;
-      const bearer = `Bearer ${accessToken}`;
-      axios.defaults.headers.common["Authorization"] = bearer;
-      failedRequest.response.config.headers.Authorization = bearer;
-      return Promise.resolve();
-    })
-    .catch(() => {
-      return Promise.reject(failedRequest);
-    })
 );
 
 axiosInstance.interceptors.response.use(
