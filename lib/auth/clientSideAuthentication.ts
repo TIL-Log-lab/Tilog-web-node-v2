@@ -24,9 +24,8 @@ const clientSideAuthentication = async <T>({
     return tilogApi();
   }
 
-  const accessTokenToString = accessToken.toString().slice(7);
   // NOTE: accessToken이 만료됐을 때
-  if (isTokenExpired(accessTokenToString)) {
+  if (isTokenExpired(accessToken)) {
     const { data } =
       await TilogApiForAuth.usersAuthControllerGetAccessTokenUsingRefreshToken();
     setAccessTokenToAxiosHeader(data.accessToken);
