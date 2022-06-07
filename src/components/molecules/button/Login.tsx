@@ -2,13 +2,13 @@ import React from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 
-import { modalSlice } from "@Redux/modal";
+import { TilogApiForAuth, TilogApiForUser } from "@Api/core";
 import getUserLanguage from "@Language/getUserLanguage";
-import { TilogApiForUser } from "@Api/core";
-import { userInfoSlice } from "@Redux/userInfo";
 
 import ExceptionInterface from "@Api/errors/interfaces";
 import TechIcons from "@TechIcons/TechIcons";
+import { userInfoSlice } from "@Redux/userInfo";
+import { modalSlice } from "@Redux/modal";
 
 const MButtonLogin = () => {
   const dispatch = useDispatch();
@@ -24,11 +24,20 @@ const MButtonLogin = () => {
         clearInterval(loginCheck);
       }
       try {
-        const { data } = await TilogApiForUser.usersControllerGetMe();
+        const {
+          data: { accessToken },
+        } = await TilogApiForAuth.usersAuthControllerGetAccessTokenUsingRefreshToken();
+
+        const { data } = await TilogApiForUser.usersControllerGetMe({
+          headers: {
+            Authorization: `bearer ${accessToken}`,
+          },
+        });
         if (data) {
           const language = getUserLanguage();
           const userInfo = {
             ...data,
+            isLogin: true,
             language,
           };
           dispatch(userInfoSlice.actions.changeUserInfo(userInfo));

@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 
+import axiosInstance, { TilogApiForAuth } from "@Api/core";
 import { userInfoSlice } from "@Redux/userInfo";
-import { TilogApiForAuth } from "@Api/core";
 
 const MButtonLogout = () => {
   const dispatch = useDispatch();
@@ -10,6 +10,7 @@ const MButtonLogout = () => {
     try {
       await TilogApiForAuth.usersAuthControllerDeleteRefreshToken();
       dispatch(userInfoSlice.actions.resetUserInfo());
+      axiosInstance.defaults.headers.common["Authorization"] = "";
     } catch {
       // TODO: language error handling..
     }
