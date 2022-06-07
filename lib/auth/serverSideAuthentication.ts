@@ -9,16 +9,16 @@ import getAccessTokenToAxiosHeader from "@Auth/utility/getAccessTokenToAxiosHead
 
 import { Store } from "@Redux/interfaces/redux.interface";
 
-type Callback = (
+type Callback<T> = (
   store: Store,
   context: GetServerSidePropsContext
 ) => Promise<
   GetServerSidePropsResult<{
-    [key: string]: any;
+    [key: string]: T;
   }>
 >;
 
-const serverSideAuthentication = (callback: Callback) =>
+const serverSideAuthentication = <T>(callback: Callback<T>) =>
   wrapper.getServerSideProps((store) => async (context) => {
     const { headers } = context.req;
     const { isLogin } = store.getState().TILog_Info;
