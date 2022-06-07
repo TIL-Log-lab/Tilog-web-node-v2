@@ -1,8 +1,4 @@
-import {
-  GetServerSidePropsContext,
-  GetServerSidePropsResult,
-  Redirect,
-} from "next";
+import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { AxiosRequestHeaders } from "axios";
 
 import { wrapper } from "@Redux/store";
