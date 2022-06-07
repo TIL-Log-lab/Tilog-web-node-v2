@@ -13,14 +13,12 @@ import getAccessTokenToAxiosHeader from "@Auth/utility/getAccessTokenToAxiosHead
 
 import { Store } from "@Redux/interfaces/redux.interface";
 
-type GetServerSidePropsReturnType<P> = P | Promise<P> | Redirect | boolean;
-
 type Callback = (
   store: Store,
   context: GetServerSidePropsContext
 ) => Promise<
   GetServerSidePropsResult<{
-    [key: string]: GetServerSidePropsReturnType<{ [key: string]: object }>;
+    [key: string]: any;
   }>
 >;
 
