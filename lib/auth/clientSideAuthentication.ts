@@ -16,27 +16,23 @@ const clientSideAuthentication = async <T>({
   // NOTE: 비회원
   if (!isLogin) return tilogApi();
 
-  try {
-    // NOTE: accessToken이 없을 때
-    if (!accessToken) {
-      const { data } =
-        await TilogApiForAuth.usersAuthControllerGetAccessTokenUsingRefreshToken();
-      setAccessTokenToAxiosHeader(data.accessToken);
-      return tilogApi();
-    }
-
-    const accessTokenToString = accessToken.toString().slice(7);
-    // NOTE: accessToken이 만료됐을 때
-    if (isTokenExpired(accessTokenToString)) {
-      const { data } =
-        await TilogApiForAuth.usersAuthControllerGetAccessTokenUsingRefreshToken();
-      setAccessTokenToAxiosHeader(data.accessToken);
-      return tilogApi();
-    }
-    // NOTE: accessToken이 사용하능할 때
+  // NOTE: accessToken이 없을 때
+  if (!accessToken) {
+    const { data } =
+      await TilogApiForAuth.usersAuthControllerGetAccessTokenUsingRefreshToken();
+    setAccessTokenToAxiosHeader(data.accessToken);
     return tilogApi();
-  } catch (error) {
-    throw error;
   }
+
+  const accessTokenToString = accessToken.toString().slice(7);
+  // NOTE: accessToken이 만료됐을 때
+  if (isTokenExpired(accessTokenToString)) {
+    const { data } =
+      await TilogApiForAuth.usersAuthControllerGetAccessTokenUsingRefreshToken();
+    setAccessTokenToAxiosHeader(data.accessToken);
+    return tilogApi();
+  }
+  // NOTE: accessToken이 사용하능할 때
+  return tilogApi();
 };
 export default clientSideAuthentication;
