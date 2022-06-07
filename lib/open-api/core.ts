@@ -4,25 +4,46 @@ import createAuthRefreshInterceptor from "axios-auth-refresh";
 import { NETWORK_ERROR_MESSAGE } from "@Messages/constants/error";
 import { REQUEST_ERROR, UNKNOWN } from "@Api/errors/constant/requestLocation";
 
-import { store } from "@Redux/store";
 import * as TILog from "@til-log.lab/tilog-api";
 import exception from "@Api/errors/exception";
+
+import { store } from "@Redux/store";
 import { userInfoSlice } from "@Redux/userInfo";
 
-const config = new TILog.Configuration({
-  basePath: process.env.TILOG_API,
-  baseOptions: {
-    withCredentials: true,
-  },
+const axiosInstance = axios.create({
+  withCredentials: true,
+  baseURL: process.env.TILOG_API,
 });
-
-export const TilogApiForAuth = new TILog.AuthApi(config);
-export const TilogApiForUser = new TILog.UserApi(config);
-export const TilogApiForCategory = new TILog.CategoryApi(config);
-export const TilogApiForComment = new TILog.CommentApi(config);
-export const TilogApiForPost = new TILog.PostApi(config);
-export const TilogApiForPostLike = new TILog.PostLikeApi(config);
-
+export const TilogApiForAuth = new TILog.AuthApi(
+  undefined,
+  undefined,
+  axiosInstance
+);
+export const TilogApiForUser = new TILog.UserApi(
+  undefined,
+  undefined,
+  axiosInstance
+);
+export const TilogApiForCategory = new TILog.CategoryApi(
+  undefined,
+  undefined,
+  axiosInstance
+);
+export const TilogApiForComment = new TILog.CommentApi(
+  undefined,
+  undefined,
+  axiosInstance
+);
+export const TilogApiForPost = new TILog.PostApi(
+  undefined,
+  undefined,
+  axiosInstance
+);
+export const TilogApiForPostLike = new TILog.PostLikeApi(
+  undefined,
+  undefined,
+  axiosInstance
+);
 createAuthRefreshInterceptor(axios, (failedRequest) =>
   axios
     .get("api/access-token")
@@ -38,7 +59,7 @@ createAuthRefreshInterceptor(axios, (failedRequest) =>
     })
 );
 
-axios.interceptors.response.use(
+axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     if (axios.isAxiosError(error)) {
@@ -74,3 +95,5 @@ axios.interceptors.response.use(
     );
   }
 );
+
+export default axiosInstance;
