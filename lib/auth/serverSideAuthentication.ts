@@ -18,7 +18,7 @@ type Callback = (
   }>
 >;
 
-const serverSideAuthentication = ({ callback }: { callback: Callback }) =>
+const serverSideAuthentication = (callback: Callback) =>
   wrapper.getServerSideProps((store) => async (context) => {
     const { headers } = context.req;
     const { isLogin } = store.getState().TILog_Info;

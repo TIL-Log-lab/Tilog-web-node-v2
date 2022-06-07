@@ -5,11 +5,7 @@ import isTokenExpired from "@Auth/utility/isTokenExpired";
 import setAccessTokenToAxiosHeader from "@Auth/utility/setAccessTokenToAxiosHeader";
 import getAccessTokenToAxiosHeader from "@Auth/utility/getAccessTokenToAxiosHeader";
 
-const clientSideAuthentication = async <T>({
-  tilogApi,
-}: {
-  tilogApi: () => T;
-}): Promise<T> => {
+const clientSideAuthentication = async <T>(tilogApi: () => T): Promise<T> => {
   const { isLogin } = store.getState().TILog_Info;
   const accessToken = getAccessTokenToAxiosHeader();
 
