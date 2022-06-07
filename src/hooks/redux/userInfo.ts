@@ -9,6 +9,7 @@ export interface UserInfoSliceState {
   name: GetMeResponseDto["name"];
   avatar: GetMeResponseDto["avatar"];
   createdAt: GetMeResponseDto["createdAt"];
+  isLogin: boolean;
   language: LanguageUnionType;
   settings: GetMeResponseDto["settings"];
 }
@@ -17,6 +18,7 @@ const internalInitialState: UserInfoSliceState = {
   name: "",
   avatar: "",
   createdAt: "",
+  isLogin: false,
   language: "ko",
   settings: [],
 };
