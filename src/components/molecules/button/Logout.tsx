@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 
-import axiosInstance, { TilogApiForAuth } from "@Api/core";
+import axiosInstance from "@Api/core";
+import { logout } from "@Api/adapter";
 import { userInfoSlice } from "@Redux/userInfo";
 
 const MButtonLogout = () => {
@@ -8,7 +9,7 @@ const MButtonLogout = () => {
 
   const handleLogout = async () => {
     try {
-      await TilogApiForAuth.usersAuthControllerDeleteRefreshToken();
+      await logout();
       dispatch(userInfoSlice.actions.resetUserInfo());
       axiosInstance.defaults.headers.common["Authorization"] = "";
     } catch {

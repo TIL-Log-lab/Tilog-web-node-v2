@@ -2,12 +2,12 @@ import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { AxiosRequestHeaders } from "axios";
 
 import { wrapper } from "@Redux/store";
+import { getAccessToken } from "@Api/adapter";
 import isTokenExpired from "@Auth/utility/isTokenExpired";
 import setAccessTokenToAxiosHeader from "@Auth/utility/setAccessTokenToAxiosHeader";
 import getAccessTokenToAxiosHeader from "@Auth/utility/getAccessTokenToAxiosHeader";
 
 import { Store } from "@Redux/interfaces/redux.interface";
-import { getAccessToken } from "@Api/auth";
 
 type Callback<T> = (
   store: Store,
@@ -34,14 +34,14 @@ const serverSideAuthentication = <T>(callback: Callback<T>) =>
 
     // NOTE: accessToken이 없을 때
     if (!accessToken) {
-      const { data } = await getAccessToken(clientHeaders);
+      const { data } = await getAccessToken(undefined, clientHeaders);
       setAccessTokenToAxiosHeader(data.accessToken);
       return callback(store, context);
     }
 
     // NOTE: accessToken이 만료됐을 때
     if (isTokenExpired(accessToken)) {
-      const { data } = await getAccessToken(clientHeaders);
+      const { data } = await getAccessToken(undefined, clientHeaders);
       setAccessTokenToAxiosHeader(data.accessToken);
       return callback(store, context);
     }
@@ -51,12 +51,3 @@ const serverSideAuthentication = <T>(callback: Callback<T>) =>
   });
 
 export default serverSideAuthentication;
-
-function getAccessToken(headers: AxiosRequestHeaders) {
-  return TilogApiForAuth.usersAuthControllerGetAccessTokenUsingRefreshToken(
-    undefined,
-    {
-      headers: headers,
-    }
-  );
-}

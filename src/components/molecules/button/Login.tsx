@@ -2,13 +2,13 @@ import React from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 
-import { TilogApiForAuth, TilogApiForUser } from "@Api/core";
 import getUserLanguage from "@Language/getUserLanguage";
 
 import ExceptionInterface from "@Api/errors/interfaces";
 import TechIcons from "@TechIcons/TechIcons";
 import { userInfoSlice } from "@Redux/userInfo";
 import { modalSlice } from "@Redux/modal";
+import { getAccessToken, getMe } from "@Api/adapter";
 
 const MButtonLogin = () => {
   const dispatch = useDispatch();
@@ -26,13 +26,14 @@ const MButtonLogin = () => {
       try {
         const {
           data: { accessToken },
-        } = await TilogApiForAuth.usersAuthControllerGetAccessTokenUsingRefreshToken();
+        } = await getAccessToken();
 
-        const { data } = await TilogApiForUser.usersControllerGetMe({
+        const { data } = await getMe({
           headers: {
             Authorization: `bearer ${accessToken}`,
           },
         });
+
         if (data) {
           const language = getUserLanguage();
           const userInfo = {

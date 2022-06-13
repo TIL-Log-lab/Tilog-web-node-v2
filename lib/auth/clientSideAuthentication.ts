@@ -1,6 +1,6 @@
 import { store } from "@Redux/store";
 
-import { TilogApiForAuth } from "@Api/core";
+import { getAccessToken } from "@Api/adapter";
 import isTokenExpired from "@Auth/utility/isTokenExpired";
 import setAccessTokenToAxiosHeader from "@Auth/utility/setAccessTokenToAxiosHeader";
 import getAccessTokenToAxiosHeader from "@Auth/utility/getAccessTokenToAxiosHeader";
@@ -9,21 +9,18 @@ const clientSideAuthentication = async <T>(tilogApi: () => T): Promise<T> => {
   const { isLogin } = store.getState().TILog_Info;
   const accessToken = getAccessTokenToAxiosHeader();
 
-  // NOTE: 비회원
   if (!isLogin) return tilogApi();
 
   // NOTE: accessToken이 없을 때
   if (!accessToken) {
-    const { data } =
-      await TilogApiForAuth.usersAuthControllerGetAccessTokenUsingRefreshToken();
+    const { data } = await getAccessToken();
     setAccessTokenToAxiosHeader(data.accessToken);
     return tilogApi();
   }
 
   // NOTE: accessToken이 만료됐을 때
   if (isTokenExpired(accessToken)) {
-    const { data } =
-      await TilogApiForAuth.usersAuthControllerGetAccessTokenUsingRefreshToken();
+    const { data } = await getAccessToken();
     setAccessTokenToAxiosHeader(data.accessToken);
     return tilogApi();
   }
