@@ -3,7 +3,6 @@ import axios from "axios";
 import { NETWORK_ERROR_MESSAGE } from "@Messages/constants/error";
 import { REQUEST_ERROR, UNKNOWN } from "@Api/errors/constant/requestLocation";
 
-import * as TILog from "@til-log.lab/tilog-api";
 import exception from "@Api/errors/exception";
 
 import { store } from "@Redux/store";
@@ -13,36 +12,6 @@ const axiosInstance = axios.create({
   withCredentials: true,
   baseURL: process.env.TILOG_API,
 });
-export const TilogApiForAuth = new TILog.AuthApi(
-  undefined,
-  undefined,
-  axiosInstance
-);
-export const TilogApiForUser = new TILog.UserApi(
-  undefined,
-  undefined,
-  axiosInstance
-);
-export const TilogApiForCategory = new TILog.CategoryApi(
-  undefined,
-  undefined,
-  axiosInstance
-);
-export const TilogApiForComment = new TILog.CommentApi(
-  undefined,
-  undefined,
-  axiosInstance
-);
-export const TilogApiForPost = new TILog.PostApi(
-  undefined,
-  undefined,
-  axiosInstance
-);
-export const TilogApiForPostLike = new TILog.PostLikeApi(
-  undefined,
-  undefined,
-  axiosInstance
-);
 
 axiosInstance.interceptors.response.use(
   (response) => response,
