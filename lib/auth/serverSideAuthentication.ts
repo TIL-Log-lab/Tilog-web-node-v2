@@ -2,12 +2,12 @@ import { GetServerSidePropsContext, GetServerSidePropsResult } from "next";
 import { AxiosRequestHeaders } from "axios";
 
 import { wrapper } from "@Redux/store";
-import { TilogApiForAuth } from "@Api/core";
 import isTokenExpired from "@Auth/utility/isTokenExpired";
 import setAccessTokenToAxiosHeader from "@Auth/utility/setAccessTokenToAxiosHeader";
 import getAccessTokenToAxiosHeader from "@Auth/utility/getAccessTokenToAxiosHeader";
 
 import { Store } from "@Redux/interfaces/redux.interface";
+import { getAccessToken } from "@Api/auth";
 
 type Callback<T> = (
   store: Store,
@@ -20,10 +20,10 @@ type Callback<T> = (
 
 const serverSideAuthentication = <T>(callback: Callback<T>) =>
   wrapper.getServerSideProps((store) => async (context) => {
-    const { headers } = context.req;
     const { isLogin } = store.getState().TILog_Info;
     const accessToken = getAccessTokenToAxiosHeader();
 
+    const { headers } = context.req;
     const clientHeaders: AxiosRequestHeaders = {
       "User-Agent": !headers["user-agent"] ? "" : headers["user-agent"],
       Cookie: !headers.cookie ? "" : headers.cookie,
