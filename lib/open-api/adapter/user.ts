@@ -3,7 +3,6 @@ import axiosInstance from "@Api/core";
 import { Option } from "../interface";
 
 const userApi = new TILog.UserApi(undefined, undefined, axiosInstance);
-userApi.usersControllerSetSetting;
 
 export const getMe = (options?: Option) =>
   userApi.usersControllerGetMe(options);
