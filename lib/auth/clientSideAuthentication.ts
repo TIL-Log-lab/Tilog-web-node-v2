@@ -24,7 +24,8 @@ const clientSideAuthentication = async <T>(tilogApi: () => T): Promise<T> => {
     setAccessTokenToAxiosHeader(data.accessToken);
     return tilogApi();
   }
-  // NOTE: accessToken이 사용하능할 때
+
+  // NOTE: accessToken이 사용 가능 할 때
   return tilogApi();
 };
 export default clientSideAuthentication;

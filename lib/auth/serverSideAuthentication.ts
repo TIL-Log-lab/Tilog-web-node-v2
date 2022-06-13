@@ -29,7 +29,6 @@ const serverSideAuthentication = <T>(callback: Callback<T>) =>
       Cookie: !headers.cookie ? "" : headers.cookie,
     };
 
-    // NOTE: 비회원
     if (!isLogin) return callback(store, context);
 
     // NOTE: accessToken이 없을 때
@@ -46,7 +45,7 @@ const serverSideAuthentication = <T>(callback: Callback<T>) =>
       return callback(store, context);
     }
 
-    // NOTE: accessToken이 사용하능할 때
+    // NOTE: accessToken이 사용 가능 할 때
     return callback(store, context);
   });
 
