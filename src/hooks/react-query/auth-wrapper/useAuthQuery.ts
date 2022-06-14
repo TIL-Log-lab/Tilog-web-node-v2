@@ -6,13 +6,9 @@ import ExceptionInterface from "@Api/errors/interfaces";
 
 const useAuthQuery = <Response>(
   key: QueryKey,
-  callback: () => Promise<Response>,
+  callback: () => Response,
   options?: UseQueryOptions<Response, ExceptionInterface, Response>
 ) => {
-  return useQuery(
-    key,
-    async () => await clientSideAuthentication(callback),
-    options
-  );
+  return useQuery(key, () => clientSideAuthentication(callback), options);
 };
 export default useAuthQuery;
