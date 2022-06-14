@@ -24,6 +24,8 @@
       "@Language/*": ["lib/language/*"],
       "@Messages/*": ["lib/messages/*"],
       "@DateFns/*": ["lib/date-fns/*"],
+      "@Auth/*": ["lib/auth/*"],
+      "@Auth": ["lib/auth/"],
       "@Redux/*": ["src/hooks/redux/*"],
       "@Query/*": ["src/hooks/react-query/*"]
     }
