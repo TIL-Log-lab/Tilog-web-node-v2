@@ -28,7 +28,7 @@ const useGetPostListQuery = ({
   >(
     queryKey,
     async ({ pageParam = page }) => {
-      const result = await getPosts(
+      return await getPosts(
         dateScope,
         sortScope,
         pageParam,
@@ -36,7 +36,6 @@ const useGetPostListQuery = ({
         userId,
         categoryId
       );
-      return result;
     },
     {
       retry: 0,

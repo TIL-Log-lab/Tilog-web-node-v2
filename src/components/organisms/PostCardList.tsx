@@ -14,21 +14,21 @@ interface OPostCardProps extends GetPostsRequestDto {
 }
 
 const PostCardList = (props: OPostCardProps) => {
-  const post = useGetPostQuery(props);
+  const postList = useGetPostQuery(props);
 
-  if (post.isError) {
+  if (postList.isError) {
     return <div>에러발생!</div>;
   }
-  if (post.isLoading) {
+  if (postList.isLoading) {
     return <div>로딩중...</div>;
   }
   return (
     <>
-      {post.isSuccess && (
+      {postList.isSuccess && (
         <div>
           <h2>{props.cardTitle}</h2>
           <div className="grid grid-row gap-y-1 sm:w-96">
-            {post.data.pages.map((page) =>
+            {postList.data.pages.map((page) =>
               page.data.list.map((post) => (
                 <div className="flex" key={post.id}>
                   {props.cardType == "TYPE_A" && <PostCardTypeA post={post} />}
@@ -38,9 +38,9 @@ const PostCardList = (props: OPostCardProps) => {
             )}
           </div>
           <CardLoading
-            hasNextPage={post.hasNextPage}
-            isFetchingNextPage={post.isFetchingNextPage}
-            fetchNextPage={post.fetchNextPage}
+            hasNextPage={postList.hasNextPage}
+            isFetchingNextPage={postList.isFetchingNextPage}
+            fetchNextPage={postList.fetchNextPage}
           />
         </div>
       )}
