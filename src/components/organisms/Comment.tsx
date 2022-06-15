@@ -1,25 +1,25 @@
-const OComment = () => {
+import CommentInput from "@Molecules/comment/input/Parent";
+import ParentComment from "@Molecules/comment/component/Parent";
+import { useGetParentCommentQuery } from "@Query/comment/useGetCommentQuery";
+
+const Comment = ({ postId }: { postId: string }) => {
+  const comments = useGetParentCommentQuery(postId);
   return (
     <div className="mt-10">
-      <h3>100 Comments</h3>
       <hr className="w-full border-neutral-700 dark:border-neutral-300" />
-
-      <Comment />
-      <Comment />
+      {comments.isError && <>댓글을 가져올 수 없어요!</>}
+      {comments.isLoading && <>댓글을 가져오는 중이에요!</>}
+      {comments.isSuccess &&
+        comments.data.data.list.map((comment) => (
+          <ParentComment
+            postId={postId}
+            refetch={comments.refetch}
+            key={comment.id}
+            comment={comment}
+          />
+        ))}
+      <CommentInput postId={postId} refetch={comments.refetch} />
     </div>
   );
 };
-export default OComment;
-
-const Comment = () => (
-  <div className="flex flex-col p-3 mx-20 mt-3">
-    <div className="flex flex-row items-center">
-      <div className="w-[50px] mr-3 rounded-full h-[50px] bg-neutral-800" />
-      <div>MINJE-98</div>
-      <p className="ml-3 text-sm">10일 전</p>
-      <div className="ml-auto">삭제 | 수정</div>
-    </div>
-    <p className="p-5 text-lg text-neutral-800">댓글 내용~~~~</p>
-    <p className="relative right-0 text-sm">100개 답글 보기</p>
-  </div>
-);
+export default Comment;
