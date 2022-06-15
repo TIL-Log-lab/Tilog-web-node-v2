@@ -1,5 +1,5 @@
 import * as TILog from "@til-log.lab/tilog-api";
-import axiosInstance from "@Api/core";
+import axiosInstance from "@Api/axiosInstance";
 import { Option } from "../interface";
 
 const postApi = new TILog.PostApi(undefined, undefined, axiosInstance);

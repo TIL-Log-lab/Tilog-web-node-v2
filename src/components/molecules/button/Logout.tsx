@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 
-import axiosInstance from "@Api/core";
+import axiosInstance from "@Api/axiosInstance";
 import { logout } from "@Api/adapter";
 import { userInfoSlice } from "@Redux/userInfo";
 
