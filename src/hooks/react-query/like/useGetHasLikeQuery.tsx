@@ -12,12 +12,8 @@ export default function useGetHasLikeQuery(postId: string) {
     ExceptionInterface,
     AxiosResponse<HasLikedResponseDto>,
     string
-  >(
-    "like",
-    async () => await clientSideAuthentication(() => hasLiked(postId)),
-    {
-      retry: 0,
-      refetchOnWindowFocus: false,
-    }
-  );
+  >("like", async () => clientSideAuthentication(() => hasLiked(postId)), {
+    retry: 0,
+    refetchOnWindowFocus: false,
+  });
 }
