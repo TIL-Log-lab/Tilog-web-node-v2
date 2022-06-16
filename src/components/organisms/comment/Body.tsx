@@ -1,10 +1,11 @@
-import changeDateToDateFnsFormat from "@DateFns/changeDateToDateFnsFormat";
-import PermissionButton from "@Organisms/comment/button/Permission";
-import CommentContent from "@Organisms/comment/Content";
-import { CommentRefetch } from "@Organisms/comment/interface";
-import { GetCommentsItem } from "@til-log.lab/tilog-api";
 import { useState } from "react";
 
+import { GetCommentsItem } from "@til-log.lab/tilog-api";
+import CommentContent from "@Organisms/comment/Content";
+import PermissionButton from "@Organisms/comment/button/Permission";
+import changeDateToDateFnsFormat from "@DateFns/changeDateToDateFnsFormat";
+
+import { CommentRefetch } from "@Organisms/comment/interface";
 interface CommentBodyProps {
   refetch: () => CommentRefetch;
   comment: GetCommentsItem;

@@ -1,13 +1,7 @@
-import { useState } from "react";
-
-import changeDateToDateFnsFormat from "@DateFns/changeDateToDateFnsFormat";
-
 import { GetCommentsItem } from "@til-log.lab/tilog-api";
-import { CommentRefetch } from "@Organisms/comment/interface";
-import CommentContent from "@Organisms/comment/Content";
-import PermissionButton from "@Organisms/comment/button/Permission";
 import CommentBody from "@Organisms/comment/Body";
 
+import { CommentRefetch } from "@Organisms/comment/interface";
 interface ChildrenCommentsProps {
   refetch: () => CommentRefetch;
   postId: string;

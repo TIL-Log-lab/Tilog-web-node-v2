@@ -1,14 +1,11 @@
 import { useState } from "react";
 
 import { useGetChildrenComment } from "@Query/comment/useGetCommentQuery";
-import changeDateToDateFnsFormat from "@DateFns/changeDateToDateFnsFormat";
 
 import { GetCommentsItem } from "@til-log.lab/tilog-api";
 import { CommentRefetch } from "@Organisms/comment/interface";
-import ChildCommentOpenerButton from "@Organisms/comment/button/ChildCommentOpener";
-import PermissionButton from "@Organisms/comment/button/Permission";
-import CommentContent from "@Organisms/comment/Content";
 import ChildrenComments from "@Organisms/comment/Children";
+import ChildCommentOpenerButton from "@Organisms/comment/button/ChildCommentOpener";
 
 import CommentSubmit from "@Organisms/comment/input/Submit";
 import CommentBody from "@Organisms/comment/Body";
