@@ -4,8 +4,8 @@ import {
   CreatePostRequestBodyDto,
   GetPostDetailResponseDto,
 } from "@til-log.lab/tilog-api";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 import useEditorMutation from "@Query/editor/useEditorMutation";
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
