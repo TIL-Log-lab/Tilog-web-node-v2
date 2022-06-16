@@ -1,8 +1,6 @@
-import Link from "next/link";
-import { BsDot } from "react-icons/bs";
 import { useSelector } from "react-redux";
-import { userInfoSelector } from "src/hooks/redux/userInfo";
 
+import { userInfoSelector } from "@Redux/userInfo";
 import MButtonLogin from "@Molecules/button/Login";
 import MButtonLogout from "@Organisms/Logout";
 import WrappedLink from "@Molecules/WrappedLink";

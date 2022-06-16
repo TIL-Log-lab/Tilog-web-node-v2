@@ -9,7 +9,7 @@ import React, {
 import UserImage from "@Molecules/images/User";
 import Dropdown from "@Organisms/Dropdown";
 
-const MButtonLogout = () => {
+const Logout = () => {
   const logoutRef = useRef<HTMLDivElement>(null);
   const [isDropBoxOpen, setIsDropBoxOpen] = useState(false);
 
@@ -37,4 +37,4 @@ const MButtonLogout = () => {
   );
 };
 
-export default MButtonLogout;
+export default Logout;
