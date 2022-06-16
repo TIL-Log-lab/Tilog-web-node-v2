@@ -11,6 +11,7 @@ import CommentContent from "@Organisms/comment/Content";
 import ChildrenComments from "@Organisms/comment/Children";
 
 import CommentSubmit from "@Organisms/comment/input/Submit";
+import CommentBody from "@Organisms/comment/Body";
 
 interface ParentCommentsProps {
   refetch: () => CommentRefetch;
@@ -18,7 +19,6 @@ interface ParentCommentsProps {
   postId: string;
 }
 const ParentComments = ({ postId, refetch, comment }: ParentCommentsProps) => {
-  const [isUpdate, setIsUpdate] = useState(false);
   const [isChildrenOpen, setIsChildrenOpen] = useState(false);
   const commentList = useGetChildrenComment(
     "childComment" + comment.id,
@@ -27,35 +27,10 @@ const ParentComments = ({ postId, refetch, comment }: ParentCommentsProps) => {
     comment.id
   );
 
-  const handleUpdateComment = () => {
-    setIsUpdate(!isUpdate);
-  };
-
   return (
     <div className="flex flex-col p-3 mx-20 mt-3">
       <>
-        <div className="flex flex-row items-center">
-          <div className="w-[50px] mr-3 rounded-full h-[50px] bg-neutral-800" />
-          <div>{comment.user.username}</div>
-          <p className="ml-3 text-sm">
-            {changeDateToDateFnsFormat(comment.createdAt)}
-          </p>
-
-          <div className="ml-auto">
-            <PermissionButton
-              refetch={refetch}
-              comment={comment}
-              onUpdateComment={handleUpdateComment}
-            />
-          </div>
-        </div>
-
-        <CommentContent
-          refetch={refetch}
-          isUpdate={isUpdate}
-          setIsUpdate={setIsUpdate}
-          comment={comment}
-        />
+        <CommentBody comment={comment} refetch={refetch} />
         <ChildCommentOpenerButton
           isChildrenOpen={isChildrenOpen}
           setIsChildrenOpen={setIsChildrenOpen}
@@ -65,12 +40,12 @@ const ParentComments = ({ postId, refetch, comment }: ParentCommentsProps) => {
         {commentList.isError && <>댓글 에러...</>}
         {isChildrenOpen && commentList.isSuccess && (
           <>
-            {commentList.data?.data.list.map((comment) => (
+            {commentList.data?.data.list.map((childComment) => (
               <ChildrenComments
-                key={comment.id}
+                key={childComment.id}
                 postId={postId}
                 refetch={commentList.refetch}
-                comment={comment}
+                comment={childComment}
               />
             ))}
             <CommentSubmit
