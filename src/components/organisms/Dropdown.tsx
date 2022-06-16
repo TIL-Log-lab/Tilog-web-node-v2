@@ -11,7 +11,7 @@ import {
 
 const Dropdown = () => {
   const userInfo = useSelector(userInfoSelector);
-  const language = useSelector(languageSelector);
+
   const dispatch = useDispatch();
 
   const handleLogout = async () => {
