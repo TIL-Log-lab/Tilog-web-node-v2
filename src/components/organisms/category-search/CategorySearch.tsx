@@ -56,9 +56,9 @@ const OCategorySearch = ({
 
   // NOTE: localStorage에서 category 가져옴.
   useEffect(() => {
-    const category = getValues("category");
-    if (category) {
-      setSelectedCategory(category);
+    const valueFormCategory = getValues("category");
+    if (valueFormCategory) {
+      setSelectedCategory(valueFormCategory);
     }
     const postDetail = localStorage.getItem(localStorageKey);
     if (postDetail) {
@@ -68,7 +68,7 @@ const OCategorySearch = ({
   }, []);
 
   // NOTE: 카테고리 검색
-  const handleSearchCategory = async (e) => {
+  const handleSearchCategory = async () => {
     // TODO: 카테고리 인자값 받아서 검색하는 기능 추가
     const { data } = await getCategory();
     setCategoryList(data.list);
@@ -94,7 +94,7 @@ const OCategorySearch = ({
         >
           <div className="flex items-center">
             <TechIcons categoryName={selectedCategory.categoryName} />
-            {selectedCategory && selectedCategory.categoryName}
+            {selectedCategory.categoryName}
           </div>
         </button>
       </div>

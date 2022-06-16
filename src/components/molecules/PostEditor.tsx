@@ -12,7 +12,7 @@ const MPostEditor = ({
   preViewContent,
   onChange,
 }: MPostEditorProps) => {
-  const editor = useEditor({
+  const postEditor = useEditor({
     extensions: [StarterKit],
     onUpdate: ({ editor }) => {
       if (!onChange) return;
@@ -27,9 +27,9 @@ const MPostEditor = ({
       },
     },
   });
-  if (!editor) return <></>;
+  if (!postEditor) return <></>;
 
-  return <EditorContent className={`z-0 h-full`} editor={editor} />;
+  return <EditorContent className={`z-0 h-full`} editor={postEditor} />;
 };
 
 export default MPostEditor;
