@@ -2,18 +2,15 @@ import React from "react";
 
 import CategoryCard from "@Molecules/cards/Category";
 import { useGetUserCategoryListQuery } from "@Query/category/useGetUserCategoryListQuery";
-import { GetMeResponseDto } from "@til-log.lab/tilog-api";
-interface userInfo extends GetMeResponseDto {
-  id: number;
-}
+
 const CategoryCardList = ({
   selectedCategory,
-  userInfo,
+  userId,
 }: {
-  userInfo: userInfo;
+  userId: number;
   selectedCategory?: number;
 }) => {
-  const categoryList = useGetUserCategoryListQuery(userInfo.id);
+  const categoryList = useGetUserCategoryListQuery(userId);
   if (categoryList.isError) {
     return <div>에러발생!</div>;
   }
@@ -30,7 +27,6 @@ const CategoryCardList = ({
               <CategoryCard
                 selectedCategory={selectedCategory}
                 category={category}
-                username={userInfo.name}
               />
             </div>
           ))}
