@@ -156,11 +156,10 @@ function getUserSettings(
   if (settings) {
     return settings.reduce(
       (prevSettings, curSettings) => {
-        const settings = {
+        return {
           ...prevSettings,
           [curSettings.type]: curSettings.content,
         };
-        return settings;
       },
       { DISPLAY_NAME: null, INTRO_MSG: null, EMAIL: null, POSITION: null }
     );
