@@ -33,7 +33,7 @@ const OMyBlog = () => {
       <div className="">
         <Profile userInfo={userInfo} />
         <hr className="w-full my-10 border-neutral-300 dark:border-neutral-300" />
-        <UserCategoryCardList userInfo={userInfo} />
+        <UserCategoryCardList userId={userInfo.id} />
         <hr className="w-full my-10 border-neutral-300 dark:border-neutral-300" />
         <PinedRepo />
         <hr className="w-full my-10 border-neutral-300 dark:border-neutral-300" />
