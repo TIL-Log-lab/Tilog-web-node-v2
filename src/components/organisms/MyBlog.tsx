@@ -1,11 +1,11 @@
-import { GetMeResponseDto } from "@til-log.lab/tilog-api";
-import safeTransferUserSetting from "@Utility/safeTransferUserSetting";
-import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import PostCardList from "@Organisms/PostCardList";
-import { PostCardListLinkedCategoryCardList } from "@Organisms/PostCardListLinkedCategoryCardList";
+
+import safeTransferUserSetting from "@Utility/safeTransferUserSetting";
 import UserCategoryCardList from "@Organisms/UserCategoryCardList";
+import { PostCardListLinkedCategoryCardList } from "@Organisms/PostCardListLinkedCategoryCardList";
+
+import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 
 // TODO: UserInfo를 endpoint에서 가져와야합니다.
 // TODO: router.query categoryId가 아닌 categoryName으로 카테고리를 가져와야합니다.
