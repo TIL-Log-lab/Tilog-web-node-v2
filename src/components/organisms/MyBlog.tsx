@@ -1,75 +1,85 @@
+import { GetMeResponseDto } from "@til-log.lab/tilog-api";
+import safeTransferUserSetting from "@Utility/safeTransferUserSetting";
+import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import PostCardList from "@Organisms/PostCardList";
+import { PostCardListLinkedCategoryCardList } from "@Organisms/PostCardListLinkedCategoryCardList";
+import UserCategoryCardList from "@Organisms/UserCategoryCardList";
+
+// TODO: UserInfo를 endpoint에서 가져와야합니다.
+// TODO: router.query categoryId가 아닌 categoryName으로 카테고리를 가져와야합니다.
+interface userInfo extends GetMeResponseDto {
+  id: number;
+}
 const OMyBlog = () => {
+  const router = useRouter();
+  const { category } = router.query;
+
+  const userInfo: userInfo = {
+    id: 1,
+    avatar: "https://avatars.githubusercontent.com/u/56459078?v=4",
+    createdAt: "2022-04-22T02:45:56.000Z",
+    name: "MINJE-98",
+    settings: [
+      { type: "INTRO_MSG", content: "소개글입니다. 잘부탁드려요." },
+      { type: "DISPLAY_NAME", content: "조민제" },
+      { type: "EMAIL", content: "minje9801@gmail.com" },
+      { type: "POSITION", content: "프론트엔드 개발자입니다." },
+    ],
+  };
   return (
-    <div className="flex flex-col items-center justify-center xl:flex-row xl:justify-between">
+    <div className="grid grid-flow-row md:grid-flow-col md:justify-between">
       <div className="">
-        <Profile />
+        <Profile userInfo={userInfo} />
         <hr className="w-full my-10 border-neutral-300 dark:border-neutral-300" />
-        <CategoryList />
+        <UserCategoryCardList userInfo={userInfo} />
         <hr className="w-full my-10 border-neutral-300 dark:border-neutral-300" />
         <PinedRepo />
         <hr className="w-full my-10 border-neutral-300 dark:border-neutral-300" />
         <TopLangRepo />
         <hr className="w-full my-10 border-neutral-300 dark:border-neutral-300" />
       </div>
-      <div className="">
-        <PostList />
-      </div>
+      <PostCardListLinkedCategoryCardList
+        cardType="TYPE_A"
+        queryKey={"categoryCard" + category}
+        dateScope="All"
+        sortScope="createdAt"
+        page={0}
+        maxContent={10}
+        userId={1}
+      />
     </div>
   );
 };
 export default OMyBlog;
-const PostList = () => {
-  const Post = () => (
-    <div className="mt-2 md:max-w-lg">
-      <div className="flex">
-        <div className="p-8 bg-white">
-          <h3 className="text-sm">Finding customers for your</h3>
-          <p className="mt-2 text-xs">
-            Getting a new business off the ground is a lot of hard work.
-          </p>
-        </div>
-        <div className="md:shrink-0">
-          <div className="h-full w-60 bg-signature-color"></div>
-        </div>
-      </div>
-    </div>
-  );
-  return (
-    <>
-      <p className="text-lg text-neutral-600">Posts</p>
-      <Post />
-      <Post />
-      <Post />
-    </>
-  );
-};
-const CategoryList = () => {
-  const CategoryButton = () => (
-    <a className="text-sm font-medium cursor-pointer hover:text-nestjs">
-      #NestJS
-    </a>
-  );
-  return (
-    <>
-      <p className="text-lg text-neutral-600">Category</p>
-      <div>
-        <CategoryButton />
-        <CategoryButton />
-        <CategoryButton />
-        <CategoryButton />
-        <CategoryButton />
-      </div>
-    </>
-  );
-};
-const Profile = () => {
+const Profile = ({ userInfo }: { userInfo: GetMeResponseDto }) => {
+  const userSettings = safeTransferUserSetting(userInfo.settings);
   return (
     <>
       <p className="text-lg text-neutral-600">Profile</p>
       <div className="flex flex-row items-center">
-        <div className="w-[50px] mr-3 rounded-full h-[50px] bg-neutral-800" />
-        <div>MINJE-98</div>
-        <p className="ml-3 text-sm">10일 전</p>
+        {/**유저 이미지 */}
+        {userInfo.avatar ? (
+          <Image
+            className="rounded-full"
+            alt="avatar"
+            width="50"
+            height="50"
+            src={userInfo.avatar}
+          />
+        ) : (
+          <div className="w-[50px] mr-3 rounded-full h-[50px] bg-neutral-800" />
+        )}
+        <div>
+          {userSettings.DISPLAY_NAME
+            ? userSettings.DISPLAY_NAME
+            : userInfo.name}
+        </div>
+        <div>
+          <p className="block ml-3 text-sm">{userSettings.INTRO_MSG}</p>
+          <p className="block ml-3 text-sm">{userSettings.POSITION}</p>
+        </div>
       </div>
     </>
   );
