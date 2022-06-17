@@ -1,4 +1,4 @@
-import axiosInstance from "@Api/core";
+import axiosInstance from "@Api/axiosInstance";
 import { GetAccessTokenUsingRefreshTokenResponse } from "@til-log.lab/tilog-api";
 
 export default function setAccessTokenToAxiosHeader(
