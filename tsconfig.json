@@ -26,6 +26,7 @@
       "@DateFns/*": ["lib/date-fns/*"],
       "@Auth/*": ["lib/auth/*"],
       "@Auth": ["lib/auth/"],
+      "@Utility/*": ["lib/utility/*"],
       "@Redux/*": ["src/hooks/redux/*"],
       "@Query/*": ["src/hooks/react-query/*"]
     }
