@@ -10,19 +10,19 @@ const CategoryCardList = ({
   userId: number;
   selectedCategory?: number;
 }) => {
-  const categoryList = useGetUserCategoryListQuery(userId);
-  if (categoryList.isError) {
+  const userCategoryList = useGetUserCategoryListQuery(userId);
+  if (userCategoryList.isError) {
     return <div>에러발생!</div>;
   }
-  if (categoryList.isLoading) {
+  if (userCategoryList.isLoading) {
     return <div>로딩중...</div>;
   }
   return (
     <div>
       <h2>카테고리 리스트</h2>
       <div className="flex space-x-2">
-        {categoryList.isSuccess &&
-          categoryList.data.data.list.map((category) => (
+        {userCategoryList.isSuccess &&
+          userCategoryList.data.data.list.map((category) => (
             <div key={category.id}>
               <CategoryCard
                 selectedCategory={selectedCategory}
