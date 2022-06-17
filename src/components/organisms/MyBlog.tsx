@@ -9,14 +9,14 @@ import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 
 // TODO: UserInfo를 endpoint에서 가져와야합니다.
 // TODO: router.query categoryId가 아닌 categoryName으로 카테고리를 가져와야합니다.
-interface userInfo extends GetMeResponseDto {
+interface UserInfo extends GetMeResponseDto {
   id: number;
 }
 const OMyBlog = () => {
   const router = useRouter();
   const { category } = router.query;
 
-  const userInfo: userInfo = {
+  const userInfo: UserInfo = {
     id: 1,
     avatar: "https://avatars.githubusercontent.com/u/56459078?v=4",
     createdAt: "2022-04-22T02:45:56.000Z",
