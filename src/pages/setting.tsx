@@ -1,23 +1,29 @@
-import type { NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 
-import OHeader from "src/components/organisms/Header";
-import OSetting from "src/components/organisms/Setting";
+import OHeader from "@Organisms/Header";
+import OUserSetting from "@Organisms/user-settings";
+import { serverSideAuthentication } from "@Auth";
 
-import { GetMeResponseDto } from "@til-log.lab/tilog-api";
-interface SettingPageProps {
-  user: GetMeResponseDto;
-}
-const SettingPage: NextPage<SettingPageProps> = ({
-  user,
-}: SettingPageProps) => {
+const SettingPage: NextPage = () => {
   return (
     <div className="md:mx-20 2xl:mx-60">
-      <OHeader nav="Setting" userInfo={user} />
+      <OHeader />
 
-      <div className="mt-20"></div>
-      <OSetting />
+      <OUserSetting />
     </div>
   );
 };
 
 export default SettingPage;
+export const getServerSideProps: GetServerSideProps = serverSideAuthentication(
+  async (store, _) => {
+    if (!store.getState().TILog_Info.isLogin) {
+      return {
+        notFound: true,
+      };
+    }
+    return {
+      props: {},
+    };
+  }
+);

@@ -30,18 +30,25 @@ const serverSideAuthentication = <T>(callback: Callback<T>) =>
     };
 
     if (!isLogin) return callback(store, context);
+    try {
+      // NOTE: accessToken이 없을 때
+      if (!accessToken) {
+        const { data } = await getAccessToken(undefined, {
+          headers: clientHeaders,
+        });
+        setAccessTokenToAxiosHeader(data.accessToken);
+        return callback(store, context);
+      }
 
-    // NOTE: accessToken이 없을 때
-    if (!accessToken) {
-      const { data } = await getAccessToken(undefined, clientHeaders);
-      setAccessTokenToAxiosHeader(data.accessToken);
-      return callback(store, context);
-    }
-
-    // NOTE: accessToken이 만료됐을 때
-    if (isTokenExpired(accessToken)) {
-      const { data } = await getAccessToken(undefined, clientHeaders);
-      setAccessTokenToAxiosHeader(data.accessToken);
+      // NOTE: accessToken이 만료됐을 때
+      if (isTokenExpired(accessToken)) {
+        const { data } = await getAccessToken(undefined, {
+          headers: clientHeaders,
+        });
+        setAccessTokenToAxiosHeader(data.accessToken);
+        return callback(store, context);
+      }
+    } catch (error) {
       return callback(store, context);
     }
 

@@ -11,7 +11,7 @@ interface TechIconsProviderInterface {
 
 const TechIconsProvider: TechIconsProviderInterface = {
   JAVASCRIPT: <SI.SiJavascript className="text-javascript" />,
-  TYPE_SCRIPT: <SI.SiTypescript className="text-typescript" />,
+  TYPESCRIPT: <SI.SiTypescript className="text-typescript" />,
   HTML: <SI.SiHtml5 className="text-html" />,
   GITHUB: <SI.SiGithub className="" />,
   NESTJS: <SI.SiNestjs className="text-nestjs" />,

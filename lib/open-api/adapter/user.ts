@@ -7,7 +7,7 @@ const userApi = new TILog.UserApi(undefined, undefined, axiosInstance);
 export const getMe = (options?: Option) =>
   userApi.usersControllerGetMe(options);
 
-export const getSetting = (
+export const setSetting = (
   setting: TILog.SetSettingRequestBodyDto,
   options?: Option
 ) => userApi.usersControllerSetSetting(setting, options);
