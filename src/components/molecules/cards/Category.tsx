@@ -11,7 +11,7 @@ const CategoryCard = ({
   selectedCategory?: number;
 }) => {
   const router = useRouter();
-  console.log(router);
+
   if (!router.query.category || Array.isArray(router.query.category)) {
     return (
       <Link
