@@ -7,4 +7,4 @@ export {
   updateComment,
 } from "./comment";
 export { createPost, getPostDetail, getPosts, updatePost } from "./post";
-export { getSetting, getMe } from "./user";
+export { setSetting, getMe } from "./user";
