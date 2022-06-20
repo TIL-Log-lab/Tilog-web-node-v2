@@ -31,6 +31,12 @@ export const userInfoSlice = createSlice({
     changeUserInfo(state, { payload }: PayloadAction<UserInfoSliceState>) {
       Object.assign(state, payload);
     },
+    changeUserSetting(
+      state,
+      { payload }: PayloadAction<UserInfoSliceState["settings"]>
+    ) {
+      Object.assign(state, payload);
+    },
     resetUserInfo(state) {
       Object.assign(state, internalInitialState);
     },
