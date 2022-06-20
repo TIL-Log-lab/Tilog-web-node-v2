@@ -10,7 +10,6 @@ import ExceptionInterface from "@Api/errors/interfaces";
 import { useDispatch, useSelector } from "react-redux";
 import { userInfoSelector, userInfoSlice } from "@Redux/userInfo";
 import clientSideAuthentication from "@Auth/clientSideAuthentication";
-import { WRONG_EMAIL } from "@Messages/constants/error/form";
 import { modalSlice } from "@Redux/modal";
 import React from "react";
 import { getMe, setSetting } from "@Api/adapter";
@@ -94,7 +93,7 @@ const OUserSetting = () => {
           pattern: {
             value:
               /[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]$/i,
-            message: WRONG_EMAIL,
+            message: "잘못된 이메일 형식입니다.",
           },
           maxLength: {
             value: 190,
