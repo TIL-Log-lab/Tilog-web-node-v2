@@ -16,19 +16,12 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@Molecules/*": ["src/components/molecules/*"],
-      "@Organisms/*": ["src/components/organisms/*"],
-      "@TechIcons/*": ["src/components/techIcons/*"],
-      "@Modal/*": ["src/components/modal/*"],
-      "@Api/*": ["lib/open-api/*"],
-      "@Language/*": ["lib/language/*"],
-      "@Messages/*": ["lib/messages/*"],
-      "@DateFns/*": ["lib/date-fns/*"],
-      "@Auth/*": ["lib/auth/*"],
-      "@Auth": ["lib/auth/"],
-      "@Utility/*": ["lib/utility/*"],
-      "@Redux/*": ["src/hooks/redux/*"],
-      "@Query/*": ["src/hooks/react-query/*"]
+      "@Components/*": ["src/components/*"],
+      "@Hooks/*": ["src/hooks/*"],
+      "@Services/*": ["src/services/*"],
+      "@Constants/*": ["src/constants/*"],
+      "@Utility/*": ["src/utility/*"],
+      "@Interface/*": ["src/interface/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
