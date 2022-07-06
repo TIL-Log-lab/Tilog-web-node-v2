@@ -44,16 +44,16 @@
             "group": "parent"
           },
           {
+            "pattern": "**/interface/**",
+            "group": "type"
+          },
+          {
             "pattern": "@**/**",
             "group": "internal"
           },
           {
             "pattern": "@**",
             "group": "internal"
-          },
-          {
-            "pattern": "**/interface/**",
-            "group": "type"
           },
           {
             "pattern": "**",
