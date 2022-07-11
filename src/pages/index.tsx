@@ -1,14 +1,10 @@
 import type { NextPage } from "next";
 
-import { wrapper } from "@Redux/store";
-import OHeader from "@Organisms/Header";
-
-import { modalSlice } from "@Redux/modal";
-import { useDispatch } from "react-redux";
 import api from "@Library/api";
+import OHeader from "@Organisms/Header";
+import { wrapper } from "@Redux/store";
 
 const Home: NextPage = () => {
-  const dispatch = useDispatch();
   return (
     <div className="md:mx-20 2xl:mx-60">
       <OHeader />

@@ -7,7 +7,11 @@ import getAccessTokenToAxiosHeader from "@Library/api/utility/getAccessTokenToAx
 import isTokenExpired from "@Library/api/utility/isTokenExpired";
 
 export default function validateToken() {
-  return (target: any, propertyKey: string, descriptor: PropertyDescriptor) => {
+  return (
+    _target: any,
+    _propertyKey: string,
+    descriptor: PropertyDescriptor
+  ) => {
     const originMethod = descriptor.value;
     descriptor.value = async function (...args: unknown[]) {
       const accessToken = getAccessTokenToAxiosHeader(httpClient.http);
