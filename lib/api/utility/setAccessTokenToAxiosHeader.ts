@@ -1,4 +1,4 @@
-import httpClient from "lib/api/app";
+import httpClient from "@Library/api/httpClient";
 
 import { GetAccessTokenUsingRefreshTokenResponse } from "@til-log.lab/tilog-api";
 
