@@ -1,10 +1,9 @@
-import axiosInstance from "@Api/axiosInstance";
+import httpClient from "lib/api/app";
+
 import { GetAccessTokenUsingRefreshTokenResponse } from "@til-log.lab/tilog-api";
 
 export default function setAccessTokenToAxiosHeader(
   accessToken: GetAccessTokenUsingRefreshTokenResponse["accessToken"]
 ) {
-  axiosInstance.defaults.headers.common[
-    "Authorization"
-  ] = `bearer ${accessToken}`;
+  httpClient.http.defaults.headers.common.Authorization = `bearer ${accessToken}`;
 }
