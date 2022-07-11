@@ -1,6 +1,7 @@
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 import AuthRepository from "@Library/api/auth/authRepository";
+import validateToken from "@Library/api/auth/validateTokenDecorator";
 import ExceptionInterface from "@Library/api/exception/interface";
 
 export default class AuthService {
@@ -8,10 +9,14 @@ export default class AuthService {
     private readonly authRepository: AuthRepository,
     private readonly axios: AxiosInstance
   ) {}
+  @validateToken()
   deleteRefreshToken(
     options?: AxiosRequestConfig<ExceptionInterface>
   ): Promise<AxiosResponse<void, ExceptionInterface>> {
-    return this.authRepository.usersAuthControllerDeleteRefreshToken(options);
+    return this.authRepository.usersAuthControllerDeleteRefreshToken({
+      ...options,
+      withCredentials: true,
+    });
   }
 
   async getAccessTokenUsingRefreshToken(
