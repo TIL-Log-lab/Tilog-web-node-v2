@@ -1,20 +1,33 @@
 import "../../styles/globals.css";
-import type { AppProps } from "next/app";
+import { NextPageContext } from "next";
+import type { AppContext, AppProps } from "next/app";
+
 import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 import { wrapper } from "@Redux/store";
-import ModalContainer from "@Modal/ModalContainer";
+
+type TILogAppContext = NextPageContext & AppContext;
 
 const queryClient = new QueryClient({});
 
 const TILogApp = ({ Component, pageProps }: AppProps) => {
   return (
     <QueryClientProvider client={queryClient}>
-      <ModalContainer />
       <Toaster />
       <Component {...pageProps} />
     </QueryClientProvider>
   );
 };
+
+TILogApp.getInitialProps = wrapper.getInitialPageProps(
+  () =>
+    ({ ctx, Component }: TILogAppContext) => {
+      const pageProps = !Component.getInitialProps
+        ? {}
+        : { ...Component.getInitialProps(ctx) };
+
+      return pageProps;
+    }
+);
 export default wrapper.withRedux(TILogApp);
