@@ -1,20 +1,19 @@
 import React from "react";
+
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 
-import getUserLanguage from "@Language/getUserLanguage";
-
-import ExceptionInterface from "@Api/errors/interfaces";
-import TechIcons from "@TechIcons/TechIcons";
+import api from "@Library/api";
+import ExceptionInterface from "@Library/api/exception/interface";
 import { userInfoSlice } from "@Redux/userInfo";
-import { modalSlice } from "@Redux/modal";
-import { getAccessToken, getMe } from "@Api/adapter";
+import TechIcons from "@TechIcons/TechIcons";
 
 const MButtonLogin = () => {
   const dispatch = useDispatch();
+
   const handleLogin = () => {
     const loginWindow = window.open(
-      process.env.TILOG_API + "/auth/github/login"
+      `${process.env.TILOG_API}/auth/github/login`
     );
     if (!loginWindow) {
       return toast.error("window open error");
@@ -24,25 +23,15 @@ const MButtonLogin = () => {
         clearInterval(loginCheck);
       }
       try {
-        const {
-          data: { accessToken },
-        } = await getAccessToken();
-
-        const { data } = await getMe({
-          headers: {
-            Authorization: `bearer ${accessToken}`,
-          },
-        });
+        const { data } = await api.usersService.getMe();
 
         if (data) {
-          const language = getUserLanguage();
           const userInfo = {
             ...data,
             isLogin: true,
-            language,
+            language: "ko",
           };
           dispatch(userInfoSlice.actions.changeUserInfo(userInfo));
-          dispatch(modalSlice.actions.resetModal());
 
           loginWindow.close();
         }
@@ -58,8 +47,9 @@ const MButtonLogin = () => {
   };
   return (
     <button
+      type="button"
       onClick={handleLogin}
-      className={`text-white rounded bg-black w-fit h-12`}
+      className="h-12 text-white bg-black rounded w-fit"
     >
       <div className="flex flex-row items-center justify-center p-3 ">
         Login With Github

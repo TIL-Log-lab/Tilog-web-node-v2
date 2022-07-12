@@ -1,13 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import { logout } from "@Api/adapter";
-import axiosInstance from "@Api/axiosInstance";
+import api from "@Library/api";
+import httpClient from "@Library/api/httpClient";
 import WrappedLink from "@Molecules/WrappedLink";
-import {
-  languageSelector,
-  userInfoSelector,
-  userInfoSlice,
-} from "@Redux/userInfo";
+import { userInfoSelector, userInfoSlice } from "@Redux/userInfo";
 
 const Dropdown = () => {
   const userInfo = useSelector(userInfoSelector);
@@ -15,17 +11,13 @@ const Dropdown = () => {
   const dispatch = useDispatch();
 
   const handleLogout = async () => {
-    try {
-      await logout();
-      dispatch(userInfoSlice.actions.resetUserInfo());
-      axiosInstance.defaults.headers.common["Authorization"] = "";
-    } catch {
-      // TODO: language error handling..
-    }
+    await api.authService.deleteRefreshToken();
+    dispatch(userInfoSlice.actions.resetUserInfo());
+    httpClient.http.defaults.headers.common.Authorization = "";
   };
   return (
     <div
-      className={`z-50 absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg`}
+      className="absolute right-0 z-50 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg"
       role="menu"
       aria-orientation="vertical"
       aria-labelledby="menu-button"
@@ -39,12 +31,12 @@ const Dropdown = () => {
       </div>
       <div className="py-1" role="none">
         <WrappedLink
-          href={`/editor`}
+          href="/editor"
           style="block px-4 py-2 text-lg text-gray-700 font-eng-sub-font-1"
           text="글쓰기"
         />
         <WrappedLink
-          href={`/setting`}
+          href="/setting"
           style="block px-4 py-2 text-lg text-gray-700 font-eng-sub-font-1"
           text="설정"
         />

@@ -7,6 +7,7 @@ const nextConfig = {
   },
   images: {
     //TODO: Input Your Image Server Domain
+    domains: ["avatars.githubusercontent.com"],
   },
 };
 

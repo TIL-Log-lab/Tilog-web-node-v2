@@ -1,4 +1,4 @@
-import MessageInterface from "@Messages/interfaces";
+import MessageInterface from "lib/messages/interface";
 
 const NETWORK_ERROR_MESSAGE: MessageInterface = {
   ko: "서버와 연결이 끊겼습니다.",

@@ -6,6 +6,6 @@ export default function isTokenExpired(
   const payloadBase64 = token.split(".")[1];
   const decodedJson = Buffer.from(payloadBase64, "base64").toString();
   const decoded = JSON.parse(decodedJson);
-  const exp = decoded.exp;
+  const { exp } = decoded;
   return Date.now() >= exp * 1000;
 }

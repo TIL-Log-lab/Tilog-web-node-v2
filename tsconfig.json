@@ -12,6 +12,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "experimentalDecorators": true,
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
@@ -20,13 +21,8 @@
       "@Organisms/*": ["src/components/organisms/*"],
       "@TechIcons/*": ["src/components/techIcons/*"],
       "@Modal/*": ["src/components/modal/*"],
-      "@Api/*": ["lib/open-api/*"],
-      "@Language/*": ["lib/language/*"],
-      "@Messages/*": ["lib/messages/*"],
-      "@DateFns/*": ["lib/date-fns/*"],
-      "@Auth/*": ["lib/auth/*"],
-      "@Auth": ["lib/auth/"],
-      "@Utility/*": ["lib/utility/*"],
+      "@Constants/*": ["constants/*"],
+      "@Library/*": ["lib/*"],
       "@Redux/*": ["src/hooks/redux/*"],
       "@Query/*": ["src/hooks/react-query/*"]
     }
