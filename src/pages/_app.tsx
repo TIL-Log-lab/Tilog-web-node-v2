@@ -23,11 +23,9 @@ const TILogApp = ({ Component, pageProps }: AppProps) => {
 TILogApp.getInitialProps = wrapper.getInitialPageProps(
   () =>
     ({ ctx, Component }: TILogAppContext) => {
-      const pageProps = !Component.getInitialProps
+      return !Component.getInitialProps
         ? {}
         : { ...Component.getInitialProps(ctx) };
-
-      return pageProps;
     }
 );
 export default wrapper.withRedux(TILogApp);
