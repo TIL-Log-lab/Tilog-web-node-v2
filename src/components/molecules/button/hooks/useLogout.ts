@@ -6,12 +6,11 @@ import { userInfoSlice } from "@Redux/userInfo";
 
 const useLogout = () => {
   const dispatch = useDispatch();
-  const handleLogout = async () => {
+  return async () => {
     dispatch(userInfoSlice.actions.resetUserInfo());
     httpClient.http.defaults.headers.common.Authorization = "";
     await api.authService.deleteRefreshToken();
   };
-  return handleLogout;
 };
 
 export default useLogout;
