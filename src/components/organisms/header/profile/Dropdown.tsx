@@ -10,7 +10,7 @@ import { userInfoSelector } from "@Redux/userInfo";
 const Dropdown = () => {
   const userInfo = useSelector(userInfoSelector);
   return (
-    <ol className="absolute bg-white divide-y divide-gray-100 rounded-md shadow-lg ">
+    <ol className="absolute right-0 bg-white divide-y divide-gray-100 rounded-md shadow-lg ">
       <li className="w-40 py-1" role="none">
         <LinkTo
           href={`/blog/${userInfo.name}`}
