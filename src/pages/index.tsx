@@ -2,7 +2,6 @@ import type { NextPage } from "next";
 
 import api from "@Library/api";
 import OHeader from "@Organisms/Header";
-import { wrapper } from "@Redux/store";
 
 const Home: NextPage = () => {
   return (
@@ -21,7 +20,3 @@ const Home: NextPage = () => {
   );
 };
 export default Home;
-
-Home.getInitialProps = wrapper.getInitialPageProps(() => async () => {
-  return {};
-});
