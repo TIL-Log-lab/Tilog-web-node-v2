@@ -17,13 +17,13 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@Molecules/*": ["src/components/molecules/*"],
-      "@Organisms/*": ["src/components/organisms/*"],
+      "@Components/*": ["src/components/*"],
       "@TechIcons/*": ["src/components/techIcons/*"],
       "@Modal/*": ["src/components/modal/*"],
       "@Constants/*": ["constants/*"],
       "@Library/*": ["lib/*"],
       "@Redux/*": ["src/hooks/redux/*"],
+      "@Hooks/*": ["src/hooks/*"],
       "@Query/*": ["src/hooks/react-query/*"]
     }
   },

@@ -8,7 +8,7 @@ import ExceptionInterface from "@Library/api/exception/interface";
 import { userInfoSlice } from "@Redux/userInfo";
 import TechIcons from "@TechIcons/TechIcons";
 
-const MButtonLogin = () => {
+const LoginButton = () => {
   const dispatch = useDispatch();
 
   const handleLogin = () => {
@@ -60,4 +60,4 @@ const MButtonLogin = () => {
     </button>
   );
 };
-export default React.memo(MButtonLogin);
+export default LoginButton;
