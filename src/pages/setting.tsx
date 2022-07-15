@@ -1,23 +1,23 @@
-import type { GetServerSideProps, NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 
-import OHeader from "@Organisms/Header";
-import OUserSetting from "@Organisms/user-settings";
-import { serverSideAuthentication } from "@Auth";
+import BodyBox from "@Components/box/BodyBox";
+import UserSettings from "@Components/organisms/user-settings";
+import { wrapper } from "@Redux/store";
 
 const SettingPage: NextPage = () => {
   return (
-    <div className="md:mx-20 2xl:mx-60">
-      <OHeader />
-
-      <OUserSetting />
-    </div>
+    <BodyBox>
+      <UserSettings />
+    </BodyBox>
   );
 };
 
 export default SettingPage;
-export const getServerSideProps: GetServerSideProps = serverSideAuthentication(
-  async (store, _) => {
-    if (!store.getState().TILog_Info.isLogin) {
+
+export const getServerSideProps: GetServerSideProps =
+  wrapper.getServerSideProps((store) => async () => {
+    const { isLogin } = store.getState().TILog_Info;
+    if (!isLogin) {
       return {
         notFound: true,
       };
@@ -25,5 +25,4 @@ export const getServerSideProps: GetServerSideProps = serverSideAuthentication(
     return {
       props: {},
     };
-  }
-);
+  });
