@@ -5,6 +5,8 @@ import type { AppContext, AppProps } from "next/app";
 import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "react-query";
 
+import MainBox from "@Components/box/MainBox";
+import Header from "@Components/organisms/header/Header";
 import { wrapper } from "@Redux/store";
 
 type TILogAppContext = NextPageContext & AppContext;
@@ -15,7 +17,10 @@ const TILogApp = ({ Component, pageProps }: AppProps) => {
   return (
     <QueryClientProvider client={queryClient}>
       <Toaster />
-      <Component {...pageProps} />
+      <MainBox>
+        <Header />
+        <Component {...pageProps} />
+      </MainBox>
     </QueryClientProvider>
   );
 };

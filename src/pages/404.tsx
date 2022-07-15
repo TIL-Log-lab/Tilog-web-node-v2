@@ -1,11 +1,8 @@
 import { NextPage } from "next";
 
-import OHeader from "@Organisms/Header";
-
 const NotFoundPage: NextPage = () => {
   return (
     <div className="md:mx-20 2xl:mx-60">
-      <OHeader />
       <article className="text-center ">
         <header>
           <h1>404</h1>
