@@ -1,11 +1,14 @@
 import { HYDRATE } from "next-redux-wrapper";
+
+import { LanguageUnionType } from "@Library/language/language";
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { GetMeResponseDto } from "@til-log.lab/tilog-api";
-import { State } from "@Redux/interfaces/redux.interface";
-import { LanguageUnionType } from "@Language/language";
+
+import { State } from "@Redux/interface/redux";
 
 export interface UserInfoSliceState {
+  userId: GetMeResponseDto["userId"];
   name: GetMeResponseDto["name"];
   avatar: GetMeResponseDto["avatar"];
   createdAt: GetMeResponseDto["createdAt"];
@@ -15,6 +18,7 @@ export interface UserInfoSliceState {
 }
 
 const internalInitialState: UserInfoSliceState = {
+  userId: 0,
   name: "",
   avatar: "",
   createdAt: "",
@@ -38,7 +42,7 @@ export const userInfoSlice = createSlice({
   extraReducers: {
     [HYDRATE]: (state, { payload }) => ({
       ...state,
-      ...payload["TILog_Info"],
+      ...payload.TILog_Info,
     }),
   },
 });
