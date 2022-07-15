@@ -1,6 +1,6 @@
-import MessageInterface from "lib/messages/interface";
+import { LanguageInterface } from "@Library/language/interface";
 
-const NOT_EXIST_MESSAGE: MessageInterface = {
+const NOT_EXIST_MESSAGE: LanguageInterface = {
   ko: "에러 메세지가 존재하지 않습니다.",
   en: "Error message does not exist.",
 };

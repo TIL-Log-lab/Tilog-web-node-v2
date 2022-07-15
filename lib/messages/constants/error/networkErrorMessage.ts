@@ -1,6 +1,6 @@
-import MessageInterface from "lib/messages/interface";
+import { LanguageInterface } from "@Library/language/interface";
 
-const NETWORK_ERROR_MESSAGE: MessageInterface = {
+const NETWORK_ERROR_MESSAGE: LanguageInterface = {
   ko: "서버와 연결이 끊겼습니다.",
   en: "NetWork Error.",
 };

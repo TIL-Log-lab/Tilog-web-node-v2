@@ -1,8 +1,11 @@
-import { LANGUAGE } from "@Language/language";
+import { enUS, ko } from "date-fns/locale";
 
-type DateInterface = Record<typeof LANGUAGE[keyof typeof LANGUAGE], string>;
+export const DATE_FNS_LANGUAGE = {
+  ko,
+  en: enUS,
+} as const;
 
-export const JUST_NOW: DateInterface = {
+export const JUST_NOW = {
   ko: "방금 전",
   en: "Just Now",
 };

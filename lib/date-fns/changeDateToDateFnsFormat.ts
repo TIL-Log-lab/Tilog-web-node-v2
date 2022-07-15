@@ -1,9 +1,7 @@
 import { format, formatDistanceToNow } from "date-fns";
 
+import { DATE_FNS_LANGUAGE, JUST_NOW } from "@Library/date-fns/constants";
 import { store } from "@Redux/store";
-
-import { JUST_NOW } from "@DateFns/constants";
-import { DATE_FNS_LANGUAGE } from "@Language/language";
 
 export default function changeDateToDateFnsFormat(date: string): string {
   const { language } = store.getState().TILog_Info;
