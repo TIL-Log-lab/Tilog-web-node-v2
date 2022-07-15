@@ -1,6 +1,6 @@
 import { HYDRATE } from "next-redux-wrapper";
 
-import { LanguageUnionType } from "@Library/language/language";
+import { LanguageUnionType } from "@Library/language/interface";
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { GetMeResponseDto } from "@til-log.lab/tilog-api";
@@ -54,4 +54,26 @@ export const languageSelector = createSelector(
 export const userInfoSelector = createSelector(
   (state: State) => state[userInfoSlice.name],
   (userInfo) => userInfo
+);
+export const userSettingSelector = createSelector(
+  (state: State) => state[userInfoSlice.name].settings,
+  (settings) => {
+    if (settings) {
+      return settings.reduce(
+        (prevSettings, curSettings) => {
+          return {
+            ...prevSettings,
+            [curSettings.type]: curSettings.content,
+          };
+        },
+        { DISPLAY_NAME: "", INTRO_MSG: "", EMAIL: "", POSITION: "" }
+      );
+    }
+    return {
+      DISPLAY_NAME: "",
+      INTRO_MSG: "",
+      EMAIL: "",
+      POSITION: "",
+    };
+  }
 );
