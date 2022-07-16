@@ -7,7 +7,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 
 const queryClient = new QueryClient({});
 
-const TILogApp = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, pageProps }: AppProps) => {
   return (
     <QueryClientProvider client={queryClient}>
       <Toaster />
@@ -16,4 +16,4 @@ const TILogApp = ({ Component, pageProps }: AppProps) => {
   );
 };
 
-export default TILogApp;
+export default App;

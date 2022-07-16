@@ -1,7 +1,6 @@
 import React from "react";
 
 import UserImage from "@Components/molecules/images/UserImage";
-import LinkTo from "@Components/molecules/LinkTo";
 import Dropdown from "@Components/organisms/header/profile/Dropdown";
 import useOutsideClickListener from "@Components/organisms/header/profile/hooks/useOutsideClickListener";
 import useGetMe from "@Hooks/react-query/useGetMe";

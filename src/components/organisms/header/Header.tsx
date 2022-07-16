@@ -1,6 +1,5 @@
 import HeaderBox from "@Components/box/HeaderBox";
 import LoginButton from "@Components/molecules/button/LoginButton";
-import LinkTo from "@Components/molecules/LinkTo";
 import Logo from "@Components/molecules/Logo";
 import Profile from "@Components/organisms/header/profile/Profile";
 import useGetMe from "@Hooks/react-query/useGetMe";
