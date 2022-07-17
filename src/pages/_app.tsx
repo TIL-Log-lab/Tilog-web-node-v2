@@ -5,10 +5,6 @@ import type { AppContext, AppProps } from "next/app";
 import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-import { wrapper } from "@Redux/store";
-
-type TILogAppContext = NextPageContext & AppContext;
-
 const queryClient = new QueryClient({});
 
 const TILogApp = ({ Component, pageProps }: AppProps) => {
@@ -20,12 +16,4 @@ const TILogApp = ({ Component, pageProps }: AppProps) => {
   );
 };
 
-TILogApp.getInitialProps = wrapper.getInitialPageProps(
-  () =>
-    ({ ctx, Component }: TILogAppContext) => {
-      return !Component.getInitialProps
-        ? {}
-        : { ...Component.getInitialProps(ctx) };
-    }
-);
-export default wrapper.withRedux(TILogApp);
+export default TILogApp;
