@@ -7,7 +7,7 @@ const LikeCount = ({ like, likeCountStyle }: LikeCountProps) => {
     <div className="flex items-center">
       <HeartIcon />
       <span
-        className={`${likeCountStyle} text-sm font-eng-sub-font-1 text-neutral-800 dark:text-neutral-50 mt-1 ml-1`}
+        className={`${likeCountStyle} text-xs font-eng-sub-font-1 text-neutral-800 dark:text-neutral-50 mt-1 ml-1`}
       >
         {like}
       </span>

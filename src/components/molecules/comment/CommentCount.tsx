@@ -7,7 +7,7 @@ const CommentCount = ({ comment, commentCountStyle }: CommentCountProps) => {
     <div className="flex items-center">
       <CommentIcon />
       <span
-        className={`${commentCountStyle} text-sm font-eng-sub-font-1 text-neutral-800 dark:text-neutral-50 mt-1 ml-1`}
+        className={`${commentCountStyle} text-xs font-eng-sub-font-1 text-neutral-800 dark:text-neutral-50 mt-1 ml-1`}
       >
         {comment}
       </span>
