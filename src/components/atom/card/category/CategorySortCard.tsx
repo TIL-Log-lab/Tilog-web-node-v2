@@ -5,7 +5,7 @@ import LinkTo from "@Components/molecules/LinkTo";
 
 import { CategoryCardProps } from "@Components/atom/card/category/interface";
 
-const CategoryCard = ({
+const CategorySortCard = ({
   categoryCardStyle,
   categoryName,
 }: CategoryCardProps) => {
@@ -43,4 +43,4 @@ const CategoryCard = ({
   );
 };
 
-export default CategoryCard;
+export default CategorySortCard;
