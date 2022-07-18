@@ -14,12 +14,9 @@ const CategoryRedirectCard = ({
         pathname: "search",
         query: { category: categoryName },
       }}
+      className={`underline decoration-${categoryName} text-base font-semibold text-${categoryName} font-eng-sub-font-1`}
     >
-      <span
-        className={`${categoryCardStyle} text-xl text-${categoryName} font-semibold font-eng-sub-font-1`}
-      >
-        # {categoryName}
-      </span>
+      #<span className={`${categoryCardStyle}`}>{categoryName}</span>
     </LinkTo>
   );
 };
