@@ -1,5 +1,5 @@
-import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import React from "react";
 
 class MyDocument extends Document {
   render() {
@@ -17,7 +17,7 @@ class MyDocument extends Document {
           rel="stylesheet"
         />
 
-        <body className="bg-neutral-100 dark:bg-black">
+        <body className="bg-neutral-50 dark:bg-neutral-900">
           <Main />
           <NextScript />
         </body>
