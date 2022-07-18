@@ -4,4 +4,5 @@ export interface PostImageProps {
   id: GetPostDetailResponseDto["id"];
   title: GetPostDetailResponseDto["title"];
   thumbnailUrl: GetPostDetailResponseDto["thumbnailUrl"];
+  postImageStyle: string;
 }

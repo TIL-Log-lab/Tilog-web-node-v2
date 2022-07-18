@@ -6,13 +6,26 @@ import { seededColor } from "@Library/utility/color";
 
 import { PostImageProps } from "@Components/molecules/images/interface/postImageProps";
 
-const PostImage = ({ id, thumbnailUrl, title }: PostImageProps) => {
+const PostImage = ({
+  id,
+  thumbnailUrl,
+  title,
+  postImageStyle,
+}: PostImageProps) => {
   if (thumbnailUrl) {
-    return <ThumbNail thumbnailUrl={thumbnailUrl} />;
+    return (
+      <div className={postImageStyle}>
+        <ThumbNail thumbnailUrl={thumbnailUrl} />
+      </div>
+    );
   }
 
   const color = seededColor(id);
-  return <ColorThumbNail title={title} color={color} />;
+  return (
+    <div className={postImageStyle}>
+      <ColorThumbNail title={title} color={color} />
+    </div>
+  );
 };
 
 export default PostImage;
