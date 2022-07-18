@@ -2,8 +2,8 @@ const CommentIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="25"
-      height="25"
+      width="20"
+      height="20"
       viewBox="0 0 1000 1000"
       className="dark:fill-neutral-50 fill-neutral-800"
     >
