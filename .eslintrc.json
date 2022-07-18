@@ -46,6 +46,10 @@
             "group": "parent"
           },
           {
+            "pattern": "**/interface",
+            "group": "type"
+          },
+          {
             "pattern": "**/interface/**",
             "group": "type"
           },
