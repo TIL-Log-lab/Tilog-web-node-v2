@@ -1,8 +1,8 @@
 const HeartIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="19"
-    height="19"
+    width="14"
+    height="14"
     viewBox="0 0 225 225"
     className="dark:fill-neutral-50 fill-neutral-800"
   >
