@@ -16,7 +16,18 @@ const LinkTo = ({
   ...anchorProps
 }: PropsWithChildren<PropTypes>) => {
   return (
-    <Link {...{ href, as, replace, scroll, shallow, prefetch, locale }}>
+    <Link
+      {...{
+        ...anchorProps,
+        href,
+        as,
+        replace,
+        scroll,
+        shallow,
+        prefetch,
+        locale,
+      }}
+    >
       <a {...anchorProps}>{children}</a>
     </Link>
   );

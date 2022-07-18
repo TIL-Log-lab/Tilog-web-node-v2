@@ -1,32 +1,26 @@
 import Image from "next/image";
 
-import { FaUserCircle } from "react-icons/fa";
-import { useSelector } from "react-redux";
-
-import { userInfoSelector } from "@Redux/userInfo";
+import useGetMe from "@Hooks/react-query/useGetMe";
 
 interface UserImageProps {
-  onClick: () => void;
+  width?: string;
+  height?: string;
 }
 
-const UserImage = ({ onClick }: UserImageProps) => {
-  const { avatar } = useSelector(userInfoSelector);
-  if (!avatar) {
-    return (
-      <FaUserCircle
-        onClick={onClick}
-        className="w-[50px] mr-3 rounded-full h-[50px] dark:text-neutral-300 text-neutral-800 cursor-pointer"
-      />
-    );
+const UserImage = ({ width = "50", height = "50" }: UserImageProps) => {
+  const { data } = useGetMe();
+
+  if (!data || !data.data.avatar) {
+    return null;
   }
+
   return (
     <Image
-      onClick={onClick}
       className="rounded-full cursor-pointer focus:outline-none focus:ring focus:ring-signature-color"
-      width="50"
-      height="50"
+      width={width}
+      height={height}
       alt="avatar"
-      src={avatar}
+      src={data.data.avatar}
     />
   );
 };

@@ -1,15 +1,13 @@
-import { useDispatch } from "react-redux";
-
+import useGetMe from "@Hooks/react-query/useGetMe";
 import api from "@Library/api";
 import httpClient from "@Library/api/httpClient";
-import { userInfoSlice } from "@Redux/userInfo";
 
 const useLogout = () => {
-  const dispatch = useDispatch();
-  return async () => {
-    dispatch(userInfoSlice.actions.resetUserInfo());
+  const { refetch } = useGetMe();
+  return () => {
+    api.authService.deleteRefreshToken();
+    refetch();
     httpClient.http.defaults.headers.common.Authorization = "";
-    await api.authService.deleteRefreshToken();
   };
 };
 
