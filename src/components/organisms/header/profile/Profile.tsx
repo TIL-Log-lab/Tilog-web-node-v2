@@ -1,6 +1,6 @@
 import React from "react";
 
-import UserImage from "@Components/molecules/images/UserImage";
+import UserImage from "@Components/atom/images/UserImage";
 import Dropdown from "@Components/organisms/header/profile/Dropdown";
 import useOutsideClickListener from "@Components/organisms/header/profile/hooks/useOutsideClickListener";
 import useGetMe from "@Hooks/react-query/useGetMe";
@@ -12,7 +12,7 @@ const Profile = () => {
   return (
     <div ref={ref}>
       <button type="button" onClick={() => setIsOpen(!isOpen)}>
-        <UserImage />
+        <UserImage cursor avatar={data.data.avatar} />
       </button>
 
       {isOpen && <Dropdown />}
