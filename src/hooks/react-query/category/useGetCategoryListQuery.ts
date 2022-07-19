@@ -1,20 +1,30 @@
 import { AxiosResponse } from "axios";
 import { useQuery } from "react-query";
 
-import { getCategory } from "@Api/adapter";
+import api from "@Library/api";
 
-import ExceptionInterface from "@Api/errors/interfaces";
 import { GetCategoriesResponseDto } from "@til-log.lab/tilog-api";
 
-export const useGetCategoryListQuery = () => {
+import ExceptionInterface from "@Library/api/exception/interface";
+
+const useGetCategoryListQuery = (categoryName: string = "") => {
   return useQuery<
     AxiosResponse<GetCategoriesResponseDto>,
     ExceptionInterface,
     AxiosResponse<GetCategoriesResponseDto>,
     string
-  >("categoryList", () => getCategory(), {
-    retry: 0,
-    refetchInterval: false,
-    refetchOnWindowFocus: false,
-  });
+  >(
+    `CategoryList-${categoryName}`,
+    () => api.categoryService.getCategories(categoryName),
+    {
+      retry: 0,
+      refetchOnWindowFocus: false,
+      refetchInterval: false,
+      retryOnMount: false,
+      refetchOnMount: false,
+      staleTime: Infinity,
+    }
+  );
 };
+
+export default useGetCategoryListQuery;
