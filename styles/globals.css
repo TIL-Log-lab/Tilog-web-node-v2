@@ -3,21 +3,21 @@
 @tailwind utilities;
 @layer base {
   h1 {
-    @apply text-5xl text-neutral-800 dark:text-neutral-200 font-eng-sub-font-2;
+    @apply text-5xl font-bold text-neutral-800 dark:text-neutral-50 font-eng-sub-font-2;
   }
   h2 {
-    @apply text-4xl text-neutral-800 dark:text-neutral-200 font-eng-sub-font-2;
+    @apply text-4xl font-semibold text-neutral-800 dark:text-neutral-50 font-eng-sub-font-2;
   }
   h3 {
-    @apply text-3xl text-neutral-800 dark:text-neutral-200 font-eng-sub-font-2;
+    @apply text-3xl font-medium text-neutral-500 dark:text-neutral-300 font-eng-sub-font-2;
   }
   a {
-    @apply text-neutral-800 dark:text-neutral-200 hover:underline;
+    @apply text-neutral-800 dark:text-neutral-50 hover:underline font-eng-sub-font-2;
   }
   p {
-    @apply text-xl text-neutral-400 font-eng-sub-font-2;
+    @apply text-xl text-neutral-400 dark:text-neutral-200 font-eng-sub-font-2;
   }
   input {
-    @apply text-gray-700 dark:text-white dark:bg-neutral-900 focus:outline-none;
+    @apply text-neutral-800 dark:text-neutral-50 focus:outline-none;
   }
 }
