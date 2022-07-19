@@ -6,8 +6,9 @@ import PostImage from "@Components/molecules/images/PostImage";
 import LikeCount from "@Components/molecules/like/LikeCount";
 import LinkTo from "@Components/molecules/LinkTo";
 import UserProfile from "@Components/molecules/user/UserProfile";
+import { PostCardProps } from "@Components/organisms/card/post/interface";
 
-const PostCard = ({ post }: { post: any }) => {
+const PostCard = ({ post }: { post: PostCardProps }) => {
   return (
     <div className="relative flex justify-between w-full h-[120px] sm:w-[500px] sm:h-[150px] bg-neutral-100 dark:bg-neutral-800">
       <div className="w-full px-5 py-3">
