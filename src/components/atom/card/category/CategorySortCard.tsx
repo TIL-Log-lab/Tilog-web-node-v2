@@ -28,12 +28,7 @@ const CategorySortCard = ({
     );
   }
   return (
-    <LinkTo
-      href={{
-        pathname: router.pathname,
-        query: { ...router.query, category: null },
-      }}
-    >
+    <LinkTo href={`${router.asPath.split("?")[0]}`}>
       <span
         className={`${categoryCardStyle} text-xl text-${categoryName} font-semibold font-eng-sub-font-1`}
       >
