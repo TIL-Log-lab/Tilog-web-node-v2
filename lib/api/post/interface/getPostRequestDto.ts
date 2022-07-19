@@ -5,6 +5,6 @@ export default interface GetPostRequestDto {
   sortScope: SortScope;
   page: number;
   maxContent: number;
-  userId?: number | undefined;
-  categoryId?: number | undefined;
+  userId?: number;
+  categoryId?: number;
 }
