@@ -7,7 +7,7 @@ import { GetCategoriesResponseDto } from "@til-log.lab/tilog-api";
 
 import ExceptionInterface from "@Library/api/exception/interface";
 
-const useGetCategoryListQuery = (categoryName: string = "") => {
+const useGetCategoryListQuery = (categoryName?: string) => {
   return useQuery<
     AxiosResponse<GetCategoriesResponseDto>,
     ExceptionInterface,
