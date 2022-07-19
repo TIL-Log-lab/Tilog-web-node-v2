@@ -10,7 +10,7 @@ import UserProfile from "@Components/molecules/user/UserProfile";
 const PostCard = ({ post }: { post: any }) => {
   return (
     <div className="relative flex justify-between w-full h-[120px] sm:w-[500px] sm:h-[150px] bg-neutral-100 dark:bg-neutral-800">
-      <div className="px-5 py-3">
+      <div className="w-full px-5 py-3">
         <div className="flex items-center gap-x-2 shrink-0">
           <LinkTo href="#">
             <UserProfile
