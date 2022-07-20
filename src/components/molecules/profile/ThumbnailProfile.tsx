@@ -1,6 +1,6 @@
 import NoUserImage from "@Components/atom/images/user/NoUserImage";
 import UserImage from "@Components/atom/images/user/UserImage";
-import UserName from "@Components/atom/user/UserName";
+import UserName from "@Components/atom/text/UserName";
 
 interface ThumbnailProfileProps {
   avatar: string | null;
