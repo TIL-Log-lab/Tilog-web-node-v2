@@ -24,7 +24,7 @@ const ThumbnailProfile = ({
         <UserImage className="w-7 h-7" cursor={cursor} avatar={avatar} />
       )}
       <UserName
-        className={`mt-1 ml-3 ${textSize} font-semibold text-neutral-600 dark:text-neutral-50 font-eng-sub-font-1`}
+        className={`mt-1 ml-3 ${textSize} line-clamp-1  font-semibold text-neutral-600 dark:text-neutral-50 font-eng-sub-font-1`}
       >
         {children}
       </UserName>
