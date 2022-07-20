@@ -1,10 +1,9 @@
-import { SubTitleProps } from "@Components/atom/text/interface";
+interface SubTitleProps {
+  className: string;
+  children: string;
+}
 
-const SubTitle = ({ SubTitleStyle, children }: SubTitleProps) => (
-  <h3
-    className={`${SubTitleStyle} text-neutral-500 text-xl font-medium font-eng-sub-font-2`}
-  >
-    {children}
-  </h3>
+const SubTitle = ({ className, children }: SubTitleProps) => (
+  <h3 className={className}>{children}</h3>
 );
 export default SubTitle;
