@@ -6,7 +6,6 @@ import Introduction from "@Components/atom/text/Introduction";
 import Position from "@Components/atom/text/Position";
 import UserName from "@Components/atom/text/UserName";
 import LinkTo from "@Components/molecules/LinkTo";
-import useGetMeQuery from "@Hooks/react-query/user/useGetMeQuery";
 import GetUserProfileResponseTransFormSettingsDto from "@Library/api/users/interface/getUserProfileResponseTransFormSettingsDto";
 
 interface ThumbnailProfileProps {
