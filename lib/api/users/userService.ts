@@ -48,16 +48,16 @@ export default class UserService {
   }
 
   @validateToken()
-  setSetting(
+  async setSetting(
     content: string | null,
     settingType: SetSettingRequestBodyDtoSettingTypeEnum,
-    options?: AxiosRequestConfig<ExceptionInterface>
-  ): Promise<AxiosResponse<void, ExceptionInterface>> {
+    options?: AxiosRequestConfig<unknown>
+  ): Promise<void> {
     const setSettingRequestBodyDto: SetSettingRequestBodyDto = {
       content,
       settingType,
     };
-    return this.userRepository.usersControllerSetSetting(
+    await this.userRepository.usersControllerSetSetting(
       setSettingRequestBodyDto,
       options
     );
