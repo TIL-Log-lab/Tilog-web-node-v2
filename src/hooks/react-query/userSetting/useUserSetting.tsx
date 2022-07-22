@@ -1,11 +1,35 @@
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 
-import { SetSettingRequestBodyDto } from "@til-log.lab/tilog-api";
-import clientSideAuthentication from "@Auth/clientSideAuthentication";
-import { setSetting } from "@Api/adapter";
+import api from "@Library/api";
 
-export const useSetUserSetting = () => {
-  return useMutation(async (newSetting: SetSettingRequestBodyDto) =>
-    clientSideAuthentication(() => setSetting(newSetting))
+import { SetSettingRequestBodyDtoSettingTypeEnum } from "@til-log.lab/tilog-api";
+
+import GetMeResponseTransFormSettingsDto from "@Library/api/users/interface/getMeResponseTransFormSettingsDto";
+
+const useSetUserSetting = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation(
+    ({
+      content,
+      settingType,
+    }: {
+      content: string | null;
+      settingType: SetSettingRequestBodyDtoSettingTypeEnum;
+    }) => api.usersService.setSetting(content, settingType),
+    {
+      onSuccess: (_data, variables) => {
+        queryClient.setQueriesData<
+          GetMeResponseTransFormSettingsDto | undefined
+        >(["myUserInfo"], (oldData) => {
+          if (!oldData) return oldData;
+          const newData: GetMeResponseTransFormSettingsDto = oldData;
+          newData.settings[variables.settingType] = variables.content;
+          return newData;
+        });
+      },
+    }
   );
 };
+
+export default useSetUserSetting;
