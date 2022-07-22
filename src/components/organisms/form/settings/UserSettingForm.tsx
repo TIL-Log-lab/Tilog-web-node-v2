@@ -10,7 +10,7 @@ import {
 } from "@Components/molecules/input/settings";
 import useSettingForm from "@Components/organisms/form/settings/hooks/useSettingForm";
 import SUMMIT from "@Constants/text/summit";
-import useSetUserSetting from "@Hooks/react-query/userSetting/useUserSetting";
+import useSetUserSetting from "@Hooks/react-query/userSetting/useSetUserSetting";
 import SAVE_MESSAGE from "@Library/messages/constants/success/save";
 
 import { SetSettingRequestBodyDtoSettingTypeEnum } from "@til-log.lab/tilog-api";
@@ -18,7 +18,7 @@ import { SetSettingRequestBodyDtoSettingTypeEnum } from "@til-log.lab/tilog-api"
 import GetMeResponseTransFormSettingsDto from "@Library/api/users/interface/getMeResponseTransFormSettingsDto";
 import UserSettingTypes from "@Library/api/users/interface/userSettingTypes";
 
-const UserSettings = ({
+const UserSettingForm = ({
   userInfo,
 }: {
   userInfo: GetMeResponseTransFormSettingsDto;
@@ -65,4 +65,4 @@ const UserSettings = ({
     </FormProvider>
   );
 };
-export default UserSettings;
+export default UserSettingForm;
