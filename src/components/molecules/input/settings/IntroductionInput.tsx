@@ -33,4 +33,3 @@ const IntroductionInput = () => {
   );
 };
 export default IntroductionInput;
-InputSettingsBox;
