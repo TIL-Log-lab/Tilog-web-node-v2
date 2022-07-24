@@ -1,10 +1,9 @@
 import { useFormContext } from "react-hook-form";
 
-import SettingInput from "@Components/atom/input/SettingInput";
+import TextInput from "@Components/atom/input/TextInput";
 import Desc from "@Components/atom/text/Desc";
 import Title from "@Components/atom/text/Title";
 import { introMsgRules } from "@Components/molecules/input/rules/index";
-import InputSettingsBox from "@Components/molecules/input/settings/InputSettingsBox";
 import { INTRO_MSG_DESC } from "@Constants/text/desc";
 import { INTRO_MSG_TITLE } from "@Constants/text/title";
 
@@ -15,21 +14,25 @@ const IntroductionInput = () => {
     register,
     formState: { errors },
   } = useFormContext<UserSettingTypes>();
+
+  const errorMessage = !errors.INTRO_MSG ? "" : errors.INTRO_MSG.message;
+
   return (
-    <InputSettingsBox>
+    <div>
       <div className="max-w-96">
         <Title className="text-4xl">{INTRO_MSG_TITLE.ko}</Title>
         <Desc className="mt-2 text-base font-normal text-neutral-500 dark:text-neutral-300">
           {INTRO_MSG_DESC.ko}
         </Desc>
       </div>
-      <SettingInput
+
+      <TextInput
         register={register}
-        type="INTRO_MSG"
         rules={introMsgRules("ko")}
-        error={errors.INTRO_MSG?.message}
+        inputName="INTRO_MSG"
+        errorMessage={errorMessage}
       />
-    </InputSettingsBox>
+    </div>
   );
 };
 export default IntroductionInput;
