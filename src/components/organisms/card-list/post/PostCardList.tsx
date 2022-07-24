@@ -1,7 +1,7 @@
 import React from "react";
 
-import PostCard from "@Components/molecules/card/PostCard";
-import CardLoading from "@Components/molecules/cards/Loading";
+import CardLoading from "@Components/molecules/card/Loading";
+import PostCard from "@Components/molecules/card/post/PostCard";
 import useGetPostListQuery from "@Hooks/react-query/post/useGetPostListQuery";
 
 import GetPostRequestDto from "@Library/api/post/interface/getPostRequestDto";
