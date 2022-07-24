@@ -3,8 +3,8 @@ import { useFormContext } from "react-hook-form";
 import SettingInput from "@Components/atom/input/SettingInput";
 import Desc from "@Components/atom/text/Desc";
 import Title from "@Components/atom/text/Title";
+import { positionRules } from "@Components/molecules/input/rules/index";
 import InputSettingsBox from "@Components/molecules/input/settings/InputSettingsBox";
-import { positionRules } from "@Components/organisms/form/settings/rules";
 import { POSITION_DESC } from "@Constants/text/desc";
 import { POSITION_TITLE } from "@Constants/text/title";
 

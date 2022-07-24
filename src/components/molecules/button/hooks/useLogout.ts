@@ -1,9 +1,9 @@
-import useGetMe from "@Hooks/react-query/useGetMe";
+import useGetMeQuery from "@Hooks/react-query/user/useGetMeQuery";
 import api from "@Library/api";
 import httpClient from "@Library/api/httpClient";
 
 const useLogout = () => {
-  const { refetch } = useGetMe();
+  const { refetch } = useGetMeQuery();
   return () => {
     api.authService.deleteRefreshToken();
     refetch();

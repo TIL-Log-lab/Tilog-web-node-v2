@@ -2,12 +2,10 @@ import { FormProvider, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
 
 import SummitInput from "@Components/atom/input/SummitInput";
-import {
-  DisplayNameInput,
-  EmailInput,
-  IntroductionInput,
-  PositionInput,
-} from "@Components/molecules/input/settings";
+import DisplayNameInput from "@Components/molecules/input/settings/DisplayNameInput";
+import EmailInput from "@Components/molecules/input/settings/EmailInput";
+import IntroductionInput from "@Components/molecules/input/settings/IntroductionInput";
+import PositionInput from "@Components/molecules/input/settings/PositionInput";
 import useSettingForm from "@Components/organisms/form/settings/hooks/useSettingForm";
 import SUMMIT from "@Constants/text/summit";
 import useSetUserSetting from "@Hooks/react-query/userSetting/useSetUserSetting";

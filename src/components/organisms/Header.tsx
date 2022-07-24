@@ -1,6 +1,6 @@
 import HeaderBox from "@Components/box/HeaderBox";
 import Logo from "@Components/molecules/Logo";
-import HeaderProfile from "@Components/molecules/profile/header";
+import HeaderProfile from "@Components/molecules/profile/header/HeaderProfile";
 
 const Header = () => {
   return (
