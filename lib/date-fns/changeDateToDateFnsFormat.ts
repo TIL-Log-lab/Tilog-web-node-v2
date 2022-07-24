@@ -1,11 +1,10 @@
 import { format, formatDistanceToNow } from "date-fns";
 
 import { DATE_FNS_LANGUAGE, JUST_NOW } from "@Library/date-fns/constants";
-import { store } from "@Redux/store";
 
+// TODO: I18N 적용.
 export default function changeDateToDateFnsFormat(date: string): string {
-  const { language } = store.getState().TILog_Info;
-
+  const language = "ko";
   const postingDate = new Date(date).getTime();
   const currentDate = Date.now();
   const diff = (currentDate - postingDate) / 1000;
