@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
-import useGetMe from "@Hooks/react-query/useGetMe";
+import useGetMeQuery from "@Hooks/react-query/user/useGetMeQuery";
 
 const useLogin = () => {
-  const { refetch } = useGetMe();
+  const { refetch } = useGetMeQuery();
   useEffect(() => {
     window.addEventListener(
       "message",
