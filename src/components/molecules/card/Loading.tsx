@@ -15,12 +15,18 @@ interface CardLoadingProps {
   >;
 }
 
-export const CardLoading = ({
+const CardLoading = ({
   hasNextPage,
   isFetchingNextPage,
   fetchNextPage,
 }: CardLoadingProps) => {
-  if (!hasNextPage) return <></>;
+  if (!hasNextPage) return null;
   if (isFetchingNextPage) return <>로딩중..</>;
-  return <button onClick={() => fetchNextPage()}>더보기</button>;
+  return (
+    <button type="button" onClick={() => fetchNextPage()}>
+      더보기
+    </button>
+  );
 };
+
+export default CardLoading;
