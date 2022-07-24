@@ -1,10 +1,17 @@
-import { getUserCategory } from "@Api/adapter";
 import { useQuery } from "react-query";
 
-export const useGetUserCategoryListQuery = (userId: number) => {
-  return useQuery("userCategoryList", () => getUserCategory(userId), {
-    retry: 0,
-    refetchInterval: false,
-    refetchOnWindowFocus: false,
-  });
+import api from "@Library/api";
+
+const useGetUserCategoryListQuery = (userId: number) => {
+  return useQuery(
+    "userCategoryList",
+    () => api.categoryService.getUsersCategories(userId),
+    {
+      retry: 0,
+      refetchInterval: false,
+      refetchOnWindowFocus: false,
+    }
+  );
 };
+
+export default useGetUserCategoryListQuery;
