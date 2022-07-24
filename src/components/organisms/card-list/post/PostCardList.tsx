@@ -1,6 +1,6 @@
 import React from "react";
 
-import CardLoading from "@Components/molecules/card/Loading";
+import CardLoading from "@Components/molecules/card/CardLoading";
 import PostCard from "@Components/molecules/card/post/PostCard";
 import useGetPostListQuery from "@Hooks/react-query/post/useGetPostListQuery";
 
