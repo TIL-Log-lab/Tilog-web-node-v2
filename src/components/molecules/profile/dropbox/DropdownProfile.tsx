@@ -5,7 +5,8 @@ import MY_BLOG from "@Constants/text/myBlog";
 import SETTINGS from "@Constants/text/settings";
 import useGetMe from "@Hooks/react-query/useGetMe";
 
-const Dropdown = () => {
+// TODO: i18n 적용.
+const DropdownProfile = () => {
   const { data } = useGetMe();
   if (!data) return null;
   return (
@@ -41,4 +42,4 @@ const Dropdown = () => {
   );
 };
 
-export default Dropdown;
+export default DropdownProfile;
