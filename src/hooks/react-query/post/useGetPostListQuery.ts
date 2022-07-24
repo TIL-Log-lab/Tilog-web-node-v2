@@ -1,9 +1,7 @@
 import { AxiosResponse } from "axios";
 import { useInfiniteQuery } from "react-query";
 
-
 import useGetCategoryListQuery from "@Hooks/react-query/category/useGetCategoryListQuery";
-
 import api from "@Library/api";
 
 import { GetPostsResponseDto } from "@til-log.lab/tilog-api";
@@ -37,7 +35,6 @@ const useGetPostListQuery = ({
     AxiosResponse<GetPostsResponseDto>,
     string
   >(
-
     `PostList-${dateScope}-${sortScope}-${userId}`,
     ({ pageParam = page }) => {
       return api.postService.getPosts(
@@ -45,7 +42,8 @@ const useGetPostListQuery = ({
         sortScope,
         pageParam,
         maxContent,
-        userId
+        userId,
+        categoryId
       );
     },
     {
