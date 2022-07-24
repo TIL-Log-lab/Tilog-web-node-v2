@@ -1,14 +1,10 @@
 import React from "react";
 
-import CategoryCard from "@Molecules/cards/Category";
-import { useGetCategoryListQuery } from "@Query/category/useGetCategoryListQuery";
+import CategorySortCard from "@Components/molecules/card/category/CategorySortCard";
+import useGetUserCategoryListQuery from "@Query/category/useGetUserCategoryListQuery";
 
-const CategoryCardList = ({
-  selectedCategory,
-}: {
-  selectedCategory?: number;
-}) => {
-  const categoryList = useGetCategoryListQuery();
+const UserCategoryCardList = ({ userId }: { userId: number }) => {
+  const categoryList = useGetUserCategoryListQuery(userId);
   if (categoryList.isError) {
     return <div>에러발생!</div>;
   }
@@ -22,10 +18,7 @@ const CategoryCardList = ({
         {categoryList.isSuccess &&
           categoryList.data.data.list.map((category) => (
             <div key={category.id}>
-              <CategoryCard
-                selectedCategory={selectedCategory}
-                category={category}
-              />
+              <CategorySortCard categoryName={category.categoryName} />
             </div>
           ))}
       </div>
@@ -33,4 +26,4 @@ const CategoryCardList = ({
   );
 };
 
-export default CategoryCardList;
+export default UserCategoryCardList;
