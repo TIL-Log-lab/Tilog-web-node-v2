@@ -1,6 +1,7 @@
 import { AxiosResponse } from "axios";
 import { useInfiniteQuery } from "react-query";
 
+import useGetCategoryListQuery from "@Hooks/react-query/category/useGetCategoryListQuery";
 import api from "@Library/api";
 
 import { GetPostsResponseDto } from "@til-log.lab/tilog-api";
@@ -14,15 +15,20 @@ interface GetPostListQueryInterface {
   page: GetPostRequestDto["page"];
   maxContent: GetPostRequestDto["maxContent"];
   userId?: GetPostRequestDto["userId"];
+  categoryName?: string;
 }
 
 const useGetPostListQuery = ({
+  categoryName,
   dateScope,
   sortScope,
   maxContent,
   userId,
   page,
 }: GetPostListQueryInterface) => {
+  const { data } = useGetCategoryListQuery(categoryName);
+  const categoryId = data?.data.list.length === 1 ? data.data.list[0].id : 0;
+
   return useInfiniteQuery<
     AxiosResponse<GetPostsResponseDto>,
     ExceptionInterface,
@@ -36,7 +42,8 @@ const useGetPostListQuery = ({
         sortScope,
         pageParam,
         maxContent,
-        userId
+        userId,
+        categoryId
       );
     },
     {
