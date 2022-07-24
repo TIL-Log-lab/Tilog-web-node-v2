@@ -3,8 +3,8 @@ import { useFormContext } from "react-hook-form";
 import SettingInput from "@Components/atom/input/SettingInput";
 import Desc from "@Components/atom/text/Desc";
 import Title from "@Components/atom/text/Title";
+import { emailRules } from "@Components/molecules/input/rules/index";
 import InputSettingsBox from "@Components/molecules/input/settings/InputSettingsBox";
-import { emailRules } from "@Components/organisms/form/settings/rules";
 import { EMAIL_DESC } from "@Constants/text/desc";
 import { EMAIL_TITLE } from "@Constants/text/title";
 
