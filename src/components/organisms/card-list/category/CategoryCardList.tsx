@@ -1,10 +1,21 @@
-import React from "react";
+import { AxiosResponse } from "axios";
+import { UseQueryResult } from "react-query";
 
 import CategorySortCard from "@Components/molecules/card/category/CategorySortCard";
-import useGetUserCategoryListQuery from "@Query/category/useGetUserCategoryListQuery";
 
-const UserCategoryCardList = ({ userId }: { userId: number }) => {
-  const categoryList = useGetUserCategoryListQuery(userId);
+import {
+  GetCategoriesResponseDto,
+  GetUserCategoriesResponseDto,
+} from "@til-log.lab/tilog-api";
+
+const CategoryList = ({
+  categoryList,
+}: {
+  categoryList: UseQueryResult<
+    AxiosResponse<GetCategoriesResponseDto | GetUserCategoriesResponseDto, any>,
+    unknown
+  >;
+}) => {
   if (categoryList.isError) {
     return <div>에러발생!</div>;
   }
@@ -26,4 +37,4 @@ const UserCategoryCardList = ({ userId }: { userId: number }) => {
   );
 };
 
-export default UserCategoryCardList;
+export default CategoryList;
