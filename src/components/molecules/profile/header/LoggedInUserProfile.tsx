@@ -4,20 +4,20 @@ import NoUserImage from "@Components/atom/images/user/NoUserImage";
 import UserImage from "@Components/atom/images/user/UserImage";
 import DropdownProfile from "@Components/molecules/profile/dropbox/DropdownProfile";
 import useOutsideClickListener from "@Components/molecules/profile/dropbox/hooks/useOutsideClickListener";
-import useGetMe from "@Hooks/react-query/useGetMe";
+import useGetMeQuery from "@Hooks/react-query/user/useGetMeQuery";
 
 const LoggedInUserProfile = ({ className }: { className?: string }) => {
-  const { data } = useGetMe();
+  const { data } = useGetMeQuery();
   const { ref, isOpen, setIsOpen } = useOutsideClickListener();
 
   if (!data) return null;
   return (
     <div ref={ref}>
       <button type="button" onClick={() => setIsOpen(!isOpen)}>
-        {!data.data.avatar ? (
+        {!data.avatar ? (
           <NoUserImage className={className} />
         ) : (
-          <UserImage className={className} cursor avatar={data.data.avatar} />
+          <UserImage className={className} cursor avatar={data.avatar} />
         )}
       </button>
 
