@@ -27,6 +27,11 @@ const IntroductionInput = () => {
       </div>
 
       <TextInput
+        className={`${
+          !errorMessage
+            ? "dark:focus:border-signature-color focus:border-signature-color"
+            : "focus:border-red-600 dark:focus:border-rose-600"
+        } bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 focus:outline-none focus:ring-0`}
         register={register}
         rules={introMsgRules("ko")}
         inputName="INTRO_MSG"
