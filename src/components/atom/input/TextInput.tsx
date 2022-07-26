@@ -18,17 +18,14 @@ const TextInput = <TFormValues extends unknown>({
   register,
   inputName,
   rules,
+  className,
   errorMessage,
   ...props
 }: TextInputProps<TFormValues>) => {
   return (
     <>
       <input
-        className={`${
-          !errorMessage
-            ? "dark:focus:border-signature-color focus:border-signature-color"
-            : "focus:border-red-600 dark:focus:border-rose-600"
-        } py-2.5 w-full bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 focus:outline-none focus:ring-0`}
+        className={`py-2.5 w-full ${className}`}
         {...register(inputName, rules)}
         {...props}
       />
