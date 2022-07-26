@@ -8,7 +8,7 @@ import useGetMeQuery from "@Hooks/react-query/user/useGetMeQuery";
 const SettingPage: NextPage = () => {
   const router = useRouter();
   const userInfo = useGetMeQuery();
-  if (userInfo.isError) router.push("/login");
+  if (userInfo.isError) router.push("/");
   if (userInfo.isLoading) return null;
 
   return (

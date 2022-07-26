@@ -1,10 +1,9 @@
 import { useFormContext } from "react-hook-form";
 
-import SettingInput from "@Components/atom/input/SettingInput";
+import TextInput from "@Components/atom/input/TextInput";
 import Desc from "@Components/atom/text/Desc";
 import Title from "@Components/atom/text/Title";
 import { displayNameRules } from "@Components/molecules/input/rules/index";
-import InputSettingsBox from "@Components/molecules/input/settings/InputSettingsBox";
 import { DISPLAY_NAME_DESC } from "@Constants/text/desc";
 import { DISPLAY_NAME_TITLE } from "@Constants/text/title";
 
@@ -15,21 +14,25 @@ const DisplayNameInput = () => {
     register,
     formState: { errors },
   } = useFormContext<UserSettingTypes>();
+
+  const errorMessage = !errors.DISPLAY_NAME ? "" : errors.DISPLAY_NAME.message;
+
   return (
-    <InputSettingsBox>
+    <div>
       <div className="max-w-96">
         <Title className="text-4xl">{DISPLAY_NAME_TITLE.ko}</Title>
         <Desc className="mt-2 text-base font-normal text-neutral-500 dark:text-neutral-300">
           {DISPLAY_NAME_DESC.ko}
         </Desc>
       </div>
-      <SettingInput
+
+      <TextInput
         register={register}
-        type="DISPLAY_NAME"
         rules={displayNameRules("ko")}
-        error={errors.DISPLAY_NAME?.message}
+        inputName="DISPLAY_NAME"
+        errorMessage={errorMessage}
       />
-    </InputSettingsBox>
+    </div>
   );
 };
 export default DisplayNameInput;
