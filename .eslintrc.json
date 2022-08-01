@@ -42,6 +42,10 @@
             "group": "builtin"
           },
           {
+            "pattern": "@tiptap/**",
+            "group": "builtin"
+          },
+          {
             "pattern": "@til-log.lab/**",
             "group": "parent"
           },
