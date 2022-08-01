@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 
 import api from "@Library/api";
 
-const useGetUserCategoryListQuery = (userId: number) => {
+const useAllGetUserCategoryListQuery = (userId: number) => {
   return useQuery(
     "userCategoryList",
     () => api.categoryService.getUsersCategories(userId),
@@ -14,4 +14,4 @@ const useGetUserCategoryListQuery = (userId: number) => {
   );
 };
 
-export default useGetUserCategoryListQuery;
+export default useAllGetUserCategoryListQuery;
