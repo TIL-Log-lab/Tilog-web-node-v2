@@ -3,7 +3,7 @@ import ThumbNail from "@Components/atom/images/ThumbNail";
 import AddImageLabel from "@Components/atom/label/AddImageLabel";
 import EditImageLabel from "@Components/atom/label/EditImageLabel";
 import RemoveImageLabel from "@Components/atom/label/RemoveImageLabel";
-import OpacityBox from "@Components/atom/OpacityBox";
+import OpacityBox from "@Components/atom/over-box/OpacityBox";
 import useFormTitleWatching from "@Components/molecules/images/writer/hooks/useFormTitleWatching";
 import useOnPointerEnter from "@Components/molecules/images/writer/hooks/useOnPointerEnter";
 import usePreView from "@Components/molecules/images/writer/hooks/usePreview";
