@@ -22,13 +22,13 @@ const DropdownProfile = () => {
         </li>
         <li className="py-1" role="none">
           <LinkTo
-            href="/editor"
+            href="/writer"
             className="block px-4 py-2 text-lg text-gray-700 font-eng-sub-font-1"
           >
             {CREATE_POST.ko}
           </LinkTo>
           <LinkTo
-            href="/setting"
+            href="/settings"
             className="block px-4 py-2 text-lg text-gray-700 font-eng-sub-font-1"
           >
             {SETTINGS.ko}
