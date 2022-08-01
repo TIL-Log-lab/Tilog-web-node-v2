@@ -1,6 +1,6 @@
 import { SubmitHandler } from "react-hook-form";
 
-import useSetPostMutation from "@Hooks/react-query/post/useSetPostMutation";
+import useSetPostMutation from "@Hooks/react-query/post/";
 
 import { CreatePostRequestBodyDto } from "@til-log.lab/tilog-api";
 
