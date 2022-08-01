@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 
-import Header from "@Components/organisms/header/Header";
+import Header from "@Components/organisms/Header";
 
 const Home: NextPage = () => {
   return (
