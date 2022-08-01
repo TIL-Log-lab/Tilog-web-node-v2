@@ -1,15 +1,15 @@
 import { ReactElement } from "react";
 
-import * as SI from "react-icons/si";
+import * as BS from "react-icons/bs";
 import * as FA from "react-icons/fa";
 import * as GR from "react-icons/gr";
-import * as BS from "react-icons/bs";
+import * as SI from "react-icons/si";
 
-interface TechIconsProviderInterface {
+interface TechIconsInterface {
   [techName: string]: ReactElement;
 }
 
-const TechIconsProvider: TechIconsProviderInterface = {
+const TechIcons: TechIconsInterface = {
   JAVASCRIPT: <SI.SiJavascript className="text-javascript" />,
   TYPESCRIPT: <SI.SiTypescript className="text-typescript" />,
   HTML: <SI.SiHtml5 className="text-html" />,
@@ -28,4 +28,4 @@ const TechIconsProvider: TechIconsProviderInterface = {
   INFRA: <BS.BsFillHddNetworkFill />,
   UNKNOWN: <BS.BsFillPatchQuestionFill />,
 };
-export default TechIconsProvider;
+export default TechIcons;
