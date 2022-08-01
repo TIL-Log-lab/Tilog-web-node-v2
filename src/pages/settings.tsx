@@ -1,14 +1,14 @@
 import { NextPage } from "next";
+import { useRouter } from "next/router";
 
-import UserSettingsForm from "@Components/organisms/form/settings/UserSettingsForm";
+import UserSettingsForm from "@Components/organisms/form/settings/UserSettingForm";
 import Header from "@Components/organisms/Header";
 import useGetMeQuery from "@Hooks/react-query/user/useGetMeQuery";
-import { useRouter } from "next/router";
 
 const SettingPage: NextPage = () => {
   const router = useRouter();
   const userInfo = useGetMeQuery();
-  if (userInfo.isError) return router.push("/login");
+  if (userInfo.isError) router.push("/login");
   if (userInfo.isLoading) return null;
 
   return (
