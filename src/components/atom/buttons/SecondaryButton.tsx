@@ -5,13 +5,13 @@ interface SecondaryButtonProps
 
 const SecondaryButton = ({
   children,
-  type,
+  className,
   ...props
 }: SecondaryButtonProps) => {
   return (
     <button
       type="button"
-      className="p-3.5 rounded-md bg-secondary-color hover:bg-secondary-color-blur"
+      className={`${className} p-3.5 rounded-md bg-secondary-color hover:bg-secondary-color-blur`}
       {...props}
     >
       {children}
