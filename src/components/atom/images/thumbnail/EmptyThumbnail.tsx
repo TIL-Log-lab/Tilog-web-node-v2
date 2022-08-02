@@ -1,8 +1,13 @@
 import { backgroundColor, getBrightness } from "@Library/utility/color";
 
-import { ColorThumbNailProps } from "@Components/atom/images/interface/colorThumbNailProps";
+import { GetPostDetailResponseDto } from "@til-log.lab/tilog-api";
 
-const ColorThumbNail = ({ title, color }: ColorThumbNailProps) => {
+export interface EmptyThumbNailProps {
+  title: GetPostDetailResponseDto["title"];
+  color: string;
+}
+
+const EmptyThumbNail = ({ title, color }: EmptyThumbNailProps) => {
   return (
     <div
       style={{ backgroundColor: backgroundColor(color) }}
@@ -20,4 +25,4 @@ const ColorThumbNail = ({ title, color }: ColorThumbNailProps) => {
   );
 };
 
-export default ColorThumbNail;
+export default EmptyThumbNail;

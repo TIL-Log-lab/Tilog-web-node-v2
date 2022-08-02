@@ -1,11 +1,11 @@
-interface NoUserImageProps {
+interface EmptyAvatarImageProps {
   className?: string;
   cursor?: boolean;
 }
-const NoUserImage = ({
+const EmptyAvatarImage = ({
   cursor = false,
   className = "w-10 h-10",
-}: NoUserImageProps) => {
+}: EmptyAvatarImageProps) => {
   return (
     <div
       className={`${
@@ -15,4 +15,4 @@ const NoUserImage = ({
   );
 };
 
-export default NoUserImage;
+export default EmptyAvatarImage;
