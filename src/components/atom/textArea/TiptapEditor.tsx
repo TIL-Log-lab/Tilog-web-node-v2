@@ -1,6 +1,6 @@
 import { EditorContent, EditorOptions } from "@tiptap/react";
 
-import useTiptapEditor from "@Components/molecules/textarea/hooks/useTiptapEditor";
+import useTiptapEditor from "./hooks/useTiptapEditor";
 
 interface TiptapEditorProps {
   editable: EditorOptions["editable"];

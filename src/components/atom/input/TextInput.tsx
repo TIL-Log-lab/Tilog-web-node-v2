@@ -9,6 +9,7 @@ import {
 
 interface TextInputProps<TFormValues>
   extends InputHTMLAttributes<HTMLInputElement> {
+  fontSize: string;
   inputName: Path<TFormValues>;
   register: UseFormRegister<TFormValues>;
   errorMessage: FieldError["message"];
@@ -18,14 +19,14 @@ const TextInput = <TFormValues extends unknown>({
   register,
   inputName,
   rules,
-  className,
+  fontSize = "text-xl",
   errorMessage,
   ...props
 }: TextInputProps<TFormValues>) => {
   return (
     <>
       <input
-        className={`p-5 w-full ${className}`}
+        className={`p-3 w-full bg-white dark:bg-neutral-800 text-neutral-800 dark:text-white ${fontSize}`}
         {...register(inputName, rules)}
         {...props}
       />

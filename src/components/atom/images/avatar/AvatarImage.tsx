@@ -1,16 +1,16 @@
 import Image from "next/image";
 
-interface UserImageProps {
+interface AvatarImageProps {
   avatar: string;
   className?: string;
   cursor?: boolean;
 }
 
-const UserImage = ({
+const AvatarImage = ({
   avatar,
   cursor = false,
   className = "w-10 h-10",
-}: UserImageProps) => {
+}: AvatarImageProps) => {
   return (
     <div className={`relative ${className}`}>
       <Image
@@ -22,4 +22,4 @@ const UserImage = ({
     </div>
   );
 };
-export default UserImage;
+export default AvatarImage;
