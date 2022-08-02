@@ -18,8 +18,10 @@ module.exports = {
         "eng-sub-font-2": ["Poppins", "sans-serif"],
       },
       colors: {
-        "signature-color": "#606DEE",
-        "signature-color-blur": "#9498EC",
+        "primary-color": "#606DEE",
+        "primary-color-blur": "#9498EC",
+        "secondary-color": "#FF616A",
+        "secondary-color-blur": "#FF9EA4",
         javascript: "#f1DD35",
         typescript: "#3178c6",
         html: "#e44b23",
