@@ -18,7 +18,7 @@ const ImageInput = <TFormValues extends unknown>({
       type="file"
       className="hidden"
       accept="image/*"
-      {...register(inputName)}
+      // {...register(inputName)}
     />
   );
 };

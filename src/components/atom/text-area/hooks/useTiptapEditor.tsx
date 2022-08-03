@@ -3,6 +3,8 @@ import StarterKit from "@tiptap/starter-kit";
 
 import { useFormContext } from "react-hook-form";
 
+import { MARKDOWN_CONTENT } from "@Constants/text/writer";
+
 import { CreatePostRequestBodyDto } from "@til-log.lab/tilog-api";
 
 const useTiptapEditor = (content: EditorOptions["content"]) => {
@@ -14,7 +16,7 @@ const useTiptapEditor = (content: EditorOptions["content"]) => {
     content,
     onUpdate(props) {
       const updatedContent = JSON.stringify(props.editor.getJSON());
-      setValue("markdownContent", updatedContent);
+      setValue(MARKDOWN_CONTENT, updatedContent);
     },
     editorProps: {
       attributes: {
