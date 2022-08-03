@@ -16,7 +16,7 @@ const useOutsideClickAndEscClickListener = <
     setIsOpen(false);
   };
   const handleOpen = () => {
-    setIsOpen(true);
+    setIsOpen(!isOpen);
   };
   useEventListener("keydown", escListener, ref);
   useOnClickOutside(ref, handleClickOutside);
