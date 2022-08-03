@@ -1,10 +1,10 @@
 import PrimarySubmit from "@Components/atom/buttons/PrimarySubmit";
-import SAVE_SETTINGS from "@Constants/text/settings/saveSetting";
+import { SUMMIT } from "@Constants/text/settings";
 
 const SaveSettingSubmitButton = () => {
   return (
     <PrimarySubmit className="w-32">
-      <span className="text-neutral-50 ">{SAVE_SETTINGS.ko}</span>
+      <span className="text-neutral-50 ">{SUMMIT.ko}</span>
     </PrimarySubmit>
   );
 };
