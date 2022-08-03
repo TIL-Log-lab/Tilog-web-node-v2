@@ -6,18 +6,15 @@ import ExceptionInterface from "@Library/api/exception/interface";
 import GetUserProfileResponseTransFormSettingsDto from "@Library/api/users/interface/getUserProfileResponseTransFormSettingsDto";
 
 export default function useGetUserProfileQuery(
-  userName: GetUserProfileResponseTransFormSettingsDto["name"]
+  userId: GetUserProfileResponseTransFormSettingsDto["id"]
 ) {
   return useQuery<
     GetUserProfileResponseTransFormSettingsDto,
     ExceptionInterface,
-    GetUserProfileResponseTransFormSettingsDto,
-    string
-  >("userInfo", () => api.usersService.getUserProfile(userName), {
+    GetUserProfileResponseTransFormSettingsDto
+  >(["userInfo", userId], () => api.usersService.getUserProfile(userId), {
     retry: 0,
     refetchOnWindowFocus: false,
     refetchInterval: false,
-    retryOnMount: false,
-    refetchOnMount: false,
   });
 }
