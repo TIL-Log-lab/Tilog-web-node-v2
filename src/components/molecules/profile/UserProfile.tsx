@@ -6,7 +6,7 @@ import EmptyAvatarImage from "@Components/atom/images/avatar/EmptyAvatarImage";
 import { GetUserProfileResponseDto } from "@til-log.lab/tilog-api";
 
 interface UserProfileProps {
-  avatar: GetUserProfileResponseDto["avatar"];
+  avatar?: GetUserProfileResponseDto["avatar"];
   children?: ReactNode;
   imageSize?: string;
   fontSize?: string;
