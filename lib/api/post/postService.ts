@@ -12,6 +12,7 @@ import {
 
 import ExceptionInterface from "@Library/api/exception/interface";
 import GetPostRequestDto from "@Library/api/post/interface/getPostRequestDto";
+import GetPostDetailRequestDto from "@Library/api/post/interface/getPostDetailRequest";
 
 export default class PostService {
   constructor(
@@ -31,7 +32,7 @@ export default class PostService {
   }
 
   getPostDetail(
-    postId: string,
+    postId: GetPostDetailRequestDto["postId"],
     options?: AxiosRequestConfig<ExceptionInterface>
   ): Promise<AxiosResponse<GetPostDetailResponseDto, ExceptionInterface>> {
     return this.postRepository.postsControllerGetPostDetail(postId, options);
