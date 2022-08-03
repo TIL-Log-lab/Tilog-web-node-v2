@@ -1,8 +1,11 @@
 import { AxiosResponse } from "axios";
 import { InfiniteQueryObserverResult } from "react-query";
 
-import ExceptionInterface from "@Api/errors/interfaces";
+import Spinner from "@Components/atom/loading/Spinner";
+
 import { GetPostsResponseDto } from "@til-log.lab/tilog-api";
+
+import ExceptionInterface from "@Library/api/exception/interface";
 
 interface CardLoadingProps {
   hasNextPage: boolean | undefined;
@@ -21,7 +24,7 @@ const CardLoading = ({
   fetchNextPage,
 }: CardLoadingProps) => {
   if (!hasNextPage) return null;
-  if (isFetchingNextPage) return <>로딩중..</>;
+  if (isFetchingNextPage) return <Spinner size="5" />;
   return (
     <button type="button" onClick={() => fetchNextPage()}>
       더보기
