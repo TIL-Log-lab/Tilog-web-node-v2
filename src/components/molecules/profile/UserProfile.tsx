@@ -7,8 +7,7 @@ import { GetUserProfileResponseDto } from "@til-log.lab/tilog-api";
 
 interface UserProfileProps {
   avatar: GetUserProfileResponseDto["avatar"];
-  children: ReactNode;
-  className: string;
+  children?: ReactNode;
   imageSize?: string;
   fontSize?: string;
 }
@@ -16,12 +15,11 @@ interface UserProfileProps {
 const UserProfile = ({
   avatar,
   children,
-  className,
-  imageSize,
-  fontSize,
+  imageSize = "10",
+  fontSize = "xl",
 }: UserProfileProps) => {
   return (
-    <div className={className}>
+    <div className="flex items-center justify-center gap-x-3">
       {!avatar ? (
         <EmptyAvatarImage className={`w-${imageSize} h-${imageSize}`} />
       ) : (
@@ -30,7 +28,7 @@ const UserProfile = ({
           avatar={avatar}
         />
       )}
-      <span className={`text-${fontSize}`}>{children}</span>
+      <span className={`text-${fontSize} font-medium`}>{children}</span>
     </div>
   );
 };
