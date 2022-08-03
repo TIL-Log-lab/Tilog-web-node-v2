@@ -1,4 +1,4 @@
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosRequestConfig, AxiosResponse } from "axios";
 
 import validateToken from "@Library/api/auth/validateTokenDecorator";
 import PostRepository from "@Library/api/post/postRepository";
@@ -11,14 +11,11 @@ import {
 } from "@til-log.lab/tilog-api";
 
 import ExceptionInterface from "@Library/api/exception/interface";
-import GetPostRequestDto from "@Library/api/post/interface/getPostRequestDto";
 import GetPostDetailRequestDto from "@Library/api/post/interface/getPostDetailRequest";
+import GetPostRequestDto from "@Library/api/post/interface/getPostRequestDto";
 
 export default class PostService {
-  constructor(
-    private readonly postRepository: PostRepository,
-    private readonly axios: AxiosInstance
-  ) {}
+  constructor(private readonly postRepository: PostRepository) {}
 
   @validateToken()
   createPost(
