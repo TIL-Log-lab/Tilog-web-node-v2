@@ -10,7 +10,7 @@ const SecondaryButton = ({
 }: SecondaryButtonProps) => {
   return (
     <button
-      type="button"
+      type="submit"
       className={`${className} p-3.5 rounded-md bg-neutral-50 hover:bg-secondary-color-blur dark:bg-neutral-900 dark:hover:bg-neutral-700`}
       {...props}
     >
