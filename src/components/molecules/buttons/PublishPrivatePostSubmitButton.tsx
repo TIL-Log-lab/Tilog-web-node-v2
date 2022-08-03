@@ -1,11 +1,11 @@
-import SecondaryButton from "@Components/atom/buttons/SecondaryButton";
-import PUBLISH_PRIVATE_POST from "@Constants/text/post/publishPrivatePost";
+import SecondarySubmit from "@Components/atom/buttons/SecondarySubmit";
+import { PUBLISH_PRIVATE_POST } from "@Constants/text/writer";
 
 const PublishPrivatePostSubmitButton = () => {
   return (
-    <SecondaryButton className="w-32">
+    <SecondarySubmit className="w-32 mt-2">
       <span className="text-neutral-50">{PUBLISH_PRIVATE_POST.ko}</span>
-    </SecondaryButton>
+    </SecondarySubmit>
   );
 };
 

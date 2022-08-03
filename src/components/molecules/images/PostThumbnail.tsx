@@ -22,7 +22,7 @@ const PostThumbnail = ({
   if (thumbnailUrl) {
     return (
       <div className={imageSize}>
-        <Thumbnail thumbnailUrl={thumbnailUrl} />;
+        <Thumbnail thumbnailUrl={thumbnailUrl} />
       </div>
     );
   }
@@ -30,7 +30,7 @@ const PostThumbnail = ({
   const color = seededColor(id);
   return (
     <div className={imageSize}>
-      <EmptyThumbnail title={title} color={color} />;
+      <EmptyThumbnail title={title} color={color} />
     </div>
   );
 };
