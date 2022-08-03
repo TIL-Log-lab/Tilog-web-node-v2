@@ -1,6 +1,6 @@
 import authService from "@Library/api/auth";
 import categoryService from "@Library/api/category";
-import postService from "@Library/api/post";
+import { postService, postLikeService } from "@Library/api/post";
 import usersService from "@Library/api/users";
 
 export default {
@@ -8,4 +8,5 @@ export default {
   usersService,
   categoryService,
   postService,
+  postLikeService,
 };
