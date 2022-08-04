@@ -16,7 +16,7 @@ const CategoryLink = ({ categoryName }: CategoryLinkProps) => {
       className={`underline decoration-${categoryName} text-sm font-semibold text-${categoryName} font-eng-sub-font-1`}
     >
       #
-      <span className="text-neutral-800 dark:text-neutral-50">
+      <span className="text-xs md:text-sm text-neutral-800 dark:text-neutral-50">
         {categoryName}
       </span>
     </LinkTo>

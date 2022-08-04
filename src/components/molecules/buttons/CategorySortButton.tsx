@@ -13,6 +13,7 @@ const CategorySortButton = ({ categoryName }: CategorySortButtonProps) => {
   if (router.query.category !== categoryName) {
     return (
       <LinkTo
+        scroll={false}
         href={{
           pathname: router.pathname,
           query: { ...router.query, category: categoryName },

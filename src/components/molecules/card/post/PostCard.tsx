@@ -11,12 +11,15 @@ import { GetPostsItem } from "@til-log.lab/tilog-api";
 
 const PostCard = ({ post }: { post: GetPostsItem }) => {
   return (
-    <div className="relative flex justify-between w-full sm:w-[550px] sm:h-[170px] bg-neutral-100 dark:bg-neutral-800">
+    <div
+      key={post.id}
+      className="relative flex justify-between w-full sm:w-[550px] sm:h-[170px] bg-neutral-100 dark:bg-neutral-800"
+    >
       <div className="w-full px-3 py-2">
         <div className="flex items-center gap-x-2 shrink-0">
           <LinkTo href={`/blog/${post.user.username}`}>
-            <UserProfile fontSize="sm" imageSize="7" avatar={post.user.avatar}>
-              {post.user.username}
+            <UserProfile imageSize="7" avatar={post.user.avatar}>
+              <p>{post.user.username}</p>
             </UserProfile>
           </LinkTo>
           <PublishDate

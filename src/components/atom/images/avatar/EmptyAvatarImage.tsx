@@ -1,16 +1,12 @@
 interface EmptyAvatarImageProps {
-  className?: string;
   cursor?: boolean;
 }
-const EmptyAvatarImage = ({
-  cursor = false,
-  className = "w-10 h-10",
-}: EmptyAvatarImageProps) => {
+const EmptyAvatarImage = ({ cursor = false }: EmptyAvatarImageProps) => {
   return (
     <div
       className={`${
         cursor ? "cursor-pointer" : ""
-      } ${className}  rounded-full  dark:bg-neutral-100 bg-neutral-700`}
+      } w-full h-full rounded-full  dark:bg-neutral-100 bg-neutral-700`}
     />
   );
 };

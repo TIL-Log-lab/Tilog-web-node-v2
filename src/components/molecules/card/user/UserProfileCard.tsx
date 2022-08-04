@@ -11,8 +11,8 @@ interface UserProfileCardProps {
 
 const UserProfileCard = ({
   userId,
-  imageSize = "40",
-  fontSize = "xl",
+  imageSize,
+  fontSize,
 }: UserProfileCardProps) => {
   const userInfo = useGetUserProfileQuery(userId);
   if (userInfo.isError) return <div>{userInfo.error.message.ko}</div>;
@@ -21,16 +21,18 @@ const UserProfileCard = ({
   return (
     <div>
       <UserProfile imageSize={imageSize} avatar={userInfo.data.avatar}>
-        <h2 className={`text-${fontSize}`}>{userInfo.data.name}</h2>
-        <LinkTo
-          href={`mailto:${userInfo.data.settings.EMAIL}`}
-          className="block text-xs text-neutral-400 hover:text-neutral-900 line-clamp-1"
-        >
-          {userInfo.data.settings.EMAIL}
-        </LinkTo>
-        <span className="block text-xs text-neutral-400 line-clamp-1">
-          {userInfo.data.settings.POSITION}
-        </span>
+        <div>
+          <h2 className={`text-${fontSize}`}>{userInfo.data.name}</h2>
+          <LinkTo
+            href={`mailto:${userInfo.data.settings.EMAIL}`}
+            className="block text-xs text-neutral-400 hover:text-neutral-900 line-clamp-1"
+          >
+            {userInfo.data.settings.EMAIL}
+          </LinkTo>
+          <span className="block text-xs text-neutral-400 line-clamp-1">
+            {userInfo.data.settings.POSITION}
+          </span>
+        </div>
       </UserProfile>
       <span className="px-20 pt-10 text-neutral-600 line-clamp-3">
         {userInfo.data.settings.INTRO_MSG}
