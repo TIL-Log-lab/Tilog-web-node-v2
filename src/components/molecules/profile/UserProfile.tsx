@@ -28,7 +28,11 @@ const UserProfile = ({
           avatar={avatar}
         />
       )}
-      <span className={`text-${fontSize} font-medium`}>{children}</span>
+      <span
+        className={`text-${fontSize} font-medium text-neutral-900 dark:bg-neutral-50`}
+      >
+        {children}
+      </span>
     </div>
   );
 };

@@ -14,12 +14,8 @@ const PostCard = ({ post }: { post: GetPostsItem }) => {
     <div className="relative flex justify-between w-full sm:w-[550px] sm:h-[170px] bg-neutral-100 dark:bg-neutral-800">
       <div className="w-full px-3 py-2">
         <div className="flex items-center gap-x-2 shrink-0">
-          <LinkTo href="#">
-            <UserProfile
-              fontSize="2xl"
-              className="cursor-pointer hover:underline"
-              avatar={post.user.avatar}
-            >
+          <LinkTo href={`/blog/${post.user.username}`}>
+            <UserProfile fontSize="sm" imageSize="7" avatar={post.user.avatar}>
               {post.user.username}
             </UserProfile>
           </LinkTo>
@@ -30,7 +26,7 @@ const PostCard = ({ post }: { post: GetPostsItem }) => {
           {!post.private ? null : <LockIcon />}
         </div>
         <div className="my-2">
-          <LinkTo href="#">
+          <LinkTo href={`/post/${post.id}`}>
             <h1 className="text-xs sm:text-2xl line-clamp-2 sm:line-clamp-1">
               {post.title}
             </h1>
@@ -46,11 +42,11 @@ const PostCard = ({ post }: { post: GetPostsItem }) => {
           <LikeCounter count={post.like} />
         </div>
       </div>
-      <LinkTo href="#" className="hover:no-underline">
+      <LinkTo href={`/post/${post.id}`} className="hover:no-underline">
         <PostThumbnail
           id={post.id}
-          title={post.title}
           thumbnailUrl={post.thumbnailUrl}
+          title={post.title}
         />
       </LinkTo>
     </div>
