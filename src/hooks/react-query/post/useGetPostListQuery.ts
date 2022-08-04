@@ -1,13 +1,15 @@
 import { AxiosResponse } from "axios";
 import { useInfiniteQuery } from "react-query";
 
-import useGetCategoryListQuery from "@Hooks/react-query/category/useGetCategoryListQuery";
 import api from "@Library/api";
 
 import { GetPostsResponseDto } from "@til-log.lab/tilog-api";
 
 import ExceptionInterface from "@Library/api/exception/interface";
 import GetPostRequestDto from "@Library/api/post/interface/getPostRequestDto";
+import useAllGetCategoryListQuery from "@Hooks/react-query/category/useAllGetCategoryListQuery";
+import useSearchCategoryName from "@Hooks/react-query/category/useSearchCategoryName";
+import useSearchCategory from "@Hooks/react-query/category/useSearchCategory";
 
 interface GetPostListQueryInterface {
   dateScope: GetPostRequestDto["dateScope"];
@@ -26,16 +28,16 @@ const useGetPostListQuery = ({
   userId,
   page,
 }: GetPostListQueryInterface) => {
-  const { data } = useGetCategoryListQuery(categoryName);
-  const categoryId = data?.data.list.length === 1 ? data.data.list[0].id : 0;
+  const searchCategory = useSearchCategory();
+  const data = searchCategory(categoryName);
+  const categoryId = data?.length === 1 ? data[0].id : 0;
 
   return useInfiniteQuery<
     AxiosResponse<GetPostsResponseDto>,
     ExceptionInterface,
-    AxiosResponse<GetPostsResponseDto>,
-    string
+    AxiosResponse<GetPostsResponseDto>
   >(
-    `PostList-${dateScope}-${sortScope}-${userId}`,
+    ["PostList", categoryId, userId],
     ({ pageParam = page }) => {
       return api.postService.getPosts(
         dateScope,

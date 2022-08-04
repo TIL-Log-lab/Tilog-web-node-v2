@@ -2,17 +2,12 @@ import Image from "next/image";
 
 interface AvatarImageProps {
   avatar: string;
-  className?: string;
   cursor?: boolean;
 }
 
-const AvatarImage = ({
-  avatar,
-  cursor = false,
-  className = "w-10 h-10",
-}: AvatarImageProps) => {
+const AvatarImage = ({ avatar, cursor = false }: AvatarImageProps) => {
   return (
-    <div className={`relative ${className}`}>
+    <div className="relative w-full h-full">
       <Image
         className={`rounded-full ${cursor ? "cursor-pointer" : ""} `}
         layout="fill"
