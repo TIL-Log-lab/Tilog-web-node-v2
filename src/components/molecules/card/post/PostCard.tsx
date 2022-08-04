@@ -18,7 +18,7 @@ const PostCard = ({ post }: { post: GetPostsItem }) => {
       <div className="w-full px-3 py-2">
         <div className="flex items-center gap-x-2 shrink-0">
           <LinkTo href={`/blog/${post.user.username}`}>
-            <UserProfile imageSize="7" avatar={post.user.avatar}>
+            <UserProfile className="w-7 h-7" avatar={post.user.avatar}>
               <p>{post.user.username}</p>
             </UserProfile>
           </LinkTo>

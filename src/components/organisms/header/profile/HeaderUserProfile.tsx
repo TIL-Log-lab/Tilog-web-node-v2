@@ -13,7 +13,11 @@ const HeaderUserProfile = () => {
   const { isOpen, handleOpen } =
     useOutsideClickAndEscClickListener(dropDownRef);
   if (isLoading) {
-    return <EmptyAvatarImage className="w-10 h-10" />;
+    return (
+      <div className="w-14 h-14">
+        <EmptyAvatarImage />
+      </div>
+    );
   }
   if (isError) {
     return <LoginButton />;
@@ -22,7 +26,7 @@ const HeaderUserProfile = () => {
   return (
     <div ref={dropDownRef}>
       <button type="button" onClick={handleOpen}>
-        <UserProfile imageSize="14" avatar={data?.avatar} />
+        <UserProfile className="w-14 h-14" avatar={data?.avatar} />
       </button>
 
       {isOpen && <DropdownProfile />}
