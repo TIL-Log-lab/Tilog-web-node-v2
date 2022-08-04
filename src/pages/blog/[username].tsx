@@ -7,7 +7,7 @@ const BlogPage: NextPage = () => {
   return (
     <div>
       <Header />
-      <div className="m-auto max-w-[1280px] h-full h-20 items-center mt-20">
+      <div className="m-auto max-w-[1280px] h-full items-center mt-20">
         <UserBlogDetail />
       </div>
     </div>
