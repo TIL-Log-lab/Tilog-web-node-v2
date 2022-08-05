@@ -3,7 +3,9 @@ import { GetServerSideProps, NextPage } from "next";
 import { DefaultSeo, DefaultSeoProps } from "next-seo";
 
 import PostDetail from "@Components/organisms/post";
+import Comment from "@Components/organisms/comment";
 import api from "@Library/api";
+import Header from "@Components/organisms/header";
 
 interface PostDetailPageProps {
   seo: DefaultSeoProps;
@@ -16,10 +18,12 @@ const PostDetailPage: NextPage<PostDetailPageProps> = ({
   return (
     <div>
       <DefaultSeo {...seo} />
-      <div className="mx-10 xl:mx-60">
+      <Header />
+      <div className="py-10 mx-10 xl:mx-60">
         <div className="flex flex-col items-center pt-20 text-center">
           <PostDetail postId={postId} />
         </div>
+        <Comment postId={postId} />
       </div>
     </div>
   );
