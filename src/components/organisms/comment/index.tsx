@@ -1,25 +1,26 @@
-import CommentSubmit from "@Organisms/comment/input/Submit";
-import ParentComments from "@Organisms/comment/Parent";
-import { useGetParentCommentQuery } from "@Query/comment/useGetCommentQuery";
+import CommentInput from "@Components/organisms/comment/input/CommentInput";
+import CommentRender from "@Components/organisms/comment/render";
+import useGetParentCommentQuery from "@Hooks/react-query/comment/parent/useGetParentCommentQuery";
 
-const Comment = ({ postId }: { postId: string }) => {
-  const comments = useGetParentCommentQuery(postId);
+import { GetPostDetailResponseDto } from "@til-log.lab/tilog-api";
+
+interface CommentProps {
+  postId: GetPostDetailResponseDto["id"];
+}
+
+const Comment = ({ postId }: CommentProps) => {
+  const commentList = useGetParentCommentQuery(postId);
+  if (commentList.isError) return <span>{commentList.error.message.ko}</span>;
+  if (commentList.isLoading) return null;
+  if (!commentList.data) return null;
+
   return (
-    <div className="mt-10">
-      <hr className="w-full border-neutral-700 dark:border-neutral-300" />
-      {comments.isError && <>댓글을 가져올 수 없어요!</>}
-      {comments.isLoading && <>댓글을 가져오는 중이에요!</>}
-      {comments.isSuccess &&
-        comments.data.data.list.map((comment) => (
-          <ParentComments
-            postId={postId}
-            refetch={comments.refetch}
-            key={comment.id}
-            comment={comment}
-          />
-        ))}
-      <CommentSubmit postId={postId} refetch={comments.refetch} />
-    </div>
+    <>
+      {commentList.data.data.list.map((comment) => (
+        <CommentRender comment={comment} />
+      ))}
+      <CommentInput postId={postId} replyTo={null} />
+    </>
   );
 };
 export default Comment;

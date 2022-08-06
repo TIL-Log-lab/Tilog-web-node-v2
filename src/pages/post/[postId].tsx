@@ -1,51 +1,75 @@
 import { GetServerSideProps, NextPage } from "next";
 
-import Comment from "@Organisms/comment";
-import OHeader from "@Organisms/Header";
-import PostDetail from "@Organisms/PostDetail";
+import { DefaultSeo, DefaultSeoProps } from "next-seo";
 
-import { GetPostDetailResponseDto } from "@til-log.lab/tilog-api";
+import PostDetail from "@Components/organisms/post";
+import Comment from "@Components/organisms/comment";
+import api from "@Library/api";
+import Header from "@Components/organisms/header";
 
-import { serverSideAuthentication } from "@Auth";
-import { getPostDetail } from "@Api/adapter";
 interface PostDetailPageProps {
-  post: GetPostDetailResponseDto;
+  seo: DefaultSeoProps;
+  postId: string;
 }
 const PostDetailPage: NextPage<PostDetailPageProps> = ({
-  post,
+  seo,
+  postId,
 }: PostDetailPageProps) => {
   return (
-    <div className="mx-10 xl:mx-60">
-      <OHeader />
-      <div className="flex flex-col items-center pt-20 text-center">
-        <PostDetail post={post} />
+    <div>
+      <DefaultSeo {...seo} />
+      <Header />
+      <div className="py-10 mx-10 xl:mx-60">
+        <div className="flex flex-col items-center pt-20 text-center">
+          <PostDetail postId={postId} />
+        </div>
+        <Comment postId={postId} />
       </div>
-      <Comment postId={post.id} />
     </div>
   );
 };
 export default PostDetailPage;
-export const getServerSideProps: GetServerSideProps = serverSideAuthentication(
-  async (_, context) => {
-    const { params } = context;
-    if (!params) return { notFound: true };
 
-    const postId = params.postId;
-    if (!postId) return { notFound: true };
-    if (Array.isArray(postId)) return { notFound: true };
-
-    try {
-      const { data } = await getPostDetail(postId);
-
-      return {
-        props: {
-          post: data,
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { postId } = context.query;
+  if (!postId) return { props: {} };
+  if (Array.isArray(postId)) return { props: {} };
+  try {
+    const { data } = await api.postService.getPostDetail(postId);
+    const seo: DefaultSeoProps = {
+      title: data.title,
+      description: !data.subTitle ? "" : data.subTitle,
+      openGraph: {
+        type: "website",
+        locale: "ko_KR",
+        url: "tilog.io",
+        title: data.title,
+        site_name: "TILog",
+        article: {
+          publishedTime: data.createdAt,
+          modifiedTime: !data.updatedAt ? "" : data.updatedAt,
+          authors: [data.user.username],
+          tags: [data.category.name],
         },
-      };
-    } catch (error) {
-      return {
-        notFound: true,
-      };
-    }
+        images: [
+          {
+            url: !data.thumbnailUrl ? "" : data.thumbnailUrl,
+            width: 285,
+            height: 167,
+            alt: "TILog_thumbnailUrl",
+          },
+        ],
+      },
+    };
+    return {
+      props: {
+        seo,
+        postId: data.id,
+      },
+    };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
   }
-);
+};

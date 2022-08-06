@@ -1,23 +1,26 @@
 import LockIcon from "@Components/atom/icons/LockIcon";
+import LinkTo from "@Components/atom/LinkTo";
 import PublishDate from "@Components/atom/text/PublishDate";
-import CategorySearchCard from "@Components/molecules/card/category/CategorySearchCard";
-import CommentCount from "@Components/molecules/count/CommentCount";
-import LikeCount from "@Components/molecules/count/LikeCount";
-import PostImage from "@Components/molecules/images/PostImage";
-import LinkTo from "@Components/molecules/LinkTo";
-import ThumbnailProfile from "@Components/molecules/profile/ThumbnailProfile";
+import CommentCounter from "@Components/molecules/counter/CommentCounter";
+import LikeCounter from "@Components/molecules/counter/LikeCounter";
+import PostThumbnail from "@Components/molecules/images/PostThumbnail";
+import CategoryLink from "@Components/molecules/link/CategoryLink";
+import UserProfile from "@Components/molecules/profile/UserProfile";
 
 import { GetPostsItem } from "@til-log.lab/tilog-api";
 
 const PostCard = ({ post }: { post: GetPostsItem }) => {
   return (
-    <div className="relative flex justify-between w-full sm:w-[550px] sm:h-[170px] bg-neutral-100 dark:bg-neutral-800">
+    <div
+      key={post.id}
+      className="relative flex justify-between w-full sm:w-[550px] sm:h-[170px] bg-neutral-100 dark:bg-neutral-800"
+    >
       <div className="w-full px-3 py-2">
         <div className="flex items-center gap-x-2 shrink-0">
-          <LinkTo href="#">
-            <ThumbnailProfile cursor avatar={post.user.avatar}>
-              {post.user.username}
-            </ThumbnailProfile>
+          <LinkTo href={`/blog/${post.user.username}`}>
+            <UserProfile className="w-7 h-7" avatar={post.user.avatar}>
+              <p>{post.user.username}</p>
+            </UserProfile>
           </LinkTo>
           <PublishDate
             className="mt-[1px] line-clamp-1 text-[5px] text-neutral-500 dark:text-neutral-300"
@@ -26,7 +29,7 @@ const PostCard = ({ post }: { post: GetPostsItem }) => {
           {!post.private ? null : <LockIcon />}
         </div>
         <div className="my-2">
-          <LinkTo href="#">
+          <LinkTo href={`/post/${post.id}`}>
             <h1 className="text-xs sm:text-2xl line-clamp-2 sm:line-clamp-1">
               {post.title}
             </h1>
@@ -37,19 +40,17 @@ const PostCard = ({ post }: { post: GetPostsItem }) => {
         </div>
 
         <div className="absolute flex items-center bottom-3 gap-x-2">
-          <CategorySearchCard categoryName={post.category.name} />
-          <CommentCount comment={10} />
-          <LikeCount like={post.like} />
+          <CategoryLink categoryName={post.category.name} />
+          <CommentCounter count={10} />
+          <LikeCounter count={post.like} />
         </div>
       </div>
-      <LinkTo href="#" className="hover:no-underline">
-        <div className="w-[130px] sm:w-[250px] h-full">
-          <PostImage
-            id={post.id}
-            title={post.title}
-            thumbnailUrl={post.thumbnailUrl}
-          />
-        </div>
+      <LinkTo href={`/post/${post.id}`} className="hover:no-underline">
+        <PostThumbnail
+          id={post.id}
+          thumbnailUrl={post.thumbnailUrl}
+          title={post.title}
+        />
       </LinkTo>
     </div>
   );

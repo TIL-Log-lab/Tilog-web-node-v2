@@ -1,14 +1,22 @@
 import { NextPage } from "next";
 
+import { DefaultSeo } from "next-seo";
+
+import Header from "@Components/organisms/header";
+
 const NotFoundPage: NextPage = () => {
   return (
-    <div className="md:mx-20 2xl:mx-60">
-      <article className="text-center ">
+    <div>
+      <DefaultSeo title="페이지를 찾을 수 없습니다." />
+      <Header />
+      <div className="flex flex-col items-center justify-center mt-20">
         <header>
-          <h1>404</h1>
+          <h1 className="text-9xl">404</h1>
         </header>
-        <p>페이지를 찾을 수 없습니다.</p>
-      </article>
+        <p className="text-5xl text-neutral-500 dark:bg-neutral-300">
+          페이지를 찾을 수 없습니다.
+        </p>
+      </div>
     </div>
   );
 };
