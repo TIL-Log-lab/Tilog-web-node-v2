@@ -1,5 +1,5 @@
 import CommentInput from "@Components/organisms/comment/input/CommentInput";
-import CommentParent from "@Components/organisms/comment/render/CommentParent";
+import CommentRender from "@Components/organisms/comment/render";
 import useGetParentCommentQuery from "@Hooks/react-query/comment/parent/useGetParentCommentQuery";
 
 import { GetPostDetailResponseDto } from "@til-log.lab/tilog-api";
@@ -17,7 +17,7 @@ const Comment = ({ postId }: CommentProps) => {
   return (
     <>
       {commentList.data.data.list.map((comment) => (
-        <CommentParent comment={comment} />
+        <CommentRender comment={comment} />
       ))}
       <CommentInput postId={postId} replyTo={null} />
     </>
