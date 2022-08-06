@@ -1,3 +1,4 @@
+import StyledP from "@Components/atom/text/StyledP";
 import changeDateToDateFnsFormat from "@Library/date-fns/changeDateToDateFnsFormat";
 
 interface PublishDateProps {
@@ -7,7 +8,7 @@ interface PublishDateProps {
 
 const PublishDate = ({ date, className }: PublishDateProps) => {
   const dateFnsFormat = changeDateToDateFnsFormat(date);
-  return <span className={className}>{dateFnsFormat}</span>;
+  return <StyledP className={className}>{dateFnsFormat}</StyledP>;
 };
 
 export default PublishDate;
