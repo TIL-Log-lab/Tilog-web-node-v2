@@ -1,9 +1,9 @@
-import { ButtonHTMLAttributes } from "react";
+import { InputHTMLAttributes } from "react";
 
 import { Path, UseFormRegister } from "react-hook-form";
 
 interface ImageInputProps<TFormValues>
-  extends ButtonHTMLAttributes<HTMLButtonElement> {
+  extends InputHTMLAttributes<HTMLInputElement> {
   inputName: Path<TFormValues>;
   register: UseFormRegister<TFormValues>;
 }
