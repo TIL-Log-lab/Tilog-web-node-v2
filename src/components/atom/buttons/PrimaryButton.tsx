@@ -1,16 +1,21 @@
+/* eslint-disable react/button-has-type */
+
 import { ButtonHTMLAttributes } from "react";
 
-interface PrimaryButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
+interface PrimaryButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  isSubmit?: boolean;
+}
 
 const PrimaryButton = ({
   children,
   className,
+  isSubmit,
   ...props
 }: PrimaryButtonProps) => {
   return (
     <button
-      type="button"
-      className={`${className} p-3.5 rounded-md bg-primary-color hover:bg-primary-color-blur dark:bg-black dark:hover:bg-neutral-700`}
+      type={!isSubmit ? "button" : "submit"}
+      className={`${className} p-3.5 rounded-md text-neutral-50 bg-neutral-800 hover:bg-neutral-700 font-eng-sub-font-2`}
       {...props}
     >
       {children}
