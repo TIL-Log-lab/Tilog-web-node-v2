@@ -1,11 +1,6 @@
 import LinkTo from "@Components/common/atom/LinkTo";
 import LogoutButton from "@Components/common/molecules/buttons/LogoutButton";
-import {
-  CREATE_POST,
-  LOGOUT,
-  MY_BLOG,
-  SETTINGS,
-} from "@Constants/text/dropdown";
+import { CREATE_POST, LOGOUT, MY_BLOG, SETTINGS } from "@Constants/dropdown";
 import useGetMeQuery from "@Hooks/react-query/user/useGetMeQuery";
 
 const DropdownProfile = () => {
