@@ -3,7 +3,7 @@ import StarterKit from "@tiptap/starter-kit";
 
 import { useFormContext } from "react-hook-form";
 
-import { MARKDOWN_CONTENT } from "@Constants/text/writer";
+import { MARKDOWN_CONTENT } from "@Constants/writer";
 
 import { CreatePostRequestBodyDto } from "@til-log.lab/tilog-api";
 
