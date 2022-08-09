@@ -17,30 +17,9 @@ module.exports = {
         "eng-sub-font-1": ["Literata", "sans-serif"],
         "eng-sub-font-2": ["Poppins", "sans-serif"],
       },
-      aspectRatio: {
-        "2/1": "2 / 1",
-      },
-      fontSize: {
-        "5xl": [
-          "3rem",
-          {
-            lineHeight: "1.5",
-          },
-        ],
-        "4xl": [
-          "2.25rem",
-          {
-            lineHeight: "1.3",
-          },
-        ],
-        "3xl": [
-          "1.875rem",
-          {
-            lineHeight: "1.2",
-          },
-        ],
-      },
       colors: {
+        "signature-color": "#606DEE",
+        "signature-color-blur": "#9498EC",
         javascript: "#f1DD35",
         typescript: "#3178c6",
         html: "#e44b23",
@@ -80,6 +59,5 @@ module.exports = {
   plugins: [
     require("@tailwindcss/typography"),
     require("@tailwindcss/line-clamp"),
-    require("tailwind-scrollbar-hide"),
   ],
 };
