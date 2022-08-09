@@ -7,7 +7,7 @@ interface BlogUserProfileProps {
   userId: number;
 }
 
-const BlogUserProfile = ({ userId }: BlogUserProfileProps) => {
+const CustomSettingsUserProfile = ({ userId }: BlogUserProfileProps) => {
   const userInfo = useGetUserProfileQuery(userId);
   if (userInfo.isError) return <div>{userInfo.error.message.ko}</div>;
   if (!userInfo.data) return null;
@@ -45,4 +45,4 @@ const BlogUserProfile = ({ userId }: BlogUserProfileProps) => {
     </div>
   );
 };
-export default BlogUserProfile;
+export default CustomSettingsUserProfile;
