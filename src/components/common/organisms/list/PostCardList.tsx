@@ -1,7 +1,8 @@
 import React from "react";
 
-import CardLoading from "@Components/molecules/card/CardLoading";
-import PostCard from "@Components/molecules/card/post/PostCard";
+import CardLoading from "@Components/common/molecules/card/CardLoading";
+import PostCard from "@Components/common/molecules/card/post/PostCard";
+import RenderTechIcons from "@Components/common/molecules/tech-icons/RenderTechIcons";
 import useGetPostListQuery from "@Hooks/react-query/post/useGetPostListQuery";
 
 import GetPostRequestDto from "@Library/api/post/interface/getPostRequestDto";
@@ -39,14 +40,19 @@ const PostCardList = ({
   }
   return (
     <div>
-      <h2>포스트</h2>
-      <div className="grid grid-row gap-y-1">
+      {!categoryName ? (
+        <h1>전체카테고리</h1>
+      ) : (
+        <h2>
+          <div className="inline mr-5 text-5xl">
+            <RenderTechIcons categoryName={categoryName} />
+          </div>
+          {categoryName}
+        </h2>
+      )}
+      <div className="grid grid-row gap-y-3">
         {postList.data?.pages.map((postPage) =>
-          postPage.data.list.map((post) => (
-            <div className="flex" key={post.id}>
-              <PostCard post={post} />
-            </div>
-          ))
+          postPage.data.list.map((post) => <PostCard post={post} />)
         )}
       </div>
       <CardLoading
