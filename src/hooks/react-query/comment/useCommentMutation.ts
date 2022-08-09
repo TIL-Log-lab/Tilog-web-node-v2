@@ -1,32 +1,58 @@
-import { createComment, deleteComment, updateComment } from "@Api/adapter";
-import { useAuthMutation } from "@Query/auth-wrapper/useAuthMutation";
-import {
-  CreateCommentsRequestBodyDto,
-  DeleteCommentRequestDto,
-  UpdateCommentRequestDto,
-} from "@til-log.lab/tilog-api";
+import { useMutation, useQueryClient } from "react-query";
+
+import api from "@Library/api";
+
+import { CreateCommentsRequestBodyDto } from "@til-log.lab/tilog-api";
+
+import DeleteParentCommentMutation from "@Hooks/react-query/comment/interface/deleteParentCommentMutation";
+import UpdateParentCommentMutationDto from "@Hooks/react-query/comment/interface/updateParentCommentMutationDto";
 
 export const useDeleteCommentMutation = () => {
-  return useAuthMutation<DeleteCommentRequestDto>(
-    ({ commentId }: { commentId: string }) =>
-      deleteComment({
-        commentId: commentId,
-      })
+  const queryClient = useQueryClient();
+  return useMutation(
+    ({ commentId }: DeleteParentCommentMutation) =>
+      api.commentService.deleteComment({
+        commentId,
+      }),
+    {
+      onSuccess(_data, variables) {
+        return variables.replyTo === "null"
+          ? queryClient.refetchQueries(["comment", "parent", variables.postId])
+          : queryClient.refetchQueries(["comment", "child", variables.replyTo]);
+      },
+    }
   );
 };
 
 export const useUpdateCommentMutation = () => {
-  return useAuthMutation<UpdateCommentRequestDto>(
-    ({ commentId, content }: { commentId: string; content: string }) =>
-      updateComment({
-        commentId: commentId,
-        content: content,
-      })
+  const queryClient = useQueryClient();
+  return useMutation(
+    ({ commentId, content }: UpdateParentCommentMutationDto) =>
+      api.commentService.updateComment({
+        commentId,
+        content,
+      }),
+    {
+      onSuccess(_data, variables) {
+        return variables.replyTo === "null"
+          ? queryClient.refetchQueries(["comment", "parent", variables.postId])
+          : queryClient.refetchQueries(["comment", "child", variables.replyTo]);
+      },
+    }
   );
 };
 
 export const useCreateCommentMutation = () => {
-  return useAuthMutation<CreateCommentsRequestBodyDto>((data) =>
-    createComment(data)
+  const queryClient = useQueryClient();
+  return useMutation(
+    ({ content, postId, replyTo }: CreateCommentsRequestBodyDto) =>
+      api.commentService.createComment({ content, postId, replyTo }),
+    {
+      onSuccess(_data, variables) {
+        return variables.replyTo === null
+          ? queryClient.refetchQueries(["comment", "parent", variables.postId])
+          : queryClient.refetchQueries(["comment", "child", variables.replyTo]);
+      },
+    }
   );
 };
