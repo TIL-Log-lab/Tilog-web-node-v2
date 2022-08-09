@@ -3,6 +3,7 @@ import React from "react";
 import CardLoading from "@Components/common/molecules/card/CardLoading";
 import PostCard from "@Components/common/molecules/card/post/PostCard";
 import RenderTechIcons from "@Components/common/molecules/tech-icons/RenderTechIcons";
+import { POSTCARD_ALL_CATEGORY_TITLE } from "@Constants/post";
 import useGetPostListQuery from "@Hooks/react-query/post/useGetPostListQuery";
 
 import GetPostRequestDto from "@Library/api/post/interface/getPostRequestDto";
@@ -41,7 +42,7 @@ const PostCardList = ({
   return (
     <div>
       {!categoryName ? (
-        <h1>전체카테고리</h1>
+        <h1>{POSTCARD_ALL_CATEGORY_TITLE.ko}</h1>
       ) : (
         <h2>
           <div className="inline mr-5 text-5xl">
