@@ -1,4 +1,4 @@
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosRequestConfig, AxiosResponse } from "axios";
 
 import validateToken from "@Library/api/auth/validateTokenDecorator";
 import PostRepository from "@Library/api/post/postRepository";
@@ -14,10 +14,7 @@ import ExceptionInterface from "@Library/api/exception/interface";
 import GetPostRequestDto from "@Library/api/post/interface/getPostRequestDto";
 
 export default class PostService {
-  constructor(
-    private readonly postRepository: PostRepository,
-    private readonly axios: AxiosInstance
-  ) {}
+  constructor(private readonly postRepository: PostRepository) {}
 
   @validateToken()
   createPost(
