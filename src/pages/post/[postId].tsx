@@ -4,6 +4,7 @@ import { DefaultSeo, DefaultSeoProps } from "next-seo";
 
 import PostThumbnail from "@Components/common/molecules/images/PostThumbnail";
 import TiptapViewer from "@Components/common/molecules/text-area/TiptapViewer";
+import Comment from "@Components/modules/comment";
 import { PostHeader, PostLike, PostWriter } from "@Components/modules/post";
 import useGetPostDetailQuery from "@Hooks/react-query/post/useGetPostDetailQuery";
 import useGetStringTypeToRouter from "@Hooks/router/useGetStringTypeToRouter";
@@ -54,6 +55,7 @@ const PostDetailPage: NextPage<PostDetailPageProps> = ({
       </div>
       <div className="mt-5">
         <PostLike postId={post.id} count={post.like} />
+        <Comment postId={post.id} />
       </div>
     </div>
   );
