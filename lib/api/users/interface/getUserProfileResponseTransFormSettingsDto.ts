@@ -1,6 +1,6 @@
 import { GetUserProfileResponseDto } from "@til-log.lab/tilog-api";
 
-import { UserSettingTypes } from "@Components/organisms/user-settings/interface";
+import UserSettingTypes from "@Library/api/users/interface/userSettingTypes";
 
 export default interface GetUserProfileResponseTransFormSettingsDto {
   avatar: GetUserProfileResponseDto["avatar"];

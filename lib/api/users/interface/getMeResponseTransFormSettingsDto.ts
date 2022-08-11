@@ -1,6 +1,6 @@
 import { GetMeResponseDto } from "@til-log.lab/tilog-api";
 
-import { UserSettingTypes } from "@Components/organisms/user-settings/interface";
+import UserSettingTypes from "@Library/api/users/interface/userSettingTypes";
 
 export default interface GetMeResponseTransFormSettingsDto {
   id: GetMeResponseDto["userId"];

@@ -1,6 +1,6 @@
 import RenderTechIcons from "@Components/common/molecules/tech-icons/RenderTechIcons";
-import DateUserProfile from "@Components/common/organisms/profile/DateUserProfile";
-import PostUpdateLink from "@Components/modules/post/link/postUpdateLink";
+import PostUserProfile from "@Components/common/organisms/profile/PostUserProfile";
+import PostUpdateLink from "@Components/modules/post/link/PostUpdateLink";
 import useIsOwner from "@Hooks/useIsOwner";
 
 import { GetPostDetailResponseDto } from "@til-log.lab/tilog-api";
@@ -14,7 +14,11 @@ const PostHeader = ({ post }: PostHeaderProps) => {
   return (
     <header>
       <div className="flex">
-        <DateUserProfile userId={post.user.userId} createdAt={post.createdAt} />
+        <PostUserProfile
+          viewCount={post.view}
+          userId={post.user.userId}
+          createdAt={post.createdAt}
+        />
         {isOwner && (
           <div className="flex ml-auto space-x-5">
             <PostUpdateLink postId={post.id} />

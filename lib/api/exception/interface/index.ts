@@ -1,7 +1,7 @@
-import MessageInterface from "lib/messages/interface";
+import { LanguageInterface } from "@Library/language/interface";
 
 export default interface ExceptionInterface {
   readonly statusCode: number;
   readonly requestLocation: string;
-  readonly message: MessageInterface;
+  readonly message: LanguageInterface;
 }
