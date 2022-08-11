@@ -1,13 +1,13 @@
 import LinkTo from "@Components/common/atom/LinkTo";
 import Spinner from "@Components/common/atom/loading/Spinner";
-import UserProfile from "@Components/common/molecules/profile/UserProfile";
+import ProfileImage from "@Components/common/molecules/images/ProfileImage";
 import useGetUserProfileQuery from "@Hooks/react-query/user/useGetUserProfileQuery";
 
-interface CustomUserProfileProps {
+interface UserInfoProfileProps {
   userId: number;
 }
 
-const CustomUserProfile = ({ userId }: CustomUserProfileProps) => {
+const UserInfoProfile = ({ userId }: UserInfoProfileProps) => {
   const userInfo = useGetUserProfileQuery(userId);
   if (userInfo.isError) return <div>{userInfo.error.message.ko}</div>;
   if (!userInfo.data) return null;
@@ -15,7 +15,7 @@ const CustomUserProfile = ({ userId }: CustomUserProfileProps) => {
   return (
     <div>
       <div className="flex">
-        <UserProfile
+        <ProfileImage
           className="w-20 h-20 md:w-28 md:h-28"
           avatar={userInfo.data.avatar}
         />
@@ -45,4 +45,4 @@ const CustomUserProfile = ({ userId }: CustomUserProfileProps) => {
     </div>
   );
 };
-export default CustomUserProfile;
+export default UserInfoProfile;
