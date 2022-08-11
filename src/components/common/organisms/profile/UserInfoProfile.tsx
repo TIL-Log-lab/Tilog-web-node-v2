@@ -34,7 +34,7 @@ const UserInfoProfile = ({ userId }: UserInfoProfileProps) => {
               ? userInfo.data.settings.DISPLAY_NAME
               : "닉네임이 없습니다!"}
           </h3>
-          <span className="text-sm linhe-clamp-3">
+          <span className="text-sm line-clamp-3">
             {userInfo.data.settings.POSITION}
           </span>
         </div>
