@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import DateUserProfile from "@Components/common/organisms/profile/DateUserProfile";
+import CommentUserProfile from "@Components/modules/comment/CommentUserProfile";
 import CommentContents from "@Components/modules/comment/content/CommentContents";
 import CommentUpdateInput from "@Components/modules/comment/input/CommentUpdateInput";
 import CommentTools from "@Components/modules/comment/tools/CommentTools";
@@ -19,7 +19,7 @@ const CommentRender = ({ comment }: CommentRenderProps) => {
   return (
     <div key={comment.id}>
       <div className="flex items-center gap-x-2 shrink-0">
-        <DateUserProfile
+        <CommentUserProfile
           createdAt={comment.createdAt}
           userId={comment.user.userId}
         />

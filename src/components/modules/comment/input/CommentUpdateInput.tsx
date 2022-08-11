@@ -26,7 +26,6 @@ const CommentUpdateInput = ({ comment, handleUpdate }: CommentInputProps) => {
             value={updateContent}
             placeholder={COMMENT_PLACEHOLDER.ko}
             onChange={handleComment}
-            onChange={handleComment}
           />
         </div>
 
