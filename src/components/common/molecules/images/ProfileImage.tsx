@@ -5,12 +5,12 @@ import EmptyAvatarImage from "@Components/common/atom/images/avatar/EmptyAvatarI
 
 import { GetUserProfileResponseDto } from "@til-log.lab/tilog-api";
 
-interface UserProfileProps {
+interface ProfileImageProps {
   avatar?: GetUserProfileResponseDto["avatar"];
   className?: string;
 }
 
-const UserProfile = ({ avatar, className }: UserProfileProps) => {
+const ProfileImage = ({ avatar, className }: ProfileImageProps) => {
   return (
     <div
       className={`${className} ring-1 ring-neutral-200 dark:ring-neutral-600 rounded-full`}
@@ -20,4 +20,4 @@ const UserProfile = ({ avatar, className }: UserProfileProps) => {
   );
 };
 
-export default UserProfile;
+export default ProfileImage;
