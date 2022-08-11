@@ -1,5 +1,5 @@
 import RenderTechIcons from "@Components/common/molecules/tech-icons/RenderTechIcons";
-import DateUserProfile from "@Components/common/organisms/profile/DateUserProfile";
+import PostUserProfile from "@Components/common/organisms/profile/PostUserProfile";
 import PostUpdateLink from "@Components/modules/post/link/PostUpdateLink";
 import useIsOwner from "@Hooks/useIsOwner";
 
@@ -14,7 +14,11 @@ const PostHeader = ({ post }: PostHeaderProps) => {
   return (
     <header>
       <div className="flex">
-        <DateUserProfile userId={post.user.userId} createdAt={post.createdAt} />
+        <PostUserProfile
+          viewCount={post.view}
+          userId={post.user.userId}
+          createdAt={post.createdAt}
+        />
         {isOwner && (
           <div className="flex ml-auto space-x-5">
             <PostUpdateLink postId={post.id} />
