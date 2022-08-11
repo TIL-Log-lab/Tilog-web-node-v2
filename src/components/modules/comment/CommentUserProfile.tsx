@@ -1,5 +1,5 @@
 import ProfileImage from "@Components/common/molecules/images/ProfileImage";
-import UserProfile from "@Components/common/molecules/profile/UserProfile";
+import UserNameProfile from "@Components/common/molecules/profile/UserNameProfile";
 import DateFnsFormatter from "@Components/common/molecules/text/DateFnsFormatter";
 import useGetUserProfileQuery from "@Hooks/react-query/user/useGetUserProfileQuery";
 
@@ -25,11 +25,13 @@ const CommentUserProfile = ({ userId, createdAt }: CommentUserProfileProps) => {
   if (!userInfo.data) return null;
   return (
     <div>
-      <UserProfile userId={userId}>
-        {createdAt && (
-          <DateFnsFormatter className="inline text-xs" date={createdAt} />
-        )}
-      </UserProfile>
+      <UserNameProfile
+        avatar={userInfo.data.avatar}
+        username={userInfo.data.name}
+        displayName={userInfo.data.settings.DISPLAY_NAME}
+      >
+        {createdAt && <DateFnsFormatter className="text-xs" date={createdAt} />}
+      </UserNameProfile>
     </div>
   );
 };
