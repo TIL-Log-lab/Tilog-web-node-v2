@@ -26,9 +26,7 @@ const CommentInput = ({
   return (
     <div>
       <div className="p-5 bg-neutral-100 dark:bg-neutral-800">
-        {userInfo.isSuccess && (
-          <CommentUserProfile userId={userInfo.data.id} createdAt={Date()} />
-        )}
+        {userInfo.isSuccess && <CommentUserProfile userId={userInfo.data.id} />}
 
         <div className="mt-5">
           {errorMessage && <p className="text-rose-500">{errorMessage}</p>}
