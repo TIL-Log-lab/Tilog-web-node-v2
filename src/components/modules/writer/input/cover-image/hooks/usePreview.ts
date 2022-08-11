@@ -13,7 +13,7 @@ const usePreview = () => {
 
   useEffect(() => {
     if (thumbnail && thumbnail.length > 0) {
-      const file = thumbnail[0];
+      const file = thumbnail[0] as any;
       setPreview(URL.createObjectURL(file));
     }
     setValue(THUMBNAIL_URL, "");

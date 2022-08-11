@@ -1,6 +1,6 @@
 import RenderTechIcons from "@Components/common/molecules/tech-icons/RenderTechIcons";
 import DateUserProfile from "@Components/common/organisms/profile/DateUserProfile";
-import PostUpdateLink from "@Components/modules/post/link/postUpdateLink";
+import PostUpdateLink from "@Components/modules/post/link/PostUpdateLink";
 import useIsOwner from "@Hooks/useIsOwner";
 
 import { GetPostDetailResponseDto } from "@til-log.lab/tilog-api";

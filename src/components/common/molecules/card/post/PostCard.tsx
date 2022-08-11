@@ -1,5 +1,4 @@
 import LinkTo from "@Components/common/atom/LinkTo";
-import CommentCounter from "@Components/common/molecules/counter/CommentCounter";
 import LikeCounter from "@Components/common/molecules/counter/LikeCounter";
 import PostThumbnail from "@Components/common/molecules/images/PostThumbnail";
 import CategoryLink from "@Components/common/molecules/link/CategoryLink";

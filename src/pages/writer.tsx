@@ -12,12 +12,10 @@ import SubTitleInput from "@Components/modules/writer/input/SubTitleInput";
 import TitleInput from "@Components/modules/writer/input/TitleInput";
 import { TITLE_WRITER } from "@Constants/writer";
 import useHandleSummit from "@Hooks/pages/writer/hooks/useHandleSummit";
-import useGetStringTypeToRouter from "@Hooks/router/useGetStringTypeToRouter";
 
 import WriterFormTypes from "@Components/modules/writer/interface/writerFormTypes";
 
 const WriterPage: NextPage = () => {
-  const postId = useGetStringTypeToRouter("postId");
   const method = useForm<WriterFormTypes>();
   const onSummit = useHandleSummit();
   return (

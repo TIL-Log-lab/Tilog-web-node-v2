@@ -3,11 +3,11 @@ import Spinner from "@Components/common/atom/loading/Spinner";
 import UserProfile from "@Components/common/molecules/profile/UserProfile";
 import useGetUserProfileQuery from "@Hooks/react-query/user/useGetUserProfileQuery";
 
-interface BlogUserProfileProps {
+interface CustomUserProfileProps {
   userId: number;
 }
 
-const CustomSettingsUserProfile = ({ userId }: BlogUserProfileProps) => {
+const CustomUserProfile = ({ userId }: CustomUserProfileProps) => {
   const userInfo = useGetUserProfileQuery(userId);
   if (userInfo.isError) return <div>{userInfo.error.message.ko}</div>;
   if (!userInfo.data) return null;
@@ -24,7 +24,7 @@ const CustomSettingsUserProfile = ({ userId }: BlogUserProfileProps) => {
             href={`https://www.github.com/${userInfo.data.name}`}
             target="_blank"
           >
-            <p className="text-xs">@{userInfo.data.name}</p>
+            <p className="text-xs font-normal">@{userInfo.data.name}</p>
           </LinkTo>
           <LinkTo href={`mailto:${userInfo.data.settings.EMAIL}`}>
             <p className="text-xs">{userInfo.data.settings.EMAIL}</p>
@@ -34,7 +34,7 @@ const CustomSettingsUserProfile = ({ userId }: BlogUserProfileProps) => {
               ? userInfo.data.settings.DISPLAY_NAME
               : "닉네임이 없습니다!"}
           </h3>
-          <span className="text-sm line-clamp-3">
+          <span className="text-sm linhe-clamp-3">
             {userInfo.data.settings.POSITION}
           </span>
         </div>
@@ -45,4 +45,4 @@ const CustomSettingsUserProfile = ({ userId }: BlogUserProfileProps) => {
     </div>
   );
 };
-export default CustomSettingsUserProfile;
+export default CustomUserProfile;
