@@ -9,9 +9,8 @@ export default function useGetUserProfileQuery(userName: number) {
   return useQuery<
     GetUserProfileResponseTransFormSettingsDto,
     ExceptionInterface,
-    GetUserProfileResponseTransFormSettingsDto,
-    string
-  >("userInfo", () => api.usersService.getUserProfile(userName), {
+    GetUserProfileResponseTransFormSettingsDto
+  >(["userInfo", userName], () => api.usersService.getUserProfile(userName), {
     retry: 0,
     refetchOnWindowFocus: false,
     refetchInterval: false,
