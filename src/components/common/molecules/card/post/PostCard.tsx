@@ -2,7 +2,7 @@ import LinkTo from "@Components/common/atom/LinkTo";
 import LikeCounter from "@Components/common/molecules/counter/LikeCounter";
 import PostThumbnail from "@Components/common/molecules/images/PostThumbnail";
 import CategoryLink from "@Components/common/molecules/link/CategoryLink";
-import DateUserProfile from "@Components/common/organisms/profile/DateUserProfile";
+import PostUserProfile from "@Components/common/organisms/profile/PostUserProfile";
 
 import { GetPostsItem } from "@til-log.lab/tilog-api";
 
@@ -13,7 +13,8 @@ const PostCard = ({ post }: { post: GetPostsItem }) => {
       className="flex flex-col md:flex-row bg-neutral-100 dark:bg-neutral-800 md:w-[550px] xl:w-[650px] max-w-[450px] md:max-w-[650px] w-full"
     >
       <div className="w-full p-4 md:py-4 md:pl-4">
-        <DateUserProfile
+        <PostUserProfile
+          viewCount={post.view}
           isPrivate={post.private === 1}
           userId={post.user.userId}
           createdAt={post.createdAt}
