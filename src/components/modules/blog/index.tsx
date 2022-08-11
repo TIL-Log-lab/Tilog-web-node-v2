@@ -1,5 +1,5 @@
 import PostCardList from "@Components/common/organisms/list/PostCardList";
 import UserCategoryButtonList from "@Components/common/organisms/list/UserCategoryButtonList";
-import CustomUserProfile from "@Components/common/organisms/profile/CustomUserProfile";
+import UserInfoProfile from "@Components/common/organisms/profile/UserInfoProfile";
 
-export { UserCategoryButtonList, CustomUserProfile, PostCardList };
+export { UserCategoryButtonList, UserInfoProfile, PostCardList };

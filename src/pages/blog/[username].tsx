@@ -4,7 +4,7 @@ import { DefaultSeoProps, NextSeo } from "next-seo";
 
 import {
   UserCategoryButtonList,
-  CustomUserProfile,
+  UserInfoProfile,
   PostCardList,
 } from "@Components/modules/blog";
 import useGetStringTypeToRouter from "@Hooks/router/useGetStringTypeToRouter";
@@ -23,7 +23,7 @@ const BlogPage: NextPage<BlogPagePageProps> = ({ seo }: BlogPagePageProps) => {
       <div className="m-auto max-w-[1280px] h-full items-center">
         <div className="grid justify-center grid-flow-row p-3 md:justify-between md:grid-flow-col">
           <div className="w-full max-w-[450px]">
-            <CustomUserProfile userId={1} />
+            <UserInfoProfile userId={1} />
             <hr />
             <UserCategoryButtonList userId={1} />
             <hr />
