@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React from "react";
 
 import LinkTo from "@Components/common/atom/LinkTo";
+import routerHelper from "@Library/utility/routerHelper";
 
 interface CategorySortButtonProps {
   categoryName: string;
@@ -18,22 +19,19 @@ const CategorySortButton = ({ categoryName }: CategorySortButtonProps) => {
           pathname: router.pathname,
           query: { ...router.query, category: categoryName },
         }}
-        className="p-2 text-sm font-semibold rounded-sm hover:no-underline font-eng-sub-font-2 bg-neutral-50 dark:bg-neutral-800 ring-1 ring-neutral-200 dark:ring-neutral-700 hover:bg-neutral-100 hover:dark:bg-neutral-700"
+        className="p-2 text-lg font-semibold hover:no-underline text-neutral-400 dark:text-neutral-50"
       >
-        <span className={`text-${categoryName}`}># </span>
-        <span className="text-neutral-900 dark:text-neutral-50">
-          {categoryName}
-        </span>
+        {categoryName}
       </LinkTo>
     );
   }
   return (
     <LinkTo
       scroll={false}
-      href={`${router.asPath.split("?")[0]}`}
-      className="p-2 text-sm font-semibold rounded-sm hover:no-underline font-eng-sub-font-2 bg-neutral-50 dark:bg-neutral-800 ring-1 ring-neutral-200 dark:ring-neutral-700 hover:bg-neutral-100 hover:dark:bg-neutral-700"
+      href={`${routerHelper(router.asPath, "category", categoryName)}`}
+      className="p-2 text-lg font-semibold hover:no-underline text-neutral-800 dark:text-neutral-400"
     >
-      <span className={`text-${categoryName}`}># {categoryName}</span>
+      {categoryName}
     </LinkTo>
   );
 };
