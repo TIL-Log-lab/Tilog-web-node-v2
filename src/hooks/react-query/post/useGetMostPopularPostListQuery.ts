@@ -1,12 +1,8 @@
-import { AxiosResponse } from "axios";
-import { useInfiniteQuery } from "react-query";
+import { useQuery } from "react-query";
 
 import useSearchCategory from "@Hooks/react-query/category/useSearchCategory";
 import api from "@Library/api";
 
-import { GetPostsResponseDto } from "@til-log.lab/tilog-api";
-
-import ExceptionInterface from "@Library/api/exception/interface";
 import GetPostRequestDto from "@Library/api/post/interface/getPostRequestDto";
 
 interface GetMostPopularPostListQueryInterface {
@@ -29,11 +25,7 @@ const useGetMostPopularPostListQuery = ({
   const data = searchCategory(categoryName);
   const categoryId = data?.length === 1 ? data[0].id : 0;
 
-  return useInfiniteQuery<
-    AxiosResponse<GetPostsResponseDto>,
-    ExceptionInterface,
-    AxiosResponse<GetPostsResponseDto>
-  >(
+  return useQuery(
     ["mostPopularPostList", dateScope, sortScope, categoryName],
     ({ pageParam = page }) => {
       return api.postService.getPosts(
@@ -41,6 +33,7 @@ const useGetMostPopularPostListQuery = ({
         sortScope,
         pageParam,
         maxContent,
+        undefined,
         categoryId
       );
     },
@@ -51,15 +44,6 @@ const useGetMostPopularPostListQuery = ({
       retryOnMount: false,
       refetchOnMount: false,
       staleTime: 1000 * 60,
-      getNextPageParam: (lastPages, pages) => {
-        const nextPage = pages.length;
-        const lastPagesListCount = lastPages.data.list.length;
-
-        if (lastPagesListCount !== 0 && lastPagesListCount % maxContent === 0) {
-          return nextPage;
-        }
-        return null;
-      },
     }
   );
 };
