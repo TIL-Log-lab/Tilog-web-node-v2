@@ -2,8 +2,6 @@ import React from "react";
 
 import CardLoading from "@Components/common/molecules/card/CardLoading";
 import PostCard from "@Components/common/molecules/card/post/PostCard";
-import RenderTechIcons from "@Components/common/molecules/tech-icons/RenderTechIcons";
-import { POSTCARD_ALL_CATEGORY_TITLE } from "@Constants/post";
 import useGetPostListQuery from "@Hooks/react-query/post/useGetPostListQuery";
 
 import GetPostRequestDto from "@Library/api/post/interface/getPostRequestDto";
@@ -15,6 +13,7 @@ interface PostCardListProps {
   maxContent: GetPostRequestDto["maxContent"];
   userId?: GetPostRequestDto["userId"];
   categoryName?: string;
+  row?: string;
 }
 
 const PostCardList = ({
@@ -24,6 +23,7 @@ const PostCardList = ({
   maxContent,
   userId,
   categoryName,
+  row = "none",
 }: PostCardListProps) => {
   const postList = useGetPostListQuery({
     dateScope,
@@ -41,20 +41,11 @@ const PostCardList = ({
   }
   return (
     <div>
-      {!categoryName ? (
-        <h1>{POSTCARD_ALL_CATEGORY_TITLE.ko}</h1>
-      ) : (
-        <h2>
-          <div className="inline mr-5 text-5xl">
-            <RenderTechIcons categoryName={categoryName} />
-          </div>
-          {categoryName}
-        </h2>
-      )}
-      <div className="grid grid-row gap-y-3">
-        {postList.data?.pages.map((postPage) =>
-          postPage.data.list.map((post) => <PostCard post={post} />)
-        )}
+      <div className={`grid gap-3 grid-row md:grid-cols-${row}`}>
+        {postList.isSuccess &&
+          postList.data.pages.map((postPage) =>
+            postPage.data.list.map((post) => <PostCard post={post} />)
+          )}
       </div>
       <CardLoading
         hasNextPage={postList.hasNextPage}
