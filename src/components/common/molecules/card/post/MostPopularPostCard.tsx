@@ -16,7 +16,7 @@ const MostPopularPostCard = ({ index, post }: MostPopularPostCardProps) => {
       <h6 className="w-4 mr-2">{index}.</h6>
       <div
         key={post.id}
-        className="w-[350px] bg-neutral-100 dark:bg-neutral-800"
+        className="w-full md:w-[350px] bg-neutral-100 dark:bg-neutral-800"
       >
         <div className="p-4">
           <PostUserProfile

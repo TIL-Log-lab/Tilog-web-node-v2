@@ -3,6 +3,7 @@ import React from "react";
 import CardLoading from "@Components/common/molecules/card/CardLoading";
 import PostCard from "@Components/common/molecules/card/post/PostCard";
 import useGetPostListQuery from "@Hooks/react-query/post/useGetPostListQuery";
+import isArrayEmpty from "@Library/utility/isArrayEmpty";
 
 import GetPostRequestDto from "@Library/api/post/interface/getPostRequestDto";
 
@@ -39,13 +40,17 @@ const PostCardList = ({
   if (postList.isLoading) {
     return <div>로딩중...</div>;
   }
+  if (!postList.data) return null;
+
   return (
     <div>
       <div className={`grid gap-3 grid-row md:grid-cols-${row}`}>
         {postList.isSuccess &&
-          postList.data.pages.map((postPage) =>
-            postPage.data.list.map((post) => <PostCard post={post} />)
-          )}
+          postList.data.pages.map((postPage) => {
+            if (isArrayEmpty(postPage.data.list))
+              return <h3>인기 게시글이 없습니다.</h3>;
+            return postPage.data.list.map((post) => <PostCard post={post} />);
+          })}
       </div>
       <CardLoading
         hasNextPage={postList.hasNextPage}
