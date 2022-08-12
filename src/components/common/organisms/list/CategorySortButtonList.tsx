@@ -18,7 +18,7 @@ const CategorySortButtonList = ({
     return <h2 className="text-base">카테고리가 존재하지 않아요.</h2>;
 
   return (
-    <div className="sticky top-[81px] z-10 border-b border-neutral-300 bg-neutral-50 dark:bg-neutral-900">
+    <div className="sticky top-0 z-10 border-b border-neutral-300 bg-neutral-50 dark:bg-neutral-900">
       <div className="m-auto max-w-[1280px] items-center px-5">
         <div className="py-3 overflow-y-auto scrollbar-hide">
           {categoryList.data.data.list.map((category) => (
