@@ -34,7 +34,7 @@ body {
     @apply text-base md:text-xl text-neutral-800 dark:text-neutral-50 hover:underline font-eng-sub-font-2;
   }
   p {
-    @apply text-sm md:text-base text-neutral-400 font-eng-sub-font-2;
+    @apply text-sm md:text-base dark:text-neutral-500 text-neutral-400 font-eng-sub-font-2;
   }
   span {
     @apply text-sm md:text-base text-neutral-800 dark:text-neutral-50 font-eng-sub-font-2;
@@ -46,6 +46,6 @@ body {
     @apply font-medium bg-white text-neutral-800 dark:text-neutral-50 dark:bg-neutral-800 focus:outline-none;
   }
   textarea {
-    @apply font-medium bg-white text-neutral-800 dark:text-neutral-50 dark:bg-neutral-900 focus:outline-none;
+    @apply font-medium bg-white text-neutral-800 scrollbar-hide dark:text-neutral-50 dark:bg-neutral-900 focus:outline-none;
   }
 }
