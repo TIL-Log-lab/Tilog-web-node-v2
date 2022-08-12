@@ -7,20 +7,16 @@ interface LikeCounterProps {
   fontSize?: string;
 }
 
-const LikeCounter = ({
-  count,
-  active = false,
-  iconSize = "4",
-  fontSize = "xs",
-}: LikeCounterProps) => {
+const LikeCounter = ({ count, active = false }: LikeCounterProps) => {
   return (
     <div className="space-x-1">
       <AiFillHeart
-        className={`inline w-${iconSize} h-${iconSize} 
-        ${active ? "text-rose-500" : "text-neutral-900 dark:text-neutral-50"}
+        className={`inline w-4 h-4 
+        ${active && "text-rose-500"}
+        dark:text-neutral-500 text-neutral-400 text-xs 
         `}
       />
-      <span className={`text-${fontSize}`}>{count}</span>
+      <p className="inline text-xs">{count}</p>
     </div>
   );
 };

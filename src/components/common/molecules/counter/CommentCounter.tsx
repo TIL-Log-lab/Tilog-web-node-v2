@@ -7,8 +7,8 @@ interface CommentCounterProps {
 const CommentCounter = ({ count }: CommentCounterProps) => {
   return (
     <div className="space-x-1">
-      <AiOutlineComment className="inline w-4 h-4 text-neutral-900 dark:text-neutral-50" />
-      <span className="text-xs">{count}</span>
+      <AiOutlineComment className="inline w-4 h-4 text-xs dark:text-neutral-500 text-neutral-400 " />
+      <p className="inline text-xs">{count}</p>
     </div>
   );
 };
