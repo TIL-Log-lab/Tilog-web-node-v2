@@ -14,9 +14,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     <QueryClientProvider client={queryClient}>
       <Toaster />
       <Header />
-      <div className="m-auto max-w-[1280px] h-20 mt-20 items-center px-5">
-        <Component {...pageProps} />
-      </div>
+      <Component {...pageProps} />
     </QueryClientProvider>
   );
 };
