@@ -2,11 +2,8 @@ import { GetServerSideProps, NextPage } from "next";
 
 import { DefaultSeoProps, NextSeo } from "next-seo";
 
-import {
-  UserCategoryButtonList,
-  UserInfoProfile,
-  PostCardList,
-} from "@Components/modules/blog";
+import CategorySortButtonList from "@Components/common/organisms/list/CategorySortButtonList";
+import { UserInfoProfile, PostCardList } from "@Components/modules/blog";
 import useGetStringTypeToRouter from "@Hooks/router/useGetStringTypeToRouter";
 import api from "@Library/api";
 import { userBlogDetailSeo } from "@Library/utility/seo";
@@ -14,18 +11,18 @@ import { userBlogDetailSeo } from "@Library/utility/seo";
 interface BlogPagePageProps {
   seo: DefaultSeoProps;
 }
-// TODO: 현재 BlogPage는 UserID 1 번을 반환하도록 하드 코딩되어 있습니다. userName로 전달받을 수 있게 변경된다면 그렇게 변경해야합니다.
+// TODO: 현재 BlogPage는 UserID 1 번을 반환하도록 하드 코딩되어 있습니다. userName로 전달받을 수 있게 변경된 후 코드를 변경해야합니다.
 const BlogPage: NextPage<BlogPagePageProps> = ({ seo }: BlogPagePageProps) => {
   const category = useGetStringTypeToRouter("category");
   return (
     <div>
       <NextSeo {...seo} />
-      <div className="m-auto max-w-[1280px] h-full items-center">
+      <CategorySortButtonList userId={1} />
+
+      <div className="m-auto max-w-[1280px] h-full mt-20 items-center px-5">
         <div className="grid justify-center grid-flow-row p-3 md:justify-between md:grid-flow-col">
           <div className="w-full max-w-[450px]">
             <UserInfoProfile userId={1} />
-            <hr />
-            <UserCategoryButtonList userId={1} />
             <hr />
             {/* TODO GITHUB STATUS LINK */}
             <p className="text-lg text-neutral-600">Pinned Repo</p>
