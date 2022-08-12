@@ -7,7 +7,7 @@ import { GetCategoriesResponseDto } from "@til-log.lab/tilog-api";
 
 import ExceptionInterface from "@Library/api/exception/interface";
 
-const useAllGetCategoryListQuery = () => {
+const useGetCategoryQuery = () => {
   return useQuery<
     AxiosResponse<GetCategoriesResponseDto>,
     ExceptionInterface,
@@ -24,4 +24,4 @@ const useAllGetCategoryListQuery = () => {
   });
 };
 
-export default useAllGetCategoryListQuery;
+export default useGetCategoryQuery;
