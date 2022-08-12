@@ -1,14 +1,19 @@
-import useAllGetCategoryListQuery from "@Hooks/react-query/category/useAllGetCategoryListQuery";
+import useGetCategoryQuery from "@Hooks/react-query/category/useGetCategoryQuery";
 
-import { GetCategoriesItem } from "@til-log.lab/tilog-api";
+import {
+  GetCategoriesItem,
+  GetUserCategoriesItem,
+} from "@til-log.lab/tilog-api";
 
 const useSearchCategory = () => {
-  const { data } = useAllGetCategoryListQuery();
+  const { data } = useGetCategoryQuery();
 
   return (
-    categoryName?: GetCategoriesItem["categoryName"],
+    categoryName?:
+      | GetUserCategoriesItem["categoryName"]
+      | GetCategoriesItem["categoryName"],
     categoryId?: string
-  ): GetCategoriesItem[] | null => {
+  ): GetCategoriesItem[] | GetUserCategoriesItem[] | null => {
     if (!data) return null;
     const categoryList = data.data.list;
 
