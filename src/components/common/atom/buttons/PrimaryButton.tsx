@@ -13,7 +13,7 @@ const PrimaryButton = ({
   return (
     <button
       type={!isSubmit ? "button" : "submit"}
-      className={`${className} p-2.5 rounded-md w-full h-fit text-neutral-50 bg-neutral-800 dark:bg-black hover:bg-neutral-700 font-eng-sub-font-2`}
+      className={`${className} py-2.5 px-6 rounded-md w-full h-fit text-neutral-50 bg-neutral-800 dark:bg-black hover:bg-neutral-700 font-eng-sub-font-2`}
       {...props}
     >
       {children}
