@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-import { NO_RESULT_SEARCH } from "@Constants/search/index";
+import { NO_RESULT_SEARCH } from "@Library/constants/search/index";
 
 import { GetCategoriesResponseDto } from "@til-log.lab/tilog-api";
 

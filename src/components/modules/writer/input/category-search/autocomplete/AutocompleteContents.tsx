@@ -1,7 +1,7 @@
 import { useFormContext } from "react-hook-form";
 
 import RenderTechIcons from "@Components/common/molecules/tech-icons/RenderTechIcons";
-import { CATEGORY_ID } from "@Constants/writer";
+import { CATEGORY_ID } from "@Library/constants/writer";
 
 import { GetCategoriesItem } from "@til-log.lab/tilog-api";
 

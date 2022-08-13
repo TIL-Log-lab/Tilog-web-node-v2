@@ -1,6 +1,6 @@
 import CommentInput from "@Components/modules/comment/input/CommentInput";
 import RootComment from "@Components/modules/comment/render/RootComment";
-import { COMMENT_INPUT, COMMENT_PLACEHOLDER } from "@Constants/comment";
+import { COMMENT_INPUT, COMMENT_PLACEHOLDER } from "@Library/constants/comment";
 import useGetParentCommentQuery from "@Hooks/react-query/comment/parent/useGetParentCommentQuery";
 
 import { GetPostDetailResponseDto } from "@til-log.lab/tilog-api";

@@ -1,4 +1,4 @@
-import { TILOG_API } from "@Constants/environment";
+import { TILOG_API } from "@Library/constants/environment";
 import httpClient from "@Library/api/httpClient";
 import UserRepository from "@Library/api/users/userRepository";
 import UserService from "@Library/api/users/userService";

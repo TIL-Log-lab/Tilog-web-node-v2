@@ -1,6 +1,6 @@
 import { RegisterOptions } from "react-hook-form";
 
-import { MAX_LENGTH, WRONG_EMAIL } from "@Constants/input/rules";
+import { MAX_LENGTH, WRONG_EMAIL } from "@Library/constants/input/rules";
 
 import UserSettingTypes from "@Library/api/users/interface/userSettingTypes";
 import { LanguageUnionType } from "@Library/language/interface";

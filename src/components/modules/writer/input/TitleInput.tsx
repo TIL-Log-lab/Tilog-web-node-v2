@@ -2,7 +2,7 @@ import { useFormContext } from "react-hook-form";
 
 import TextInput from "@Components/common/atom/input/TextInput";
 import titleRules from "@Components/modules/writer/input/rules/titleRules";
-import { TITLE, TITLE_PLACEHOLDER } from "@Constants/writer";
+import { TITLE, TITLE_PLACEHOLDER } from "@Library/constants/writer";
 
 import WriterFormTypes from "@Components/modules/writer/interface/writerFormTypes";
 

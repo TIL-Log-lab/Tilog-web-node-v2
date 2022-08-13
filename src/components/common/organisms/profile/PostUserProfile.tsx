@@ -3,7 +3,7 @@ import { VscCircleFilled } from "react-icons/vsc";
 import LockIcon from "@Components/common/atom/icons/LockIcon";
 import UserNameProfile from "@Components/common/molecules/profile/UserNameProfile";
 import DateFnsFormatter from "@Components/common/molecules/text/DateFnsFormatter";
-import { VIEW_COUNT } from "@Constants/post";
+import { VIEW_COUNT } from "@Library/constants/post";
 import useGetUserProfileQuery from "@Hooks/react-query/user/useGetUserProfileQuery";
 
 interface PostUserProfileProps {

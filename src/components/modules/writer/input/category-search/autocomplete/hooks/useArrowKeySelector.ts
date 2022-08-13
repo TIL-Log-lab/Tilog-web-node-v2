@@ -3,7 +3,7 @@ import { MutableRefObject, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { useEventListener } from "usehooks-ts";
 
-import { CATEGORY_ID } from "@Constants/writer";
+import { CATEGORY_ID } from "@Library/constants/writer";
 
 import { GetCategoriesResponseDto } from "@til-log.lab/tilog-api";
 

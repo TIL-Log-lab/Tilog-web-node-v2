@@ -2,7 +2,7 @@ import { useFormContext } from "react-hook-form";
 
 import ImageInput from "@Components/common/atom/input/ImageInput";
 import ImagePreView from "@Components/modules/writer/input/cover-image/ImagePreview";
-import { THUMBNAIL_URL } from "@Constants/writer";
+import { THUMBNAIL_URL } from "@Library/constants/writer";
 
 import WriterFormTypes from "@Components/modules/writer/interface/writerFormTypes";
 

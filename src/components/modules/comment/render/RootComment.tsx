@@ -7,7 +7,7 @@ import {
   REPLY_INPUT,
   REPLY_OPEN,
   REPLY_PLACEHOLDER,
-} from "@Constants/comment";
+} from "@Library/constants/comment";
 import useGetChildCommentQuery from "@Hooks/react-query/comment/children/useGetChildCommentQuery";
 
 import { GetCommentsItem } from "@til-log.lab/tilog-api";

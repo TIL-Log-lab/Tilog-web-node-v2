@@ -1,4 +1,4 @@
-import { TILOG_API } from "@Constants/environment";
+import { TILOG_API } from "@Library/constants/environment";
 import httpClient from "@Library/api/httpClient";
 import CommentRepository from "@Library/api/post/comment/CommentRepository";
 import CommentService from "@Library/api/post/comment/CommentService";

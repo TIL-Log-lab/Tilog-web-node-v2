@@ -1,5 +1,5 @@
 import LinkTo from "@Components/common/atom/LinkTo";
-import { POST_EDIT } from "@Constants/post";
+import { POST_EDIT } from "@Library/constants/post";
 
 import { GetPostDetailResponseDto } from "@til-log.lab/tilog-api";
 

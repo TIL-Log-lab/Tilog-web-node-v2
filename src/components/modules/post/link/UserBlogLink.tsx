@@ -1,6 +1,6 @@
 import PrimaryButton from "@Components/common/atom/buttons/PrimaryButton";
 import LinkTo from "@Components/common/atom/LinkTo";
-import { DIRECT_OWNER_BLOG } from "@Constants/post";
+import { DIRECT_OWNER_BLOG } from "@Library/constants/post";
 
 interface UserBlogButtonProps {
   userName: string;

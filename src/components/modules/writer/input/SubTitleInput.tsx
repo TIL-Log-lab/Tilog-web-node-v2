@@ -2,7 +2,7 @@ import { useFormContext } from "react-hook-form";
 
 import TextInput from "@Components/common/atom/input/TextInput";
 import subTitleRules from "@Components/modules/writer/input/rules/subTitleRules";
-import { SUBTITLE_PLACEHOLDER, SUBTITLE } from "@Constants/writer";
+import { SUBTITLE_PLACEHOLDER, SUBTITLE } from "@Library/constants/writer";
 
 import WriterFormTypes from "@Components/modules/writer/interface/writerFormTypes";
 

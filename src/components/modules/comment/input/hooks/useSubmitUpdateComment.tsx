@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react";
 
-import { COMMENT_EMPTY } from "@Constants/comment";
+import { COMMENT_EMPTY } from "@Library/constants/comment";
 import { useUpdateCommentMutation } from "@Hooks/react-query/comment/useCommentMutation";
 
 import { GetCommentsItem } from "@til-log.lab/tilog-api";
