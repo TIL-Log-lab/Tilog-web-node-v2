@@ -20,7 +20,7 @@
       "@Components/*": ["src/components/*"],
       "@TechIcons/*": ["src/components/techIcons/*"],
       "@Modal/*": ["src/components/modal/*"],
-      "@Constants/*": ["constants/*"],
+      "@Constants/*": ["lib/constants/*"],
       "@Library/*": ["lib/*"],
       "@Redux/*": ["src/hooks/redux/*"],
       "@Hooks/*": ["src/hooks/*"],
