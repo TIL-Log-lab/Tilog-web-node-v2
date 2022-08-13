@@ -10,6 +10,7 @@ import useGetPostDetailQuery from "@Hooks/react-query/post/useGetPostDetailQuery
 import useGetStringTypeToRouter from "@Hooks/router/useGetStringTypeToRouter";
 import api from "@Library/api";
 import { notFoundPostSeo, postDefaultSeo } from "@Library/utility/seo";
+import RootBox from "@Components/common/atom/box/RootBox";
 
 interface PostDetailPageProps {
   seo: DefaultSeoProps;
@@ -31,32 +32,34 @@ const PostDetailPage: NextPage<PostDetailPageProps> = ({
   return (
     <div>
       <DefaultSeo {...newSeo} />
-      <div>
-        <article className="w-full">
-          <PostHeader post={post} />
-          <figure>
-            <PostThumbnail
-              id={post.id}
-              thumbnailUrl={post.thumbnailUrl}
-              title={post.title}
-            />
-          </figure>
-          <div className="mt-5 lg:grid lg:grid-flow-col lg:space-x-5 lg:grid-cols-3">
-            <div className="lg:col-span-2">
-              <TiptapViewer content={JSON.parse(post.content)} />
-            </div>
-            <section>
-              <div className="w-full rounded h-fit bg-neutral-100 dark:bg-neutral-800">
-                <PostWriter userInfo={post.user} />
+      <RootBox>
+        <div>
+          <article className="w-full">
+            <PostHeader post={post} />
+            <figure>
+              <PostThumbnail
+                id={post.id}
+                thumbnailUrl={post.thumbnailUrl}
+                title={post.title}
+              />
+            </figure>
+            <div className="mt-5 lg:grid lg:grid-flow-col lg:space-x-5 lg:grid-cols-3">
+              <div className="lg:col-span-2">
+                <TiptapViewer content={JSON.parse(post.content)} />
               </div>
-            </section>
-          </div>
-        </article>
-      </div>
-      <div className="mt-5">
-        <PostLike postId={post.id} count={post.like} />
-        <Comment postId={post.id} />
-      </div>
+              <section>
+                <div className="w-full rounded h-fit bg-neutral-100 dark:bg-neutral-800">
+                  <PostWriter userInfo={post.user} />
+                </div>
+              </section>
+            </div>
+          </article>
+        </div>
+        <div className="mt-5">
+          <PostLike postId={post.id} count={post.like} />
+          <Comment postId={post.id} />
+        </div>
+      </RootBox>
     </div>
   );
 };

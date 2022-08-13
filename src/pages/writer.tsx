@@ -14,12 +14,13 @@ import { TITLE_WRITER } from "@Library/constants/writer";
 import useHandleSummit from "@Hooks/pages/writer/hooks/useHandleSummit";
 
 import WriterFormTypes from "@Components/modules/writer/interface/writerFormTypes";
+import RootBox from "@Components/common/atom/box/RootBox";
 
 const WriterPage: NextPage = () => {
   const method = useForm<WriterFormTypes>();
   const onSummit = useHandleSummit();
   return (
-    <div className="m-auto max-w-[1000px] h-full p-10 items-center px-5">
+    <RootBox>
       <Head>
         <title>{TITLE_WRITER.ko}</title>
       </Head>
@@ -37,7 +38,7 @@ const WriterPage: NextPage = () => {
           </div>
         </form>
       </FormProvider>
-    </div>
+    </RootBox>
   );
 };
 

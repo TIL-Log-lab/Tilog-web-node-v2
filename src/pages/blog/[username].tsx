@@ -7,6 +7,7 @@ import { UserInfoProfile, PostCardList } from "@Components/modules/blog";
 import useGetStringTypeToRouter from "@Hooks/router/useGetStringTypeToRouter";
 import api from "@Library/api";
 import { userBlogDetailSeo } from "@Library/utility/seo";
+import RootBox from "@Components/common/atom/box/RootBox";
 
 interface BlogPagePageProps {
   seo: DefaultSeoProps;
@@ -19,7 +20,7 @@ const BlogPage: NextPage<BlogPagePageProps> = ({ seo }: BlogPagePageProps) => {
       <NextSeo {...seo} />
       <CategorySortButtonList userId={1} />
 
-      <div className="m-auto max-w-[1280px] h-full mt-20 items-center px-5">
+      <RootBox>
         <div className="grid justify-center grid-flow-row p-3 md:justify-between md:grid-flow-col">
           <div className="w-full max-w-[450px]">
             <UserInfoProfile userId={1} />
@@ -54,7 +55,7 @@ const BlogPage: NextPage<BlogPagePageProps> = ({ seo }: BlogPagePageProps) => {
             userId={1}
           />
         </div>
-      </div>
+      </RootBox>
     </div>
   );
 };

@@ -16,6 +16,7 @@ import useHandleSubmit from "@Hooks/pages/settings/hooks/useHandleSubmit";
 import useGetMeQuery from "@Hooks/react-query/user/useGetMeQuery";
 
 import UserSettingTypes from "@Library/api/users/interface/userSettingTypes";
+import RootBox from "@Components/common/atom/box/RootBox";
 
 const SettingPage: NextPage = () => {
   const router = useRouter();
@@ -34,7 +35,7 @@ const SettingPage: NextPage = () => {
   if (userInfo.isLoading) return <h1>유저 설정 로딩중..</h1>;
 
   return (
-    <div className="m-auto max-w-[1000px] h-full p-10 items-center px-5">
+    <RootBox>
       <Head>
         <title>설정</title>
       </Head>
@@ -51,7 +52,7 @@ const SettingPage: NextPage = () => {
           </form>
         </FormProvider>
       </div>
-    </div>
+    </RootBox>
   );
 };
 

@@ -13,6 +13,7 @@ import {
 } from "@Library/constants/post";
 import useGetStringTypeToRouter from "@Hooks/router/useGetStringTypeToRouter";
 import DateScopeLink from "@Components/common/molecules/link/DateScopeLink";
+import RootBox from "@Components/common/atom/box/RootBox";
 
 const Home: NextPage = () => {
   const categoryName = useGetStringTypeToRouter("category");
@@ -21,7 +22,7 @@ const Home: NextPage = () => {
     <div>
       <IntroThumbnail />
       <CategorySortButtonList />
-      <div className="m-auto max-w-[1280px] items-center px-5">
+      <RootBox>
         <div className="my-10">
           <CardTitle
             title={
@@ -62,7 +63,7 @@ const Home: NextPage = () => {
             />
           </div>
         </div>
-      </div>
+      </RootBox>
     </div>
   );
 };
