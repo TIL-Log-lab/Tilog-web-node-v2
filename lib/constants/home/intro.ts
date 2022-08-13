@@ -8,7 +8,7 @@ export const INTRO_TITLE: LanguageInterface = {
 };
 
 export const INTRO_SUBTITLE: LanguageInterface = {
-  [LANGUAGE.ko]: "오늘 배운것을 기록하고, 남들과 공유해보아요.",
+  [LANGUAGE.ko]: "오늘 배운것을 기록하고, 남들과 공유해보세요.",
   [LANGUAGE.en]: "Record what you learned today and share it with others.",
 };
 
