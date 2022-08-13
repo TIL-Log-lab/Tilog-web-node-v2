@@ -6,7 +6,7 @@ import {
   DISPLAY_NAME,
   DISPLAY_NAME_DESC,
   DISPLAY_NAME_TITLE,
-} from "@Constants/settings";
+} from "@Library/constants/settings";
 
 import UserSettingTypes from "@Library/api/users/interface/userSettingTypes";
 

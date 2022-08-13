@@ -10,7 +10,7 @@ import {
   LATEST_CATEGORY_POSTCARD,
   LATEST_POSTCARD,
   MOST_POPULAR_POSTCARD,
-} from "@Constants/post";
+} from "@Library/constants/post";
 import useGetStringTypeToRouter from "@Hooks/router/useGetStringTypeToRouter";
 import DateScopeLink from "@Components/common/molecules/link/DateScopeLink";
 

@@ -1,4 +1,4 @@
-import COMMENT_EMPTY from "@Constants/comment/error";
+import COMMENT_EMPTY from "@Library/constants/comment/error";
 
 export * from "./reply";
 export * from "./placeholder";

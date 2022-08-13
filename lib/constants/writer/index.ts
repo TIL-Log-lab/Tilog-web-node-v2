@@ -1,4 +1,4 @@
-import TITLE_WRITER from "@Constants/writer/headTitle";
+import TITLE_WRITER from "@Library/constants/writer/headTitle";
 
 export * from "./publish";
 export * from "./placeHolder";

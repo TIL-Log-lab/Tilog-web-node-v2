@@ -2,7 +2,7 @@ import { EditorContent, EditorOptions } from "@tiptap/react";
 
 import { useFormContext } from "react-hook-form";
 
-import { MARKDOWN_CONTENT } from "@Constants/writer";
+import { MARKDOWN_CONTENT } from "@Library/constants/writer";
 
 import { CreatePostRequestBodyDto } from "@til-log.lab/tilog-api";
 

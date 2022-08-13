@@ -5,7 +5,7 @@ import {
   COMMENT_PLACEHOLDER,
   UPDATE_COMMENT,
   UPDATE_COMMENT_CANCEL,
-} from "@Constants/comment";
+} from "@Library/constants/comment";
 
 import { GetCommentsItem } from "@til-log.lab/tilog-api";
 

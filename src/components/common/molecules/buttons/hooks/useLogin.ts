@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { TILOG_AUTH } from "@Constants/environment";
+import { TILOG_AUTH } from "@Library/constants/environment";
 import useGetMeQuery from "@Hooks/react-query/user/useGetMeQuery";
 
 const useLogin = () => {

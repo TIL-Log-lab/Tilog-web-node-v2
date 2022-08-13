@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { useFormContext } from "react-hook-form";
 
-import { THUMBNAIL_URL } from "@Constants/writer";
+import { THUMBNAIL_URL } from "@Library/constants/writer";
 
 import { CreatePostRequestBodyDto } from "@til-log.lab/tilog-api";
 

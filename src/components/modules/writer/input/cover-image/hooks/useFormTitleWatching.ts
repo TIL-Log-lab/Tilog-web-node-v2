@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
 
-import { TITLE } from "@Constants/writer";
+import { TITLE } from "@Library/constants/writer";
 
 import WriterFormTypes from "@Components/modules/writer/interface/writerFormTypes";
 

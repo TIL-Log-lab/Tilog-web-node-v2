@@ -2,7 +2,7 @@ import { useFormContext } from "react-hook-form";
 
 import UnderLineTextInput from "@Components/common/atom/input/UnderLineTextInput";
 import { emailRules } from "@Components/modules/settings/input/rules";
-import { EMAIL, EMAIL_DESC, EMAIL_TITLE } from "@Constants/settings";
+import { EMAIL, EMAIL_DESC, EMAIL_TITLE } from "@Library/constants/settings";
 
 import UserSettingTypes from "@Library/api/users/interface/userSettingTypes";
 

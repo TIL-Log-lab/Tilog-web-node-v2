@@ -7,7 +7,7 @@ import {
   LOGGED_IN,
   LOGGED_IN_BUTTON,
   LOGGED_OUT,
-} from "@Constants/home/intro";
+} from "@Library/constants/home/intro";
 import useGetMeQuery from "@Hooks/react-query/user/useGetMeQuery";
 
 const IntroThumbnail = () => {

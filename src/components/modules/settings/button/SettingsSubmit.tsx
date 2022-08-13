@@ -1,5 +1,5 @@
 import PrimaryButton from "@Components/common/atom/buttons/PrimaryButton";
-import { SUMMIT_SETTINGS } from "@Constants/settings";
+import { SUMMIT_SETTINGS } from "@Library/constants/settings";
 
 const SettingsSubmit = () => {
   return (

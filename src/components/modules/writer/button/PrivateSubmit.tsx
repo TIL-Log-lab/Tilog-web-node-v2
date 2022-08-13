@@ -1,7 +1,7 @@
 import { useFormContext } from "react-hook-form";
 
 import SecondaryButton from "@Components/common/atom/buttons/SecondaryButton";
-import { IS_PRIVATE, PUBLISH_PRIVATE_POST } from "@Constants/writer";
+import { IS_PRIVATE, PUBLISH_PRIVATE_POST } from "@Library/constants/writer";
 
 import { CreatePostRequestBodyDto } from "@til-log.lab/tilog-api";
 

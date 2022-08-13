@@ -10,7 +10,7 @@ import SearchCategory from "@Components/modules/writer/input/category-search";
 import CoverImage from "@Components/modules/writer/input/cover-image";
 import SubTitleInput from "@Components/modules/writer/input/SubTitleInput";
 import TitleInput from "@Components/modules/writer/input/TitleInput";
-import { TITLE_WRITER } from "@Constants/writer";
+import { TITLE_WRITER } from "@Library/constants/writer";
 import useHandleSummit from "@Hooks/pages/writer/hooks/useHandleSummit";
 
 import WriterFormTypes from "@Components/modules/writer/interface/writerFormTypes";

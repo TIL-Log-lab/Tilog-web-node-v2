@@ -6,7 +6,7 @@ import {
   INTRO_MSG,
   INTRO_MSG_DESC,
   INTRO_MSG_TITLE,
-} from "@Constants/settings";
+} from "@Library/constants/settings";
 
 import UserSettingTypes from "@Library/api/users/interface/userSettingTypes";
 

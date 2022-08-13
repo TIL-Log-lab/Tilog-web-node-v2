@@ -1,4 +1,4 @@
-import { TILOG_API } from "@Constants/environment";
+import { TILOG_API } from "@Library/constants/environment";
 import CategoryRepository from "@Library/api/category/categoryRepository";
 import CategoryService from "@Library/api/category/categoryService";
 import httpClient from "@Library/api/httpClient";
