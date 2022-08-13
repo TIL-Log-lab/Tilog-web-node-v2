@@ -1,7 +1,26 @@
 {
   "name": "tilog-web-node-v2",
-  "version": "0.1.0",
+  "version": "0.0.1",
+  "description": "blog platform for developers",
+  "homepage": "https://github.com/TIL-Log-lab",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/TIL-Log-lab/Tilog-web-node-v2"
+  },
+  "author": {
+    "name": "MINE-98",
+    "email": "minje98@gmail.com",
+    "url": "https://github.com/MINE-98"
+  },
+  "bugs": {
+    "url": "https://github.com/TIL-Log-lab/Tilog-web-node-v2/issues",
+    "email": "minje98@gmail.com"
+  },
+  "license": "UNLICENSED",
   "private": true,
+  "engines": {
+    "node": "16.14.2"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
