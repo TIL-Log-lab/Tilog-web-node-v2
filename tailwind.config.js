@@ -3,8 +3,6 @@ const disabledCss = {
   "code::after": false,
   "blockquote p:first-of-type::before": false,
   "blockquote p:last-of-type::after": false,
-  // pre: false,
-  code: false,
   "pre > code": false,
   h1: {
     "font-size": "2.5rem",
