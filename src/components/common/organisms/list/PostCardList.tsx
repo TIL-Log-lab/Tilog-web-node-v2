@@ -49,7 +49,9 @@ const PostCardList = ({
           postList.data.pages.map((postPage) => {
             if (isArrayEmpty(postPage.data.list))
               return <h3>인기 게시글이 없습니다.</h3>;
-            return postPage.data.list.map((post) => <PostCard post={post} />);
+            return postPage.data.list.map((post) => (
+              <PostCard key={post.id} post={post} />
+            ));
           })}
       </div>
       <CardLoading

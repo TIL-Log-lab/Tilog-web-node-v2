@@ -22,7 +22,10 @@ const CategorySortButtonList = ({
       <div className="m-auto max-w-[1280px] items-center px-5">
         <div className="py-3 overflow-y-auto scrollbar-hide">
           {categoryList.data.data.list.map((category) => (
-            <CategorySortButton categoryName={category.categoryName} />
+            <CategorySortButton
+              key={category.id}
+              categoryName={category.categoryName}
+            />
           ))}
         </div>
       </div>

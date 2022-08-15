@@ -47,7 +47,7 @@ const RootComment = ({ comment }: RootCommentProps) => {
           {isOpen &&
             childCommentList.isSuccess &&
             childCommentList.data.data.list.map((childComment) => (
-              <CommentRender comment={childComment} />
+              <CommentRender key={childComment.id} comment={childComment} />
             ))}
           {isOpen && (
             <CommentInput
