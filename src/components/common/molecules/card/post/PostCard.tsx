@@ -8,10 +8,7 @@ import { GetPostsItem } from "@til-log.lab/tilog-api";
 
 const PostCard = ({ post }: { post: GetPostsItem }) => {
   return (
-    <div
-      key={post.id}
-      className="flex flex-col lg:flex-row bg-neutral-100 dark:bg-neutral-800 lg:max-w-[600px] w-full"
-    >
+    <div className="flex flex-col lg:flex-row bg-neutral-100 dark:bg-neutral-800 lg:max-w-[600px] w-full">
       <div className="w-full p-4 md:py-4 md:pl-4">
         <PostUserProfile
           viewCount={post.view}

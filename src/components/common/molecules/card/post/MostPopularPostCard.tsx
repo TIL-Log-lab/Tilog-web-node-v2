@@ -14,10 +14,7 @@ const MostPopularPostCard = ({ index, post }: MostPopularPostCardProps) => {
   return (
     <div className="flex justify-center">
       <h6 className="w-4 mr-2">{index}.</h6>
-      <div
-        key={post.id}
-        className="w-full md:w-[350px] bg-neutral-100 dark:bg-neutral-800"
-      >
+      <div className="w-full md:w-[350px] bg-neutral-100 dark:bg-neutral-800">
         <div className="p-4">
           <PostUserProfile
             viewCount={post.view}
