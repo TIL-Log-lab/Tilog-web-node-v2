@@ -43,7 +43,7 @@ const MostPopularPostCardList = ({
     <div>
       <div className="grid grid-row md:grid-cols-2 xl:grid-cols-3 gap-y-3">
         {postList.data.data.list.map((post, idx) => (
-          <MostPopularPostCard index={idx + 1} post={post} />
+          <MostPopularPostCard key={post.id} index={idx + 1} post={post} />
         ))}
       </div>
     </div>

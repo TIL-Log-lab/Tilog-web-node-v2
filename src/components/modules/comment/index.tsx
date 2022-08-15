@@ -19,7 +19,7 @@ const Comment = ({ postId }: CommentProps) => {
     <div>
       <hr />
       {commentList.data.data.list.map((comment) => (
-        <RootComment comment={comment} />
+        <RootComment key={comment.id} comment={comment} />
       ))}
       <CommentInput
         postId={postId}
