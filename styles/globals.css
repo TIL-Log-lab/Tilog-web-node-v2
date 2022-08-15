@@ -31,7 +31,7 @@ body {
     @apply text-base font-medium md:text-lg text-neutral-500 dark:text-neutral-300 font-eng-sub-font-2;
   }
   a {
-    @apply text-base md:text-xl text-neutral-800 dark:text-neutral-50 hover:underline font-eng-sub-font-2;
+    @apply text-sm md:text-base text-neutral-800 dark:text-neutral-50 hover:underline font-eng-sub-font-2;
   }
   p {
     @apply text-sm md:text-base dark:text-neutral-500 text-neutral-400 font-eng-sub-font-2;
