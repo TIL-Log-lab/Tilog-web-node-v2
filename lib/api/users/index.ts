@@ -1,4 +1,4 @@
-import { tilogApi } from "@Library/api/httpclient";
+import { tilogApi } from "@Library/api/http-client";
 import UserRepository from "@Library/api/users/userRepository";
 import UserService from "@Library/api/users/userService";
 

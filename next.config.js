@@ -2,8 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    TILOG_API: process.env.TILOG_API,
-    TILOG_INFO_COOKIE: process.env.TILOG_INFO_COOKIE,
+    TILOG_API: "http://localhost",
+    TILOG_AUTH: "http://localhost/auth/github/login",
   },
   images: {
     //TODO: Input Your Image Server Domain

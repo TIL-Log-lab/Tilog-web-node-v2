@@ -1,4 +1,4 @@
-import { tilogApi } from "@Library/api/httpclient";
+import { tilogApi } from "@Library/api/http-client";
 
 import { GetAccessTokenUsingRefreshTokenResponse } from "@til-log.lab/tilog-api";
 

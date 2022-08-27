@@ -2,7 +2,7 @@
 /* eslint-disable no-param-reassign */
 
 import http from "@Library/api";
-import { tilogApi } from "@Library/api/httpclient";
+import { tilogApi } from "@Library/api/http-client";
 import getAccessTokenToAxiosHeader from "@Library/api/utility/getAccessTokenToAxiosHeader";
 import isTokenExpired from "@Library/api/utility/isTokenExpired";
 

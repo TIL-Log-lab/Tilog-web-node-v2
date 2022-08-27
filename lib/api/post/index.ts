@@ -1,4 +1,4 @@
-import { tilogApi } from "@Library/api/httpclient";
+import { tilogApi } from "@Library/api/http-client";
 import CommentRepository from "@Library/api/post/comment/CommentRepository";
 import CommentService from "@Library/api/post/comment/CommentService";
 import PostLikeRepository from "@Library/api/post/like/postLikeRepository";
