@@ -1,3 +1,40 @@
+const disabledCss = {
+  "code::before": false,
+  "code::after": false,
+  "blockquote p:first-of-type::before": false,
+  "blockquote p:last-of-type::after": false,
+  "pre > code": false,
+  h1: {
+    "font-size": "2.5rem",
+  },
+  h2: {
+    "font-size": "2rem",
+  },
+  h3: {
+    "font-size": "1.88rem",
+  },
+  h4: {
+    "font-size": "1.55rem",
+  },
+  h5: {
+    "font-size": "1.44rem",
+  },
+  h6: {
+    "font-size": "1.22rem",
+  },
+  code: {
+    "font-size": "85%",
+    padding: ".2em .4em",
+    color: "#262626",
+    backgroundColor: "#cfcfcf",
+    "border-radius": "3px",
+    margin: "1px",
+  },
+  p: {
+    "line-height": "1.8",
+  },
+};
+
 module.exports = {
   purge: {
     enabled: true,
@@ -13,13 +50,38 @@ module.exports = {
       "2xl": { min: "1536px" },
     },
     extend: {
+      typography: {
+        DEFAULT: { css: disabledCss },
+      },
+
       fontFamily: {
         "eng-sub-font-1": ["Literata", "sans-serif"],
         "eng-sub-font-2": ["Poppins", "sans-serif"],
       },
+      aspectRatio: {
+        "2/1": "2 / 1",
+      },
+      fontSize: {
+        "5xl": [
+          "3rem",
+          {
+            lineHeight: "1.5",
+          },
+        ],
+        "4xl": [
+          "2.25rem",
+          {
+            lineHeight: "1.3",
+          },
+        ],
+        "3xl": [
+          "1.875rem",
+          {
+            lineHeight: "1.2",
+          },
+        ],
+      },
       colors: {
-        "signature-color": "#606DEE",
-        "signature-color-blur": "#9498EC",
         javascript: "#f1DD35",
         typescript: "#3178c6",
         html: "#e44b23",
@@ -59,5 +121,6 @@ module.exports = {
   plugins: [
     require("@tailwindcss/typography"),
     require("@tailwindcss/line-clamp"),
+    require("tailwind-scrollbar-hide"),
   ],
 };

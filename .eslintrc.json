@@ -22,6 +22,9 @@
     "plugin:prettier/recommended"
   ],
   "rules": {
+    "import/prefer-default-export": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "react/require-default-props": "off",
     "@typescript-eslint/lines-between-class-members": "off",
     "class-methods-use-this": "off",
     "import/order": [
@@ -39,6 +42,10 @@
           },
           {
             "pattern": "react",
+            "group": "builtin"
+          },
+          {
+            "pattern": "@tiptap/**",
             "group": "builtin"
           },
           {
