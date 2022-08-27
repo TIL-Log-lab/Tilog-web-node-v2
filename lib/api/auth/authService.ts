@@ -14,7 +14,7 @@ export default class AuthService {
   deleteRefreshToken(
     options?: AxiosRequestConfig<ExceptionInterface>
   ): Promise<AxiosResponse<void, ExceptionInterface>> {
-    return this.authRepository.usersAuthControllerDeleteRefreshToken({
+    return this.authRepository.deleteRefreshToken({
       ...options,
       withCredentials: true,
     });
@@ -24,11 +24,13 @@ export default class AuthService {
     userAgent?: string,
     options?: AxiosRequestConfig<ExceptionInterface>
   ): Promise<void> {
-    const { data } =
-      await this.authRepository.usersAuthControllerGetAccessTokenUsingRefreshToken(
-        userAgent,
-        { ...options, withCredentials: true }
-      );
+    const { data } = await this.authRepository.getAccessTokenUsingRefreshToken(
+      userAgent,
+      {
+        ...options,
+        withCredentials: true,
+      }
+    );
     this.axios.defaults.headers.common.Authorization = `bearer ${data.accessToken}`;
   }
 }

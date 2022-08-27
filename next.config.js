@@ -19,6 +19,7 @@ const schema = Joi.object({
 const nextConfig = {
   reactStrictMode: true,
   env: {
+
     TILOG_API: process.env.NEXT_PUBLIC_TILOG_API,
     TILOG_AUTH: process.env.NEXT_PUBLIC_TILOG_AUTH,
   },

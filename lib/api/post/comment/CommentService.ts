@@ -20,7 +20,7 @@ export default class CommentService {
     createCommentsRequestBodyDto: CreateCommentsRequestBodyDto,
     options?: AxiosRequestConfig
   ): Promise<AxiosResponse<void, ExceptionInterface>> {
-    return this.commentRepository.commentsControllerCreateComment(
+    return this.commentRepository.createComment(
       createCommentsRequestBodyDto,
       options
     );
@@ -31,7 +31,7 @@ export default class CommentService {
     deleteCommentRequestDto: DeleteCommentRequestDto,
     options?: AxiosRequestConfig
   ): Promise<AxiosResponse<void, ExceptionInterface>> {
-    return this.commentRepository.commentsControllerDeleteComment(
+    return this.commentRepository.deleteComment(
       deleteCommentRequestDto,
       options
     );
@@ -42,11 +42,7 @@ export default class CommentService {
     replyTo?: string,
     options?: AxiosRequestConfig
   ): Promise<AxiosResponse<GetCommentsResponseDto, ExceptionInterface>> {
-    return this.commentRepository.commentsControllerGetComments(
-      postId,
-      replyTo,
-      options
-    );
+    return this.commentRepository.getComments(postId, replyTo, options);
   }
 
   @validateToken()
@@ -54,7 +50,7 @@ export default class CommentService {
     updateCommentRequestDto: UpdateCommentRequestDto,
     options?: AxiosRequestConfig
   ): Promise<AxiosResponse<void>> {
-    return this.commentRepository.commentsControllerUpdateComment(
+    return this.commentRepository.updateComment(
       updateCommentRequestDto,
       options
     );

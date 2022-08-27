@@ -70,7 +70,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (!postId) return { props: {} };
   if (Array.isArray(postId)) return { props: {} };
   try {
-    const { data } = await api.postService.getPostDetail(postId);
+    const { data } = await api.postService.getPostDetail(postId, {
+      headers,
+    });
     const seo = postDefaultSeo(data);
     return {
       props: {

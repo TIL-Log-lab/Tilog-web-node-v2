@@ -4,7 +4,7 @@ import RequestError from "@Library/api/exception/requestError";
 import ResponseError from "@Library/api/exception/responseError";
 import UnknownError from "@Library/api/exception/unknownError";
 
-class HttpClient {
+export default class HttpClient {
   public http: AxiosInstance;
 
   constructor(config: AxiosRequestConfig) {
@@ -34,5 +34,3 @@ class HttpClient {
     return Promise.reject(new UnknownError());
   };
 }
-
-export default new HttpClient({});

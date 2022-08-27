@@ -2,7 +2,7 @@
 /* eslint-disable no-param-reassign */
 
 import http from "@Library/api";
-import httpClient from "@Library/api/httpClient";
+import { tilogApi } from "@Library/api/http-client";
 import getAccessTokenToAxiosHeader from "@Library/api/utility/getAccessTokenToAxiosHeader";
 import isTokenExpired from "@Library/api/utility/isTokenExpired";
 
@@ -14,7 +14,7 @@ export default function validateToken() {
   ) => {
     const originMethod = descriptor.value;
     descriptor.value = async function (...args: unknown[]) {
-      const accessToken = getAccessTokenToAxiosHeader(httpClient.http);
+      const accessToken = getAccessTokenToAxiosHeader(tilogApi.http);
 
       if (!accessToken || isTokenExpired(accessToken)) {
         await http.authService.getAccessTokenUsingRefreshToken();

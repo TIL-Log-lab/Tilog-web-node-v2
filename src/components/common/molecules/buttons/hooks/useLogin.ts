@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 
-import { TILOG_AUTH } from "@Library/constants/environment";
 import useGetMeQuery from "@Hooks/react-query/user/useGetMeQuery";
 
 const useLogin = () => {
@@ -19,7 +18,7 @@ const useLogin = () => {
   }, [refetch]);
   return () => {
     return window.open(
-      TILOG_AUTH,
+      process.env.TILOG_AUTH,
       "",
       "toolbar=no, menubar=no, width=600, height=700"
     );

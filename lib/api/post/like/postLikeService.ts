@@ -24,10 +24,7 @@ export default class PostLikeService {
     const setLikedRequestDto: SetLikedRequestDto = {
       postId,
     };
-    return this.postLikeRepository.postsLikeControllerSetLike(
-      setLikedRequestDto,
-      options
-    );
+    return this.postLikeRepository.setLike(setLikedRequestDto, options);
   }
 
   @validateToken()
@@ -38,10 +35,7 @@ export default class PostLikeService {
     const unsetLikedRequestDto: UnsetLikedRequestDto = {
       postId,
     };
-    return this.postLikeRepository.postsLikeControllerUnsetLike(
-      unsetLikedRequestDto,
-      options
-    );
+    return this.postLikeRepository.unsetLike(unsetLikedRequestDto, options);
   }
 
   @validateToken()
@@ -49,7 +43,7 @@ export default class PostLikeService {
     postId: PostHasLikeDto["postId"],
     options?: AxiosRequestConfig
   ): Promise<AxiosResponse<HasLikedResponseDto, ExceptionInterface>> {
-    return this.postLikeRepository.postsLikeControllerHasLiked(postId, options);
+    return this.postLikeRepository.hasLiked(postId, options);
   }
 
   async toggleLike(
