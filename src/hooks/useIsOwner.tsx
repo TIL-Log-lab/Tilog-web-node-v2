@@ -1,12 +1,13 @@
-import useGetMeQuery from "@Hooks/react-query/user/useGetMeQuery";
+import { useContext } from "react";
+
+import { AuthContext } from "@Hooks/context/auth/AuthContext";
 
 import { PostDetailUserInfoItem } from "@til-log.lab/tilog-api";
 
 const useIsOwner = (userInfoId: PostDetailUserInfoItem["userId"]) => {
-  const loggedInUser = useGetMeQuery();
-  if (loggedInUser.isError) return false;
-  if (!loggedInUser.data) return false;
-  if (loggedInUser.data.id === userInfoId) return true;
+  const { userInfo } = useContext(AuthContext);
+  if (!userInfo) return false;
+  if (userInfo.id === userInfoId) return true;
   return false;
 };
 

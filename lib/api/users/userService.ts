@@ -15,7 +15,6 @@ import GetUserProfileResponseTransFormSettingsDto from "@Library/api/users/inter
 export default class UserService {
   constructor(private readonly userRepository: UserRepository) {}
 
-  @validateToken()
   async getMe(
     options?: AxiosRequestConfig<unknown>
   ): Promise<GetMeResponseTransFormSettingsDto> {

@@ -1,10 +1,10 @@
 import { NextPage } from "next";
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useContext } from "react";
 
 import { FormProvider, useForm } from "react-hook-form";
 
+import RootBox from "@Components/common/atom/box/RootBox";
 import {
   SettingsSubmit,
   DisplayNameInput,
@@ -12,28 +12,17 @@ import {
   IntroductionInput,
   PositionInput,
 } from "@Components/modules/settings";
+import { AuthContext } from "@Hooks/context/auth/AuthContext";
 import useHandleSubmit from "@Hooks/pages/settings/hooks/useHandleSubmit";
-import useGetMeQuery from "@Hooks/react-query/user/useGetMeQuery";
 
 import UserSettingTypes from "@Library/api/users/interface/userSettingTypes";
-import RootBox from "@Components/common/atom/box/RootBox";
 
 const SettingPage: NextPage = () => {
-  const router = useRouter();
-  const userInfo = useGetMeQuery();
   const onSubmit = useHandleSubmit();
-
+  const { userInfo } = useContext(AuthContext);
   const method = useForm<UserSettingTypes>({
-    defaultValues: userInfo.data?.settings,
+    defaultValues: userInfo ? userInfo.settings : {},
   });
-
-  useEffect(() => {
-    method.reset(userInfo.data?.settings);
-  }, [method, userInfo.data?.settings]);
-
-  if (userInfo.isError) router.push("/login");
-  if (userInfo.isLoading) return <h1>유저 설정 로딩중..</h1>;
-
   return (
     <RootBox>
       <Head>

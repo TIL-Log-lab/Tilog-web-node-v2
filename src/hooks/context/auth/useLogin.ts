@@ -1,21 +1,24 @@
 import { useEffect } from "react";
 
-import useGetMeQuery from "@Hooks/react-query/user/useGetMeQuery";
+import api from "@Library/api";
 
-const useLogin = () => {
-  const { refetch } = useGetMeQuery();
+import SetUserInfoType from "@Hooks/context/auth/interface/setUserInfoType";
+
+const useLogin = (setUserInfo: SetUserInfoType) => {
   useEffect(() => {
     window.addEventListener(
       "message",
       async (event) => {
         if (event.origin !== window.location.origin) return;
         if (event.data === "login") {
-          refetch();
+          await api.authService.getAccessTokenUsingRefreshToken();
+          const userInfo = await api.usersService.getMe();
+          setUserInfo(userInfo);
         }
       },
       false
     );
-  }, [refetch]);
+  }, [setUserInfo]);
   return () => {
     return window.open(
       process.env.TILOG_AUTH,

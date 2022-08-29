@@ -4,27 +4,27 @@ import { GetPostDetailResponseDto } from "@til-log.lab/tilog-api";
 
 import GetUserProfileResponseTransFormSettingsDto from "@Library/api/users/interface/getUserProfileResponseTransFormSettingsDto";
 
-export const postDefaultSeo = (
-  data: GetPostDetailResponseDto
+export const postDetailSeo = (
+  postDetail: GetPostDetailResponseDto
 ): DefaultSeoProps => {
   return {
-    title: data.title,
-    description: !data.subTitle ? "" : data.subTitle,
+    title: postDetail.title,
+    description: !postDetail.subTitle ? "" : postDetail.subTitle,
     openGraph: {
       type: "website",
       locale: "ko_KR",
       url: "tilog.io",
-      title: data.title,
+      title: postDetail.title,
       site_name: "TILog",
       article: {
-        publishedTime: data.createdAt,
-        modifiedTime: !data.updatedAt ? "" : data.updatedAt,
-        authors: [data.user.username],
-        tags: [data.category.name],
+        publishedTime: postDetail.createdAt,
+        modifiedTime: !postDetail.updatedAt ? "" : postDetail.updatedAt,
+        authors: [postDetail.user.username],
+        tags: [postDetail.category.name],
       },
       images: [
         {
-          url: !data.thumbnailUrl ? "" : data.thumbnailUrl,
+          url: !postDetail.thumbnailUrl ? "" : postDetail.thumbnailUrl,
           width: 285,
           height: 167,
           alt: "TILog_thumbnailUrl",
@@ -49,23 +49,27 @@ export const notFoundPostSeo = (): DefaultSeoProps => {
 };
 
 export const userBlogDetailSeo = (
-  data: GetUserProfileResponseTransFormSettingsDto
+  userInfo: GetUserProfileResponseTransFormSettingsDto
 ): DefaultSeoProps => {
   return {
-    title: !data.settings.DISPLAY_NAME ? data.name : data.settings.DISPLAY_NAME,
-    description: !data.settings.INTRO_MSG ? "" : data.settings.INTRO_MSG,
+    title: !userInfo.settings.DISPLAY_NAME
+      ? userInfo.name
+      : userInfo.settings.DISPLAY_NAME,
+    description: !userInfo.settings.INTRO_MSG
+      ? ""
+      : userInfo.settings.INTRO_MSG,
     openGraph: {
       type: "website",
       locale: "ko_KR",
       url: "tilog.io",
-      title: !data.settings.DISPLAY_NAME
-        ? data.name
-        : data.settings.DISPLAY_NAME,
+      title: !userInfo.settings.DISPLAY_NAME
+        ? userInfo.name
+        : userInfo.settings.DISPLAY_NAME,
       site_name: "TILog",
 
       images: [
         {
-          url: !data.avatar ? "" : data.avatar,
+          url: !userInfo.avatar ? "" : userInfo.avatar,
           width: 285,
           height: 167,
           alt: "TILog_User_Avatar",

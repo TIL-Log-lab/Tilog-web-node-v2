@@ -9,11 +9,9 @@ const useSearchCategory = () => {
   const { data } = useGetCategoryQuery();
 
   return (
-    categoryName?:
-      | GetUserCategoriesItem["categoryName"]
-      | GetCategoriesItem["categoryName"],
+    categoryName?: GetUserCategoriesItem["categoryName"],
     categoryId?: string
-  ): GetCategoriesItem[] | GetUserCategoriesItem[] | null => {
+  ): GetCategoriesItem[] | null => {
     if (!data) return null;
     const categoryList = data.data.list;
 

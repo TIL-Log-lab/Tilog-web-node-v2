@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { SiGithub } from "react-icons/si";
 
 import PrimaryButton from "@Components/common/atom/buttons/PrimaryButton";
-import useLogin from "@Components/common/molecules/buttons/hooks/useLogin";
+import { AuthContext } from "@Hooks/context/auth/AuthContext";
 
 const LoginButton = () => {
-  const handleLogin = useLogin();
+  const { handleLogin } = useContext(AuthContext);
   return (
     <PrimaryButton type="button" onClick={handleLogin}>
       <span className="text-neutral-50">Login With Github</span>

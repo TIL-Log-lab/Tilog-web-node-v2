@@ -1,6 +1,9 @@
+import { useContext } from "react";
+
 import PrimaryButton from "@Components/common/atom/buttons/PrimaryButton";
 import LinkTo from "@Components/common/atom/LinkTo";
 import LoginButton from "@Components/common/molecules/buttons/LoginButton";
+import { AuthContext } from "@Hooks/context/auth/AuthContext";
 import {
   INTRO_SUBTITLE,
   INTRO_TITLE,
@@ -8,10 +11,9 @@ import {
   LOGGED_IN_BUTTON,
   LOGGED_OUT,
 } from "@Library/constants/home/intro";
-import useGetMeQuery from "@Hooks/react-query/user/useGetMeQuery";
 
 const IntroThumbnail = () => {
-  const userInfo = useGetMeQuery();
+  const { userInfo } = useContext(AuthContext);
   return (
     <div className="w-full px-3 py-60 bg-neutral-900 dark:bg-neutral-800 ">
       <div className="m-auto max-w-[1280px]">
@@ -24,7 +26,16 @@ const IntroThumbnail = () => {
           </h3>
         </div>
         <div className="mt-10">
-          {userInfo.isSuccess && (
+          {!userInfo ? (
+            <div>
+              <div>
+                <p>{LOGGED_OUT.ko}</p>
+              </div>
+              <div className="mt-5 w-fit">
+                <LoginButton />
+              </div>
+            </div>
+          ) : (
             <div>
               <p>{LOGGED_IN.ko}</p>
               <div className="mt-2">
@@ -35,16 +46,6 @@ const IntroThumbnail = () => {
                     </h3>
                   </PrimaryButton>
                 </LinkTo>
-              </div>
-            </div>
-          )}
-          {userInfo.isError && (
-            <div>
-              <div>
-                <p>{LOGGED_OUT.ko}</p>
-              </div>
-              <div className="mt-5 w-fit">
-                <LoginButton />
               </div>
             </div>
           )}
