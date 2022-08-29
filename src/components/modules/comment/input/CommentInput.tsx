@@ -1,7 +1,9 @@
+import { useContext } from "react";
+
 import PrimaryButton from "@Components/common/atom/buttons/PrimaryButton";
 import CommentUserProfile from "@Components/modules/comment/CommentUserProfile";
 import useSubmitComment from "@Components/modules/comment/input/hooks/useSubmitComment";
-import useGetMeQuery from "@Hooks/react-query/user/useGetMeQuery";
+import { AuthContext } from "@Hooks/context/auth/AuthContext";
 
 import { GetCommentsItem } from "@til-log.lab/tilog-api";
 
@@ -17,16 +19,15 @@ const CommentInput = ({
   placeholder,
   buttonText,
 }: CommentInputProps) => {
-  const userInfo = useGetMeQuery();
+  const { userInfo } = useContext(AuthContext);
 
   const { handleSubmit, content, errorMessage, handleComment } =
     useSubmitComment(postId, replyTo);
-  if (userInfo.isError) return null;
-  if (userInfo.isLoading) return null;
+  if (!userInfo) return null;
   return (
     <div>
       <div className="p-5 bg-neutral-100 dark:bg-neutral-800">
-        {userInfo.isSuccess && <CommentUserProfile userId={userInfo.data.id} />}
+        <CommentUserProfile userId={userInfo.id} />
 
         <div className="mt-5">
           {errorMessage && <p className="text-rose-500">{errorMessage}</p>}

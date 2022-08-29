@@ -1,32 +1,26 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 
-import EmptyAvatarImage from "@Components/common/atom/images/avatar/EmptyAvatarImage";
 import LoginButton from "@Components/common/molecules/buttons/LoginButton";
 import ProfileImage from "@Components/common/molecules/images/ProfileImage";
 import DropdownProfile from "@Components/common/organisms/header/profile/DropdownProfile";
+import { AuthContext } from "@Hooks/context/auth/AuthContext";
 import useOutsideClickAndEscClickListener from "@Hooks/event-listener/useOutsideClickAndEscClickListener";
-import useGetMeQuery from "@Hooks/react-query/user/useGetMeQuery";
+
+import AuthContextInterface from "@Hooks/context/auth/interface/AuthContextInterface";
 
 const HeaderUserProfile = () => {
-  const { isLoading, isError, data } = useGetMeQuery();
+  const { userInfo } = useContext<AuthContextInterface>(AuthContext);
   const dropDownRef = useRef<HTMLDivElement>(null);
   const { isOpen, handleOpen } =
     useOutsideClickAndEscClickListener(dropDownRef);
-  if (isLoading) {
-    return (
-      <div className="w-14 h-14">
-        <EmptyAvatarImage />
-      </div>
-    );
-  }
-  if (isError) {
+  if (!userInfo) {
     return <LoginButton />;
   }
 
   return (
     <div ref={dropDownRef}>
       <button type="button" onClick={handleOpen}>
-        <ProfileImage className="w-14 h-14" avatar={data?.avatar} />
+        <ProfileImage className="w-14 h-14" avatar={userInfo.avatar} />
       </button>
 
       {isOpen && <DropdownProfile />}
