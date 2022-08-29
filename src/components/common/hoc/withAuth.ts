@@ -4,6 +4,7 @@ import { NextApiRequestCookies } from "next/dist/server/api-utils";
 import { IncomingMessage } from "http";
 
 import api from "@Library/api";
+import { tilogApi } from "@Library/api/http-client";
 
 interface WithContext {
   ctx: {
@@ -42,6 +43,7 @@ export default function withAuth() {
           },
         };
       } catch {
+        tilogApi.http.defaults.headers.common.Authorization = "";
         return { pageProps: {} };
       }
     }
