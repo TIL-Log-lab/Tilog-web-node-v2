@@ -12,7 +12,7 @@ import {
   IntroductionInput,
   PositionInput,
 } from "@Components/modules/settings";
-import { AuthContext } from "@Hooks/context/auth/AuthProvider";
+import { AuthContext } from "@Hooks/context/auth/AuthContext";
 import useHandleSubmit from "@Hooks/pages/settings/hooks/useHandleSubmit";
 
 import UserSettingTypes from "@Library/api/users/interface/userSettingTypes";
