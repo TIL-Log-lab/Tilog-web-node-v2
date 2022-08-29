@@ -1,25 +1,27 @@
 import type { NextPage } from "next";
 
+import RootBox from "@Components/common/atom/box/RootBox";
 import CardTitle from "@Components/common/atom/CardTitle";
+import DateScopeLink from "@Components/common/molecules/link/DateScopeLink";
+import Header from "@Components/common/organisms/header";
 import CategorySortButtonList from "@Components/common/organisms/list/CategorySortButtonList";
 import MostPopularPostCardList from "@Components/common/organisms/list/MostPopularPostCardList";
 import { PostCardList } from "@Components/modules/blog";
 import IntroThumbnail from "@Components/modules/home/IntroThumbnail";
+import useGetStringTypeToRouter from "@Hooks/router/useGetStringTypeToRouter";
 import {
   CATEGORY_MOST_POPULAR_POSTCARD,
   LATEST_CATEGORY_POSTCARD,
   LATEST_POSTCARD,
   MOST_POPULAR_POSTCARD,
 } from "@Library/constants/post";
-import useGetStringTypeToRouter from "@Hooks/router/useGetStringTypeToRouter";
-import DateScopeLink from "@Components/common/molecules/link/DateScopeLink";
-import RootBox from "@Components/common/atom/box/RootBox";
 
 const Home: NextPage = () => {
   const categoryName = useGetStringTypeToRouter("category");
 
   return (
     <div>
+      <Header />
       <IntroThumbnail />
       <CategorySortButtonList />
       <RootBox>
