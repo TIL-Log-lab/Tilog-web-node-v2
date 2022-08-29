@@ -18,6 +18,10 @@ export default function withAuth() {
   return async ({ ctx }: WithContext): Promise<AppInitialProps> => {
     if (typeof window === "undefined") {
       const { cookies } = ctx.req;
+      if (tilogApi.http.defaults.headers.common.Authorization) {
+        tilogApi.http.defaults.headers.common.Authorization = "";
+      }
+
       if (!cookies.refreshToken) {
         return { pageProps: {} };
       }
@@ -31,6 +35,7 @@ export default function withAuth() {
             Cookie: cookie,
           },
         });
+
         const initUserInfo = await api.usersService.getMe({
           headers: {
             "User-Agent": userAgent,
@@ -42,8 +47,7 @@ export default function withAuth() {
             initUserInfo,
           },
         };
-      } catch {
-        tilogApi.http.defaults.headers.common.Authorization = "";
+      } catch (error) {
         return { pageProps: {} };
       }
     }
