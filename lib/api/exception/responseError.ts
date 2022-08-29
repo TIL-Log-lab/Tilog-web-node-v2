@@ -1,6 +1,7 @@
+import { NOT_EXIST_MESSAGE } from "@Library/messages/constants/error";
+
 import ExceptionInterface from "@Library/api/exception/interface";
 import { LanguageInterface } from "@Library/language/interface";
-import { NOT_EXIST_MESSAGE } from "@Library/messages/constants/error";
 
 export default class ResponseError implements ExceptionInterface {
   readonly statusCode: number;

@@ -1,4 +1,4 @@
-import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import { AxiosRequestConfig, AxiosResponse } from "axios";
 
 import validateToken from "@Library/api/auth/validateTokenDecorator";
 import PostRepository from "@Library/api/post/postRepository";
@@ -14,27 +14,21 @@ import ExceptionInterface from "@Library/api/exception/interface";
 import GetPostRequestDto from "@Library/api/post/interface/getPostRequestDto";
 
 export default class PostService {
-  constructor(
-    private readonly postRepository: PostRepository,
-    private readonly axios: AxiosInstance
-  ) {}
+  constructor(private readonly postRepository: PostRepository) {}
 
   @validateToken()
   createPost(
     createPostRequestBodyDto: CreatePostRequestBodyDto,
     options?: AxiosRequestConfig<ExceptionInterface>
   ): Promise<AxiosResponse<void, ExceptionInterface>> {
-    return this.postRepository.postsControllerCreatePost(
-      createPostRequestBodyDto,
-      options
-    );
+    return this.postRepository.createPost(createPostRequestBodyDto, options);
   }
 
   getPostDetail(
     postId: string,
     options?: AxiosRequestConfig<ExceptionInterface>
   ): Promise<AxiosResponse<GetPostDetailResponseDto, ExceptionInterface>> {
-    return this.postRepository.postsControllerGetPostDetail(postId, options);
+    return this.postRepository.getPostDetail(postId, options);
   }
 
   getPosts(
@@ -45,8 +39,8 @@ export default class PostService {
     userId?: GetPostRequestDto["userId"],
     categoryId?: GetPostRequestDto["categoryId"],
     options?: AxiosRequestConfig<ExceptionInterface>
-  ): Promise<AxiosResponse<GetPostsResponseDto, any>> {
-    return this.postRepository.postsControllerGetPosts(
+  ): Promise<AxiosResponse<GetPostsResponseDto, ExceptionInterface>> {
+    return this.postRepository.getPosts(
       dateScope,
       sortScope,
       page,
@@ -61,7 +55,7 @@ export default class PostService {
   modifyPost(
     post: ModifyPostRequestBodyDto,
     options?: AxiosRequestConfig<ExceptionInterface>
-  ): Promise<AxiosResponse<void, any>> {
-    return this.postRepository.postsControllerModifyPost(post, options);
+  ): Promise<AxiosResponse<void, ExceptionInterface>> {
+    return this.postRepository.modifyPost(post, options);
   }
 }

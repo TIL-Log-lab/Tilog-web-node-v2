@@ -1,4 +1,5 @@
 import LANGUAGE from "@Library/language/constant";
+
 import { LanguageUnionType } from "@Library/language/interface";
 
 export default function getUserLanguage(): LanguageUnionType {
