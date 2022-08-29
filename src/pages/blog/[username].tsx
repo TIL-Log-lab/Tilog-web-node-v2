@@ -1,23 +1,30 @@
 import { GetServerSideProps, NextPage } from "next";
 
-import { DefaultSeoProps, NextSeo } from "next-seo";
+import { DefaultSeo } from "next-seo";
 
+import RootBox from "@Components/common/atom/box/RootBox";
+import Header from "@Components/common/organisms/header";
 import CategorySortButtonList from "@Components/common/organisms/list/CategorySortButtonList";
 import { UserInfoProfile, PostCardList } from "@Components/modules/blog";
 import useGetStringTypeToRouter from "@Hooks/router/useGetStringTypeToRouter";
 import api from "@Library/api";
 import { userBlogDetailSeo } from "@Library/utility/seo";
-import RootBox from "@Components/common/atom/box/RootBox";
+
+import GetUserProfileResponseTransFormSettingsDto from "@Library/api/users/interface/getUserProfileResponseTransFormSettingsDto";
 
 interface BlogPagePageProps {
-  seo: DefaultSeoProps;
+  userInfo: GetUserProfileResponseTransFormSettingsDto;
 }
 // TODO: 현재 BlogPage는 UserID 1 번을 반환하도록 하드 코딩되어 있습니다. userName로 전달받을 수 있게 변경된 후 코드를 변경해야합니다.
-const BlogPage: NextPage<BlogPagePageProps> = ({ seo }: BlogPagePageProps) => {
+const BlogPage: NextPage<BlogPagePageProps> = ({
+  userInfo,
+}: BlogPagePageProps) => {
   const category = useGetStringTypeToRouter("category");
+  const seo = userBlogDetailSeo(userInfo);
   return (
     <div>
-      <NextSeo {...seo} />
+      <DefaultSeo {...seo} />
+      <Header />
       <CategorySortButtonList userId={1} />
 
       <RootBox>
@@ -65,11 +72,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (!username) return { props: {} };
   if (Array.isArray(username)) return { props: {} };
   try {
-    const data = await api.usersService.getUserProfile(1);
-    const seo = userBlogDetailSeo(data);
+    const userInfo = await api.usersService.getUserProfile(1);
     return {
       props: {
-        seo,
+        userInfo,
       },
     };
   } catch (error) {
