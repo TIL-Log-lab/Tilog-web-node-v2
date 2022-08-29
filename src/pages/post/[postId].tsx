@@ -1,37 +1,29 @@
 import { GetServerSideProps, NextPage } from "next";
 
-import { DefaultSeo, DefaultSeoProps } from "next-seo";
+import { DefaultSeo } from "next-seo";
 
+import RootBox from "@Components/common/atom/box/RootBox";
 import PostThumbnail from "@Components/common/molecules/images/PostThumbnail";
 import TiptapViewer from "@Components/common/molecules/text-area/TiptapViewer";
+import Header from "@Components/common/organisms/header";
 import Comment from "@Components/modules/comment";
 import { PostHeader, PostLike, PostWriter } from "@Components/modules/post";
-import useGetPostDetailQuery from "@Hooks/react-query/post/useGetPostDetailQuery";
-import useGetStringTypeToRouter from "@Hooks/router/useGetStringTypeToRouter";
 import api from "@Library/api";
-import { notFoundPostSeo, postDefaultSeo } from "@Library/utility/seo";
-import RootBox from "@Components/common/atom/box/RootBox";
+import { postDetailSeo } from "@Library/utility/seo";
+
+import { GetPostDetailResponseDto } from "@til-log.lab/tilog-api";
 
 interface PostDetailPageProps {
-  seo: DefaultSeoProps;
+  post: GetPostDetailResponseDto;
 }
 const PostDetailPage: NextPage<PostDetailPageProps> = ({
-  seo,
+  post,
 }: PostDetailPageProps) => {
-  const postId = useGetStringTypeToRouter("postId");
-  const postDetail = useGetPostDetailQuery(postId);
-  if (postDetail.isError) return <h3>{postDetail.error.message.ko}</h3>;
-  if (postDetail.isLoading) return <>포스트 로딩중.</>;
-  if (!postDetail.data) return <h3>포스트를 찾을 수 없습니다.</h3>;
-
-  const post = postDetail.data.data;
-  const newSeo = {
-    ...seo,
-    title: postDetail.data.data.title,
-  };
+  const seo = postDetailSeo(post);
   return (
     <div>
-      <DefaultSeo {...newSeo} />
+      <DefaultSeo {...seo} />
+      <Header />
       <RootBox>
         <div>
           <article className="w-full">
@@ -70,21 +62,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (!postId) return { props: {} };
   if (Array.isArray(postId)) return { props: {} };
   try {
-    const { data } = await api.postService.getPostDetail(postId, {
-      headers,
-    });
-    const seo = postDefaultSeo(data);
+    const { data } = await api.postService.getPostDetail(postId);
     return {
       props: {
-        seo,
+        post: data,
       },
     };
   } catch (error) {
-    const seo = notFoundPostSeo();
     return {
-      props: {
-        seo,
-      },
+      notFound: true,
     };
   }
 };
