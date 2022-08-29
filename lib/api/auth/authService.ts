@@ -14,10 +14,12 @@ export default class AuthService {
   deleteRefreshToken(
     options?: AxiosRequestConfig<ExceptionInterface>
   ): Promise<AxiosResponse<void, ExceptionInterface>> {
-    return this.authRepository.deleteRefreshToken({
+    const result = this.authRepository.deleteRefreshToken({
       ...options,
       withCredentials: true,
     });
+    this.axios.defaults.headers.common.Authorization = "";
+    return result;
   }
 
   async getAccessTokenUsingRefreshToken(
